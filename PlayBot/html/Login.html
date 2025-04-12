@@ -4,15 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Course - PlayBot Curriculum</title>
-    <meta name="description" content="Course - PlayBot Curriculum - Robot Programming Through Play">
+    <title>Login - PlayBot Curriculum</title>
+    <meta name="description" content="Login - PlayBot Curriculum - Robot Programming Through Play">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- All css files are included here. -->
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/course.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/auth.css">
 </head>
 
 <body>
@@ -36,7 +37,7 @@
                                     <ul class="main__menu">
                                         <li><a href="Home.html">Home</a></li>
                                         <li class="dropdown">
-                                            <a href="About us.html">About us</a>
+                                            <a href="About-us.html">About us</a>
                                             <div class="dropdown-content">
                                                 <a href="Team.html">Team</a>
                                                 <a href="Course.html">Course</a>
@@ -65,7 +66,6 @@
                                     </ul>
                                 </nav>
 
-                                <!-- Find the section with auth-buttons and add the user-profile div right after it -->
                                 <div class="language-selector">
                                     <button id="en-btn" class="lang-btn active"
                                         onclick="switchLanguage('en')">EN</button>
@@ -84,7 +84,6 @@
                                         <!-- Dynamically populated by auth.js -->
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -94,101 +93,61 @@
         </header>
         <!-- End Header Area -->
 
-        <!-- Start Course Header Area -->
-        <section class="school__area bg__white ptb--100">
+        <!-- Start Login Area -->
+        <section class="login__area ptb--100">
             <div class="container">
-                <div class="school-row">
+                <div class="row">
                     <div class="col-xs-12">
-                        <div class="school__title--2 text-center">
-                            <div class="language-content">
-                                <!-- English Content -->
-                                <div class="lang-content" data-lang="en">
-                                    <h2 class="title__line">Course</h2>
-                                    <p>Explore the PlayBot Curriculum designed to engage children in robot programming
-                                        through play</p>
+                        <div class="login__form">
+                            <h2 class="login__title">Login to Your Account</h2>
+                            <form id="loginForm" class="form">
+                                <div class="form__group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" required>
                                 </div>
-                                <!-- Chinese Content -->
-                                <div class="lang-content" data-lang="zh" style="display: none;">
-                                    <h2 class="title__line">課程</h2>
-                                    <p>探索 PlayBot 課程，旨在通過遊戲讓孩子們參與機械人編程</p>
+
+                                <div class="form__group">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" name="password" required>
                                 </div>
-                            </div>
+
+                                <!-- Role Selection -->
+                                <div class="role-selection">
+                                    <label>I am a:</label>
+                                    <div class="role-buttons">
+                                        <label class="role-btn">
+                                            <input type="radio" name="role" value="teacher" checked>
+
+                                            <span class="role-name">Teacher</span>
+                                        </label>
+
+                                        <label class="role-btn">
+                                            <input type="radio" name="role" value="parent">
+
+                                            <span class="role-name">Parent</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="remember">
+                                    <input type="checkbox" id="remember" name="remember">
+                                    <label for="remember">Remember me</label>
+                                </div>
+
+                                <button type="submit" class="submit-btn">Login</button>
+
+                                <div class="form__links">
+                                    <a href="#" class="forgot-password">Forgot Password?</a>
+                                    <p>Don't have an account? <a href="Register.html" class="register-link">Register
+                                            now</a></p>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- End Course Header Area -->
-
-        <!-- Start Course Content Area -->
-        <section class="resource__school__area bg__white ptb--100">
-            <div class="container">
-                <div class="language-content">
-                    <!-- English Content -->
-                    <div class="lang-content" data-lang="en">
-                        <h2>Our Course</h2>
-                        <p>Explore the PlayBot Curriculum designed to engage children in robot programming through play.
-                        </p>
-                        <div class="course-grid">
-                            <div class="course-item">
-                                <div class="course-icon">
-                                    <img src="images/course-icon1.png" alt="Introduction to Robot Programming">
-                                </div>
-                                <h3>Introduction to Robot Programming</h3>
-                                <p>This course introduces children to the basics of robot programming using fun and
-                                    interactive activities.</p>
-                            </div>
-                            <div class="course-item">
-                                <div class="course-icon">
-                                    <img src="images/course-icon2.png" alt="Advanced Robot Programming">
-                                </div>
-                                <h3>Advanced Robot Programming</h3>
-                                <p>Building on the basics, this course covers more advanced programming concepts and
-                                    challenges.</p>
-                            </div>
-                            <div class="course-item">
-                                <div class="course-icon">
-                                    <img src="images/course-icon3.png" alt="Robot Programming Projects">
-                                </div>
-                                <h3>Robot Programming Projects</h3>
-                                <p>Children will work on projects that apply their programming skills to solve
-                                    real-world problems.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Chinese Content -->
-                    <div class="lang-content" data-lang="zh" style="display: none;">
-                        <h2>我們的課程</h2>
-                        <p>探索 PlayBot 課程，旨在通過遊戲讓孩子們參與機械人編程。</p>
-                        <div class="course-grid">
-                            <div class="course-item">
-                                <div class="course-icon">
-                                    <img src="images/course-icon1.JPG" alt="機械人編程入門">
-                                </div>
-                                <h3>機械人編程入門</h3>
-                                <p>本課程通過有趣和互動的活動向孩子們介紹機械人編程的基礎知識。</p>
-                            </div>
-                            <div class="course-item">
-                                <div class="course-icon">
-                                    <img src="images/course-icon2.png" alt="高級機械人編程">
-                                </div>
-                                <h3>高級機械人編程</h3>
-                                <p>在基礎知識的基礎上，本課程涵蓋更高級的編程概念和挑戰。</p>
-                            </div>
-                            <div class="course-item">
-                                <div class="course-icon">
-                                    <img src="images/course-icon3.png" alt="機械人編程項目">
-                                </div>
-                                <h3>機械人編程項目</h3>
-                                <p>孩子們將參與項目，應用他們的編程技能來解決現實世界的問題。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Course Content Area -->
+        <!-- End Login Area -->
 
         <!-- Start Footer Area -->
         <footer class="footer__area">
@@ -202,8 +161,8 @@
                             </div>
                             <ul class="footer__menu">
                                 <li><a href="Home.html">Home</a></li>
-                                <li><a href="About us.html">About us</a></li>
-                                <li><a>School & Teacher</a></li>
+                                <li><a href="About-us.html">About us</a></li>
+                                <li><a href="School & Teacher.html">School & Teacher</a></li>
                                 <li><a href="Family.html">Family</a></li>
                             </ul>
 
@@ -231,21 +190,78 @@
     </div>
     <!-- Body main wrapper end -->
 
-    <!-- Scroll to top button -->
-    <button id="scroll-top-btn" class="scroll-top-btn">
-        <i class="arrow-up">↑</i>
-    </button>
-
-
     <!-- All js files are included here. -->
-    <script src="js/main.js"></script>
     <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/auth.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Check login status and update UI
-            if (typeof updateAuthUI === 'function') {
-                updateAuthUI();
+            // Check if user is already logged in
+            if (isUserLoggedIn()) {
+                const userData = getCurrentUser();
+                if (userData && userData.role === 'teacher') {
+                    window.location.href = 'Teacher-Dashboard.html';
+                } else if (userData) {
+                    window.location.href = 'Parent-Dashboard.html';
+                }
+            }
+
+            // Check for "remember me" cookie
+            const cookies = document.cookie.split(';');
+            for (const cookie of cookies) {
+                const [name, value] = cookie.trim().split('=');
+                if (name === 'rememberedUser' && value) {
+                    document.getElementById('email').value = value;
+                    document.getElementById('remember').checked = true;
+                }
+            }
+
+            // Login form submission
+            const loginForm = document.getElementById('loginForm');
+
+            if (loginForm) {
+                loginForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+                    const role = document.querySelector('input[name="role"]:checked').value;
+                    const remember = document.getElementById('remember').checked;
+
+                    // Reset error state
+                    document.getElementById('login-error').textContent = '';
+
+                    // Show loading indicator
+                    const submitBtn = document.getElementById('login-submit');
+                    const originalBtnText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+
+                    loginUser(email, password, role, remember)
+                        .then(user => {
+                            console.log('Login successful', user);
+                            submitBtn.innerHTML = '<i class="fas fa-check"></i> Success!';
+
+                            // Redirect based on user role
+                            setTimeout(() => {
+                                if (user.role === 'admin') {
+                                    window.location.href = 'Admin-Dashboard.html';
+                                } else if (user.role === 'teacher') {
+                                    window.location.href = 'Teacher-Dashboard.html';
+                                } else if (user.role === 'parent') {
+                                    window.location.href = 'Parent-Dashboard.html';
+                                } else {
+                                    window.location.href = 'Home.html'; // Fallback
+                                }
+                            }, 500);
+                        })
+                        .catch(error => {
+                            console.error('Login failed', error);
+                            document.getElementById('login-error').textContent = error.message;
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalBtnText;
+                        });
+                });
             }
         });
     </script>

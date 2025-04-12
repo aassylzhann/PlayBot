@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile - PlayBot Curriculum</title>
+    <title>My Profile - PlayBot Curriculum</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/style.css">
@@ -37,45 +37,10 @@
             padding-bottom: 15px;
         }
 
-        .form__group {
-            margin-bottom: 20px;
-        }
-
-        .form__group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #333;
-        }
-
-        .form__group input {
-            width: 100%;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        .form__group input:focus {
-            outline: none;
-            border-color: #4285f4;
-            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
-        }
-
-        .form__actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 30px;
-        }
-
-        .form__actions .dashboard__action {
-            margin-top: 0;
-        }
-
-        .avatar-upload {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .profile__info {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
             margin-bottom: 30px;
         }
 
@@ -89,42 +54,29 @@
             justify-content: center;
             font-size: 64px;
             color: #adb5bd;
-            margin: 0 auto 20px;
-            overflow: hidden;
-            position: relative;
+            margin: 0 auto;
         }
 
-        .avatar-upload__button {
-            background-color: #f1f3f4;
-            color: #5f6368;
-            border: none;
-            border-radius: 4px;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-size: 14px;
+        .profile__details {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 10px 20px;
+            align-content: start;
+        }
+
+        .profile__label {
             font-weight: 500;
+            color: #555;
         }
 
-        .avatar-upload__button:hover {
-            background-color: #e8eaed;
+        .profile__value {
+            color: #333;
         }
 
-        .success-message {
-            background-color: #e6f4ea;
-            color: #34a853;
-            padding: 12px 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            display: none;
-        }
-
-        .error-message {
-            background-color: #fdede9;
-            color: #ea4335;
-            padding: 12px 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            display: none;
+        .profile__actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -150,7 +102,7 @@
                                     <ul class="main__menu">
                                         <li><a href="Home.html">Home</a></li>
                                         <li class="dropdown">
-                                            <a href="About us.html">About us</a>
+                                            <a href="About-us.html">About us</a>
                                             <div class="dropdown-content">
                                                 <a href="Team.html">Team</a>
                                                 <a href="Course.html">Course</a>
@@ -211,41 +163,38 @@
         <div class="profile">
             <div class="profile__container">
                 <div class="profile__card">
-                    <h1>Edit Your Profile</h1>
-                    <div id="success-message" class="success-message">Your profile has been updated successfully!</div>
-                    <div id="error-message" class="error-message">There was an error updating your profile. Please try again.</div>
-                    
-                    <div class="avatar-upload">
-                        <div class="profile__avatar" id="profile-avatar">U</div>
-                        <button class="avatar-upload__button">Change Photo</button>
+                    <h1>My Profile</h1>
+                    <div class="profile__info">
+                        <div class="profile__avatar-container">
+                            <div class="profile__avatar" id="profile-avatar">U</div>
+                        </div>
+                        <div class="profile__details">
+                            <div class="profile__label">First Name:</div>
+                            <div class="profile__value" id="profile-first-name">-</div>
+
+                            <div class="profile__label">Last Name:</div>
+                            <div class="profile__value" id="profile-last-name">-</div>
+
+                            <div class="profile__label">Email:</div>
+                            <div class="profile__value" id="profile-email">-</div>
+
+                            <div class="profile__label">Role:</div>
+                            <div class="profile__value" id="profile-role">-</div>
+
+                            <div class="profile__label">Member Since:</div>
+                            <div class="profile__value" id="profile-member-since">-</div>
+                        </div>
                     </div>
 
-                    <form id="edit-profile-form">
-                        <div class="form__group">
-                            <label for="first-name">First Name</label>
-                            <input type="text" id="first-name" name="firstName" required>
-                        </div>
+                    <div class="profile__actions">
+                        <a href="Edit-Profile.html" class="dashboard__action">Edit Profile</a>
+                        <a href="Change-Password.html" class="dashboard__action">Change Password</a>
+                    </div>
+                </div>
 
-                        <div class="form__group">
-                            <label for="last-name">Last Name</label>
-                            <input type="text" id="last-name" name="lastName" required>
-                        </div>
-
-                        <div class="form__group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required readonly>
-                        </div>
-
-                        <div class="form__group">
-                            <label for="role">Role</label>
-                            <input type="text" id="role" name="role" readonly>
-                        </div>
-
-                        <div class="form__actions">
-                            <button type="submit" class="dashboard__action">Save Changes</button>
-                            <a href="Profile.html" class="dashboard__action secondary">Cancel</a>
-                        </div>
-                    </form>
+                <div class="profile__card">
+                    <h2>Activity Summary</h2>
+                    <p>Your recent activity will appear here.</p>
                 </div>
             </div>
         </div>
@@ -262,7 +211,7 @@
                             </div>
                             <ul class="footer__menu">
                                 <li><a href="Home.html">Home</a></li>
-                                <li><a href="About us.html">About us</a></li>
+                                <li><a href="About-us.html">About us</a></li>
                                 <li><a>School & Teacher</a></li>
                                 <li><a href="Family.html">Family</a></li>
                             </ul>
@@ -309,11 +258,11 @@
                 return;
             }
 
-            // Fill form with current user data
-            document.getElementById('first-name').value = currentUser.firstName || '';
-            document.getElementById('last-name').value = currentUser.lastName || '';
-            document.getElementById('email').value = currentUser.email || '';
-            document.getElementById('role').value = currentUser.role === 'teacher' ? 'Teacher' : 'Parent';
+            // Update profile details
+            document.getElementById('profile-first-name').textContent = currentUser.firstName || '-';
+            document.getElementById('profile-last-name').textContent = currentUser.lastName || '-';
+            document.getElementById('profile-email').textContent = currentUser.email || '-';
+            document.getElementById('profile-role').textContent = currentUser.role === 'teacher' ? 'Teacher' : 'Parent';
 
             // Set avatar initial
             const avatarElement = document.getElementById('profile-avatar');
@@ -321,34 +270,14 @@
                 avatarElement.textContent = currentUser.firstName.charAt(0).toUpperCase();
             }
 
-            // Handle form submission
-            document.getElementById('edit-profile-form').addEventListener('submit', function (e) {
-                e.preventDefault();
-                
-                // Get form data
-                const firstName = document.getElementById('first-name').value.trim();
-                const lastName = document.getElementById('last-name').value.trim();
-                
-                // Validate form
-                if (!firstName || !lastName) {
-                    document.getElementById('error-message').textContent = 'Please fill in all required fields.';
-                    document.getElementById('error-message').style.display = 'block';
-                    return;
-                }
-                
-                // Update user data in localStorage
-                localStorage.setItem('userFirstName_' + currentUser.email, firstName);
-                localStorage.setItem('userLastName_' + currentUser.email, lastName);
-                
-                // Show success message
-                document.getElementById('success-message').style.display = 'block';
-                document.getElementById('error-message').style.display = 'none';
-                
-                // Redirect after a delay
-                setTimeout(function() {
-                    window.location.href = 'Profile.html';
-                }, 1500);
-            });
+            // Set member since date (mocked for now)
+            document.getElementById('profile-member-since').textContent = new Date().toLocaleDateString();
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check login status and update UI
+            if (typeof updateAuthUI === 'function') {
+                updateAuthUI();
+            }
         });
     </script>
 </body>
