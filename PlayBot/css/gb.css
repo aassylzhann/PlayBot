@@ -1,0 +1,220 @@
+.events__area {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+}
+
+.section__title--2 {
+    margin-top: 10%;
+}
+
+.section__title--2 .title__line {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.language-content {
+    text-align: left;
+    font-size: 1.1em;
+    color: #666;
+}
+
+.language-content p {
+    margin-bottom: 15px;
+}
+
+.events-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.event-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    flex: 1 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.event-item h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.event-item p {
+    margin: 10px 0 0;
+    color: #666;
+}
+
+.footer__area {
+    background-color: #333;
+    color: #fff;
+    padding: 50px 0;
+}
+
+.footer__content {
+    text-align: center;
+}
+
+.footer-logo-img {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.footer__menu {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.footer__menu li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.footer__menu li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer__contact {
+    margin-bottom: 20px;
+}
+
+.footer__contact .university,
+.footer__contact .department,
+.footer__contact .address,
+.footer__contact .email {
+    margin-bottom: 10px;
+}
+
+.footer__contact .email a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer__copyright {
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: none;
+}
+
+.scroll-top-btn.show {
+    display: flex;
+}
+
+.scroll-top-btn .arrow-up {
+    font-size: 1.5em;
+}
+
+/* Profile Section */
+
+/* User profile styles for logged in state */
+.user-profile {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 15px;
+    display: none; /* Hidden by default */
+}
+
+.user-profile.visible {
+    display: inline-block;
+}
+
+/* Style to match other nav items */
+.profile-btn {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    height: 80px; /* Match the height of main menu items */
+    line-height: 60px; /* Exact match with your other menu items */
+    display: block;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif; /* Match font family with other menu items */
+    text-transform: uppercase;
+    padding: 0 15px;
+}
+
+.profile-btn:hover {
+    color: #4285f4;
+}
+
+.profile-btn::after {
+    content: "▼";
+    font-size: 8px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.user-profile .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 0px; /* Match other dropdowns */
+    right: 0;
+    top: 80px; /* Align with bottom of navbar */
+    padding: 0; /* Remove padding */
+}
+
+.user-profile:hover .dropdown-content {
+    display: block;
+}
+
+/* Match dropdown content style with other menu dropdowns */
+.user-profile .dropdown-content a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px !important;
+    color: #333333 !important;
+    margin-top: 1px;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.user-profile .dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.user-profile .dropdown-content a:hover {
+    background-color: #f0f0f0 !important;
+    color: #4285f4 !important;
+}
+
+.auth-buttons.hidden {
+    display: none !important;
+}

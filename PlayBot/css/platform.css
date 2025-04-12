@@ -1,0 +1,237 @@
+.platform__area {
+    height: 500px;
+    padding: 20px 0; 
+    text-align: center; 
+    position: relative; /* 添加相对定位 */
+}
+
+.platform__area::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* 添加灰色涂层，透明度为0.3 */
+    z-index: 1; /* 确保灰色涂层在内容之下 */
+}
+
+.platform__title--2 {
+    margin-bottom: 20px; 
+}
+
+.title__line {
+    font-size: 50px; 
+    color: #333333; 
+    margin-bottom: 20px; 
+    margin-top: 80px;
+    color: white; /* 设置字体颜色为白色以突出显示 */
+    z-index: 2; /* 确保文本在灰色涂层之上 */
+    position: relative; /* 确保文本在灰色涂层之上 */
+}
+
+.platform__area p {
+    font-size: 25px; 
+    color: #666; 
+    line-height: 1.5; 
+    margin-bottom: 20px; 
+    color: white; /* 设置字体颜色为白色以突出显示 */
+    z-index: 2; /* 确保文本在灰色涂层之上 */
+    position: relative; /* 确保文本在灰色涂层之上 */
+}
+
+.platform-row {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center; 
+    text-align: center;
+}
+
+.a-platform__area {
+    height: auto;
+    background-color: #ffffff; 
+    padding: 50px 0; 
+    text-align: center; 
+    margin: 0;
+}
+
+.a-platform__area h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 50px;
+}
+
+.flex-container {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.a-platform__area section {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    width: 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; 
+}
+
+.a-platform__area img {
+    width: 300px; 
+    height: 200px; 
+    object-fit: cover; 
+}
+
+.a-platform__area h2 {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    max-width: 360px;
+    margin: 10px 0; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+}
+
+.a-platform__area h3 {
+    color: #535252;
+    font-size: 20px;
+    font-weight: normal;
+    max-width: 380px;
+    margin: 10px 0; 
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+}
+
+.maps__area {
+    height: auto;
+    background-color: #f4b65d; 
+    padding: 50px 0; 
+    text-align: center; 
+    margin: 0;
+}
+
+.maps__area img{
+    width: 1200px;  
+    object-fit: cover; 
+}
+
+.link__area {
+    height: auto;
+    background-color: #fdca83; 
+    padding: 50px 0; 
+    text-align: center; 
+    margin: 0;
+}
+
+.link__area h2{
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+}
+
+.button-link {
+    display: inline-block; /* 使链接表现为块级元素 */
+    padding: 10px 20px; /* 设置按钮内边距 */
+    font-size: 16px; /* 设置字体大小 */
+    color: white; /* 设置字体颜色 */
+    background-color: #ff7f2a; /* 设置背景颜色 */
+    text-align: center; /* 文本居中 */
+    text-decoration: none; /* 移除下划线 */
+    border: none; /* 移除边框 */
+    border-radius: 25px; /* 设置圆角 */
+    cursor: pointer; /* 设置鼠标悬停时的光标样式 */
+    transition: background-color 0.3s; /* 添加背景颜色变化的过渡效果 */
+}
+
+.button-link:hover {
+    background-color: #eca52b; /* 鼠标悬停时的背景颜色 */
+}
+
+/* Profile Section */
+
+/* User profile styles for logged in state */
+.user-profile {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 15px;
+    display: none; /* Hidden by default */
+}
+
+.user-profile.visible {
+    display: inline-block;
+}
+
+/* Style to match other nav items */
+.profile-btn {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    height: 80px; /* Match the height of main menu items */
+    line-height: 60px; /* Exact match with your other menu items */
+    display: block;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif; /* Match font family with other menu items */
+    text-transform: uppercase;
+    padding: 0 15px;
+}
+
+.profile-btn:hover {
+    color: #4285f4;
+}
+
+.profile-btn::after {
+    content: "▼";
+    font-size: 8px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.user-profile .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 0px; /* Match other dropdowns */
+    right: 0;
+    top: 80px; /* Align with bottom of navbar */
+    padding: 0; /* Remove padding */
+}
+
+.user-profile:hover .dropdown-content {
+    display: block;
+}
+
+/* Match dropdown content style with other menu dropdowns */
+.user-profile .dropdown-content a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px !important;
+    color: #333333 !important;
+    margin-top: 1px;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.user-profile .dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.user-profile .dropdown-content a:hover {
+    background-color: #f0f0f0 !important;
+    color: #4285f4 !important;
+}
+
+.auth-buttons.hidden {
+    display: none !important;
+}

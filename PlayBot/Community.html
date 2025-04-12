@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Community-PlayBot Curriculum</title>
+    <meta name="description" content="PlayBot Curriculum - Robot Programming Through Play" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/community.css" />
+</head>
+
+<body>
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start Header Style -->
+        <header id="header" class="header__area header--one">
+            <!-- Start Mainmenu Area -->
+            <div id="sticky-header-with-topbar" class="header__area">
+                <div class="container">
+                    <div class="row">
+                        <div class="menumenu__container clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <div class="logo">
+                                    <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                            class="header-logo" /></a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                                <nav class="main__menu__nav hidden-xs hidden-sm">
+                                    <ul class="main__menu">
+                                        <li><a href="Home.html">Home</a></li>
+                                        <li class="dropdown">
+                                            <a href="About us.html">About us</a>
+                                            <div class="dropdown-content">
+                                                <a href="Team.html">Team</a>
+                                                <a href="Course.html">Course</a>
+                                                <a href="Achievement.html">Achievement</a>
+                                                <a href="News.html">News</a>
+                                                <a href="Global Impact.html">Global Impact</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>School & Teacher</a>
+                                            <div class="dropdown-content">
+                                                <a href="School.html">School</a>
+                                                <a href="Teacher.html">Teacher</a>
+                                                <a href="Platform.html">Platform</a>
+                                                <a href="Scourse.html">Scourse</a>
+                                                <a href="Community.html">Community</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>Family</a>
+                                            <div class="dropdown-content">
+                                                <a href="Student.html">Student</a>
+                                                <a href="Parent.html">Parent</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <!-- Find the section with auth-buttons and add the user-profile div right after it -->
+                                <div class="language-selector">
+                                    <button id="en-btn" class="lang-btn active" onclick="switchLanguage('en')">
+                                        EN
+                                    </button>
+                                    <span class="lang-divider">|</span>
+                                    <button id="zh-btn" class="lang-btn" onclick="switchLanguage('zh')">
+                                        中文
+                                    </button>
+                                </div>
+                                <div class="auth-buttons">
+                                    <a href="Login.html" class="auth-btn login">Login</a>
+                                    <a href="Register.html" class="auth-btn signup">Sign Up</a>
+                                </div>
+                                <div id="user-profile" class="user-profile">
+                                    <a class="profile-btn" href="#">
+                                        <span id="user-name">Account</span>
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <!-- Dynamically populated by auth.js -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Mainmenu Area -->
+        </header>
+        <!-- End Header Area -->
+
+        <!-- Start community Area -->
+        <section class="community__area bg__white ptb--100">
+            <div class="container">
+                <div class="community-row">
+                    <div class="col-xs-12">
+                        <div class="community__title--2 text-center">
+                            <div class="language-content">
+                                <!-- English Content -->
+                                <div class="lang-content" data-lang="en">
+                                    <h2 class="title__line">PlayBot Community</h2>
+                                    <p>PlayBot's current official social media accounts</p>
+                                    <div class="image-link-container">
+                                        <img src="images/xhs.jpg" alt="Xiaohongshu English Image"
+                                            class="community-image" />
+                                        <a href="https://www.xiaohongshu.com/user/profile/606938560000000001001227?xsec_token=YBljIRtKvWvZ_TDjonbVYyyxWAV3e0mRej6uliDQGGstY=&xsec_source=app_share&xhsshare=WeixinSession&appuid=606938560000000001001227&apptime=1742795615&share_id=182045943ced497ebb1172f75a5636d0&wechatWid=6740989e8dc9fa76b0394ff4e37d8a97&wechatOrigin=menu"
+                                            class="btn btn-primary">Follow RedNote</a>
+                                    </div>
+                                    <div class="image-link-container">
+                                        <img src="images/gzh.jpg" alt="Xiaohongshu English Image"
+                                            class="community-image" />
+                                        <a>Follow Gongzhonghao</a>
+                                    </div>
+                                </div>
+                                <!-- Chinese Content -->
+                                <div class="lang-content" data-lang="zh" style="display: none">
+                                    <h2 class="title__line">PlayBot 社群</h2>
+                                    <p>PlayBot目前的官方社交媒體帳號</p>
+                                    <div class="image-link-container">
+                                        <img src="images/xhs.jpg" alt="Xiaohongshu English Image"
+                                            class="community-image" />
+                                        <a href="https://www.xiaohongshu.com/user/profile/606938560000000001001227?xsec_token=YBljIRtKvWvZ_TDjonbVYyyxWAV3e0mRej6uliDQGGstY=&xsec_source=app_share&xhsshare=WeixinSession&appuid=606938560000000001001227&apptime=1742795615&share_id=182045943ced497ebb1172f75a5636d0&wechatWid=6740989e8dc9fa76b0394ff4e37d8a97&wechatOrigin=menu"
+                                            class="btn btn-primary">关注小红书</a>
+                                    </div>
+                                    <div class="image-link-container">
+                                        <img src="images/gzh.jpg" alt="Xiaohongshu English Image"
+                                            class="community-image" />
+                                        <a>关注公众号</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End community Area -->
+
+        <!-- Start level Area -->
+        <section class="level__area bg__white ptb--100">
+            <div class="container">
+                <div class="language-content">
+                    <!-- English Content -->
+                    <div class="lang-content" data-lang="en">
+                        <div class="level">
+                            <div class="level-number-a">Control group</div>
+                            <div class="level-content">
+                                <h2>Teaching method: Direct guided activities</h2>
+                                <p>
+                                    <strong>Format:</strong>The teacher introduces the operation
+                                    methods and functions of robots and maps to the children,
+                                    and leads them to use robots and maps for imaginative
+                                    activities, including creative elements.
+                                </p>
+                                <p>
+                                    <strong>Purpose:</strong> By providing direct guidance to
+                                    help young children systematically learn programming
+                                    knowledge and skills, we aim to enhance their
+                                    problem-solving abilities.
+                                </p>
+                                <h3>Course content:</h3>
+                                <ul>
+                                    <li>Teacher led class wide activities</li>
+                                    <li>Clear task guidance and completion</li>
+                                    <li>Challenge Station Activity</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="level">
+                            <div class="level-number-b">Free play group</div>
+                            <div class="level-content">
+                                <h2>Teaching method: Free game activities</h2>
+                                <p>
+                                    <strong>Format:</strong> Children explore the operation
+                                    methods and functions of robots and maps on their own, and
+                                    expect them to use robots and maps for imaginative games,
+                                    including creative elements.
+                                </p>
+                                <p>
+                                    <strong>Purpose:</strong> Cultivate children's creativity
+                                    and self-learning ability through free play, and stimulate
+                                    their interest in programming.
+                                </p>
+                                <h3>Course content:</h3>
+                                <ul>
+                                    <li>Free exploration and creation</li>
+                                    <li>Multiple map options</li>
+                                    <li>Emphasize self-directed learning</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="level">
+                            <div class="level-number-c">Guidedplay group</div>
+                            <div class="level-content">
+                                <h2>Teaching Method: Guided Game Activities</h2>
+                                <p>
+                                    <strong>Format:</strong> The instructional game group
+                                    teacher needs to guide children in learning programming and
+                                    improving their computational thinking during the process of
+                                    playing.
+                                </p>
+                                <p>
+                                    <strong>Purpose:</strong> Developing children's
+                                    computational thinking through guided games, while paying
+                                    attention to individual differences, to meet the learning
+                                    needs of children with different abilities.
+                                </p>
+                                <h3>Course content:</h3>
+                                <ul>
+                                    <li>
+                                        Combining teacher guidance with children's independent
+                                        exploration
+                                    </li>
+                                    <li>Differentiated teaching</li>
+                                    <li>Diversified teaching resources and tasks</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chinese Content -->
+                    <div class="lang-content" data-lang="zh" style="display: none">
+                        <div class="level">
+                            <div class="level-number-a">控制组</div>
+                            <div class="level-content">
+                                <h2>教学方法: 直接指導式活動</h2>
+                                <p>
+                                    <strong>形式:</strong>老师向幼儿介绍机器人及地图的操作方式及功能，并带领幼儿利用机器人及地图进行想象活动，并有创作的元素包含在内。
+                                </p>
+                                <p>
+                                    <strong>目的:</strong>通过直接指导帮助幼儿系统学习编程知识和技能，提升解决问题的能力。
+                                </p>
+                                <h3>课程内容:</h3>
+                                <ul>
+                                    <li>教师主导的全班活动</li>
+                                    <li>明确的任务指导与完成</li>
+                                    <li>挑战站活动</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="level">
+                            <div class="level-number-b">自由遊戲组</div>
+                            <div class="level-content">
+                                <h2>教学方法: 自由遊戲活動</h2>
+                                <p>
+                                    <strong>形式:</strong>幼儿自行探索机器人及地图的操作方式及功能，期望幼儿利用机器人及地图进行想象游戏，并有创作的元素包含在内。
+                                </p>
+                                <p>
+                                    <strong>目的:</strong>通过自由游戏培养幼儿的创造力和自主学习能力，激发对编程的兴趣。
+                                </p>
+                                <h3>课程内容:</h3>
+                                <ul>
+                                    <li>自由探索与创作</li>
+                                    <li>多种地图选择</li>
+                                    <li>强调自主学习</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="level">
+                            <div class="level-number-c">指導组</div>
+                            <div class="level-content">
+                                <h2>教学方法: 指導式遊戲活動</h2>
+                                <p>
+                                    <strong>形式:</strong>指导式游戏组老师需要在幼儿游玩的过程中指导幼儿学习编程及提升其运算思维。
+                                </p>
+                                <p>
+                                    <strong>目的:</strong>通过指导式游戏培养幼儿的运算思维，同时注重个体差异，满足不同能力幼儿的学习需求。
+                                </p>
+                                <h3>课程内容:</h3>
+                                <ul>
+                                    <li>结合教师引导与幼儿自主探索</li>
+                                    <li>差异化教学</li>
+                                    <li>多样化的教学资源和任务</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End level Area -->
+
+        <!-- Start Footer Area -->
+        <footer class="footer__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="footer__content text-center">
+                            <div class="footer-logo">
+                                <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                        class="footer-logo-img" /></a>
+                            </div>
+                            <ul class="footer__menu">
+                                <li><a href="Home.html">Home</a></li>
+                                <li><a href="About us.html">About us</a></li>
+                                <li><a>School & Teacher</a></li>
+                                <li><a href="Family.html">Family</a></li>
+                            </ul>
+
+                            <div class="footer__contact">
+                                <div class="university">
+                                    The Education University of Hong Kong
+                                </div>
+                                <div class="department">
+                                    Department of Early Childhood Education
+                                </div>
+                                <address class="address">
+                                    10 Lo Ping Road, Tai Po, Hong Kong, China
+                                </address>
+                                <div class="email">
+                                    Email:
+                                    <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a>
+                                </div>
+                            </div>
+
+                            <div class="footer__copyright">
+                                <p>&copy; 2024 The Education University of Hong Kong</p>
+                                <p class="rights">
+                                    All rights reserved. No part of this publication may be
+                                    reproduced, stored in a retrieval system or transmitted in
+                                    any form or by any means, electronic, mechanical,
+                                    photocopying, recording or otherwise, without the written
+                                    permission of the publisher.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+
+    <!-- Scroll to top button -->
+    <button id="scroll-top-btn" class="scroll-top-btn">
+        <i class="arrow-up">↑</i>
+    </button>
+
+    <!-- Add before closing body tag -->
+
+    <!-- All js files are included here. -->
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Check login status and update UI
+            if (typeof updateAuthUI === "function") {
+                updateAuthUI();
+            }
+        });
+    </script>
+</body>
+
+</html>

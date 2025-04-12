@@ -1,0 +1,286 @@
+body, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+.Teacher__area{
+    background-color: #f0c1d8;
+    height: 300px;
+}
+
+.Teacher__area h2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.Teacher__area p {
+    font-size: 20px;
+    text-align: center;
+}
+
+.Teacher-training-container .row {
+    flex-direction: column;
+}
+
+.Teacher-training-container .col-md-12 {
+    width: 100%;
+    margin-bottom: 20px; 
+}
+
+.Teacher-training-a__area {
+    background-color: #fcf8e9; 
+    padding: 40px 20px; 
+    font-family: 'Roboto', sans-serif; 
+}
+.Teacher-training-b__area {
+    background-color: #e7fde4; 
+    padding: 40px 20px; 
+    font-family: 'Roboto', sans-serif; 
+}
+.Teacher-training-c__area {
+    background-color: #def3fc; 
+    padding: 40px 20px; 
+    font-family: 'Roboto', sans-serif; 
+}
+.Teacher-training-d__area {
+    background-color: #f6e5f8; 
+    padding: 40px 20px; 
+    font-family: 'Roboto', sans-serif; 
+}
+
+.Teacher-training__area h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.Teacher-training__area p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.Teacher-training__area ul {
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+}
+
+.Teacher-training__area li {
+    margin-bottom: 10px; 
+    position: relative;
+    padding-left: 20px; 
+}
+
+.Teacher-training__area li::before {
+    content: "•"; 
+    position: absolute;
+    left: 0;
+    color: #333;
+}
+
+.Teacher-training__area p + p {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+}
+
+.Teacher-training-container {
+    max-width: 80%; 
+    margin: 0 auto; 
+}
+
+.team-members {
+    background-color: #f8f4e6; 
+    padding: 40px; 
+    text-align: center; 
+}
+
+.team-container {
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.member {
+    background-color: #ffffff; 
+    /* border-radius: 100%;  */
+    overflow: hidden; 
+    margin: 0 auto; 
+    width: 150px; 
+    height: 150px; 
+    display: flex; 
+    align-items: flex-end; 
+    justify-content: center; 
+    flex-direction: column;
+}
+
+.member h3 {
+    font-size: 18px; 
+    margin: 5px 0; 
+    text-align: center; 
+}
+
+.member p {
+    font-size: 14px; 
+    color: #555; 
+    text-align: center; 
+}
+.member .avatar {
+    width: 100%; 
+    height: auto; 
+    border-radius: 100%; 
+    margin-bottom: 100px; 
+}
+.member-info {
+    text-align: center; 
+}
+
+.team-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+}
+
+.col-md-4, .col-sm-8, .col-xs-14 {
+    flex: 0 0 25%; 
+    max-width: 25%;
+    padding: 15px; 
+}
+
+.comments-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+.description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 40px;
+}
+.review {
+    display: flex;
+    overflow-x: auto; 
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+.review-item {
+    min-width: 250px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+.review-school {
+    font-size: 18px;
+    color: #f90;
+    margin-bottom: 10px;
+}
+.review-text {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+}
+.review-name {
+    font-size: 16px;
+    color: #999;
+}
+
+/* Profile Section */
+
+/* User profile styles for logged in state */
+.user-profile {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 15px;
+    display: none; /* Hidden by default */
+}
+
+.user-profile.visible {
+    display: inline-block;
+}
+
+/* Style to match other nav items */
+.profile-btn {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    height: 80px; /* Match the height of main menu items */
+    line-height: 60px; /* Exact match with your other menu items */
+    display: block;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif; /* Match font family with other menu items */
+    text-transform: uppercase;
+    padding: 0 15px;
+}
+
+.profile-btn:hover {
+    color: #4285f4;
+}
+
+.profile-btn::after {
+    content: "▼";
+    font-size: 8px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.user-profile .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 0px; /* Match other dropdowns */
+    right: 0;
+    top: 80px; /* Align with bottom of navbar */
+    padding: 0; /* Remove padding */
+}
+
+.user-profile:hover .dropdown-content {
+    display: block;
+}
+
+/* Match dropdown content style with other menu dropdowns */
+.user-profile .dropdown-content a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px !important;
+    color: #333333 !important;
+    margin-top: 1px;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.user-profile .dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.user-profile .dropdown-content a:hover {
+    background-color: #f0f0f0 !important;
+    color: #4285f4 !important;
+}
+
+.auth-buttons.hidden {
+    display: none !important;
+}

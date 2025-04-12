@@ -1,0 +1,359 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>PlayBot Curriculum</title>
+    <meta name="description" content="PlayBot Curriculum - Robot Programming Through Play">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start Header Style -->
+        <header id="header" class="header__area header--one">
+            <!-- Start Mainmenu Area -->
+            <div id="sticky-header-with-topbar" class="header__area">
+                <div class="container">
+                    <div class="row">
+                        <div class="menumenu__container clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <div class="logo">
+                                    <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                            class="header-logo"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                                <nav class="main__menu__nav hidden-xs hidden-sm">
+                                    <ul class="main__menu">
+                                        <li><a href="Home.html">Home</a></li>
+                                        <li class="dropdown">
+                                            <a href="About us.html">About us</a>
+                                            <div class="dropdown-content">
+                                                <a href="Team.html">Team</a>
+                                                <a href="Course.html">Course</a>
+                                                <a href="Achievement.html">Achievement</a>
+                                                <a href="News.html">News</a>
+                                                <a href="Global Impact.html">Global Impact</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>School & Teacher</a>
+                                            <div class="dropdown-content">
+                                                <a href="School.html">School</a>
+                                                <a href="Teacher.html">Teacher</a>
+                                                <a href="Platform.html">Platform</a>
+                                                <a href="Scourse.html">Scourse</a>
+                                                <a href="Community.html">Community</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>Family</a>
+                                            <div class="dropdown-content">
+                                                <a href="Student.html">Student</a>
+                                                <a href="Parent.html">Parent</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <!-- Find the section with auth-buttons and add the user-profile div right after it -->
+                                <div class="language-selector">
+                                    <button id="en-btn" class="lang-btn active"
+                                        onclick="switchLanguage('en')">EN</button>
+                                    <span class="lang-divider">|</span>
+                                    <button id="zh-btn" class="lang-btn" onclick="switchLanguage('zh')">中文</button>
+                                </div>
+                                <div class="auth-buttons">
+                                    <a href="Login.html" class="auth-btn login">Login</a>
+                                    <a href="Register.html" class="auth-btn signup">Sign Up</a>
+                                </div>
+                                <div id="user-profile" class="user-profile">
+                                    <a class="profile-btn" href="#">
+                                        <span id="user-name">Account</span>
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <!-- Dynamically populated by auth.js -->
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Mainmenu Area -->
+        </header>
+        <!-- End Header Area -->
+
+        <!-- Start Hero Banner Area -->
+        <div class="hero__banner"
+            style="background-image: url('images/banner.png'); background-size: cover; background-position: center;">
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slider-item">
+                        <p class="slider-title">PlayBot Curriculum</p>
+                        <ul class="slider-features">
+                            <li>Robot Programming Through Play</li>
+                            <li>Effects on Kindergarten Children's Engagement and Computational Thinking</li>
+                        </ul>
+                    </div>
+                    <div class="slider-item">
+                        <p class="slider-title">Teacher Training Features</p>
+                        <ul class="slider-features">
+                            <li>Comprehensive Training Materials & Practical Operation Opportunities</li>
+                            <li>Continuous Support System & Integration of Innovative Technology</li>
+                        </ul>
+                    </div>
+                    <div class="slider-item">
+                        <p class="slider-title">Curriculum Enrichment Features</p>
+                        <ul class="slider-features">
+                            <li>Interdisciplinary Integration & Interactive and Interesting Teaching</li>
+                            <li>Social and Emotional Development & Logical Problem - Solving</li>
+                            <li>Encouragement of Creativity and Exploration & Personalized Learning Experience</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="control-btn prev-btn" onclick="scrollSlide(-1)">&#10094;</button>
+                <button class="control-btn next-btn" onclick="scrollSlide(1)">&#10095;</button>
+            </div>
+        </div>
+        <!-- End Hero Banner Area -->
+
+        <!-- Start Introduction Area -->
+        <section class="htc__introduction__area ptb--100">
+            <div class="container">
+                <div class="section__title--2 text-center">
+                    <h2 class="title__line" data-lang-en="Introduction" data-lang-zh="序言">Introduction</h2>
+                </div>
+
+                <div class="language-content">
+                    <!-- English Content -->
+                    <div class="lang-content" data-lang="en">
+                        <p>This curriculum was born out of a vision to empower young learners, providing them with the
+                            rich,
+                            hands-on learning experiences that are essential to navigating the ever-evolving trends and
+                            requirements of the 21st century.</p>
+
+                        <p>In creating the PlayBot curriculum, our goal was to prepare our children for the future by
+                            fostering creativity, nurturing computational thinking, and building vital problem-solving
+                            and
+                            social skills through engaging, playful activities.</p>
+
+                        <p>Our commitment to safety and durability is also a cornerstone of the PlayBot curriculum. The
+                            coding robot embedded in the PlayBot curriculum has been carefully engineered to be safe,
+                            sturdy, and fall resistant.</p>
+
+                        <p>Key features include:</p>
+                        <ul>
+                            <li>Enhanced Engagement: Utilizes consistent color-coded indicators that mirror the command
+                                buttons</li>
+                            <li>Ease of Use: Designed for intuitive play—plan the route, press the command buttons to
+                                code
+                                the robot</li>
+                            <li>Screen-free Design: Suitable for preschoolers with age-appropriate command buttons</li>
+                            <li>Interactive Learning: Introduces basic coding concepts through contextualized play
+                                activities</li>
+                        </ul>
+
+                        <p>The development and implementation of the PlayBot curriculum was funded by the Hong Kong
+                            Research
+                            Grants Council General Research Fund (RGC/GRF) (Ref. No. 18604423).</p>
+                    </div>
+
+                    <!-- Chinese Content -->
+                    <div class="lang-content" data-lang="zh" style="display: none;">
+                        <p>本人深感榮幸為《PlayBot課程》撰寫此序言。這套突破性的教育課程以嶄新理念將遊戲與無屏幕編程及機械人技術巧妙融合，源於一個願景——透過豐富的實體操作學習體驗，賦能新生代應對21世紀瞬息萬變的趨勢與挑戰。
+                        </p>
+
+                        <p>研發PlayBot課程的初衷，在於以寓教於樂的活動培育兒童創造力、運算思維、解難能力及社交技巧，為孩子裝備未來所需的關鍵技能。</p>
+
+                        <p>安全性與耐用性亦是PlayBot課程的重要基石。課程專用編程機械人經精心設計，具備防摔抗震特性。</p>
+
+                        <p>主要特色包括：</p>
+                        <ul>
+                            <li>增強參與度：採用與指令鍵同色系的流程指示燈，簡化程序追蹤與除錯</li>
+                            <li>簡易操作：直觀三步曲——規劃路線、輸入指令、啟動執行</li>
+                            <li>無屏幕設計：配備符合學前兒童操作能力的指令按鍵</li>
+                            <li>互動學習：透過情境化遊戲活動導入基礎編程概念</li>
+                        </ul>
+
+                        <p>PlayBot課程的研發與實踐，承蒙香港研究資助局優配研究金資助項目「遊戲化機械人編程對幼稚園學童參與度與運算思維之影響」（項目編號：18604423）慷慨支持。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Introduction Area -->
+
+        <!-- Start Research Impact Area -->
+        <section class="research__impact__area ptb--100">
+            <div class="container">
+                <div class="section__title--2 text-center">
+                    <h2 class="title__line" data-lang-en="Research Impact" data-lang-zh="研究影響">Research Impact</h2>
+                </div>
+        
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <div class="impact-card-image">
+                            <img src="images/h1.png" alt="Expected results">
+                        </div>
+                        <div class="impact-card-content">
+                            <h3 class="impact-card-title">Expected Results</h3>
+                            <p>Increase practitioners' understanding of the nexus between play-based learning and
+                                children's experiences with digital technologies in the early years.</p>
+                        </div>
+                    </div>
+        
+                    <div class="impact-card">
+                        <div class="impact-card-image">
+                            <img src="images/h2.png" alt="Short Term Impacts">
+                        </div>
+                        <div class="impact-card-content">
+                            <h3 class="impact-card-title">Short Term Impacts</h3>
+                            <p>Kindergartens participating in this research project will benefit from upgrading
+                                their school-based curricula with a component of digital play.</p>
+                        </div>
+                    </div>
+        
+                    <div class="impact-card">
+                        <div class="impact-card-image">
+                            <img src="images/h3.png" alt="Medium Term Impacts">
+                        </div>
+                        <div class="impact-card-content">
+                            <h3 class="impact-card-title">Medium Term Impacts</h3>
+                            <p>A Facebook group/page will be set up to further disseminate our findings and invite
+                                more kindergartens to participate in a future extension of this research.</p>
+                        </div>
+                    </div>
+        
+                    <div class="impact-card">
+                        <div class="impact-card-image">
+                            <img src="images/h4.png" alt="Long Term Impacts">
+                        </div>
+                        <div class="impact-card-content">
+                            <h3 class="impact-card-title">Long Term Impacts</h3>
+                            <p>Our research will inform the government's education policies regarding a sustainable
+                                inclusive future for early STEM and computing education.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Research Impact Area -->
+
+        <!-- Start Product Showcase Area -->
+        <section class="product__showcase">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section__title--2 text-center">
+                            <h2 class="title__line" data-lang-en="PlayBot Robot" data-lang-zh="PlayBot 機械人">PlayBot
+                                Robot
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="product__image">
+                            <img src="images/Image (1).jpg" alt="PlayBot robot" class="product-image">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="product__features">
+                            <h3 data-lang-en="Key Features" data-lang-zh="主要特點">Key Features</h3>
+                            <ul class="lang-content" data-lang="en">
+                                <li>Screen-free coding experience</li>
+                                <li>Color-coded command buttons</li>
+                                <li>Durable design for classroom use</li>
+                                <li>Voice feedback technology</li>
+                                <li>Interactive maps and accessories</li>
+                                <li>Cross-disciplinary learning potential</li>
+                            </ul>
+                            <ul class="lang-content" data-lang="zh" style="display: none;">
+                                <li>無屏幕編程體驗</li>
+                                <li>顏色編碼的命令按鈕</li>
+                                <li>適合課堂使用的耐用設計</li>
+                                <li>語音回饋技術</li>
+                                <li>互動地圖和配件</li>
+                                <li>跨學科學習潛能</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Product Showcase Area -->
+
+        <!-- Start Footer Area -->
+        <footer class="footer__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="footer__content text-center">
+                            <div class="footer-logo">
+                                <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                        class="footer-logo-img"></a>
+                            </div>
+                            <ul class="footer__menu">
+                                <li><a href="Home.html">Home</a></li>
+                                <li><a href="About us.html">About us</a></li>
+                                <li><a href="School & Teacher.html">School & Teacher</a></li>
+                                <li><a href="Family.html">Family</a></li>
+                            </ul>
+
+                            <div class="footer__contact">
+                                <div class="university">The Education University of Hong Kong</div>
+                                <div class="department">Department of Early Childhood Education</div>
+                                <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
+                                <div class="email">Email: <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></div>
+                            </div>
+
+                            <div class="footer__copyright">
+                                <p>&copy; 2024 The Education University of Hong Kong</p>
+                                <p class="rights">All rights reserved. No part of this publication may be reproduced,
+                                    stored
+                                    in a retrieval system or transmitted in any form
+                                    or by any means, electronic, mechanical, photocopying, recording or otherwise,
+                                    without
+                                    the written permission of the
+                                    publisher.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+
+    <!-- Scroll to top button -->
+    <button id="scroll-top-btn" class="scroll-top-btn">
+        <i class="arrow-up">↑</i>
+    </button>
+
+    <!-- Add before closing body tag -->
+
+    <!-- All js files are included here. -->
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check login status and update UI
+            if (typeof updateAuthUI === 'function') {
+                updateAuthUI();
+            }
+        });
+    </script>
+</body>
+
+</html>

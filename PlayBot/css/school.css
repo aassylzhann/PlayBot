@@ -1,0 +1,203 @@
+.school__area {
+    height: 500px;
+    background-color: #f7eaa0; 
+    padding: 50px 0; 
+    text-align: center; 
+}
+
+.school__title--2 {
+    margin-bottom: 20px; 
+}
+
+.title__line {
+    font-size: 50px; 
+    color: #333333; 
+    margin-bottom: 20px; 
+    margin-top: 80px;
+}
+
+.school__area p {
+    font-size: 20px; 
+    color: #666; 
+    line-height: 1.5; 
+    margin-bottom: 20px; 
+}
+
+.school-row {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    text-align: center;
+}
+
+.resource__school__area {
+    background-color: #ffffff; 
+    padding: 50px 0; 
+    text-align: center; 
+}
+
+.resource__school{
+    display: flex; 
+    align-items: flex-start; 
+    justify-content: space-between; 
+    margin: 20px; 
+}
+
+.resource__school__text{
+    flex: 1; 
+    margin-right: 50px; 
+}
+
+.resource__school__area h2{
+    font-size: 40px;
+    text-align: left;
+}
+
+.resource__school__area p{
+    font-size: 20px;
+    text-align: left;
+}
+
+.resource__school__image {
+    flex: 0 0 auto; 
+    margin-top: 80px;
+}
+
+.resource__school__image img {
+    max-width: 100%; 
+    height: auto; 
+}
+
+.rel__school__area {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 80px; 
+}
+
+.school-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.school {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+    margin-bottom: 20px
+}
+.school img {
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.logo1 { width: 80px; }
+.logo2 { width: 150px; }
+.logo3 { width: 250px; }
+.logo4 { width: 180px; }
+.logo5 { width: 210px; }
+.logo6 { width: 150px; }
+.logo7 { width: 250px; }
+.logo8 { width: 250px; }
+.logo9 { width: 250px; }
+
+.school-name {
+    margin-bottom: auto;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}
+
+/* Profile Section */
+
+/* User profile styles for logged in state */
+.user-profile {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 15px;
+    display: none; /* Hidden by default */
+}
+
+.user-profile.visible {
+    display: inline-block;
+}
+
+/* Style to match other nav items */
+.profile-btn {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    height: 80px; /* Match the height of main menu items */
+    line-height: 60px; /* Exact match with your other menu items */
+    display: block;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif; /* Match font family with other menu items */
+    text-transform: uppercase;
+    padding: 0 15px;
+}
+
+.profile-btn:hover {
+    color: #4285f4;
+}
+
+.profile-btn::after {
+    content: "▼";
+    font-size: 8px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.user-profile .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 0px; /* Match other dropdowns */
+    right: 0;
+    top: 80px; /* Align with bottom of navbar */
+    padding: 0; /* Remove padding */
+}
+
+.user-profile:hover .dropdown-content {
+    display: block;
+}
+
+/* Match dropdown content style with other menu dropdowns */
+.user-profile .dropdown-content a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px !important;
+    color: #333333 !important;
+    margin-top: 1px;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.user-profile .dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.user-profile .dropdown-content a:hover {
+    background-color: #f0f0f0 !important;
+    color: #4285f4 !important;
+}
+
+.auth-buttons.hidden {
+    display: none !important;
+}

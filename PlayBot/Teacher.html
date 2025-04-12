@@ -1,0 +1,402 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Teacher-PlayBot Curriculum</title>
+    <meta name="description" content="PlayBot Curriculum - Robot Programming Through Play">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/teacher.css">
+</head>
+
+<body>
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start Header Style -->
+        <header id="header" class="header__area header--one">
+            <!-- Start Mainmenu Area -->
+            <div id="sticky-header-with-topbar" class="header__area">
+                <div class="container">
+                    <div class="row">
+                        <div class="menumenu__container clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <div class="logo">
+                                    <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                            class="header-logo"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                                <nav class="main__menu__nav hidden-xs hidden-sm">
+                                    <ul class="main__menu">
+                                        <li><a href="Home.html">Home</a></li>
+                                        <li class="dropdown">
+                                            <a href="About us.html">About us</a>
+                                            <div class="dropdown-content">
+                                                <a href="Team.html">Team</a>
+                                                <a href="Course.html">Course</a>
+                                                <a href="Achievement.html">Achievement</a>
+                                                <a href="News.html">News</a>
+                                                <a href="Global Impact.html">Global Impact</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>School & Teacher</a>
+                                            <div class="dropdown-content">
+                                                <a href="School.html">School</a>
+                                                <a href="Teacher.html">Teacher</a>
+                                                <a href="Platform.html">Platform</a>
+                                                <a href="Scourse.html">Scourse</a>
+                                                <a href="Community.html">Community</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>Family</a>
+                                            <div class="dropdown-content">
+                                                <a href="Student.html">Student</a>
+                                                <a href="Parent.html">Parent</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <!-- Find the section with auth-buttons and add the user-profile div right after it -->
+                                <div class="language-selector">
+                                    <button id="en-btn" class="lang-btn active"
+                                        onclick="switchLanguage('en')">EN</button>
+                                    <span class="lang-divider">|</span>
+                                    <button id="zh-btn" class="lang-btn" onclick="switchLanguage('zh')">中文</button>
+                                </div>
+                                <div class="auth-buttons">
+                                    <a href="Login.html" class="auth-btn login">Login</a>
+                                    <a href="Register.html" class="auth-btn signup">Sign Up</a>
+                                </div>
+                                <div id="user-profile" class="user-profile">
+                                    <a class="profile-btn" href="#">
+                                        <span id="user-name">Account</span>
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <!-- Dynamically populated by auth.js -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Mainmenu Area -->
+        </header>
+        <!-- End Header Area -->
+
+        <!-- Start Techer Area -->
+        <section class="Teacher__area ptb--100">
+            <div class="container">
+                <div class="section__title--2 text-center" style="margin-top: 10%" ; style="margin-bottom: 10%;">
+                    <h2 class="title__line" data-lang-en="Teacher" data-lang-zh="老师">Teacher</h2>
+                </div>
+                <div class="language-content">
+                    <!-- English Content -->
+                    <div class="lang-content" data-lang="en">
+                        <p><strong>introduction</strong></p>
+                        <p>Teacher</p>
+                    </div>
+                    <!-- Chinese Content -->
+                    <div class="lang-content" data-lang="zh" style="display: none;">
+                        <p><strong>介绍</strong></p>
+                        <p>我们的老师</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Title Area -->
+
+        <!-- Start Teacher Training Features Section -->
+        <section class="Teacher-training-a__area">
+            <div class="Teacher-training-container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- English Content -->
+                        <div class="lang-content" data-lang="en">
+                            <p><strong>Comprehensive Training Materials</strong></p>
+                            <ul>
+                                <li>Detailed Lesson Plans：Lesson plans are written step - by - step, with clear
+                                    classification of teaching aids, such as using rubber bands to distinguish materials
+                                    for different lessons.</li>
+                                <li>High - Quality Teaching Aids：High - quality teaching aids are provided, including
+                                    map pictures and robot operation guides, to help teachers quickly master the
+                                    teaching content.</li>
+                                <li>Adequate Training：There are PowerPoint explanations and hands - on sessions,
+                                    allowing teachers to experience robot operation, like learning to control the
+                                    movement and functions of the robot.</li>
+                            </ul>
+                        </div>
+                        <!-- Chinese Content -->
+                        <div class="lang-content" data-lang="zh" style="display: none;">
+                            <p><strong>全方位培训资料</strong></p>
+                            <ul>
+                                <li>教案详尽：教案按步骤详细编写，还配备清晰的教具分类，像用橡皮筋区分不同课程所需物料。</li>
+                                <li>教具优质：提供高质量的教具，例如地图图片和机器人操作指南，助力教师快速掌握教学内容。</li>
+                                <li>培训充足：有 PowerPoint 讲解和实际操作环节，让教师能亲身体验机器人操作，比如学习机器人的移动和功能设置。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Teacher Training Features Section -->
+
+        <section class="Teacher-training-b__area">
+            <div class="Teacher-training-container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- English Content -->
+                        <div class="lang-content" data-lang="en">
+                            <p><strong>Practical Operation Opportunities</strong></p>
+                            <ul>
+                                <li>Training Course Experience：Teachers participate in training courses before the
+                                    project starts, where they can actually operate the robot, such as learning to
+                                    control its movement and functions.</li>
+                                <li>Independent Pre - operation：Teachers try to operate the map and robot on their own
+                                    before formal teaching, planning teaching paths to prepare well for the lessons.
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Chinese Content -->
+                        <div class="lang-content" data-lang="zh" style="display: none;">
+                            <p><strong>实践操作机会</strong></p>
+                            <ul>
+                                <li>培训课程体验：在项目开始前，教师会参加培训课程，实际操作机器人，例如学习控制机器人的移动和功能设置。</li>
+                                <li>自主预操作：教师在正式教学前，会自行尝试操作地图和机器人，规划教学路径，为教学做好充分准备。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Teacher Training Features Section -->
+
+        <!-- Start Teacher Training Features Section -->
+        <section class="Teacher-training-c__area">
+            <div class="Teacher-training-container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- English Content -->
+                        <div class="lang-content" data-lang="en">
+                            <p><strong>Continuous Support System</strong></p>
+                            <ul>
+                                <li>Immediate Problem - Solving：When teachers encounter problems like complex map
+                                    operations during teaching, relevant personnel provide timely support, such as
+                                    sending operation videos.</li>
+                                <li>Professional Resource Sharing：The project team shares additional teaching resources,
+                                    such as operation videos for complex maps, to assist teachers in teaching better.
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Chinese Content -->
+                        <div class="lang-content" data-lang="zh" style="display: none;">
+                            <p><strong>持续支持体系</strong></p>
+                            <ul>
+                                <li>问题即时解决：当教师在教学中遇到复杂地图操作等问题时，会有相关人员通过发送操作视频等方式及时提供支持。</li>
+                                <li>专业资源共享：项目组会分享额外的教学资源，如复杂地图的操作视频，帮助教师更好地开展教学。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Teacher Training Features Section -->
+
+        <!-- Start Teacher Training Features Section -->
+        <section class="Teacher-training-d__area">
+            <div class="Teacher-training-container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- English Content -->
+                        <div class="lang-content" data-lang="en">
+                            <p><strong>Integration of Innovative Technology</strong></p>
+                            <ul>
+                                <li>Expert Leadership：The project is led by professors with rich experience in
+                                    innovative technology, providing professional guidance and inspiration to teachers.
+                                </li>
+                                <li>Interdisciplinary Integration：Programming is combined with other disciplines, such
+                                    as Chinese and mathematics, broadening teachers' teaching perspectives.</li>
+                            </ul>
+                        </div>
+                        <!-- Chinese Content -->
+                        <div class="lang-content" data-lang="zh" style="display: none;">
+                            <p><strong>创新科技融合</strong></p>
+                            <ul>
+                                <li>专家引领：由在创新科技领域经验丰富的教授负责项目，为教师提供专业的指导和启发。</li>
+                                <li>跨学科整合：将编程与其他学科领域，如语文、数学等相结合，拓宽教师的教学视野。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Teacher Training Features Section -->
+
+        <!-- start Teacher menbers Section -->
+        <section class="team-members">
+            <div class="team-container">
+                <div class="team-row">
+                    <div class="col-md-4 col-sm-8 col-xs-14">
+                        <div class="member">
+                            <img src=" " alt="Dr. Weipeng Yang" class="avatar">
+                        </div>
+                        <div class="member-info">
+                            <h3>Dr. Weipeng Yang</h3>
+                            <p>The Education University of Hong Kong</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-8 col-xs-14">
+                        <div class="member">
+                            <img src=" " alt="Dr. Weipeng Yang" class="avatar">
+                        </div>
+                        <div class="member-info">
+                            <h3>Dr. Weipeng Yang</h3>
+                            <p>The Education University of Hong Kong</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-8 col-xs-14">
+                        <div class="member">
+                            <img src=" " alt="Dr. Weipeng Yang" class="avatar">
+                        </div>
+                        <div class="member-info">
+                            <h3>Dr. Weipeng Yang</h3>
+                            <p>The Education University of Hong Kong</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-8 col-xs-14">
+                        <div class="member">
+                            <img src=" " alt="Mr. Lau Lee" class="avatar">
+                        </div>
+                        <div class="member-info">
+                            <h3>Dr. Weipeng Yang</h3>
+                            <p>The Education University of Hong Kong</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Teacher menbers Section -->
+
+        <!-- Start Teacher comments Section -->
+        <section class="Teacher-comments">
+            <div class="comments-container">
+                <h1 class="title">教师的真实评价</h1>
+                <div class="review">
+                    <div class="review-item">
+                        <div class="review-school">保良局譚歐陽少芳紀念幼稚園</div>
+                        <p class="review-text">
+                            因為我諗誒你哋設計呢個課程嗰陣咧？其實佢每一堂嘅活動都即係有啲唔同嘅變化，即係可能有有時就會誒。講下譬如數量，有時又會講下誒嗰啲譬如I生長過程呀，又或者音樂呀咁樣，咁其實佢哋每一堂咧？即系佢哋首先好中意機械人啦，覺得好新奇啦咁，同埋佢哋都未必真係好接觸得好多，所以即係佢有電接觸電子產品，但係機械人咧佢哋真系冇乜幾多個小朋友係有接觸過，即係編程呢樣嘢啦。
+                        </p>
+                        <p class="review-name">Rachel老師</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-school">保良局譚歐陽少芳紀念幼稚園</div>
+                        <p class="review-text">
+                            魯迪較大嗰度上過哎，上過嗰個課堂嘅培訓課程啦咁，其實當時個PowerPoint同埋唉老師都講解得好清楚，咁同埋都有嘗試俾我哋試下嗰個robot嗰啲制係點樣喐呀咁？所以我覺得誒，對我嚟講都足夠嘅咁，同埋我哋真係誒同小朋友玩呢個即係上堂之前都有自己嘗試去郁動嗰個地圖，應該係由邊度開始，咁所以誒
+                        </p>
+                        <p class="review-name">Krystal老師</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-school">仁濟山景幼稚園</div>
+                        <p class="review-text">
+                            有啲咩好處呀？首先就係社交方面啦，即係正如啱啱所講係小組形式去操作嗰個機械人嘅咁，當中小朋友就會掌握到點樣去處理衝突啦，因為可能咧誒同樣起點去到終點，咁2個小朋友可能佢哋設計嘅路徑唔同啦，但機械人又得一部喎咁，你就會嘗試去協商啦。或者輪候啦，會學識依啲嘅社交嘅技能啦誒，另一方面咧，就係喺知識方面啦，因為。
+                        </p>
+                        <p class="review-name">孫老師</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-school">仁濟山景幼稚園</div>
+                        <p class="review-text">
+                            有啲咩好處呀？首先就係社交方面啦，即係正如啱啱所講係小組形式去操作嗰個機械人嘅咁，當中小朋友就會掌握到點樣去處理衝突啦，因為可能咧誒同樣起點去到終點，咁2個小朋友可能佢哋設計嘅路徑唔同啦，但機械人又得一部喎咁，你就會嘗試去協商啦。或者輪候啦，會學識依啲嘅社交嘅技能啦誒，另一方面咧，就係喺知識方面啦，因為。
+                        </p>
+                        <p class="review-name">孫老師</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-school">仁濟山景幼稚園</div>
+                        <p class="review-text">
+                            有啲咩好處呀？首先就係社交方面啦，即係正如啱啱所講係小組形式去操作嗰個機械人嘅咁，當中小朋友就會掌握到點樣去處理衝突啦，因為可能咧誒同樣起點去到終點，咁2個小朋友可能佢哋設計嘅路徑唔同啦，但機械人又得一部喎咁，你就會嘗試去協商啦。或者輪候啦，會學識依啲嘅社交嘅技能啦誒，另一方面咧，就係喺知識方面啦，因為。
+                        </p>
+                        <p class="review-name">孫老師</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-school">仁濟山景幼稚園</div>
+                        <p class="review-text">
+                            有啲咩好處呀？首先就係社交方面啦，即係正如啱啱所講係小組形式去操作嗰個機械人嘅咁，當中小朋友就會掌握到點樣去處理衝突啦，因為可能咧誒同樣起點去到終點，咁2個小朋友可能佢哋設計嘅路徑唔同啦，但機械人又得一部喎咁，你就會嘗試去協商啦。或者輪候啦，會學識依啲嘅社交嘅技能啦誒，另一方面咧，就係喺知識方面啦，因為。
+                        </p>
+                        <p class="review-name">孫老師</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Teacher comments Section -->
+
+        <!-- Start Footer Area -->
+        <footer class="footer__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="footer__content text-center">
+                            <div class="footer-logo">
+                                <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                        class="footer-logo-img"></a>
+                            </div>
+                            <ul class="footer__menu">
+                                <li><a href="Home.html">Home</a></li>
+                                <li><a href="About us.html">About us</a></li>
+                                <li><a>School & Teacher</a></li>
+                                <li><a href="Family.html">Family</a></li>
+                            </ul>
+
+                            <div class="footer__contact">
+                                <div class="university">The Education University of Hong Kong</div>
+                                <div class="department">Department of Early Childhood Education</div>
+                                <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
+                                <div class="email">Email: <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></div>
+                            </div>
+
+                            <div class="footer__copyright">
+                                <p>&copy; 2024 The Education University of Hong Kong</p>
+                                <p class="rights">All rights reserved. No part of this publication may be reproduced,
+                                    stored in a retrieval system or transmitted in any form
+                                    or by any means, electronic, mechanical, photocopying, recording or otherwise,
+                                    without the written permission of the
+                                    publisher.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+
+    <!-- Scroll to top button -->
+    <button id="scroll-top-btn" class="scroll-top-btn">
+        <i class="arrow-up">↑</i>
+    </button>
+
+    <script src="js/main.js"></script>
+    <sceipt scr="Teacher.js">
+        </script>
+        <script src="js/components.js"></script>
+        <script src="js/auth.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Check login status and update UI
+                if (typeof updateAuthUI === 'function') {
+                    updateAuthUI();
+                }
+            });
+        </script>
+</body>
+
+</html>

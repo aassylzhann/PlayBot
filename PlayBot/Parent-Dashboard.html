@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard - PlayBot Curriculum</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start Header Style -->
+        <header id="header" class="header__area header--one">
+            <!-- Start Mainmenu Area -->
+            <div id="sticky-header-with-topbar" class="header__area">
+                <div class="container">
+                    <div class="row">
+                        <div class="menumenu__container clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <div class="logo">
+                                    <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                            class="header-logo"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                                <nav class="main__menu__nav hidden-xs hidden-sm">
+                                    <ul class="main__menu">
+                                        <li><a href="Home.html">Home</a></li>
+                                        <li class="dropdown">
+                                            <a href="About us.html">About us</a>
+                                            <div class="dropdown-content">
+                                                <a href="Team.html">Team</a>
+                                                <a href="Course.html">Course</a>
+                                                <a href="Achievement.html">Achievement</a>
+                                                <a href="News.html">News</a>
+                                                <a href="Global Impact.html">Global Impact</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>School & Teacher</a>
+                                            <div class="dropdown-content">
+                                                <a href="School.html">School</a>
+                                                <a href="Teacher.html">Teacher</a>
+                                                <a href="Platform.html">Platform</a>
+                                                <a href="Scourse.html">Scourse</a>
+                                                <a href="Community.html">Community</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>Family</a>
+                                            <div class="dropdown-content">
+                                                <a href="Student.html">Student</a>
+                                                <a href="Parent.html">Parent</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <div class="language-selector">
+                                    <button id="en-btn" class="lang-btn active"
+                                        onclick="switchLanguage('en')">EN</button>
+                                    <span class="lang-divider">|</span>
+                                    <button id="zh-btn" class="lang-btn" onclick="switchLanguage('zh')">中文</button>
+                                </div>
+
+                                <div class="auth-buttons">
+                                    <a href="Login.html" class="auth-btn login">Login</a>
+                                    <a href="Register.html" class="auth-btn signup">Sign Up</a>
+                                </div>
+
+                                <div id="user-profile" class="user-profile">
+                                    <a class="profile-btn" href="#">
+                                        <span id="user-name">Account</span>
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <!-- Dynamically populated by auth.js -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Mainmenu Area -->
+        </header>
+        <!-- End Header Area -->
+
+        <div class="dashboard">
+            <div class="dashboard__container">
+                <div class="dashboard__welcome">
+                    <h1>Parent Dashboard</h1>
+                    <p>Monitor your child's PlayBot learning journey and discover ways to support their programming education at home.</p>
+                </div>
+
+                <div class="dashboard__stats">
+                    <div class="dashboard__stat-box">
+                        <div class="dashboard__stat-value"><i class="fas fa-check-circle"></i><span>5</span></div>
+                        <div class="dashboard__stat-label">Completed Activities</div>
+                    </div>
+                    <div class="dashboard__stat-box">
+                        <div class="dashboard__stat-value"><i class="fas fa-code"></i><span>3</span></div>
+                        <div class="dashboard__stat-label">Programming Skills</div>
+                    </div>
+                    <div class="dashboard__stat-box">
+                        <div class="dashboard__stat-value"><i class="fas fa-clock"></i><span>2</span></div>
+                        <div class="dashboard__stat-label">Hours of Engagement</div>
+                    </div>
+                </div>
+
+                <!-- Parent Resources Section -->
+                <div class="resources-section">
+                    <h2><i class="fas fa-book-reader"></i> Parent Resources</h2>
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3>At-Home Activities</h3>
+                                <p>Fun programming activities you can do at home to reinforce learning</p>
+                                <a href="#" class="resource-link">View Activities <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3>Tutorial Videos</h3>
+                                <p>Instructional videos to help you understand what your child is learning</p>
+                                <a href="#" class="resource-link">Watch Videos <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3>FAQs for Parents</h3>
+                                <p>Answers to common questions about early programming education</p>
+                                <a href="#" class="resource-link">Read FAQs <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="resource-content">
+                                <h3>Upcoming Events</h3>
+                                <p>Parent workshops and family programming events</p>
+                                <a href="#" class="resource-link">View Calendar <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Materials Download Section -->
+                <div class="materials-section">
+                    <h2><i class="fas fa-download"></i> Learning Materials</h2>
+                    
+                    <div class="materials-category">
+                        <div class="materials-category-header">
+                            <h3><i class="fas fa-book"></i> Lesson Materials</h3>
+                        </div>
+                        <div class="materials-list">
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Introduction to PlayBot Programming</h4>
+                                    <p>Basic guide for parents to understand the fundamentals of PlayBot programming concepts.</p>
+                                    <div class="file-info">PDF • 2.5 MB</div>
+                                </div>
+                                <a href="#" class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Home Practice Activities</h4>
+                                    <p>Collection of offline activities to practice programming concepts at home.</p>
+                                    <div class="file-info">PDF • 1.8 MB</div>
+                                </div>
+                                <a href="#" class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="materials-category">
+                        <div class="materials-category-header">
+                            <h3><i class="fas fa-file-alt"></i> Printable Worksheets</h3>
+                        </div>
+                        <div class="materials-list">
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Sequencing Practice Sheets</h4>
+                                    <p>Printable worksheets to help children practice sequencing commands.</p>
+                                    <div class="file-info">PDF • 3.2 MB</div>
+                                </div>
+                                <a href="#" class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Robot Command Cards</h4>
+                                    <p>Cut-out cards with programming commands for hands-on learning activities.</p>
+                                    <div class="file-info">PDF • 4.5 MB</div>
+                                </div>
+                                <a href="#" class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="materials-category">
+                        <div class="materials-category-header">
+                            <h3><i class="fas fa-puzzle-piece"></i> Learning Games</h3>
+                        </div>
+                        <div class="materials-list">
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>PlayBot Board Game</h4>
+                                    <p>Printable board game that teaches programming concepts through play.</p>
+                                    <div class="file-info">PDF • 5.3 MB</div>
+                                </div>
+                                <a href="#" class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Coding Card Game</h4>
+                                    <p>Card-based game that helps children learn sequencing and logic.</p>
+                                    <div class="file-info">PDF • 3.7 MB</div>
+                                </div>
+                                <a href="#" class="download-btn">
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher Communication -->
+                <div class="communication-section">
+                    <h2><i class="fas fa-comments"></i> Communicate with Teacher</h2>
+                    <div class="communication-card">
+                        <div class="teacher-info">
+                            <div class="teacher-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="teacher-details">
+                                <h3>Ms. Wong</h3>
+                                <p>K3 Class Teacher</p>
+                            </div>
+                        </div>
+                        <div class="communication-options">
+                            <a href="#" class="comm-option">
+                                <i class="fas fa-envelope"></i>
+                                <span>Send Message</span>
+                            </a>
+                            <a href="#" class="comm-option">
+                                <i class="fas fa-video"></i>
+                                <span>Schedule Meeting</span>
+                            </a>
+                            <a href="#" class="comm-option">
+                                <i class="fas fa-clipboard-list"></i>
+                                <span>View Notes</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-actions">
+                    <button onclick="handleLogout()" class="dashboard__action logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Footer Area -->
+        <footer class="footer__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="footer__content text-center">
+                            <div class="footer-logo">
+                                <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                        class="footer-logo-img"></a>
+                            </div>
+                            <ul class="footer__menu">
+                                <li><a href="Home.html">Home</a></li>
+                                <li><a href="About us.html">About us</a></li>
+                                <li><a>School & Teacher</a></li>
+                                <li><a href="Family.html">Family</a></li>
+                            </ul>
+
+                            <div class="footer__contact">
+                                <div class="university">The Education University of Hong Kong</div>
+                                <div class="department">Department of Early Childhood Education</div>
+                                <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
+                                <div class="email">Email: <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></div>
+                            </div>
+
+                            <div class="footer__copyright">
+                                <p>&copy; 2024 The Education University of Hong Kong</p>
+                                <p class="rights">All rights reserved. No part of this publication may be reproduced,
+                                    stored in a retrieval system or transmitted in any form
+                                    or by any means, electronic, mechanical, photocopying, recording or otherwise,
+                                    without the written permission of the
+                                    publisher.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer Area -->
+    </div>
+
+    <!-- All js files are included here. -->
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if user is logged in
+            if (!isUserLoggedIn()) {
+                window.location.href = 'Login.html';
+                return;
+            }
+
+            // Get current user information
+            const currentUser = getCurrentUser();
+
+            // Verify role is parent
+            if (!currentUser || currentUser.role !== 'parent') {
+                window.location.href = 'Login.html';
+                return;
+            }
+
+            // Update welcome message with user name
+            const welcomeTitle = document.querySelector('.dashboard__welcome h1');
+            if (welcomeTitle && currentUser.firstName) {
+                welcomeTitle.textContent = `Welcome, ${currentUser.firstName}!`;
+            }
+
+            // Update user name in header
+            const userNameSpan = document.getElementById('user-name');
+            if (userNameSpan && currentUser.firstName) {
+                userNameSpan.textContent = currentUser.firstName;
+            }
+
+            // Show logged in navigation
+            document.querySelector('.auth-buttons')?.classList.add('hidden');
+            document.getElementById('user-profile')?.classList.add('visible');
+            
+            // Check login status and update UI
+            if (typeof updateAuthUI === 'function') {
+                updateAuthUI();
+            }
+        });
+
+        function handleLogout() {
+            logoutUser();
+            window.location.href = 'Home.html';
+        }
+    </script>
+</body>
+
+</html>

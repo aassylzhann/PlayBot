@@ -1,0 +1,359 @@
+.team-title-section {
+  background-color: #f7eaa0;
+  padding: 40px 30px;
+  margin-bottom: 100px;
+}
+
+.team_area {
+  padding-top: 50px;
+  background-color: #f7eaa0;
+  padding-bottom: 50px;
+}
+
+.research-team-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  padding-bottom: 15px;
+  background-color: #f7eaa0;
+  /* Remove the background from title itself */
+  border-radius: 8px;
+}
+
+.research-team-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: #000000;
+  border-radius: 2px;
+}
+
+.research-team-subtitle {
+  font-size: 20px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 10px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Album specific styles (keep your existing styles) */
+.team-album {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.team-album {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.team-category {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.team-card {
+  width: 260px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.team-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.team-card-content {
+  padding: 20px;
+}
+
+.team-card-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: #333;
+}
+
+.team-card-title {
+  font-size: 14px;
+  color: #4285f4;
+  margin: 0 0 8px;
+}
+
+.team-card-institution {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .team-album {
+    gap: 20px;
+  }
+
+  .team-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .team-card {
+    width: 100%;
+  }
+}
+
+.resource__school__area {
+  background-color: #ffffff;
+  padding: 50px 0 80px;
+  /* Increased bottom padding to 80px */
+  margin-bottom: 30px;
+  /* Additional margin below the section */
+}
+
+.resource__school__area ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* Profile Section */
+
+/* User profile styles for logged in state */
+.user-profile {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 15px;
+  display: none;
+  /* Hidden by default */
+}
+
+.user-profile.visible {
+  display: inline-block;
+}
+
+/* Style to match other nav items */
+.profile-btn {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  height: 80px;
+  /* Match the height of main menu items */
+  line-height: 60px;
+  /* Exact match with your other menu items */
+  display: block;
+  position: relative;
+  transition: color 0.3s ease;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  /* Match font family with other menu items */
+  text-transform: uppercase;
+  padding: 0 15px;
+}
+
+.profile-btn:hover {
+  color: #4285f4;
+}
+
+.profile-btn::after {
+  content: "▼";
+  font-size: 8px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.user-profile .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  border-radius: 0px;
+  /* Match other dropdowns */
+  right: 0;
+  top: 80px;
+  /* Align with bottom of navbar */
+  padding: 0;
+  /* Remove padding */
+}
+
+.user-profile:hover .dropdown-content {
+  display: block;
+}
+
+/* Match dropdown content style with other menu dropdowns */
+.user-profile .dropdown-content a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 15px !important;
+  color: #333333 !important;
+  margin-top: 1px;
+  text-decoration: none !important;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.user-profile .dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.user-profile .dropdown-content a:hover {
+  background-color: #f0f0f0 !important;
+  color: #4285f4 !important;
+}
+
+.auth-buttons.hidden {
+  display: none !important;
+}
+
+/* Research Ethics Accordion Styles */
+.ethics-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.ethics-image {
+    flex: 0 0 300px;
+}
+
+.ethics-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.ethics-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.ethics-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Ethics Accordion Styles */
+.ethics-accordion {
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.ethics-accordion-item {
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.ethics-accordion-header {
+    padding: 15px 20px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ethics-accordion-header h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.accordion-icon {
+    font-size: 24px;
+    font-weight: bold;
+    color: #555;
+    transition: transform 0.3s;
+}
+
+.ethics-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.ethics-accordion-item.active .ethics-accordion-content {
+    max-height: 1000px;
+    padding: 20px;
+}
+
+.ethics-accordion-content h5 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.ethics-accordion-content p {
+    margin-top: 0;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.ethics-accordion-content ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+}
+
+.ethics-accordion-content li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.ethics-contact {
+    margin-top: 25px;
+    margin-bottom: 50px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #4c86af;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .ethics-image {
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+    }
+}

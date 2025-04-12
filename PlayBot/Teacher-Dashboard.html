@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Resources - PlayBot Curriculum</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start Header Style -->
+        <header id="header" class="header__area header--one">
+            <!-- Start Mainmenu Area -->
+            <div id="sticky-header-with-topbar" class="header__area">
+                <div class="container">
+                    <div class="row">
+                        <div class="menumenu__container clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <div class="logo">
+                                    <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                            class="header-logo"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                                <nav class="main__menu__nav hidden-xs hidden-sm">
+                                    <ul class="main__menu">
+                                        <li><a href="Home.html">Home</a></li>
+                                        <li class="dropdown">
+                                            <a href="About us.html">About us</a>
+                                            <div class="dropdown-content">
+                                                <a href="Team.html">Team</a>
+                                                <a href="Course.html">Course</a>
+                                                <a href="Achievement.html">Achievement</a>
+                                                <a href="News.html">News</a>
+                                                <a href="Global Impact.html">Global Impact</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>School & Teacher</a>
+                                            <div class="dropdown-content">
+                                                <a href="School.html">School</a>
+                                                <a href="Teacher.html">Teacher</a>
+                                                <a href="Platform.html">Platform</a>
+                                                <a href="Scourse.html">Scourse</a>
+                                                <a href="Community.html">Community</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>Family</a>
+                                            <div class="dropdown-content">
+                                                <a href="Student.html">Student</a>
+                                                <a href="Parent.html">Parent</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <div class="language-selector">
+                                    <button id="en-btn" class="lang-btn active"
+                                        onclick="switchLanguage('en')">EN</button>
+                                    <span class="lang-divider">|</span>
+                                    <button id="zh-btn" class="lang-btn" onclick="switchLanguage('zh')">中文</button>
+                                </div>
+
+                                <div class="auth-buttons">
+                                    <a href="Login.html" class="auth-btn login">Login</a>
+                                    <a href="Register.html" class="auth-btn signup">Sign Up</a>
+                                </div>
+
+                                <div id="user-profile" class="user-profile">
+                                    <a class="profile-btn" href="#">
+                                        <span id="user-name">Account</span>
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <!-- Dynamically populated by auth.js -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Mainmenu Area -->
+        </header>
+        <!-- End Header Area -->
+
+        <div class="dashboard">
+            <div class="dashboard__container">
+                <div class="dashboard__welcome">
+                    <h1>Teacher Resources Center</h1>
+                    <p>Welcome to the PlayBot Teacher Resources Center. Here you can access and download all the teaching materials you need for implementing the PlayBot curriculum in your classroom.</p>
+                </div>
+
+                <div class="dashboard__stats">
+                    <div class="dashboard__stat-box">
+                        <div class="dashboard__stat-value"><i class="fas fa-book"></i></div>
+                        <div class="dashboard__stat-label">Lesson Plans</div>
+                    </div>
+                    <div class="dashboard__stat-box">
+                        <div class="dashboard__stat-value"><i class="fas fa-tools"></i></div>
+                        <div class="dashboard__stat-label">Teaching Tools</div>
+                    </div>
+                    <div class="dashboard__stat-box">
+                        <div class="dashboard__stat-value"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="dashboard__stat-label">Training Materials</div>
+                    </div>
+                </div>
+
+                <!-- Teaching Materials Section -->
+                <div class="materials-section">
+                    <h2>Teaching Materials</h2>
+                    
+                    <!-- Category: Curriculum Guides -->
+                    <div class="materials-category">
+                        <div class="materials-category-header">
+                            <h3><i class="fas fa-map"></i> Curriculum Guides</h3>
+                        </div>
+                        <div class="materials-list">
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>PlayBot Curriculum Overview</h4>
+                                    <p>A comprehensive overview of the PlayBot curriculum structure and learning objectives.</p>
+                                    <span class="file-info">PDF • 2.4 MB • Updated: Mar 2024</span>
+                                </div>
+                                <a href="resources/PlayBot_Curriculum_Overview.pdf" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Teacher Implementation Guide</h4>
+                                    <p>Step-by-step instructions for implementing PlayBot in your classroom.</p>
+                                    <span class="file-info">PDF • 3.1 MB • Updated: Mar 2024</span>
+                                </div>
+                                <a href="resources/Teacher_Implementation_Guide.pdf" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Annual Teaching Plan</h4>
+                                    <p>Suggested yearly curriculum integration plan with weekly breakdown.</p>
+                                    <span class="file-info">PDF • 1.8 MB • Updated: Feb 2024</span>
+                                </div>
+                                <a href="resources/Annual_Teaching_Plan.pdf" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Category: Lesson Plans -->
+                    <div class="materials-category">
+                        <div class="materials-category-header">
+                            <h3><i class="fas fa-book-open"></i> Lesson Plans</h3>
+                        </div>
+                        <div class="materials-list">
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Module 1: Introduction to Programming Concepts</h4>
+                                    <p>5 lesson plans introducing basic programming concepts through play.</p>
+                                    <span class="file-info">ZIP • 8.2 MB • Updated: Mar 2024</span>
+                                </div>
+                                <a href="resources/Module1_Lesson_Plans.zip" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Module 2: Sequential Programming</h4>
+                                    <p>5 lesson plans focusing on sequences and step-by-step instructions.</p>
+                                    <span class="file-info">ZIP • 7.5 MB • Updated: Mar 2024</span>
+                                </div>
+                                <a href="resources/Module2_Lesson_Plans.zip" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Module 3: Problem Solving with PlayBot</h4>
+                                    <p>5 lesson plans with programming challenges and problem-solving activities.</p>
+                                    <span class="file-info">ZIP • 9.1 MB • Updated: Mar 2024</span>
+                                </div>
+                                <a href="resources/Module3_Lesson_Plans.zip" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Category: Classroom Materials -->
+                    <div class="materials-category">
+                        <div class="materials-category-header">
+                            <h3><i class="fas fa-print"></i> Classroom Materials</h3>
+                        </div>
+                        <div class="materials-list">
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Printable Coding Cards</h4>
+                                    <p>Visual coding cards for offline programming activities.</p>
+                                    <span class="file-info">PDF • 5.3 MB • Updated: Feb 2024</span>
+                                </div>
+                                <a href="resources/Printable_Coding_Cards.pdf" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Assessment Rubrics</h4>
+                                    <p>Tools for evaluating student understanding and progress.</p>
+                                    <span class="file-info">PDF • 1.2 MB • Updated: Jan 2024</span>
+                                </div>
+                                <a href="resources/Assessment_Rubrics.pdf" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Classroom Display Materials</h4>
+                                    <p>Posters, visual aids, and display materials for your classroom.</p>
+                                    <span class="file-info">ZIP • 12.5 MB • Updated: Mar 2024</span>
+                                </div>
+                                <a href="resources/Classroom_Display_Materials.zip" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Category: Training Resources -->
+                    <div class="materials-category">
+                        <div class="materials-category-header">
+                            <h3><i class="fas fa-chalkboard-teacher"></i> Training Resources</h3>
+                        </div>
+                        <div class="materials-list">
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>PlayBot Training Workshop Materials</h4>
+                                    <p>Slides and handouts from our teacher training sessions.</p>
+                                    <span class="file-info">ZIP • 15.8 MB • Updated: Apr 2024</span>
+                                </div>
+                                <a href="resources/Training_Workshop_Materials.zip" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>PlayBot Setup Guide</h4>
+                                    <p>Technical guide for setting up PlayBot hardware in your classroom.</p>
+                                    <span class="file-info">PDF • 4.2 MB • Updated: Mar 2024</span>
+                                </div>
+                                <a href="resources/PlayBot_Setup_Guide.pdf" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                            
+                            <div class="material-item">
+                                <div class="material-info">
+                                    <h4>Troubleshooting Guide</h4>
+                                    <p>Solutions to common issues when working with PlayBot.</p>
+                                    <span class="file-info">PDF • 2.7 MB • Updated: Mar 2024</span>
+                                </div>
+                                <a href="resources/Troubleshooting_Guide.pdf" class="download-btn" download>
+                                    <i class="fas fa-download"></i> Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Need Help Section -->
+                <div class="help-section">
+                    <h2>Need Help?</h2>
+                    <p>If you have questions about implementing these materials or need additional support:</p>
+                    <div class="help-options">
+                        <a href="mailto:teacher-support@playbot.edu" class="help-option">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email Support</span>
+                        </a>
+                        <a href="#" class="help-option">
+                            <i class="fas fa-video"></i>
+                            <span>Schedule Training</span>
+                        </a>
+                        <a href="#" class="help-option">
+                            <i class="fas fa-users"></i>
+                            <span>Teacher Community</span>
+                        </a>
+                        <a href="#" class="help-option">
+                            <i class="fas fa-question-circle"></i>
+                            <span>FAQ</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="dashboard-actions">
+                    <button onclick="handleLogout()" class="dashboard__action logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Footer Area -->
+        <footer class="footer__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="footer__content text-center">
+                            <div class="footer-logo">
+                                <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                        class="footer-logo-img"></a>
+                            </div>
+                            <ul class="footer__menu">
+                                <li><a href="Home.html">Home</a></li>
+                                <li><a href="About us.html">About us</a></li>
+                                <li><a>School & Teacher</a></li>
+                                <li><a href="Family.html">Family</a></li>
+                            </ul>
+
+                            <div class="footer__contact">
+                                <div class="university">The Education University of Hong Kong</div>
+                                <div class="department">Department of Early Childhood Education</div>
+                                <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
+                                <div class="email">Email: <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></div>
+                            </div>
+
+                            <div class="footer__copyright">
+                                <p>&copy; 2024 The Education University of Hong Kong</p>
+                                <p class="rights">All rights reserved. No part of this publication may be reproduced,
+                                    stored in a retrieval system or transmitted in any form
+                                    or by any means, electronic, mechanical, photocopying, recording or otherwise,
+                                    without the written permission of the
+                                    publisher.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer Area -->
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if user is logged in
+            if (!isUserLoggedIn()) {
+                window.location.href = 'Login.html';
+                return;
+            }
+
+            // Get current user information
+            const currentUser = getCurrentUser();
+
+            // Verify role is teacher
+            if (!currentUser || currentUser.role !== 'teacher') {
+                window.location.href = 'Login.html';
+                return;
+            }
+
+            // Update welcome message with user name
+            const welcomeTitle = document.querySelector('.dashboard__welcome h1');
+            if (welcomeTitle && currentUser.firstName) {
+                welcomeTitle.textContent = `Teacher Resources Center - Welcome, ${currentUser.firstName}!`;
+            }
+
+            // Update user name in header
+            const userNameSpan = document.getElementById('user-name');
+            if (userNameSpan && currentUser.firstName) {
+                userNameSpan.textContent = currentUser.firstName;
+            }
+
+            // Show logged in navigation
+            document.querySelector('.auth-buttons')?.classList.add('hidden');
+            document.getElementById('user-profile')?.classList.add('visible');
+        });
+
+        function handleLogout() {
+            logoutUser();
+            window.location.href = 'Home.html';
+        }
+    </script>
+</body>
+
+</html>

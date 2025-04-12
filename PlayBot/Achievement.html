@@ -1,0 +1,332 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Achievement - PlayBot Curriculum</title>
+    <meta name="description" content="Achievement - PlayBot Curriculum - Robot Programming Through Play">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/achievement.css">
+</head>
+
+<body>
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start Header Style -->
+        <header id="header" class="header__area header--one">
+            <!-- Start Mainmenu Area -->
+            <div id="sticky-header-with-topbar" class="header__area">
+                <div class="container">
+                    <div class="row">
+                        <div class="menumenu__container clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <div class="logo">
+                                    <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                            class="header-logo"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                                <nav class="main__menu__nav hidden-xs hidden-sm">
+                                    <ul class="main__menu">
+                                        <li><a href="Home.html">Home</a></li>
+                                        <li class="dropdown">
+                                            <a href="About us.html">About us</a>
+                                            <div class="dropdown-content">
+                                                <a href="Team.html">Team</a>
+                                                <a href="Course.html">Course</a>
+                                                <a href="Achievement.html">Achievement</a>
+                                                <a href="News.html">News</a>
+                                                <a href="Global Impact.html">Global Impact</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>School & Teacher</a>
+                                            <div class="dropdown-content">
+                                                <a href="School.html">School</a>
+                                                <a href="Teacher.html">Teacher</a>
+                                                <a href="Platform.html">Platform</a>
+                                                <a href="Scourse.html">Scourse</a>
+                                                <a href="Community.html">Community</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>Family</a>
+                                            <div class="dropdown-content">
+                                                <a href="Student.html">Student</a>
+                                                <a href="Parent.html">Parent</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+
+
+                                <!-- Find the section with auth-buttons and add the user-profile div right after it -->
+                                <div class="language-selector">
+                                    <button id="en-btn" class="lang-btn active"
+                                        onclick="switchLanguage('en')">EN</button>
+                                    <span class="lang-divider">|</span>
+                                    <button id="zh-btn" class="lang-btn" onclick="switchLanguage('zh')">中文</button>
+                                </div>
+                                <div class="auth-buttons">
+                                    <a href="Login.html" class="auth-btn login">Login</a>
+                                    <a href="Register.html" class="auth-btn signup">Sign Up</a>
+                                </div>
+                                <div id="user-profile" class="user-profile">
+                                    <a class="profile-btn" href="#">
+                                        <span id="user-name">Account</span>
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <!-- Dynamically populated by auth.js -->
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Mainmenu Area -->
+        </header>
+        <!-- End Header Area -->
+
+        <section class="school__area bg__white ptb--100">
+            <div class="container">
+                <div class="school-row">
+                    <div class="col-xs-12">
+                        <div class="school__title--2 text-center">
+                            <div class="language-content">
+                                <!-- English Content -->
+                                <div class="lang-content" data-lang="en">
+                                    <h2 class="title__line">Achievement</h2>
+                                    <p>Discover the milestones and impact of the PlayBot Curriculum</p>
+                                </div>
+                                <!-- Chinese Content -->
+                                <div class="lang-content" data-lang="zh" style="display: none;">
+                                    <h2 class="title__line">成就</h2>
+                                    <p>探索 PlayBot 課程的里程碑和影響</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Achievement Header Area -->
+
+        <!-- Start Achievement Cards Area -->
+        <section class="resource__school__area bg__white ptb--100">
+            <div class="container">
+                <div class="language-content">
+                    <!-- English Content -->
+                    <div class="lang-content" data-lang="en">
+                        <h2 class="achievement-section-title">Our Achievements</h2>
+
+                        <div class="achievement-grid">
+                            <div class="achievement-card">
+                                <div class="achievement-number">50+</div>
+                                <h3>Schools</h3>
+                                <p>Successfully implemented PlayBot Curriculum in over 50 schools across Hong Kong.</p>
+                            </div>
+
+                            <div class="achievement-card">
+                                <div class="achievement-number">1,000+</div>
+                                <h3>Students</h3>
+                                <p>Engaged more than 1,000 students in robot programming through play.</p>
+                            </div>
+
+                            <div class="achievement-card">
+                                <div class="achievement-number">RGC</div>
+                                <h3>Funding</h3>
+                                <p>Received funding support from the Research Grant Council (RGC) of Hong Kong.</p>
+                            </div>
+
+                            <div class="achievement-card">
+                                <div class="achievement-number">10+</div>
+                                <h3>Publications</h3>
+                                <p>Published research papers on the impact of PlayBot Curriculum on children's
+                                    engagement and computational thinking.</p>
+                            </div>
+                        </div>
+
+                        <div class="achievement-timeline">
+                            <h2>Our Journey</h2>
+                            <div class="timeline-container">
+                                <div class="timeline-item">
+                                    <div class="timeline-date">2019</div>
+                                    <div class="timeline-content">
+                                        <h3>Project Inception</h3>
+                                        <p>The PlayBot Curriculum project was launched with initial funding.</p>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-date">2020</div>
+                                    <div class="timeline-content">
+                                        <h3>Pilot Program</h3>
+                                        <p>First implementation in 10 kindergartens in Hong Kong.</p>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-date">2022</div>
+                                    <div class="timeline-content">
+                                        <h3>Expansion</h3>
+                                        <p>Program expanded to 40 more schools across the region.</p>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-date">2024</div>
+                                    <div class="timeline-content">
+                                        <h3>Global Recognition</h3>
+                                        <p>The PlayBot Curriculum received international recognition for innovation in
+                                            early childhood education.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chinese Content -->
+                    <div class="lang-content" data-lang="zh" style="display: none;">
+                        <h2 class="achievement-section-title">我們的成就</h2>
+
+                        <div class="achievement-grid">
+                            <div class="achievement-card">
+                                <div class="achievement-number">50+</div>
+                                <h3>學校</h3>
+                                <p>成功在香港超過50所學校實施PlayBot課程。</p>
+                            </div>
+
+                            <div class="achievement-card">
+                                <div class="achievement-number">1,000+</div>
+                                <h3>學生</h3>
+                                <p>吸引了超過1000名學生參與機械人編程遊戲。</p>
+                            </div>
+
+                            <div class="achievement-card">
+                                <div class="achievement-number">RGC</div>
+                                <h3>資金</h3>
+                                <p>獲得香港研究資助局（RGC）的資助。</p>
+                            </div>
+
+                            <div class="achievement-card">
+                                <div class="achievement-number">10+</div>
+                                <h3>出版物</h3>
+                                <p>發表了關於PlayBot課程對兒童參與度和計算思維影響的研究論文。</p>
+                            </div>
+                        </div>
+
+                        <div class="achievement-timeline">
+                            <h2>我們的歷程</h2>
+                            <div class="timeline-container">
+                                <div class="timeline-item">
+                                    <div class="timeline-date">2019年</div>
+                                    <div class="timeline-content">
+                                        <h3>項目啟動</h3>
+                                        <p>PlayBot課程項目獲得初始資金啟動。</p>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-date">2020年</div>
+                                    <div class="timeline-content">
+                                        <h3>試點計劃</h3>
+                                        <p>首次在香港10所幼稚園實施。</p>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-date">2022年</div>
+                                    <div class="timeline-content">
+                                        <h3>擴展</h3>
+                                        <p>課程擴展到該地區的40所更多學校。</p>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-date">2024年</div>
+                                    <div class="timeline-content">
+                                        <h3>國際認可</h3>
+                                        <p>PlayBot課程因在幼兒教育創新方面的成就獲得國際認可。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Achievement Cards Area -->
+
+        <!-- Start Footer Area -->
+        <footer class="footer__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="footer__content text-center">
+                            <div class="footer-logo">
+                                <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                        class="footer-logo-img"></a>
+                            </div>
+                            <ul class="footer__menu">
+                                <li><a href="Home.html">Home</a></li>
+                                <li><a href="About us.html">About us</a></li>
+                                <li><a>School & Teacher</a></li>
+                                <li><a href="Family.html">Family</a></li>
+                            </ul>
+
+                            <div class="footer__contact">
+                                <div class="university">The Education University of Hong Kong</div>
+                                <div class="department">Department of Early Childhood Education</div>
+                                <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
+                                <div class="email">Email: <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></div>
+                            </div>
+
+                            <div class="footer__copyright">
+                                <p>&copy; 2024 The Education University of Hong Kong</p>
+                                <p class="rights">All rights reserved. No part of this publication may be reproduced,
+                                    stored in a retrieval system or transmitted in any form
+                                    or by any means, electronic, mechanical, photocopying, recording or otherwise,
+                                    without the written permission of the
+                                    publisher.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer Area -->
+    </div>
+    <!-- Body main wrapper end -->
+
+    <!-- Scroll to top button -->
+    <button id="scroll-top-btn" class="scroll-top-btn">
+        <i class="arrow-up">↑</i>
+    </button>
+
+    <!-- Add before closing body tag -->
+
+    <!-- All js files are included here. -->
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check login status and update UI
+            if (typeof updateAuthUI === 'function') {
+                updateAuthUI();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+.parent__area {
+    height: 500px;
+    background-color: #f7eaa0; 
+    padding: 50px 0; 
+    text-align: center; 
+}
+
+.parent__title--2 {
+    margin-bottom: 20px; 
+}
+
+.title__line {
+    font-size: 50px; 
+    color: #333333; 
+    margin-bottom: 20px; 
+    margin-top: 80px;
+}
+
+.parent__area p {
+    font-size: 20px; 
+    color: #666; 
+    line-height: 1.5; 
+    margin-bottom: 20px; 
+}
+
+.card__area{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.card__title{
+    display: flex;
+    margin-left: 150px;
+    position: absolute; /* 绝对定位 */
+    left: 20px; /* 向左移动到容器的左边 */
+    top: 77%;
+    font-size: 30px;
+    color: #333;
+}
+
+.card__line {
+    width: 5px;
+    height: 50px;
+    margin-left: 120px;
+    background-color: #4CAF50;
+    position: absolute; /* 绝对定位 */
+    left: 20px; /* 向左移动到容器的左边 */
+    top: 80%;
+    transform: translateY(-50%); /* 垂直居中 */
+}
+
+.card_row{
+    display: flex;
+    flex-direction: row; /* 设置为水平布局 */
+    flex-wrap: wrap; /* 允许卡片换行 */
+    justify-content: space-around; /* 均匀分布卡片 */
+    align-items: flex-start; /* 使卡片高度一致 */
+    padding: 20px;
+    margin-top: 100px
+}
+
+.card{
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 0 0 calc(25% - 20px); /* 每个卡片占据25%的宽度，减去间距 */
+    margin: 10px; /* 卡片之间的间距 */
+    padding: 15px;
+    text-align: center;
+    min-width: 500px; /* 设置最小宽度 */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+.card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+.card p {
+    color: #555;
+}
+
+.show__area{
+    font-family: Arial, sans-serif;
+    margin: 60;
+    padding: 60;
+    background-color: #f4f4f4;
+}
+
+.show__line{
+    width: 5px;
+    height: 50px;
+    margin-left: 120px;
+    background-color: #eac945;
+    position: absolute; /* 绝对定位 */
+    left: 20px; /* 向左移动到容器的左边 */
+    top: 120%;
+    transform: translateY(-50%); /* 垂直居中 */
+}
+
+.show__title{
+    display: flex;
+    margin-left: 150px;
+    position: absolute; /* 绝对定位 */
+    left: 20px; /* 向左移动到容器的左边 */
+    top: 117%;
+    font-size: 30px;
+    color: #333;
+}
+
+/* Profile Section */
+
+/* User profile styles for logged in state */
+.user-profile {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 15px;
+    display: none; /* Hidden by default */
+}
+
+.user-profile.visible {
+    display: inline-block;
+}
+
+/* Style to match other nav items */
+.profile-btn {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    height: 80px; /* Match the height of main menu items */
+    line-height: 60px; /* Exact match with your other menu items */
+    display: block;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif; /* Match font family with other menu items */
+    text-transform: uppercase;
+    padding: 0 15px;
+}
+
+.profile-btn:hover {
+    color: #4285f4;
+}
+
+.profile-btn::after {
+    content: "▼";
+    font-size: 8px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.user-profile .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 0px; /* Match other dropdowns */
+    right: 0;
+    top: 80px; /* Align with bottom of navbar */
+    padding: 0; /* Remove padding */
+}
+
+.user-profile:hover .dropdown-content {
+    display: block;
+}
+
+/* Match dropdown content style with other menu dropdowns */
+.user-profile .dropdown-content a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px !important;
+    color: #333333 !important;
+    margin-top: 1px;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.user-profile .dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.user-profile .dropdown-content a:hover {
+    background-color: #f0f0f0 !important;
+    color: #4285f4 !important;
+}
+
+.auth-buttons.hidden {
+    display: none !important;
+}

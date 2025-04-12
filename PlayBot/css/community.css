@@ -1,0 +1,209 @@
+.community__area {
+    height: 500px;
+    background-color: #f5e2c0; 
+    padding: 50px 0; 
+    text-align: center; 
+}
+
+.community__title--2 {
+    margin-bottom: 20px; 
+}
+
+.title__line {
+    font-size: 50px; 
+    color: #333333; 
+    margin-bottom: 20px; 
+    margin-top: 80px;
+}
+
+.community__area p {
+    font-size: 20px; 
+    color: #666; 
+    line-height: 1.5; 
+    margin-bottom: 20px; 
+}
+
+.community-row {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    text-align: center;
+}
+
+.community-image {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px; /* Adjust margin as needed */
+}
+
+.level__area {
+    height: auto;
+    background-color: #ffffff; 
+    padding: 50px 0; 
+    text-align: center; 
+}
+
+.level {
+    display: flex;
+    align-items: flex-start;
+    width: 80%;
+}
+
+
+.level-number-a {
+    background-color: #00b8e6;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    text-align: center;
+    margin-right: 20px;
+    min-width: 200px;
+}
+
+.level-number-b {
+    background-color: #91f56c;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    text-align: center;
+    margin-right: 20px;
+    min-width: 200px;
+}
+
+.level-number-c {
+    background-color: #f8cd76;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    text-align: center;
+    margin-right: 20px;
+    min-width: 200px;
+}
+
+.level-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-left: 1px solid #ddd;
+    flex: 1;
+    text-align: left;
+}
+
+.level-content h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.level-content h3 {
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.level-content p {
+    margin-bottom: 10px;
+}
+
+.level-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.level-content ul li {
+    margin-bottom: 5px;
+}
+
+.image-link-container{
+    display: inline-block; /* 让每个组合成为行内块元素 */
+    text-align: center; /* 文字居中对齐 */
+    margin-right: 50px; /* 添加一些间距 */
+}
+
+/* Profile Section */
+
+/* User profile styles for logged in state */
+.user-profile {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 15px;
+    display: none; /* Hidden by default */
+}
+
+.user-profile.visible {
+    display: inline-block;
+}
+
+/* Style to match other nav items */
+.profile-btn {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    height: 80px; /* Match the height of main menu items */
+    line-height: 60px; /* Exact match with your other menu items */
+    display: block;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif; /* Match font family with other menu items */
+    text-transform: uppercase;
+    padding: 0 15px;
+}
+
+.profile-btn:hover {
+    color: #4285f4;
+}
+
+.profile-btn::after {
+    content: "▼";
+    font-size: 8px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.user-profile .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 0px; /* Match other dropdowns */
+    right: 0;
+    top: 80px; /* Align with bottom of navbar */
+    padding: 0; /* Remove padding */
+}
+
+.user-profile:hover .dropdown-content {
+    display: block;
+}
+
+/* Match dropdown content style with other menu dropdowns */
+.user-profile .dropdown-content a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px !important;
+    color: #333333 !important;
+    margin-top: 1px;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.user-profile .dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.user-profile .dropdown-content a:hover {
+    background-color: #f0f0f0 !important;
+    color: #4285f4 !important;
+}
+
+.auth-buttons.hidden {
+    display: none !important;
+}

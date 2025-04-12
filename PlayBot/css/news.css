@@ -1,0 +1,354 @@
+/* Match the header styling from other pages */
+.school__area {
+    height: 250px;
+    background-color: #f7eaa0; 
+    padding: 50px 0; 
+    text-align: center; 
+}
+
+.school__title--2 {
+    margin-bottom: 20px; 
+}
+
+.school__title--2 h2::after {
+    content: ""; 
+    display: block; 
+    width: 80px; 
+    height: 4px; 
+    background-color: #333333; 
+    margin: 0 auto; 
+    border-radius: 2px; 
+    margin-top: 10px; 
+}
+
+.title__line {
+    font-size: 50px; 
+    color: #333333; 
+    margin-bottom: 20px; 
+    margin-top: 80px;
+}
+
+.school__area p {
+    font-size: 20px; 
+    color: #666; 
+    line-height: 1.5; 
+    margin-bottom: 20px; 
+}
+
+.school-row {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+}
+
+/* News specific styling */
+.news-section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+/* Horizontal album layout */
+.news-album-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.news-album {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    width: 100%;
+}
+
+.news-album::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.news-card {
+    flex: 0 0 300px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    border-top: 4px solid #6a8dc6;
+    margin-bottom: 10px;
+    height: 260px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.news-date {
+    color: #000000;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.news-card h3 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.news-card p {
+    color: #666;
+    line-height: 1.5;
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+.news-read-more {
+    color: #2d96ff;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: auto;
+    transition: color 0.3s;
+}
+
+.news-read-more:hover {
+    color: #333;
+}
+
+.news-read-more:after {
+    content: "→";
+    margin-left: 5px;
+    transition: transform 0.3s;
+}
+
+.news-read-more:hover:after {
+    transform: translateX(3px);
+}
+
+/* Scroll buttons */
+.scroll-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    z-index: 5;
+    transition: background 0.3s;
+}
+
+.scroll-button:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.scroll-button.left {
+    left: -15px;
+}
+
+.scroll-button.right {
+    right: -15px;
+}
+
+.scroll-button i {
+    font-weight: bold;
+    color: #666;
+}
+
+/* Scroll indicators */
+.scroll-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.scroll-dot {
+    width: 8px;
+    height: 8px;
+    background: #ddd;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.scroll-dot.active {
+    background: #000000;
+}
+
+/* Responsive styling */
+@media screen and (max-width: 768px) {
+    .news-card {
+        flex: 0 0 250px;
+    }
+    
+    .scroll-button {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .title__line {
+        font-size: 40px;
+        margin-top: 60px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .news-card {
+        flex: 0 0 220px;
+        height: 280px;
+    }
+    
+    .news-section-title {
+        font-size: 28px;
+    }
+    
+    .title__line {
+        font-size: 32px;
+        margin-top: 50px;
+    }
+}
+
+/* Scroll to top button */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.scroll-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top-btn:hover {
+    background-color: #4285f4;
+}
+
+.scroll-top-btn .arrow-up {
+    font-size: 18px;
+}
+
+.resource__school__area {
+    background-color: #ffffff; 
+    padding: 50px 0 80px; /* Increased bottom padding to 80px */
+    margin-bottom: 30px; /* Additional margin below the section */
+}
+
+/* Profile Section */
+
+/* User profile styles for logged in state */
+.user-profile {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 15px;
+    display: none; /* Hidden by default */
+}
+
+.user-profile.visible {
+    display: inline-block;
+}
+
+/* Style to match other nav items */
+.profile-btn {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    height: 80px; /* Match the height of main menu items */
+    line-height: 60px; /* Exact match with your other menu items */
+    display: block;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif; /* Match font family with other menu items */
+    text-transform: uppercase;
+    padding: 0 15px;
+}
+
+.profile-btn:hover {
+    color: #4285f4;
+}
+
+.profile-btn::after {
+    content: "▼";
+    font-size: 8px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.user-profile .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 0px; /* Match other dropdowns */
+    right: 0;
+    top: 80px; /* Align with bottom of navbar */
+    padding: 0; /* Remove padding */
+}
+
+.user-profile:hover .dropdown-content {
+    display: block;
+}
+
+/* Match dropdown content style with other menu dropdowns */
+.user-profile .dropdown-content a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px !important;
+    color: #333333 !important;
+    margin-top: 1px;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.user-profile .dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.user-profile .dropdown-content a:hover {
+    background-color: #f0f0f0 !important;
+    color: #4285f4 !important;
+}
+
+.auth-buttons.hidden {
+    display: none !important;
+}

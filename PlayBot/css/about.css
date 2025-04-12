@@ -1,0 +1,312 @@
+.about__us__area {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+}
+
+.section__title--2 {
+    margin-bottom: 50px;
+}
+
+.section__title--2 .title__line {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.language-content {
+    text-align: left;
+    font-size: 1.1em;
+    color: #666;
+}
+
+.language-content p {
+    margin-bottom: 15px;
+}
+
+.language-content ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.language-content ul li {
+    margin-bottom: 10px;
+}
+
+.footer__area {
+    background-color: #333;
+    color: #fff;
+    padding: 50px 0;
+}
+
+.footer__content {
+    text-align: center;
+}
+
+.footer-logo-img {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+.footer__menu {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.footer__menu li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.footer__menu li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer__contact {
+    margin-bottom: 20px;
+}
+
+.footer__contact .university,
+.footer__contact .department,
+.footer__contact .address,
+.footer__contact .email {
+    margin-bottom: 10px;
+}
+
+.footer__contact .email a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer__copyright {
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: none;
+}
+
+.scroll-top-btn.show {
+    display: flex;
+}
+
+.scroll-top-btn .arrow-up {
+    font-size: 1.5em;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f7eaa0;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Utility Classes */
+.bg__white {
+    background-color: #ffffff;
+}
+
+.ptb--100 {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/* Container & Grid */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.school-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -15px;
+}
+
+.col-xs-12 {
+    width: 100%;
+    padding: 0 15px;
+}
+
+/* About Us Area (Using existing school__area class) */
+.school__area {
+    background-color: #f7eaa0;
+    text-align: center;
+    /* Remove fixed height so content drives the area */
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.school__title::after h2 {
+    font-size: 50px;
+    color: #333333;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+/* Title Section */
+.school__title--2 {
+    margin-bottom: 20px;
+}
+
+.title__line {
+    font-size: 50px;
+    color: #333333;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+/* Paragraphs in the About Us Area */
+.school__area p {
+    font-size: 20px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Language Content (if you use multi-language sections) */
+.language-content .lang-content {
+    animation: fadeIn 1s ease-in-out;
+
+}
+
+/* Ensure the flex row is centered vertically */
+.school-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -15px;
+}
+
+/* Adjust the logo image container to align with text */
+.resource__school__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* You can adjust the flex-basis to control the image area width */
+    flex: 0 0 auto;
+    margin: 20px;
+}
+
+/* Scale the logo image */
+.resource__school__image img {
+    max-width: 200px; /* Adjust as needed for scaling */
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Optional: Adjust the text container if needed */
+.resource__school__text {
+    flex: 1;
+    margin-right: 50px;
+}
+
+/* Profile Section */
+
+/* User profile styles for logged in state */
+.user-profile {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 15px;
+    display: none; /* Hidden by default */
+}
+
+.user-profile.visible {
+    display: inline-block;
+}
+
+/* Style to match other nav items */
+.profile-btn {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    height: 80px; /* Match the height of main menu items */
+    line-height: 60px; /* Exact match with your other menu items */
+    display: block;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif; /* Match font family with other menu items */
+    text-transform: uppercase;
+    padding: 0 15px;
+}
+
+.profile-btn:hover {
+    color: #4285f4;
+}
+
+.profile-btn::after {
+    content: "▼";
+    font-size: 8px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.user-profile .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 0px; /* Match other dropdowns */
+    right: 0;
+    top: 80px; /* Align with bottom of navbar */
+    padding: 0; /* Remove padding */
+}
+
+.user-profile:hover .dropdown-content {
+    display: block;
+}
+
+/* Match dropdown content style with other menu dropdowns */
+.user-profile .dropdown-content a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px !important;
+    color: #333333 !important;
+    margin-top: 1px;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+
+.user-profile .dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.user-profile .dropdown-content a:hover {
+    background-color: #f0f0f0 !important;
+    color: #4285f4 !important;
+}
+
+.auth-buttons.hidden {
+    display: none !important;
+}

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - PlayBot Curriculum</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <!-- Body main wrapper start -->
+    <div class="wrapper">
+        <!-- Start Header Style -->
+        <header id="header" class="header__area header--one">
+            <!-- Start Mainmenu Area -->
+            <div id="sticky-header-with-topbar" class="header__area">
+                <div class="container">
+                    <div class="row">
+                        <div class="menumenu__container clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <div class="logo">
+                                    <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                            class="header-logo"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                                <nav class="main__menu__nav hidden-xs hidden-sm">
+                                    <ul class="main__menu">
+                                        <li><a href="Home.html">Home</a></li>
+                                        <li class="dropdown">
+                                            <a href="About us.html">About us</a>
+                                            <div class="dropdown-content">
+                                                <a href="Team.html">Team</a>
+                                                <a href="Course.html">Course</a>
+                                                <a href="Achievement.html">Achievement</a>
+                                                <a href="News.html">News</a>
+                                                <a href="Global Impact.html">Global Impact</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>School & Teacher</a>
+                                            <div class="dropdown-content">
+                                                <a href="School.html">School</a>
+                                                <a href="Teacher.html">Teacher</a>
+                                                <a href="Platform.html">Platform</a>
+                                                <a href="Scourse.html">Scourse</a>
+                                                <a href="Community.html">Community</a>
+                                            </div>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a>Family</a>
+                                            <div class="dropdown-content">
+                                                <a href="Student.html">Student</a>
+                                                <a href="Parent.html">Parent</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <div class="language-selector">
+                                    <button id="en-btn" class="lang-btn active"
+                                        onclick="switchLanguage('en')">EN</button>
+                                    <span class="lang-divider">|</span>
+                                    <button id="zh-btn" class="lang-btn" onclick="switchLanguage('zh')">中文</button>
+                                </div>
+
+                                <div id="user-profile" class="user-profile visible">
+                                    <a class="profile-btn" href="#">
+                                        <span id="user-name">Admin</span>
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <a href="Admin-Dashboard.html">Dashboard</a>
+                                        <a href="#" onclick="handleLogout()">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Mainmenu Area -->
+        </header>
+        <!-- End Header Area -->
+
+        <div class="dashboard admin-dashboard">
+            <div class="dashboard__container">
+                <div class="dashboard__welcome">
+                    <h1>Admin Dashboard</h1>
+                    <p>Manage website content, upload materials for teachers and parents, and edit news articles.</p>
+                </div>
+
+                <div class="admin-nav">
+                    <button class="admin-nav-btn active" data-section="materials">
+                        <i class="fas fa-file-upload"></i> Materials Management
+                    </button>
+                    <button class="admin-nav-btn" data-section="news">
+                        <i class="fas fa-newspaper"></i> News Management
+                    </button>
+                    <button class="admin-nav-btn" data-section="users">
+                        <i class="fas fa-users"></i> User Management
+                    </button>
+                    <button class="admin-nav-btn" data-section="analytics">
+                        <i class="fas fa-chart-line"></i> Analytics
+                    </button>
+                </div>
+
+                <!-- Materials Management Section -->
+                <div id="materials-section" class="admin-section active">
+                    <h2><i class="fas fa-file-upload"></i> Materials Management</h2>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Upload Learning Materials</h3>
+                        </div>
+                        <div class="admin-card-content">
+                            <form id="material-upload-form" class="admin-form">
+                                <div class="form-group">
+                                    <label for="material-title">Title</label>
+                                    <input type="text" id="material-title" placeholder="Enter material title" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="material-description">Description</label>
+                                    <textarea id="material-description" placeholder="Enter material description" rows="3" required></textarea>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group half">
+                                        <label for="material-category">Category</label>
+                                        <select id="material-category" required>
+                                            <option value="">Select category</option>
+                                            <option value="lesson">Lesson Materials</option>
+                                            <option value="worksheet">Printable Worksheets</option>
+                                            <option value="game">Learning Games</option>
+                                            <option value="reference">Teacher References</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group half">
+                                        <label for="material-audience">Audience</label>
+                                        <select id="material-audience" required>
+                                            <option value="">Select audience</option>
+                                            <option value="teachers">Teachers Only</option>
+                                            <option value="parents">Parents Only</option>
+                                            <option value="both">Both Teachers & Parents</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="material-file">Material File (PDF, DOCX, PPT, ZIP)</label>
+                                    <div class="file-upload-container">
+                                        <input type="file" id="material-file" accept=".pdf,.docx,.ppt,.pptx,.zip" required>
+                                        <label for="material-file" class="file-upload-btn">
+                                            <i class="fas fa-cloud-upload-alt"></i> Choose File
+                                        </label>
+                                        <span class="file-name">No file chosen</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="admin-btn primary">
+                                        <i class="fas fa-upload"></i> Upload Material
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Manage Existing Materials</h3>
+                            <div class="admin-card-actions">
+                                <input type="text" placeholder="Search materials..." class="admin-search">
+                                <select class="admin-filter">
+                                    <option value="all">All Categories</option>
+                                    <option value="lesson">Lesson Materials</option>
+                                    <option value="worksheet">Worksheets</option>
+                                    <option value="game">Games</option>
+                                    <option value="reference">References</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="admin-card-content">
+                            <div class="admin-table-container">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th>Audience</th>
+                                            <th>Date Added</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Introduction to PlayBot Programming</td>
+                                            <td>Lesson Materials</td>
+                                            <td>Both</td>
+                                            <td>April 10, 2025</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
+                                                    <button class="icon-btn delete"><i class="fas fa-trash-alt"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sequencing Practice Sheets</td>
+                                            <td>Printable Worksheets</td>
+                                            <td>Parents</td>
+                                            <td>April 8, 2025</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
+                                                    <button class="icon-btn delete"><i class="fas fa-trash-alt"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lesson Plan: Introduction to Loops</td>
+                                            <td>Teacher References</td>
+                                            <td>Teachers</td>
+                                            <td>April 6, 2025</td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
+                                                    <button class="icon-btn delete"><i class="fas fa-trash-alt"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Management Section -->
+                <div id="news-section" class="admin-section">
+                    <h2><i class="fas fa-newspaper"></i> News Management</h2>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Create/Edit News Article</h3>
+                        </div>
+                        <div class="admin-card-content">
+                            <form id="news-form" class="admin-form">
+                                <div class="form-group">
+                                    <label for="news-title">News Title</label>
+                                    <input type="text" id="news-title" placeholder="Enter news title" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="news-summary">Summary/Preview</label>
+                                    <textarea id="news-summary" placeholder="Enter short summary (displayed in news list)" rows="2" required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="news-content">Content</label>
+                                    <textarea id="news-content" class="rich-editor" placeholder="Enter full news content" rows="10" required></textarea>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group half">
+                                        <label for="news-category">Category</label>
+                                        <select id="news-category" required>
+                                            <option value="">Select category</option>
+                                            <option value="event">Event</option>
+                                            <option value="update">Product Update</option>
+                                            <option value="announcement">Announcement</option>
+                                            <option value="research">Research</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group half">
+                                        <label for="news-date">Publication Date</label>
+                                        <input type="date" id="news-date" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="news-image">Featured Image</label>
+                                    <div class="file-upload-container">
+                                        <input type="file" id="news-image" accept="image/*">
+                                        <label for="news-image" class="file-upload-btn">
+                                            <i class="fas fa-cloud-upload-alt"></i> Choose Image
+                                        </label>
+                                        <span class="file-name">No file chosen</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="admin-btn primary">
+                                        <i class="fas fa-save"></i> Save News Article
+                                    </button>
+                                    <button type="button" class="admin-btn secondary">
+                                        <i class="fas fa-eye"></i> Preview
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Manage News Articles</h3>
+                            <div class="admin-card-actions">
+                                <input type="text" placeholder="Search news..." class="admin-search">
+                                <select class="admin-filter">
+                                    <option value="all">All Categories</option>
+                                    <option value="event">Events</option>
+                                    <option value="update">Product Updates</option>
+                                    <option value="announcement">Announcements</option>
+                                    <option value="research">Research</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="admin-card-content">
+                            <div class="admin-table-container">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th>Publication Date</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>PlayBot Wins Educational Technology Award</td>
+                                            <td>Announcement</td>
+                                            <td>April 10, 2025</td>
+                                            <td><span class="status published">Published</span></td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
+                                                    <button class="icon-btn delete"><i class="fas fa-trash-alt"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>New PlayBot Features Coming Soon</td>
+                                            <td>Product Update</td>
+                                            <td>April 15, 2025</td>
+                                            <td><span class="status draft">Draft</span></td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
+                                                    <button class="icon-btn delete"><i class="fas fa-trash-alt"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>PlayBot Workshop Registration Open</td>
+                                            <td>Event</td>
+                                            <td>April 5, 2025</td>
+                                            <td><span class="status published">Published</span></td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
+                                                    <button class="icon-btn delete"><i class="fas fa-trash-alt"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Management Section -->
+                <div id="users-section" class="admin-section">
+                    <h2><i class="fas fa-users"></i> User Management</h2>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Manage Users</h3>
+                            <div class="admin-card-actions">
+                                <input type="text" placeholder="Search users..." class="admin-search">
+                                <select class="admin-filter">
+                                    <option value="all">All Roles</option>
+                                    <option value="teacher">Teachers</option>
+                                    <option value="parent">Parents</option>
+                                    <option value="admin">Admins</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="admin-card-content">
+                            <div class="admin-table-container">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Sarah Wong</td>
+                                            <td>sarah.wong@example.com</td>
+                                            <td>Teacher</td>
+                                            <td><span class="status active">Active</span></td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
+                                                    <button class="icon-btn block"><i class="fas fa-ban"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Michael Chen</td>
+                                            <td>michael.chen@example.com</td>
+                                            <td>Parent</td>
+                                            <td><span class="status active">Active</span></td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
+                                                    <button class="icon-btn block"><i class="fas fa-ban"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Admin User</td>
+                                            <td>admin@playbot.com</td>
+                                            <td>Admin</td>
+                                            <td><span class="status active">Active</span></td>
+                                            <td>
+                                                <div class="table-actions">
+                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
+                                                    <button class="icon-btn block" disabled><i class="fas fa-ban"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Section -->
+                <div id="analytics-section" class="admin-section">
+                    <h2><i class="fas fa-chart-line"></i> Analytics</h2>
+                    
+                    <div class="analytics-overview">
+                        <div class="analytics-card">
+                            <div class="analytics-value">126</div>
+                            <div class="analytics-label">Active Users</div>
+                            <div class="analytics-trend positive">
+                                <i class="fas fa-arrow-up"></i> 12% this month
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <div class="analytics-value">284</div>
+                            <div class="analytics-label">Material Downloads</div>
+                            <div class="analytics-trend positive">
+                                <i class="fas fa-arrow-up"></i> 8% this month
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <div class="analytics-value">18</div>
+                            <div class="analytics-label">News Articles</div>
+                            <div class="analytics-trend neutral">
+                                <i class="fas fa-minus"></i> No change
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <div class="analytics-value">42</div>
+                            <div class="analytics-label">New Registrations</div>
+                            <div class="analytics-trend positive">
+                                <i class="fas fa-arrow-up"></i> 15% this month
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Usage Statistics</h3>
+                        </div>
+                        <div class="admin-card-content">
+                            <div class="chart-container">
+                                <div class="chart-placeholder">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <p>Interactive charts would be displayed here</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Footer Area -->
+        <footer class="footer__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="footer__content text-center">
+                            <div class="footer-logo">
+                                <a href="Home.html"><img src="images/logo.png" alt="PlayBot logo"
+                                        class="footer-logo-img"></a>
+                            </div>
+                            <ul class="footer__menu">
+                                <li><a href="Home.html">Home</a></li>
+                                <li><a href="About us.html">About us</a></li>
+                                <li><a>School & Teacher</a></li>
+                                <li><a href="Family.html">Family</a></li>
+                            </ul>
+
+                            <div class="footer__contact">
+                                <div class="university">The Education University of Hong Kong</div>
+                                <div class="department">Department of Early Childhood Education</div>
+                                <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
+                                <div class="email">Email: <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></div>
+                            </div>
+
+                            <div class="footer__copyright">
+                                <p>&copy; 2024 The Education University of Hong Kong</p>
+                                <p class="rights">All rights reserved. No part of this publication may be reproduced,
+                                    stored in a retrieval system or transmitted in any form
+                                    or by any means, electronic, mechanical, photocopying, recording or otherwise,
+                                    without the written permission of the
+                                    publisher.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer Area -->
+    </div>
+
+    <!-- All js files are included here. -->
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if user is logged in as admin
+            if (!isAdminUser()) {
+                window.location.href = 'Login.html';
+                return;
+            }
+
+            // Show file name when file is selected
+            const fileInputs = document.querySelectorAll('input[type="file"]');
+            fileInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    const fileNameSpan = this.parentElement.querySelector('.file-name');
+                    if (this.files.length > 0) {
+                        fileNameSpan.textContent = this.files[0].name;
+                    } else {
+                        fileNameSpan.textContent = 'No file chosen';
+                    }
+                });
+            });
+
+            // Admin section navigation
+            const navButtons = document.querySelectorAll('.admin-nav-btn');
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons and sections
+                    navButtons.forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding section
+                    this.classList.add('active');
+                    const sectionId = this.getAttribute('data-section') + '-section';
+                    document.getElementById(sectionId).classList.add('active');
+                });
+            });
+
+            // Handle form submissions
+            const materialForm = document.getElementById('material-upload-form');
+            if (materialForm) {
+                materialForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Demo code - in production would send to server
+                    alert('Material uploaded successfully!');
+                    this.reset();
+                    document.querySelectorAll('.file-name').forEach(span => {
+                        span.textContent = 'No file chosen';
+                    });
+                });
+            }
+
+            const newsForm = document.getElementById('news-form');
+            if (newsForm) {
+                newsForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Demo code - in production would send to server
+                    alert('News article saved successfully!');
+                    this.reset();
+                    document.querySelectorAll('.file-name').forEach(span => {
+                        span.textContent = 'No file chosen';
+                    });
+                });
+            }
+        });
+
+        // Check if the current user is an admin
+        function isAdminUser() {
+            // In a real application, this would check against your authentication system
+            const currentUser = getCurrentUser();
+            return currentUser && currentUser.role === 'admin';
+        }
+
+        // For demo purposes, simulate getting current user
+        function getCurrentUser() {
+            // In a real app, this would get user data from localStorage, cookies, or a server session
+            return {
+                firstName: 'Admin',
+                lastName: 'User',
+                email: 'admin@playbot.com',
+                role: 'admin'
+            };
+        }
+
+        function handleLogout() {
+            // In a real app, this would clear authentication tokens/cookies
+            alert('Admin logged out');
+            window.location.href = 'Login.html';
+        }
+    </script>
+</body>
+</html>
