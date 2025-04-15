@@ -2,6 +2,23 @@
   publish = "PlayBot"
   command = ""
 
+# Asset redirects
+[[redirects]]
+  from = "/images/*"
+  to = "/images/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/js/*"
+  to = "/js/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/css/*"
+  to = "/css/:splat"
+  status = 200
+
+# HTML page redirect
 [[redirects]]
   from = "/*"
   to = "/index.html"
