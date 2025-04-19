@@ -4,7 +4,7 @@ body, h2, p, ul, li {
 }
 
 .Teacher__area{
-    background-color: #f0c1d8;
+    background-color: #fbdca2;
     height: 300px;
 }
 
@@ -27,33 +27,54 @@ body, h2, p, ul, li {
     margin-bottom: 20px; 
 }
 
-.Teacher-training-a__area {
-    background-color: #fcf8e9; 
-    padding: 40px 20px; 
-    font-family: 'Roboto', sans-serif; 
-}
-.Teacher-training-b__area {
-    background-color: #e7fde4; 
-    padding: 40px 20px; 
-    font-family: 'Roboto', sans-serif; 
-}
-.Teacher-training-c__area {
-    background-color: #def3fc; 
-    padding: 40px 20px; 
-    font-family: 'Roboto', sans-serif; 
-}
-.Teacher-training-d__area {
-    background-color: #f6e5f8; 
-    padding: 40px 20px; 
-    font-family: 'Roboto', sans-serif; 
+.Teacher-training__area {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
 }
 
-.Teacher-training__area h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
+.Teacher-training-table {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
+
+.Teacher-training-ser {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 500px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.Teacher-training-ser h2 {
+    background-color: #fbdca2;
+    color: #fff;
+    padding: 10px;
+    margin: -20px -20px 20px -20px;
+    border-radius: 5px 5px 0 0;
+}
+
+.Teacher-training-ser-details {
+    margin-top: 20px;
+}
+
+.Teacher-training-ser-item {
+    margin-bottom: 20px;
+}
+
+.Teacher-training-ser-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.Teacher-training-ser-item p {
+    font-size: 1.2em;
+    color: #b56a5b;
+}
+
 
 .Teacher-training__area p {
     font-size: 16px;
@@ -93,7 +114,7 @@ body, h2, p, ul, li {
 }
 
 .team-members {
-    background-color: #f8f4e6; 
+    background-color: #fbdca2; 
     padding: 40px; 
     text-align: center; 
 }
