@@ -55,9 +55,9 @@ body {
 }
 
 .header-logo {
-  max-height: 100px;
+  max-height: 40px;
   width: auto;
-  margin-top: 0px;
+  margin-top: -20px;
 }
 
 /* Adjust header layout */
