@@ -329,3 +329,54 @@ function isAdminUser() {
 
 // Call updateAuthUI when the DOM is loaded
 document.addEventListener('DOMContentLoaded', updateAuthUI);
+
+// Add this code to the Login.html page or update the existing login form submission handler:
+
+document.addEventListener('DOMContentLoaded', function () {
+    const loginForm = document.getElementById('loginForm');
+    
+    if (loginForm) {
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const role = document.querySelector('input[name="role"]:checked')?.value || 'teacher'; // Default to teacher if no selection
+            const remember = document.getElementById('remember')?.checked || false;
+            
+            // Show loading indicator
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalBtnText = submitBtn ? submitBtn.textContent : 'Login';
+            
+            // Check if submitBtn exists before modifying it
+            if (submitBtn) {
+                submitBtn.textContent = 'Logging in...';
+                submitBtn.disabled = true;
+            }
+            
+            loginUser(email, password, role, remember)
+                .then(userData => {
+                    console.log('Login successful:', userData);
+                    
+                    // Redirect based on role
+                    if (userData.role === 'admin') {
+                        window.location.href = 'Admin-Dashboard.html';
+                    } else if (userData.role === 'teacher') {
+                        window.location.href = 'Teacher-Dashboard.html';
+                    } else {
+                        window.location.href = 'Parent-Dashboard.html';
+                    }
+                })
+                .catch(error => {
+                    console.error('Login error:', error);
+                    alert(error.message || 'Login failed. Please try again.');
+                    
+                    // Reset button if it exists
+                    if (submitBtn) {
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                    }
+                });
+        });
+    }
+});
