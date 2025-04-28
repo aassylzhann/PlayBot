@@ -426,3 +426,58 @@
         width: 100%;
     }
 }
+
+.netlify-login-container,
+.netlify-signup-container {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.login-with-netlify,
+.signup-with-netlify {
+    background-color: #00ad9f;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+    max-width: 300px;
+    transition: background-color 0.3s;
+}
+
+.login-with-netlify:hover,
+.signup-with-netlify:hover {
+    background-color: #008f85;
+}
+
+.login-separator,
+.signup-separator {
+    position: relative;
+    text-align: center;
+    margin: 20px 0;
+    color: #666;
+}
+
+.login-separator:before,
+.signup-separator:before,
+.login-separator:after,
+.signup-separator:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #ddd;
+}
+
+.login-separator:before,
+.signup-separator:before {
+    left: 0;
+}
+
+.login-separator:after,
+.signup-separator:after {
+    right: 0;
+}
