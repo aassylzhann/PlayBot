@@ -1,3 +1,12 @@
+// Add this near the top of the file
+
+// Set up Firebase Auth state observer
+fbAuth.onAuthStateChanged(function(user) {
+    // Call updateAuthUI() whenever auth state changes
+    console.log("Firebase Auth state changed:", user ? "User logged in" : "User logged out");
+    updateAuthUI();
+});
+
 /**
  * Handles user login authentication
  * @param {string} email - User's email address
@@ -316,7 +325,7 @@ function updateAuthUI() {
                     // Common links for all users
                     dropdownContent.innerHTML += `
                         <a href="Profile.html">My Profile</a>
-                        <a href="#" onclick="handleLogout()">Logout</a>
+                        <a href="javascript:void(0)" onclick="handleLogout(); return false;">Logout</a>
                     `;
                 }
             }
@@ -405,7 +414,12 @@ function isAdminUser() {
 
 // Handle the logout function
 function handleLogout() {
-    logoutUser();
+    return logoutUser().then(() => {
+        window.location.href = 'Home.html';
+    }).catch(error => {
+        console.error("Logout error:", error);
+        alert("Error logging out. Please try again.");
+    });
 }
 
 // Call updateAuthUI when the DOM is loaded
