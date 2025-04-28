@@ -72,8 +72,11 @@ function loginUser(email, password, role, remember) {
  * Handles user logout
  */
 function logoutUser() {
-    netlifyIdentity.logout();
-    localStorage.removeItem('user');
+    localStorage.removeItem('currentUserEmail');
+    localStorage.removeItem('currentUserRole');
+    localStorage.setItem('isLoggedIn', 'false');
+    
+    // Redirect to home page
     window.location.href = 'Home.html';
 }
 
@@ -82,7 +85,7 @@ function logoutUser() {
  * @returns {boolean} Whether the user is logged in
  */
 function isUserLoggedIn() {
-    return netlifyIdentity.currentUser() !== null;
+    return localStorage.getItem('isLoggedIn') === 'true';
 }
 
 /**
@@ -92,13 +95,12 @@ function isUserLoggedIn() {
 function getCurrentUser() {
     if (!isUserLoggedIn()) return null;
     
-    const netUser = netlifyIdentity.currentUser();
-    
-    // Format user data
+    const email = localStorage.getItem('currentUserEmail');
     return {
-        email: netUser.email,
-        name: netUser.user_metadata.full_name || netUser.email.split('@')[0],
-        role: netUser.app_metadata.roles ? netUser.app_metadata.roles[0] : 'student'
+        email: email,
+        firstName: localStorage.getItem('userFirstName_' + email),
+        lastName: localStorage.getItem('userLastName_' + email),
+        role: localStorage.getItem('currentUserRole')
     };
 }
 
@@ -223,51 +225,48 @@ function checkLoginStatus() {
  * Updates UI for logged in or logged out state
  */
 function updateAuthUI() {
+    const isLoggedIn = isUserLoggedIn();
     const authButtons = document.querySelector('.auth-buttons');
-    const userProfile = document.querySelector('#user-profile');
+    const userProfile = document.getElementById('user-profile');
     
-    if (isUserLoggedIn()) {
-        // Hide auth buttons and show user profile
-        if (authButtons) authButtons.classList.add('hidden');
-        if (userProfile) {
-            const user = getCurrentUser();
-            userProfile.classList.remove('hidden');
+    if (isLoggedIn) {
+        // Hide auth buttons, show user profile
+        authButtons?.classList.add('hidden');
+        userProfile?.classList.add('visible');
+        
+        // Update user name
+        const currentUser = getCurrentUser();
+        if (currentUser && userProfile) {
+            const userNameSpan = userProfile.querySelector('#user-name');
+            if (userNameSpan) {
+                userNameSpan.textContent = currentUser.firstName || 'User';
+            }
             
-            // Update user name display
-            const userNameEl = userProfile.querySelector('#user-name');
-            if (userNameEl) userNameEl.textContent = user.name;
-            
-            // Update dropdown content
+            // Update dropdown content based on user role
             const dropdownContent = userProfile.querySelector('.dropdown-content');
             if (dropdownContent) {
-                // Clear existing content
-                dropdownContent.innerHTML = '';
+                dropdownContent.innerHTML = ''; // Clear existing content
                 
-                // Add appropriate dashboard link based on role
-                switch(user.role) {
-                    case 'admin':
-                        dropdownContent.innerHTML += '<a href="Admin-Dashboard.html">Admin Dashboard</a>';
-                        break;
-                    case 'teacher':
-                        dropdownContent.innerHTML += '<a href="Teacher-Dashboard.html">Teacher Dashboard</a>';
-                        break;
-                    case 'parent':
-                        dropdownContent.innerHTML += '<a href="Parent-Dashboard.html">Parent Dashboard</a>';
-                        break;
+                // Add links based on user role
+                if (currentUser.role === 'admin') {
+                    dropdownContent.innerHTML += `<a href="Admin-Dashboard.html">Admin Dashboard</a>`;
+                } else if (currentUser.role === 'teacher') {
+                    dropdownContent.innerHTML += `<a href="Teacher-Dashboard.html">Teacher Dashboard</a>`;
+                } else if (currentUser.role === 'parent') {
+                    dropdownContent.innerHTML += `<a href="Parent-Dashboard.html">Parent Dashboard</a>`;
                 }
                 
-                // Add common links
+                // Common links for all users
                 dropdownContent.innerHTML += `
-                    <a href="Profile.html">Profile</a>
-                    <a href="Change-Password.html">Change Password</a>
-                    <a href="#" onclick="logoutUser(); return false;">Logout</a>
+                    <a href="Profile.html">My Profile</a>
+                    <a href="#" onclick="handleLogout()">Logout</a>
                 `;
             }
         }
     } else {
-        // Show auth buttons and hide user profile
-        if (authButtons) authButtons.classList.remove('hidden');
-        if (userProfile) userProfile.classList.add('hidden');
+        // Show auth buttons, hide user profile
+        authButtons?.classList.remove('hidden');
+        userProfile?.classList.remove('visible');
     }
 }
 
@@ -323,25 +322,5 @@ function isAdminUser() {
     return currentUser && currentUser.role === 'admin';
 }
 
-// Setup Netlify Identity events
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof netlifyIdentity !== 'undefined') {
-        netlifyIdentity.on('login', user => {
-            // Update localStorage
-            const userData = {
-                email: user.email,
-                name: user.user_metadata.full_name || user.email.split('@')[0],
-                role: user.app_metadata.roles ? user.app_metadata.roles[0] : 'student'
-            };
-            localStorage.setItem('user', JSON.stringify(userData));
-            
-            // Update UI
-            updateAuthUI();
-        });
-        
-        netlifyIdentity.on('logout', () => {
-            localStorage.removeItem('user');
-            updateAuthUI();
-        });
-    }
-});
+// Call updateAuthUI when the DOM is loaded
+document.addEventListener('DOMContentLoaded', updateAuthUI);
