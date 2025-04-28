@@ -1,39 +1,99 @@
-// Language switcher function
-function switchLanguage(lang) {
-    // Update active button
-    document.getElementById('en-btn').classList.toggle('active', lang === 'en');
-    document.getElementById('zh-btn').classList.toggle('active', lang === 'zh');
+// Fix scroll handling and event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize scroll handling
+    window.addEventListener('scroll', handleScroll);
     
-    // Switch content with data-lang attribute
-    const langContents = document.querySelectorAll('.lang-content');
-    langContents.forEach(content => {
-        if (content.getAttribute('data-lang') === lang) {
-            content.style.display = 'block';
+    // Fix for scroll-to-top button
+    const scrollTopBtn = document.getElementById('scroll-top-btn');
+    if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Initialize any other components
+    initializeComponents();
+});
+
+function handleScroll() {
+    const header = document.getElementById('header');
+    const scrollTopBtn = document.getElementById('scroll-top-btn');
+    
+    // Handle header sticky class
+    if (header) {
+        if (window.scrollY > 50) {
+            header.classList.add('sticky');
         } else {
-            content.style.display = 'none';
+            header.classList.remove('sticky');
+        }
+    }
+    
+    // Handle scroll-to-top button visibility
+    if (scrollTopBtn) {
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    }
+}
+
+function initializeComponents() {
+    // Add any component initialization here
+    console.log("Main components initialized");
+}
+
+// Language switching functionality
+function switchLanguage(lang) {
+    // Validate lang parameter
+    if (lang !== 'en' && lang !== 'zh') {
+        console.error('Invalid language code:', lang);
+        return;
+    }
+    
+    // Store language preference
+    localStorage.setItem('preferred_language', lang);
+    
+    // Update UI for language buttons
+    const enBtn = document.getElementById('en-btn');
+    const zhBtn = document.getElementById('zh-btn');
+    
+    if (enBtn && zhBtn) {
+        if (lang === 'en') {
+            enBtn.classList.add('active');
+            zhBtn.classList.remove('active');
+        } else {
+            enBtn.classList.remove('active');
+            zhBtn.classList.add('active');
+        }
+    }
+    
+    // Toggle language content sections
+    const contentSections = document.querySelectorAll('.lang-content');
+    contentSections.forEach(section => {
+        if (section.getAttribute('data-lang') === lang) {
+            section.style.display = 'block';
+        } else {
+            section.style.display = 'none';
         }
     });
     
-    // Switch headings with data-lang-en and data-lang-zh attributes
-    const langHeadings = document.querySelectorAll('[data-lang-en][data-lang-zh]');
-    langHeadings.forEach(heading => {
-        heading.textContent = heading.getAttribute(`data-lang-${lang}`);
-    });
-    
-    // Store language preference
-    localStorage.setItem('preferredLanguage', lang);
+    console.log('Language switched to:', lang);
 }
 
-// Load preferred language on page load
+// Check and apply stored language preference on load
 document.addEventListener('DOMContentLoaded', function() {
-    const savedLang = localStorage.getItem('preferredLanguage') || 'en';
-    switchLanguage(savedLang);
+    const storedLang = localStorage.getItem('preferred_language');
+    if (storedLang) {
+        switchLanguage(storedLang);
+    }
 });
 
-// Scroll to top function
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+// Make switchLanguage available globally
+window.switchLanguage = switchLanguage;
 
 // Scroll slide function
 let currentIndex = 0;
@@ -47,30 +107,6 @@ function scrollSlide(direction) {
     // Calculate the new transform value
     slides.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
 }
-
-// Fix the handleScroll function
-function handleScroll() {
-    const header = document.getElementById('header');
-    
-    // Check if header exists before trying to access its properties
-    if (header) {
-        if (window.scrollY > 50) {
-            header.classList.add('sticky');
-        } else {
-            header.classList.remove('sticky');
-        }
-    }
-}
-
-// Add event listener for scroll
-window.addEventListener('scroll', handleScroll);
-
-// Add click event to scroll button
-document.getElementById("scroll-top-btn").addEventListener("click", scrollToTop);
-
-// Add click event to slide buttons
-document.querySelector(".prev-btn").addEventListener("click", () => scrollSlide(-1));
-document.querySelector(".next-btn").addEventListener("click", () => scrollSlide(1));
 
 /**
  * Handle user logout from any page

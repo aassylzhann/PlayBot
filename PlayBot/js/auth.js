@@ -17,6 +17,167 @@ fbAuth.onAuthStateChanged(function(user) {
     }
 });
 
+// Auth state observer
+let currentUserData = null;
+
+// Check login status and get current user data
+function checkLoginStatus() {
+    return new Promise((resolve, reject) => {
+        try {
+            if (!window.fbAuth) {
+                console.error("Firebase Auth not initialized");
+                resolve({ isLoggedIn: false, currentUser: null });
+                return;
+            }
+            
+            fbAuth.onAuthStateChanged(user => {
+                if (user) {
+                    // User is signed in.
+                    fbDb.collection('users').doc(user.uid).get()
+                        .then(doc => {
+                            if (doc.exists) {
+                                currentUserData = doc.data();
+                                currentUserData.uid = user.uid;
+                                resolve({ isLoggedIn: true, currentUser: currentUserData });
+                            } else {
+                                // User record doesn't exist in Firestore
+                                resolve({ 
+                                    isLoggedIn: true, 
+                                    currentUser: { 
+                                        email: user.email,
+                                        uid: user.uid,
+                                        role: 'unknown'
+                                    } 
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error getting user data:", error);
+                            resolve({ 
+                                isLoggedIn: true, 
+                                currentUser: { 
+                                    email: user.email,
+                                    uid: user.uid,
+                                    role: 'unknown'
+                                } 
+                            });
+                        });
+                } else {
+                    // User is signed out.
+                    currentUserData = null;
+                    resolve({ isLoggedIn: false, currentUser: null });
+                }
+            }, error => {
+                console.error("Auth state observer error:", error);
+                reject(error);
+            });
+        } catch (error) {
+            console.error("Error in checkLoginStatus:", error);
+            resolve({ isLoggedIn: false, currentUser: null });
+        }
+    });
+}
+
+// Update UI based on authentication state
+function updateAuthUI(providedUser) {
+    try {
+        const authButtons = document.querySelector('.auth-buttons');
+        const userProfile = document.getElementById('user-profile');
+        
+        if (!authButtons || !userProfile) {
+            console.log("Auth UI elements not found on this page");
+            return;
+        }
+        
+        const getUserData = providedUser ? 
+            Promise.resolve(providedUser).then(user => {
+                if (!user) return { isLoggedIn: false, currentUser: null };
+                return getCurrentUser().then(currentUser => ({ isLoggedIn: true, currentUser }));
+            }) : 
+            checkLoginStatus();
+        
+        getUserData.then(({ isLoggedIn, currentUser }) => {
+            if (isLoggedIn && currentUser) {
+                // User is logged in
+                authButtons.style.display = 'none';
+                userProfile.style.display = 'block';
+                
+                // Set user name
+                const userNameElement = document.getElementById('user-name');
+                if (userNameElement) {
+                    userNameElement.textContent = currentUser.firstName || currentUser.email || 'User';
+                }
+                
+                // Populate dropdown menu
+                const dropdownContent = userProfile.querySelector('.dropdown-content');
+                if (dropdownContent) {
+                    let menuItems = '';
+                    
+                    // Add profile link
+                    menuItems += `<a href="Profile.html">My Profile</a>`;
+                    
+                    // Add role-specific links
+                    if (currentUser.role === 'admin' || currentUser.email === 'admin@playbot.com') {
+                        menuItems += `<a href="Admin-Dashboard.html">Admin Dashboard</a>`;
+                    } else if (currentUser.role === 'teacher') {
+                        menuItems += `<a href="Teacher-Dashboard.html">Teacher Dashboard</a>`;
+                    } else if (currentUser.role === 'parent') {
+                        menuItems += `<a href="Parent-Dashboard.html">Parent Dashboard</a>`;
+                    }
+                    
+                    // Add logout link
+                    menuItems += `<a href="#" id="logout-link">Log Out</a>`;
+                    
+                    dropdownContent.innerHTML = menuItems;
+                    
+                    // Add logout event handler
+                    const logoutLink = document.getElementById('logout-link');
+                    if (logoutLink) {
+                        logoutLink.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            handleLogout();
+                        });
+                    }
+                }
+                
+            } else {
+                // User is not logged in
+                authButtons.style.display = 'flex';
+                userProfile.style.display = 'none';
+            }
+        }).catch(error => {
+            console.error("Error updating auth UI:", error);
+            // Show login buttons as fallback
+            if (authButtons) authButtons.style.display = 'flex';
+            if (userProfile) userProfile.style.display = 'none';
+        });
+    } catch (error) {
+        console.error("Error in updateAuthUI:", error);
+    }
+}
+
+// Handle logout
+function handleLogout() {
+    if (!window.fbAuth) {
+        console.error("Firebase Auth not initialized");
+        return Promise.reject("Firebase Auth not initialized");
+    }
+    
+    return fbAuth.signOut()
+        .then(() => {
+            // Clear local storage
+            localStorage.removeItem('currentUserEmail');
+            localStorage.removeItem('currentUserRole');
+            
+            // Redirect to home page
+            window.location.href = 'Home.html';
+        })
+        .catch(error => {
+            console.error("Error signing out:", error);
+            alert("Error signing out. Please try again.");
+        });
+}
+
 /**
  * Handles user login authentication
  * @param {string} email - User's email address
@@ -26,6 +187,11 @@ fbAuth.onAuthStateChanged(function(user) {
  * @returns {Promise} - Resolves with user data or rejects with error
  */
 function loginUser(email, password, role, remember) {
+    if (!window.fbAuth) {
+        console.error("Firebase Auth not initialized");
+        return Promise.reject("Firebase Auth not initialized");
+    }
+    
     return new Promise((resolve, reject) => {
         // Simple validation
         if (!email || !password) {
@@ -192,6 +358,11 @@ function getCurrentUser() {
  * @returns {Promise} - Resolves when registration is complete or rejects with error
  */
 function registerUser(userData) {
+    if (!window.fbAuth) {
+        console.error("Firebase Auth not initialized");
+        return Promise.reject("Firebase Auth not initialized");
+    }
+    
     return new Promise((resolve, reject) => {
         // Basic validation
         if (!userData.email || !userData.password || !userData.firstName || !userData.lastName) {
@@ -522,3 +693,10 @@ function trackUserActivity(userId, description, type) {
     
     return fbDb.collection('activities').add(activity);
 }
+
+// Export functions
+window.checkLoginStatus = checkLoginStatus;
+window.updateAuthUI = updateAuthUI;
+window.handleLogout = handleLogout;
+window.loginUser = loginUser;
+window.registerUser = registerUser;

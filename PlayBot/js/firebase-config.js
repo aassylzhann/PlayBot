@@ -10,22 +10,22 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-if (typeof firebase !== 'undefined') {
-  try {
-    firebase.initializeApp(firebaseConfig);
-    console.log("Firebase initialized successfully");
-    
-    // Global Firebase shortcuts
-    const fbAuth = firebase.auth();
-    const fbDb = firebase.firestore();
-    
-    // Display a message if not configured with real values
-    if (firebaseConfig.apiKey.includes("Dummy")) {
-      console.warn("⚠️ Using placeholder Firebase configuration. Replace with actual values.");
-    }
-  } catch (error) {
-    console.error("Error initializing Firebase:", error);
+try {
+  firebase.initializeApp(firebaseConfig);
+  console.log("Firebase initialized successfully");
+  
+  // Define global variables for Firebase services
+  window.fbAuth = firebase.auth();
+  window.fbDb = firebase.firestore();
+  window.fbStorage = firebase.storage();
+  
+  if (firebaseConfig.apiKey.includes("Dummy")) {
+    console.warn("⚠️ Using placeholder Firebase configuration. Replace with actual values.");
   }
-} else {
-  console.error("Firebase SDK not loaded");
+} catch (error) {
+  console.error("Error initializing Firebase:", error);
+  // Provide fallback references to prevent errors
+  window.fbAuth = { signInWithEmailAndPassword: () => Promise.reject(new Error("Firebase not initialized")) };
+  window.fbDb = { collection: () => ({ get: () => Promise.reject(new Error("Firebase not initialized")) }) };
+  window.fbStorage = {};
 }

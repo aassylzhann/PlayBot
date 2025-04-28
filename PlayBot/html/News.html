@@ -41,7 +41,7 @@
                                             <a href="About-us.html">About us</a>
                                             <div class="dropdown-content">
                                                 <a href="Team.html">Team</a>
-                                                <a href="Course.html">Cirriculum</a>
+                                                <a href="Course.html">Curriculum</a>
                                                 <a href="Achievement.html">Achievement</a>
                                                 <a href="News.html">News</a>
                                                 <a href="Global Impact.html">Global Impact</a>
@@ -241,67 +241,6 @@
     </button>
 
     <!-- All js files are included here. -->
-    <script src="../js/main.js"></script>
-
-    <!-- All js files are included here. -->
-    <script src="../js/components.js"></script>
-    <script src="../js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Horizontal scrolling controls
-            const albums = document.querySelectorAll('.news-album');
-            const leftButtons = document.querySelectorAll('.scroll-button.left');
-            const rightButtons = document.querySelectorAll('.scroll-button.right');
-            const dots = document.querySelectorAll('.scroll-dot');
-
-            // Add event listeners to scroll buttons
-            leftButtons.forEach((leftBtn, index) => {
-                leftBtn.addEventListener('click', () => {
-                    albums[index].scrollBy({ left: -300, behavior: 'smooth' });
-                });
-            });
-
-            rightButtons.forEach((rightBtn, index) => {
-                rightBtn.addEventListener('click', () => {
-                    albums[index].scrollBy({ left: 300, behavior: 'smooth' });
-                });
-            });
-
-            // Update scroll indicators
-            albums.forEach((album) => {
-                album.addEventListener('scroll', () => {
-                    updateScrollIndicator(album);
-                });
-
-                // Initialize scroll indicators
-                setTimeout(() => {
-                    updateScrollIndicator(album);
-                }, 100);
-            });
-
-            function updateScrollIndicator(album) {
-                const scrollPosition = album.scrollLeft;
-                const maxScroll = album.scrollWidth - album.clientWidth;
-
-                // Get dots for this album
-                const albumContainer = album.closest('.news-album-container');
-                const indicatorContainer = albumContainer.nextElementSibling;
-                const dots = indicatorContainer.querySelectorAll('.scroll-dot');
-
-                // Calculate which dot should be active
-                let activeIndex = Math.floor((scrollPosition / maxScroll) * 3);
-                if (activeIndex > 2) activeIndex = 2;
-
-                // Update dots
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === activeIndex);
-                });
-            }
-        });
-    </script>
-    <!-- Add before closing body tag -->
-
-    <!-- All js files are included here. -->
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
@@ -313,11 +252,72 @@
     <script src="../js/components.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/auth.js"></script>
+
+    <!-- Additional script for this page -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Check login status and update UI
-            if (typeof updateAuthUI === 'function') {
-                updateAuthUI();
+            // Horizontal scrolling controls
+            const albums = document.querySelectorAll('.news-album');
+            if (albums.length > 0) {
+                const leftButtons = document.querySelectorAll('.scroll-button.left');
+                const rightButtons = document.querySelectorAll('.scroll-button.right');
+                
+                // Add event listeners to scroll buttons
+                leftButtons.forEach((leftBtn, index) => {
+                    if (leftBtn && albums[index]) {
+                        leftBtn.addEventListener('click', () => {
+                            albums[index].scrollBy({ left: -300, behavior: 'smooth' });
+                        });
+                    }
+                });
+                
+                rightButtons.forEach((rightBtn, index) => {
+                    if (rightBtn && albums[index]) {
+                        rightBtn.addEventListener('click', () => {
+                            albums[index].scrollBy({ left: 300, behavior: 'smooth' });
+                        });
+                    }
+                });
+                
+                // Update scroll indicators
+                albums.forEach((album) => {
+                    album.addEventListener('scroll', () => {
+                        updateScrollIndicator(album);
+                    });
+                    
+                    // Initialize scroll indicators
+                    setTimeout(() => {
+                        updateScrollIndicator(album);
+                    }, 100);
+                });
+            }
+            
+            function updateScrollIndicator(album) {
+                try {
+                    const scrollPosition = album.scrollLeft;
+                    const maxScroll = album.scrollWidth - album.clientWidth;
+                    
+                    // Get dots for this album
+                    const albumContainer = album.closest('.news-album-container');
+                    if (!albumContainer) return;
+                    
+                    const indicatorContainer = albumContainer.nextElementSibling;
+                    if (!indicatorContainer) return;
+                    
+                    const dots = indicatorContainer.querySelectorAll('.scroll-dot');
+                    if (!dots.length) return;
+                    
+                    // Calculate which dot should be active
+                    let activeIndex = Math.floor((scrollPosition / maxScroll) * 3);
+                    if (activeIndex > 2) activeIndex = 2;
+                    
+                    // Update dots
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === activeIndex);
+                    });
+                } catch (error) {
+                    console.error("Error updating scroll indicator:", error);
+                }
             }
         });
     </script>
