@@ -42,6 +42,7 @@
             padding: 14px 20px;
             border-left: 4px solid transparent;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .sidebar__menu li:hover, 
@@ -100,6 +101,15 @@
             border-left: 3px solid #3498db;
             margin-left: 20px;
             padding-left: 20px;
+        }
+
+        /* Dashboard section visibility */
+        .dashboard__section {
+            display: none;
+        }
+        
+        .dashboard__section.active {
+            display: block;
         }
     </style>
 </head>
@@ -637,6 +647,57 @@
             console.log("Admin dashboard initialization complete");
         });
     </script>
+    <script>
+    // Tab navigation functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("Setting up tab navigation");
+        
+        // Get all tab menu items and section elements
+        const tabItems = document.querySelectorAll('.sidebar__menu li');
+        const sections = document.querySelectorAll('.dashboard__section');
+        
+        // Add click event listeners to tabs
+        tabItems.forEach(item => {
+            item.addEventListener('click', function() {
+                console.log("Tab clicked:", this.getAttribute('data-section'));
+                
+                // Get the target section ID
+                const targetSection = this.getAttribute('data-section');
+                
+                // Update active tab styling
+                tabItems.forEach(tab => tab.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show the corresponding section and hide others
+                sections.forEach(section => {
+                    if (section.id === targetSection) {
+                        section.classList.add('active');
+                        section.style.display = 'block';
+                    } else {
+                        section.classList.remove('active');
+                        section.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Make sure the active tab's content is visible on page load
+        const activeTab = document.querySelector('.sidebar__menu li.active');
+        if (activeTab) {
+            const activeSection = activeTab.getAttribute('data-section');
+            
+            sections.forEach(section => {
+                if (section.id === activeSection) {
+                    section.classList.add('active');
+                    section.style.display = 'block';
+                } else {
+                    section.classList.remove('active');
+                    section.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>
 </body>
 
 </html>

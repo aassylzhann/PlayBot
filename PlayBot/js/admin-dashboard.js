@@ -86,7 +86,10 @@ function initializeDashboard() {
  * Setup sidebar tab navigation
  */
 function setupTabs() {
+    console.log("Setting up tabs from admin-dashboard.js");
     const tabItems = document.querySelectorAll('.sidebar__menu li');
+    console.log("Found tab items:", tabItems.length);
+    
     const sections = document.querySelectorAll('.dashboard__section');
     
     tabItems.forEach(item => {
