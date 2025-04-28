@@ -131,6 +131,56 @@
     color: white;
 }
 
+/* Container & Grid */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Course Header Area */
+.school__area {
+    padding: 80px 0 40px;
+    background-color: #f7eaa0;  /* Match the yellow background from team page */
+}
+
+.school__title--2 {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.school__title--2 .title__line {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000000;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.school__title--2 .title__line::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #000000;
+    border-radius: 2px;
+}
+
+.language-content p {
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #333;
+}
+
 /* Responsive adjustments */
 @media (max-width: 992px) {
     .level-container {
