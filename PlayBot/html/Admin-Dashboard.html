@@ -627,53 +627,41 @@
         });
     </script>
     <script>
-    // Tab navigation functionality
+    // Tab navigation functionality - simplified and fixed
     document.addEventListener('DOMContentLoaded', function() {
-        console.log("Setting up tab navigation");
+        console.log("Setting up tab navigation - fixed version");
         
         // Get all tab menu items and section elements
-        const tabItems = document.querySelectorAll('.sidebar__menu li');
+        const tabButtons = document.querySelectorAll('.sidebar__menu li');
         const sections = document.querySelectorAll('.dashboard__section');
         
         // Add click event listeners to tabs
-        tabItems.forEach(item => {
-            item.addEventListener('click', function() {
-                console.log("Tab clicked:", this.getAttribute('data-section'));
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-section');
+                console.log("Switching to tab:", targetId);
                 
-                // Get the target section ID
-                const targetSection = this.getAttribute('data-section');
-                
-                // Update active tab styling
-                tabItems.forEach(tab => tab.classList.remove('active'));
+                // Update active tab button
+                tabButtons.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Show the corresponding section and hide others
+                // Update visible section
                 sections.forEach(section => {
-                    if (section.id === targetSection) {
+                    if (section.id === targetId) {
                         section.classList.add('active');
-                        section.style.display = 'block';
                     } else {
                         section.classList.remove('active');
-                        section.style.display = 'none';
                     }
                 });
             });
         });
         
-        // Make sure the active tab's content is visible on page load
-        const activeTab = document.querySelector('.sidebar__menu li.active');
-        if (activeTab) {
-            const activeSection = activeTab.getAttribute('data-section');
-            
-            sections.forEach(section => {
-                if (section.id === activeSection) {
-                    section.classList.add('active');
-                    section.style.display = 'block';
-                } else {
-                    section.classList.remove('active');
-                    section.style.display = 'none';
-                }
-            });
+        // Make sure one tab is active on page load
+        if (!document.querySelector('.sidebar__menu li.active')) {
+            const firstTab = document.querySelector('.sidebar__menu li');
+            if (firstTab) {
+                firstTab.click();
+            }
         }
     });
 </script>
