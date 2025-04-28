@@ -582,6 +582,61 @@
     <script src="../js/main.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/admin-dashboard.js"></script>
+    <script>
+        // Add this after your other script tags at the bottom of the file
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in as admin
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const userRole = localStorage.getItem('currentUserRole');
+            
+            if (!isLoggedIn || userRole !== 'admin') {
+                console.log("Not logged in as admin, redirecting to login");
+                window.location.href = 'Login.html';
+                return;
+            }
+            
+            // Make sure the user profile is visible
+            const userProfile = document.getElementById('user-profile');
+            const authButtons = document.querySelector('.auth-buttons');
+            
+            if (userProfile) {
+                userProfile.style.display = 'block';
+                
+                // Set username
+                const userNameElement = document.getElementById('user-name');
+                if (userNameElement) {
+                    userNameElement.textContent = 'Admin';
+                }
+                
+                // Populate dropdown menu
+                const dropdownContent = userProfile.querySelector('.dropdown-content');
+                if (dropdownContent) {
+                    dropdownContent.innerHTML = `
+                        <a href="Profile.html">My Profile</a>
+                        <a href="Admin-Dashboard.html">Admin Dashboard</a>
+                        <a href="#" id="admin-logout-link">Log Out</a>
+                    `;
+                    
+                    // Add logout handler
+                    document.getElementById('admin-logout-link')?.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Clear session storage
+                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('currentUserEmail');
+                        localStorage.removeItem('currentUserRole');
+                        // Redirect to home
+                        window.location.href = 'Home.html';
+                    });
+                }
+            }
+            
+            if (authButtons) {
+                authButtons.style.display = 'none';
+            }
+            
+            console.log("Admin dashboard initialization complete");
+        });
+    </script>
 </body>
 
 </html>

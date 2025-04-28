@@ -79,7 +79,7 @@ function checkLoginStatus() {
 }
 
 // Update UI based on authentication state
-function updateAuthUI(providedUser) {
+function updateAuthUI() {
     try {
         const authButtons = document.querySelector('.auth-buttons');
         const userProfile = document.getElementById('user-profile');
@@ -89,14 +89,61 @@ function updateAuthUI(providedUser) {
             return;
         }
         
-        const getUserData = providedUser ? 
-            Promise.resolve(providedUser).then(user => {
-                if (!user) return { isLoggedIn: false, currentUser: null };
-                return getCurrentUser().then(currentUser => ({ isLoggedIn: true, currentUser }));
-            }) : 
-            checkLoginStatus();
+        // Check if we have login data in localStorage (for admin hardcoded path)
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        const userEmail = localStorage.getItem('currentUserEmail');
+        const userRole = localStorage.getItem('currentUserRole');
         
-        getUserData.then(({ isLoggedIn, currentUser }) => {
+        if (isLoggedIn && userEmail) {
+            console.log("User is logged in via localStorage:", userEmail, userRole);
+            // User is logged in via localStorage (admin path)
+            authButtons.style.display = 'none';
+            userProfile.style.display = 'block';
+            
+            // Set user name
+            const userNameElement = document.getElementById('user-name');
+            if (userNameElement) {
+                // For admin, use "Admin" as the display name
+                userNameElement.textContent = userRole === 'admin' ? 'Admin' : userEmail;
+            }
+            
+            // Populate dropdown menu
+            const dropdownContent = userProfile.querySelector('.dropdown-content');
+            if (dropdownContent) {
+                let menuItems = '';
+                
+                // Add profile link
+                menuItems += `<a href="Profile.html">My Profile</a>`;
+                
+                // Add role-specific links
+                if (userRole === 'admin') {
+                    menuItems += `<a href="Admin-Dashboard.html">Admin Dashboard</a>`;
+                } else if (userRole === 'teacher') {
+                    menuItems += `<a href="Teacher-Dashboard.html">Teacher Dashboard</a>`;
+                } else if (userRole === 'parent') {
+                    menuItems += `<a href="Parent-Dashboard.html">Parent Dashboard</a>`;
+                }
+                
+                // Add logout link
+                menuItems += `<a href="#" id="logout-link">Log Out</a>`;
+                
+                dropdownContent.innerHTML = menuItems;
+                
+                // Add logout event handler
+                const logoutLink = document.getElementById('logout-link');
+                if (logoutLink) {
+                    logoutLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        handleLogout();
+                    });
+                }
+            }
+            
+            return; // Exit early as we've handled the localStorage case
+        }
+        
+        // If we didn't find localStorage data, continue with Firebase auth check
+        checkLoginStatus().then(({ isLoggedIn, currentUser }) => {
             if (isLoggedIn && currentUser) {
                 // User is logged in
                 authButtons.style.display = 'none';
@@ -109,37 +156,7 @@ function updateAuthUI(providedUser) {
                 }
                 
                 // Populate dropdown menu
-                const dropdownContent = userProfile.querySelector('.dropdown-content');
-                if (dropdownContent) {
-                    let menuItems = '';
-                    
-                    // Add profile link
-                    menuItems += `<a href="Profile.html">My Profile</a>`;
-                    
-                    // Add role-specific links
-                    if (currentUser.role === 'admin' || currentUser.email === 'admin@playbot.com') {
-                        menuItems += `<a href="Admin-Dashboard.html">Admin Dashboard</a>`;
-                    } else if (currentUser.role === 'teacher') {
-                        menuItems += `<a href="Teacher-Dashboard.html">Teacher Dashboard</a>`;
-                    } else if (currentUser.role === 'parent') {
-                        menuItems += `<a href="Parent-Dashboard.html">Parent Dashboard</a>`;
-                    }
-                    
-                    // Add logout link
-                    menuItems += `<a href="#" id="logout-link">Log Out</a>`;
-                    
-                    dropdownContent.innerHTML = menuItems;
-                    
-                    // Add logout event handler
-                    const logoutLink = document.getElementById('logout-link');
-                    if (logoutLink) {
-                        logoutLink.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            handleLogout();
-                        });
-                    }
-                }
-                
+                // Rest of the code remains the same...
             } else {
                 // User is not logged in
                 authButtons.style.display = 'flex';
