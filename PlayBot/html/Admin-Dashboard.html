@@ -18,100 +18,6 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
-    <style>
-        /* Updated Dashboard Styles */
-        .dashboard__container {
-            background-color: #f8f9fa;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin: 30px 20px;
-        }
-        
-        .dashboard__sidebar {
-            background: linear-gradient(to bottom, #3498db, #2980b9);
-            border-radius: 12px 0 0 12px;
-        }
-        
-        .sidebar__title {
-            font-size: 22px;
-            padding: 25px 20px;
-        }
-        
-        .sidebar__menu li {
-            padding: 14px 20px;
-            border-left: 4px solid transparent;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .sidebar__menu li:hover, 
-        .sidebar__menu li.active {
-            background: rgba(255, 255, 255, 0.1);
-            border-left: 4px solid #fff;
-        }
-        
-        .stat__card {
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border-top: 4px solid #3498db;
-        }
-        
-        .stat__card .number {
-            font-size: 36px;
-            font-weight: 700;
-            color: #2c3e50;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(to right, #3498db, #2980b9);
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.25);
-        }
-        
-        .btn-primary:hover {
-            background: linear-gradient(to right, #2980b9, #2069a7);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
-        }
-        
-        .form__group input,
-        .form__group select,
-        .form__group textarea {
-            padding: 12px 15px;
-            border-radius: 6px;
-            border: 1px solid #e0e0e0;
-        }
-        
-        .data-table th {
-            background-color: #edf2f7;
-            padding: 15px;
-        }
-        
-        .data-table tr:nth-child(even) {
-            background-color: #f9fafc;
-        }
-        
-        .activity__item {
-            border-left: 3px solid #3498db;
-            margin-left: 20px;
-            padding-left: 20px;
-        }
-
-        /* Dashboard section visibility */
-        .dashboard__section {
-            display: none;
-        }
-        
-        .dashboard__section.active {
-            display: block;
-        }
-    </style>
 </head>
 
 <body class="admin-dashboard">
@@ -262,6 +168,33 @@
                 <div id="materials" class="dashboard__section">
                     <h1 class="section__title">Manage Educational Materials</h1>
 
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="curriculum-filter">Filter by Curriculum:</label>
+                            <select id="curriculum-filter">
+                                <option value="all">All Materials</option>
+                                <option value="playbot">PlayBot Curriculum</option>
+                                <option value="tinker">Tinker Maker Curriculum</option>
+                                <option value="general">General Resources</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="level-filter">Filter by Level:</label>
+                            <select id="level-filter">
+                                <option value="all">All Levels</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                            </select>
+                        </div>
+                        
+                        <div class="search-box">
+                            <input type="text" id="material-search" placeholder="Search materials...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+
                     <!-- Add Material Form -->
                     <div class="material__form">
                         <h2>Add New Material</h2>
@@ -276,10 +209,13 @@
                                     <label for="material-type">Type</label>
                                     <select id="material-type" name="type" required>
                                         <option value="">Select Type</option>
-                                        <option value="document">Document</option>
-                                        <option value="video">Video</option>
-                                        <option value="link">External Link</option>
                                         <option value="lesson">Lesson Plan</option>
+                                        <option value="activity">Activity Sheet</option>
+                                        <option value="video">Instructional Video</option>
+                                        <option value="tutorial">Programming Tutorial</option>
+                                        <option value="assessment">Assessment Tool</option>
+                                        <option value="guide">Teacher/Parent Guide</option>
+                                        <option value="link">External Resource</option>
                                     </select>
                                 </div>
 
@@ -287,11 +223,13 @@
                                     <label for="material-category">Category</label>
                                     <select id="material-category" name="category" required>
                                         <option value="">Select Category</option>
-                                        <option value="math">Mathematics</option>
-                                        <option value="language">Language Arts</option>
-                                        <option value="science">Science</option>
-                                        <option value="social">Social Studies</option>
-                                        <option value="art">Arts & Creativity</option>
+                                        <option value="playbot-beginner">PlayBot - Beginner Level</option>
+                                        <option value="playbot-intermediate">PlayBot - Intermediate Level</option>
+                                        <option value="playbot-advanced">PlayBot - Advanced Level</option>
+                                        <option value="tinker-beginner">Tinker Maker - Beginner Level</option>
+                                        <option value="tinker-intermediate">Tinker Maker - Intermediate Level</option>
+                                        <option value="tinker-advanced">Tinker Maker - Advanced Level</option>
+                                        <option value="general">General Resources</option>
                                     </select>
                                 </div>
 
@@ -302,6 +240,17 @@
                                         <option value="teachers">Teachers</option>
                                         <option value="parents">Parents</option>
                                         <option value="both">Both</option>
+                                    </select>
+                                </div>
+
+                                <div class="form__group">
+                                    <label for="material-difficulty">Difficulty Level</label>
+                                    <select id="material-difficulty" name="difficulty" required>
+                                        <option value="">Select Difficulty</option>
+                                        <option value="beginner">Beginner</option>
+                                        <option value="intermediate">Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                        <option value="mixed">Mixed/Adaptable</option>
                                     </select>
                                 </div>
 
@@ -343,9 +292,9 @@
                                     <tr>
                                         <th>Title</th>
                                         <th>Type</th>
-                                        <th>Category</th>
-                                        <th>Audience</th>
-                                        <th>Date Added</th>
+                                        <th>Curriculum</th>
+                                        <th>Skill Focus</th>
+                                        <th>Difficulty</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -540,11 +489,41 @@
                         <label for="edit-material-category">Category</label>
                         <select id="edit-material-category" name="category" required>
                             <option value="">Select Category</option>
-                            <option value="math">Mathematics</option>
-                            <option value="language">Language Arts</option>
-                            <option value="science">Science</option>
-                            <option value="social">Social Studies</option>
-                            <option value="art">Arts & Creativity</option>
+                            <option value="playbot-beginner">PlayBot - Beginner Level</option>
+                            <option value="playbot-intermediate">PlayBot - Intermediate Level</option>
+                            <option value="playbot-advanced">PlayBot - Advanced Level</option>
+                            <option value="tinker-beginner">Tinker Maker - Beginner Level</option>
+                            <option value="tinker-intermediate">Tinker Maker - Intermediate Level</option>
+                            <option value="tinker-advanced">Tinker Maker - Advanced Level</option>
+                            <option value="general">General Resources</option>
+                        </select>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="edit-material-skill">Primary Skill Focus</label>
+                        <select id="edit-material-skill" name="skill" required>
+                            <option value="">Select Skill Focus</option>
+                            <option value="basic-commands">Basic Robot Commands</option>
+                            <option value="sequences">Sequencing</option>
+                            <option value="loops">Loops & Repetition</option>
+                            <option value="conditionals">Conditional Logic</option>
+                            <option value="functions">Functions</option>
+                            <option value="sensors">Sensor Integration</option>
+                            <option value="problem-solving">Problem Solving</option>
+                            <option value="engineering">Engineering Concepts</option>
+                            <option value="creativity">Creative Design</option>
+                            <option value="collaboration">Collaborative Work</option>
+                        </select>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="edit-material-difficulty">Difficulty Level</label>
+                        <select id="edit-material-difficulty" name="difficulty" required>
+                            <option value="">Select Difficulty</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="mixed">Mixed/Adaptable</option>
                         </select>
                     </div>
 
@@ -693,6 +672,61 @@
                 } else {
                     section.classList.remove('active');
                     section.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>
+    <script>
+    // Materials filtering functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get filter elements
+        const curriculumFilter = document.getElementById('curriculum-filter');
+        const levelFilter = document.getElementById('level-filter');
+        const searchBox = document.getElementById('material-search');
+        
+        // Add event listeners if elements exist
+        if (curriculumFilter) {
+            curriculumFilter.addEventListener('change', filterMaterials);
+        }
+        
+        if (levelFilter) {
+            levelFilter.addEventListener('change', filterMaterials);
+        }
+        
+        if (searchBox) {
+            searchBox.addEventListener('input', filterMaterials);
+        }
+        
+        // Filter materials based on current filters
+        function filterMaterials() {
+            const curriculum = curriculumFilter ? curriculumFilter.value : 'all';
+            const level = levelFilter ? levelFilter.value : 'all';
+            const searchTerm = searchBox ? searchBox.value.toLowerCase() : '';
+            
+            // Get all material rows
+            const rows = document.querySelectorAll('#materials-table-body tr');
+            
+            rows.forEach(row => {
+                // Skip loading message rows
+                if (row.classList.contains('loading-cell') || row.querySelector('.loading-cell')) {
+                    return;
+                }
+                
+                const rowText = row.textContent.toLowerCase();
+                const rowCurriculum = row.getAttribute('data-curriculum') || '';
+                const rowLevel = row.getAttribute('data-level') || '';
+                
+                // Check if row matches all filters
+                const matchesCurriculum = curriculum === 'all' || rowCurriculum.includes(curriculum);
+                const matchesLevel = level === 'all' || rowLevel === level;
+                const matchesSearch = searchTerm === '' || rowText.includes(searchTerm);
+                
+                // Show or hide row based on filter matches
+                if (matchesCurriculum && matchesLevel && matchesSearch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
                 }
             });
         }
