@@ -63,6 +63,9 @@ function loginUser(email, password, role, remember) {
                 return fbAuth.signInWithEmailAndPassword(email, password);
             })
             .then((userCredential) => {
+                // Track login activity
+                trackUserActivity(userCredential.user.uid, "User logged in", "login");
+                
                 // Get user data from Firestore
                 return fbDb.collection('users').doc(userCredential.user.uid).get();
             })
@@ -213,6 +216,7 @@ function registerUser(userData) {
                 return fbDb.collection('users').doc(userCredential.user.uid).set({
                     firstName: userData.firstName,
                     lastName: userData.lastName,
+                    email: userData.email,
                     role: userData.role,
                     createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
@@ -495,3 +499,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+/**
+ * Tracks user activity in Firestore
+ * @param {string} userId - User ID or email
+ * @param {string} description - Activity description
+ * @param {string} type - Activity type (login, view, etc.)
+ * @returns {Promise} - Promise that resolves when activity is saved
+ */
+function trackUserActivity(userId, description, type) {
+    if (!userId) return Promise.resolve();
+    
+    // Skip tracking for admin
+    if (userId === 'admin@playbot.com') return Promise.resolve();
+    
+    const activity = {
+        userId: userId,
+        description: description,
+        type: type,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    
+    return fbDb.collection('activities').add(activity);
+}

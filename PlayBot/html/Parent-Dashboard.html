@@ -413,11 +413,11 @@
                 if (userNameSpan && currentUser.firstName) {
                     userNameSpan.textContent = currentUser.firstName;
                 }
-                
+
                 // Now we know user is properly authenticated, update UI
                 document.querySelector('.auth-buttons')?.classList.add('hidden');
                 document.getElementById('user-profile')?.classList.add('visible');
-                
+
                 // Load dashboard data if needed
                 // loadParentDashboardData(currentUser.uid);
             }).catch(error => {
@@ -436,6 +436,10 @@
             });
         }
     </script>
+    <!-- Preload common resources -->
+    <link rel="preload" as="image" href="../images/MACO.png">
+    <link rel="preload" as="style" href="../css/header.css">
+    <link rel="preload" as="style" href="../css/footer.css">
 </body>
 
 </html>

@@ -426,3 +426,40 @@
         width: 100%;
     }
 }
+
+/* Add to the style section in your <head> */
+.activity-list {
+    margin-top: 20px;
+}
+
+.activity-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 15px;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.activity-description {
+    color: #333;
+}
+
+/* Add a spinner animation for loading state */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
