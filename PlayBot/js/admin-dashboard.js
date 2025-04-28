@@ -55,9 +55,6 @@ function initializeDashboard() {
     // Load users list
     loadUsers();
     
-    // Load news list
-    loadNews();
-    
     // Setup form handlers
     setupFormSubmissions();
     
@@ -333,64 +330,6 @@ function loadUsers() {
 }
 
 /**
- * Load news articles
- */
-function loadNews() {
-    const tableBody = document.getElementById('news-table-body');
-    
-    fbDb.collection('news')
-        .orderBy('publishedAt', 'desc')
-        .get()
-        .then(snapshot => {
-            if (snapshot.empty) {
-                tableBody.innerHTML = `
-                    <tr>
-                        <td colspan="4" class="empty-state">No news articles found</td>
-                    </tr>
-                `;
-                return;
-            }
-            
-            let newsHTML = '';
-            
-            snapshot.forEach(doc => {
-                const article = doc.data();
-                const articleId = doc.id;
-                
-                const date = article.publishedAt ? 
-                    formatDate(article.publishedAt.toDate()) : 
-                    'Unknown date';
-                
-                newsHTML += `
-                    <tr data-id="${articleId}">
-                        <td>${article.title}</td>
-                        <td>${capitalizeFirstLetter(article.category || 'General')}</td>
-                        <td>${date}</td>
-                        <td class="actions">
-                            <button class="btn-icon edit" onclick="editNews('${articleId}')">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="btn-icon delete" onclick="deleteNews('${articleId}')">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                `;
-            });
-            
-            tableBody.innerHTML = newsHTML;
-        })
-        .catch(error => {
-            console.error("Error loading news:", error);
-            tableBody.innerHTML = `
-                <tr>
-                    <td colspan="4" class="error-state">Error loading news articles</td>
-                </tr>
-            `;
-        });
-}
-
-/**
  * Set up form submission handlers
  */
 function setupFormSubmissions() {
@@ -430,43 +369,6 @@ function setupFormSubmissions() {
                 .catch(error => {
                     console.error("Error adding material:", error);
                     alert('Error adding material: ' + error.message);
-                });
-        });
-    }
-    
-    // Add news form
-    const addNewsForm = document.getElementById('add-news-form');
-    if (addNewsForm) {
-        addNewsForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const newsData = {
-                title: document.getElementById('news-title').value,
-                category: document.getElementById('news-category').value,
-                content: document.getElementById('news-content').value,
-                imageUrl: document.getElementById('news-image-url').value || null,
-                publishedAt: firebase.firestore.FieldValue.serverTimestamp(),
-                publishedBy: 'admin'
-            };
-            
-            // Add news to Firestore
-            fbDb.collection('news').add(newsData)
-                .then(() => {
-                    // Track activity
-                    trackAdminActivity('Published news article: ' + newsData.title, 'news');
-                    
-                    // Show success message
-                    alert('News article published successfully');
-                    
-                    // Reset form
-                    this.reset();
-                    
-                    // Reload news list
-                    loadNews();
-                })
-                .catch(error => {
-                    console.error("Error publishing news:", error);
-                    alert('Error publishing news: ' + error.message);
                 });
         });
     }
@@ -790,47 +692,8 @@ function deleteUser(userId) {
     }
 }
 
-/**
- * Edit news handler
- */
-function editNews(articleId) {
-    // Implement similar to editMaterial
-    alert('Edit news feature coming soon');
-}
-
-/**
- * Delete news handler
- */
-function deleteNews(articleId) {
-    if (confirm('Are you sure you want to delete this news article? This action cannot be undone.')) {
-        fbDb.collection('news').doc(articleId).get()
-            .then(doc => {
-                const articleTitle = doc.exists ? doc.data().title : 'Unknown article';
-                
-                // Delete the news article
-                return fbDb.collection('news').doc(articleId).delete()
-                    .then(() => {
-                        // Track activity
-                        trackAdminActivity('Deleted news article: ' + articleTitle, 'news');
-                        
-                        // Show success message
-                        alert('News article deleted successfully');
-                        
-                        // Reload news list
-                        loadNews();
-                    });
-            })
-            .catch(error => {
-                console.error("Error deleting news:", error);
-                alert('Error deleting news: ' + error.message);
-            });
-    }
-}
-
 // Make functions available globally for button click handlers
 window.editMaterial = editMaterial;
 window.deleteMaterial = deleteMaterial;
 window.viewUser = viewUser;
 window.deleteUser = deleteUser;
-window.editNews = editNews;
-window.deleteNews = deleteNews;

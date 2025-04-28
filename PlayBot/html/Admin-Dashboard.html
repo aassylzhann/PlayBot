@@ -18,6 +18,90 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <style>
+        /* Updated Dashboard Styles */
+        .dashboard__container {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 30px 20px;
+        }
+        
+        .dashboard__sidebar {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            border-radius: 12px 0 0 12px;
+        }
+        
+        .sidebar__title {
+            font-size: 22px;
+            padding: 25px 20px;
+        }
+        
+        .sidebar__menu li {
+            padding: 14px 20px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar__menu li:hover, 
+        .sidebar__menu li.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #fff;
+        }
+        
+        .stat__card {
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid #3498db;
+        }
+        
+        .stat__card .number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.25);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to right, #2980b9, #2069a7);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        .form__group input,
+        .form__group select,
+        .form__group textarea {
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .data-table th {
+            background-color: #edf2f7;
+            padding: 15px;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafc;
+        }
+        
+        .activity__item {
+            border-left: 3px solid #3498db;
+            margin-left: 20px;
+            padding-left: 20px;
+        }
+    </style>
 </head>
 
 <body class="admin-dashboard">
