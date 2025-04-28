@@ -786,6 +786,65 @@
         });
     });
 </script>
+    <script>
+    // Consolidated tab switching script - replaces all previous tab scripts
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("Setting up consolidated tab navigation");
+        
+        // Remove any duplicate event listeners by cloning and replacing elements
+        const sidebar = document.querySelector('.dashboard__sidebar');
+        if (sidebar) {
+            const newSidebar = sidebar.cloneNode(true);
+            sidebar.parentNode.replaceChild(newSidebar, sidebar);
+            
+            // Get all tab menu items and section elements with fresh references
+            const tabButtons = newSidebar.querySelectorAll('.sidebar__menu li');
+            const sections = document.querySelectorAll('.dashboard__section');
+            
+            // Make sure all sections have the same height
+            sections.forEach(section => {
+                section.style.minHeight = '100%';
+            });
+            
+            // Add click event listeners to tabs
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-section');
+                    console.log("Switching to tab:", targetId);
+                    
+                    // Update active tab button
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update visible section with smooth transition
+                    sections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                            section.style.opacity = 0;
+                            setTimeout(() => {
+                                section.style.opacity = 1;
+                            }, 50);
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // Make sure one tab is active on page load
+            const activeTab = newSidebar.querySelector('.sidebar__menu li.active');
+            if (!activeTab) {
+                const firstTab = newSidebar.querySelector('.sidebar__menu li');
+                if (firstTab) {
+                    firstTab.click();
+                }
+            } else {
+                // Trigger the active tab to ensure content is shown
+                activeTab.click();
+            }
+        }
+    });
+</script>
 </body>
 
 </html>
