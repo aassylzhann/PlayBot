@@ -60,7 +60,7 @@ function loginUser(email, password, role, remember) {
                 localStorage.setItem('currentUserRole', 'admin');
                 localStorage.setItem('isLoggedIn', 'true');
                 
-                resolve(userData);
+                resolve(adminData);
             } else {
                 reject(new Error('Invalid email or password'));
             }
