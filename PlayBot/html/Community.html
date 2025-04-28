@@ -296,15 +296,15 @@
                     <div class="footer-brand">
                         <div class="footer-logo">
                             <a href="Home.html">
-                                <img src="../images/MACO.png"  class="footer-logo-img">
+                                <img src="../images/MACO.png" class="footer-logo-img">
                             </a>
                         </div>
                         <p class="footer-about">
-                            MACO is an innovative curriculum for teaching robot programming 
+                            MACO is an innovative curriculum for teaching robot programming
                             through play, developed at The Education University of Hong Kong.
                         </p>
                     </div>
-        
+
                     <!-- Navigation Links -->
                     <div class="footer-links-container">
                         <!-- Quick Links -->
@@ -317,7 +317,7 @@
                                 <li><a href="News.html">News</a></li>
                             </ul>
                         </div>
-        
+
                         <!-- For Schools -->
                         <div class="footer-column">
                             <h4 class="footer-heading">For Schools</h4>
@@ -327,13 +327,14 @@
                                 <li><a href="Platform.html">Platform</a></li>
                             </ul>
                         </div>
-        
+
                         <!-- Contact Information -->
                         <div class="footer-column">
                             <h4 class="footer-heading">Contact Us</h4>
                             <div class="footer-contact">
                                 <p><i class="fas fa-map-marker-alt"></i> 10 Lo Ping Road, Tai Po, Hong Kong</p>
-                                <p><i class="fas fa-envelope"></i> <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></p>
+                                <p><i class="fas fa-envelope"></i> <a
+                                        href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></p>
                             </div>
                             <div class="footer-social">
                                 <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -343,18 +344,19 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <!-- University Information -->
                 <div class="footer__contact">
                     <div class="university">The Education University of Hong Kong</div>
                     <div class="department">Department of Early Childhood Education</div>
                     <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
                 </div>
-        
+
                 <!-- Copyright Section -->
                 <div class="footer__copyright">
                     <p>&copy; 2024 The Education University of Hong Kong</p>
-                    <p class="rights">All rights reserved. No part of this publication may be reproduced, stored in a retrieval system or transmitted in any form or by any means without written permission.</p>
+                    <p class="rights">All rights reserved. No part of this publication may be reproduced, stored in a
+                        retrieval system or transmitted in any form or by any means without written permission.</p>
                 </div>
             </div>
         </footer>
@@ -370,8 +372,16 @@
     <!-- Add before closing body tag -->
 
     <!-- All js files are included here. -->
-    <script src="../js/main.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+    <!-- Your Firebase configuration -->
+    <script src="../js/firebase-config.js"></script>
+    <!-- Your application scripts -->
     <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
     <script src="../js/auth.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {

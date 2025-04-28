@@ -8,81 +8,87 @@
  */
 function loginUser(email, password, role, remember) {
     return new Promise((resolve, reject) => {
-        // In a real application, you would make an API call to your backend
-        // For demonstration purposes, we're using localStorage
-        
         // Simple validation
         if (!email || !password) {
             reject(new Error('Please enter both email and password'));
             return;
         }
         
-        // Simulate server request with timeout
-        setTimeout(() => {
-            // Check if user exists in localStorage (from registration)
-            const storedEmail = localStorage.getItem('userEmail_' + email);
-            const storedPassword = localStorage.getItem('userPassword_' + email);
-            const storedRole = localStorage.getItem('userRole_' + email);
+        // Special case for admin
+        if (email === "admin@playbot.com" && password === "123123") {
+            const adminData = {
+                firstName: "Admin",
+                lastName: "User",
+                email: email,
+                role: "admin",
+                isAdmin: true
+            };
             
-            if (storedEmail === email && storedPassword === password && storedRole === role) {
-                // User authenticated successfully
-                const userData = {
-                    email: email,
-                    firstName: localStorage.getItem('userFirstName_' + email),
-                    lastName: localStorage.getItem('userLastName_' + email),
-                    role: role
-                };
-                
-                // Set session information
-                localStorage.setItem('currentUserEmail', email);
-                localStorage.setItem('currentUserRole', role);
-                localStorage.setItem('isLoggedIn', 'true');
-                
-                // Set remember me cookie if checked
-                if (remember) {
-                    const expiryDate = new Date();
-                    expiryDate.setMonth(expiryDate.getMonth() + 1); // 1 month expiry
-                    document.cookie = `rememberedUser=${email}; expires=${expiryDate.toUTCString()}; path=/`;
+            // Set session information
+            localStorage.setItem('currentUserEmail', email);
+            localStorage.setItem('currentUserRole', 'admin');
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            resolve(adminData);
+            return;
+        }
+        
+        // Set persistence based on remember checkbox
+        const persistenceType = remember ? 
+            firebase.auth.Auth.Persistence.LOCAL : 
+            firebase.auth.Auth.Persistence.SESSION;
+        
+        fbAuth.setPersistence(persistenceType)
+            .then(() => {
+                // Sign in with email and password
+                return fbAuth.signInWithEmailAndPassword(email, password);
+            })
+            .then((userCredential) => {
+                // Get user data from Firestore
+                return fbDb.collection('users').doc(userCredential.user.uid).get();
+            })
+            .then((doc) => {
+                if (doc.exists) {
+                    const userData = doc.data();
+                    
+                    // Verify role if provided
+                    if (role && userData.role !== role) {
+                        reject(new Error(`Invalid credentials for ${role} role`));
+                        return;
+                    }
+                    
+                    // Set session information
+                    localStorage.setItem('currentUserEmail', email);
+                    localStorage.setItem('currentUserRole', userData.role);
+                    localStorage.setItem('isLoggedIn', 'true');
+                    
+                    resolve(userData);
+                } else {
+                    reject(new Error('User data not found'));
                 }
-                
-                resolve(userData);
-            } else if (email === "admin@playbot.com" && password === "123123") {
-                const adminData = {
-                    firstName: "Admin",
-                    lastName: "User",
-                    email: email,
-                    role: "admin",
-                    isAdmin: true
-                };
-                
-                // Set session information
-                localStorage.setItem('currentUserEmail', 'admin@playbot.com');
-                localStorage.setItem('currentUserRole', 'admin');
-                localStorage.setItem('isLoggedIn', 'true');
-                
-                resolve(adminData);
-            } else {
-                reject(new Error('Invalid email or password'));
-            }
-        }, 500); // Simulate network delay
+            })
+            .catch((error) => {
+                reject(new Error(error.message));
+            });
     });
-}
-
-function isAdminUser() {
-    const user = getCurrentUser();
-    return user && user.isAdmin === true;
 }
 
 /**
  * Handles user logout
  */
 function logoutUser() {
-    localStorage.removeItem('currentUserEmail');
-    localStorage.removeItem('currentUserRole');
-    localStorage.setItem('isLoggedIn', 'false');
-    
-    // Redirect to home page
-    window.location.href = 'Home.html';
+    fbAuth.signOut()
+        .then(() => {
+            localStorage.removeItem('currentUserEmail');
+            localStorage.removeItem('currentUserRole');
+            localStorage.setItem('isLoggedIn', 'false');
+            
+            // Redirect to home page
+            window.location.href = 'Home.html';
+        })
+        .catch((error) => {
+            console.error('Logout error:', error);
+        });
 }
 
 /**
@@ -90,23 +96,66 @@ function logoutUser() {
  * @returns {boolean} Whether the user is logged in
  */
 function isUserLoggedIn() {
-    return localStorage.getItem('isLoggedIn') === 'true';
+    return fbAuth.currentUser !== null || localStorage.getItem('isLoggedIn') === 'true';
 }
 
 /**
  * Get the current logged in user data
- * @returns {Object|null} User data or null if not logged in
+ * @returns {Promise<Object|null>} Promise resolving with user data or null if not logged in
  */
 function getCurrentUser() {
-    if (!isUserLoggedIn()) return null;
-    
-    const email = localStorage.getItem('currentUserEmail');
-    return {
-        email: email,
-        firstName: localStorage.getItem('userFirstName_' + email),
-        lastName: localStorage.getItem('userLastName_' + email),
-        role: localStorage.getItem('currentUserRole')
-    };
+    return new Promise((resolve, reject) => {
+        const authUser = fbAuth.currentUser;
+        
+        if (!authUser && localStorage.getItem('isLoggedIn') !== 'true') {
+            resolve(null);
+            return;
+        }
+        
+        // Handle admin case
+        const email = localStorage.getItem('currentUserEmail');
+        if (email === 'admin@playbot.com') {
+            resolve({
+                email: email,
+                firstName: 'Admin',
+                lastName: 'User',
+                role: 'admin',
+                isAdmin: true
+            });
+            return;
+        }
+        
+        // For regular users, get data from Firestore
+        if (authUser) {
+            fbDb.collection('users').doc(authUser.uid).get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        resolve({
+                            ...doc.data(),
+                            email: authUser.email,
+                            uid: authUser.uid
+                        });
+                    } else {
+                        resolve({
+                            email: authUser.email,
+                            role: localStorage.getItem('currentUserRole')
+                        });
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error getting user data:', error);
+                    reject(error);
+                });
+        } else {
+            // Fallback to localStorage
+            resolve({
+                email: email,
+                firstName: localStorage.getItem('userFirstName_' + email),
+                lastName: localStorage.getItem('userLastName_' + email),
+                role: localStorage.getItem('currentUserRole')
+            });
+        }
+    });
 }
 
 /**
@@ -132,34 +181,33 @@ function registerUser(userData) {
             return;
         }
         
-        // Check if email already exists
-        const existingUser = localStorage.getItem('userEmail_' + userData.email);
-        if (existingUser) {
-            reject(new Error('Email already registered'));
-            return;
-        }
-        
-        // Simulate server request with timeout
-        setTimeout(() => {
-            // Store user data with email-based keys to allow multiple users
-            localStorage.setItem('userEmail_' + userData.email, userData.email);
-            localStorage.setItem('userPassword_' + userData.email, userData.password);
-            localStorage.setItem('userFirstName_' + userData.email, userData.firstName);
-            localStorage.setItem('userLastName_' + userData.email, userData.lastName);
-            localStorage.setItem('userRole_' + userData.email, userData.role);
-            
-            // Set current session
-            localStorage.setItem('currentUserEmail', userData.email);
-            localStorage.setItem('currentUserRole', userData.role);
-            localStorage.setItem('isLoggedIn', 'true');
-            
-            resolve({
-                email: userData.email,
-                firstName: userData.firstName,
-                lastName: userData.lastName,
-                role: userData.role
+        // Create user in Firebase Auth
+        fbAuth.createUserWithEmailAndPassword(userData.email, userData.password)
+            .then((userCredential) => {
+                // Add user data to Firestore
+                return fbDb.collection('users').doc(userCredential.user.uid).set({
+                    firstName: userData.firstName,
+                    lastName: userData.lastName,
+                    role: userData.role,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            })
+            .then(() => {
+                // Set session information
+                localStorage.setItem('currentUserEmail', userData.email);
+                localStorage.setItem('currentUserRole', userData.role);
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                resolve({
+                    email: userData.email,
+                    firstName: userData.firstName,
+                    lastName: userData.lastName,
+                    role: userData.role
+                });
+            })
+            .catch((error) => {
+                reject(new Error(error.message));
             });
-        }, 500); // Simulate network delay
     });
 }
 
@@ -169,6 +217,7 @@ function registerUser(userData) {
  * @returns {Object} Result with isValid boolean and message string
  */
 function validatePassword(password) {
+    // This function doesn't need to change, it's client-side validation
     const result = {
         isValid: true,
         message: ''
@@ -207,131 +256,155 @@ function validatePassword(password) {
 
 /**
  * Check login status and return user data if logged in
- * @returns {Object} Object with isLoggedIn boolean and currentUser data
+ * @returns {Promise<Object>} Promise resolving with object containing isLoggedIn boolean and currentUser data
  */
 function checkLoginStatus() {
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    let currentUser = null;
-    
-    if (isLoggedIn) {
-        const email = localStorage.getItem('currentUserEmail');
-        currentUser = {
-            email: email,
-            firstName: localStorage.getItem('userFirstName_' + email),
-            lastName: localStorage.getItem('userLastName_' + email),
-            role: localStorage.getItem('currentUserRole')
-        };
-    }
-    
-    return { isLoggedIn, currentUser };
+    return new Promise((resolve) => {
+        fbAuth.onAuthStateChanged((user) => {
+            if (user || localStorage.getItem('isLoggedIn') === 'true') {
+                getCurrentUser().then(currentUser => {
+                    resolve({ isLoggedIn: true, currentUser });
+                });
+            } else {
+                resolve({ isLoggedIn: false, currentUser: null });
+            }
+        });
+    });
 }
 
 /**
  * Updates UI for logged in or logged out state
  */
 function updateAuthUI() {
-    const isLoggedIn = isUserLoggedIn();
-    const authButtons = document.querySelector('.auth-buttons');
-    const userProfile = document.getElementById('user-profile');
-    
-    if (isLoggedIn) {
-        // Hide auth buttons, show user profile
-        authButtons?.classList.add('hidden');
-        userProfile?.classList.add('visible');
+    checkLoginStatus().then(({ isLoggedIn, currentUser }) => {
+        const authButtons = document.querySelector('.auth-buttons');
+        const userProfile = document.getElementById('user-profile');
         
-        // Update user name
-        const currentUser = getCurrentUser();
-        if (currentUser && userProfile) {
-            const userNameSpan = userProfile.querySelector('#user-name');
-            if (userNameSpan) {
-                userNameSpan.textContent = currentUser.firstName || 'User';
-            }
+        if (isLoggedIn && currentUser) {
+            // Hide auth buttons, show user profile
+            authButtons?.classList.add('hidden');
+            userProfile?.classList.add('visible');
             
-            // Update dropdown content based on user role
-            const dropdownContent = userProfile.querySelector('.dropdown-content');
-            if (dropdownContent) {
-                dropdownContent.innerHTML = ''; // Clear existing content
-                
-                // Add links based on user role
-                if (currentUser.role === 'admin') {
-                    dropdownContent.innerHTML += `<a href="Admin-Dashboard.html">Admin Dashboard</a>`;
-                } else if (currentUser.role === 'teacher') {
-                    dropdownContent.innerHTML += `<a href="Teacher-Dashboard.html">Teacher Dashboard</a>`;
-                } else if (currentUser.role === 'parent') {
-                    dropdownContent.innerHTML += `<a href="Parent-Dashboard.html">Parent Dashboard</a>`;
+            // Update user name
+            if (userProfile) {
+                const userNameSpan = userProfile.querySelector('#user-name');
+                if (userNameSpan) {
+                    userNameSpan.textContent = currentUser.firstName || 'User';
                 }
                 
-                // Common links for all users
-                dropdownContent.innerHTML += `
-                    <a href="Profile.html">My Profile</a>
-                    <a href="#" onclick="handleLogout()">Logout</a>
-                `;
+                // Update dropdown content based on user role
+                const dropdownContent = userProfile.querySelector('.dropdown-content');
+                if (dropdownContent) {
+                    dropdownContent.innerHTML = ''; // Clear existing content
+                    
+                    // Add links based on user role
+                    if (currentUser.role === 'admin') {
+                        dropdownContent.innerHTML += `<a href="Admin-Dashboard.html">Admin Dashboard</a>`;
+                    } else if (currentUser.role === 'teacher') {
+                        dropdownContent.innerHTML += `<a href="Teacher-Dashboard.html">Teacher Dashboard</a>`;
+                    } else if (currentUser.role === 'parent') {
+                        dropdownContent.innerHTML += `<a href="Parent-Dashboard.html">Parent Dashboard</a>`;
+                    }
+                    
+                    // Common links for all users
+                    dropdownContent.innerHTML += `
+                        <a href="Profile.html">My Profile</a>
+                        <a href="#" onclick="handleLogout()">Logout</a>
+                    `;
+                }
             }
+        } else {
+            // Show auth buttons, hide user profile
+            authButtons?.classList.remove('hidden');
+            userProfile?.classList.remove('visible');
         }
-    } else {
-        // Show auth buttons, hide user profile
-        authButtons?.classList.remove('hidden');
-        userProfile?.classList.remove('visible');
-    }
+    });
 }
 
 /**
  * Update user profile data
  * @param {Object} userData User data to update
- * @returns {boolean} Success or failure
+ * @returns {Promise<boolean>} Promise resolving with success or failure
  */
 function updateUserProfile(userData) {
-    if (!isUserLoggedIn()) return false;
-    
-    const email = localStorage.getItem('currentUserEmail');
-    
-    if (userData.firstName) {
-        localStorage.setItem('userFirstName_' + email, userData.firstName);
-    }
-    
-    if (userData.lastName) {
-        localStorage.setItem('userLastName_' + email, userData.lastName);
-    }
-    
-    return true;
+    return new Promise((resolve, reject) => {
+        const user = fbAuth.currentUser;
+        
+        if (!user) {
+            reject(new Error('Not logged in'));
+            return;
+        }
+        
+        fbDb.collection('users').doc(user.uid).update({
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(() => {
+            resolve(true);
+        })
+        .catch((error) => {
+            console.error('Error updating user profile:', error);
+            reject(error);
+        });
+    });
 }
 
 /**
  * Change user password
  * @param {string} currentPassword Current password
  * @param {string} newPassword New password
- * @returns {boolean} Success or failure
+ * @returns {Promise<boolean>} Promise resolving with success or failure
  */
 function changeUserPassword(currentPassword, newPassword) {
-    if (!isUserLoggedIn()) return false;
-    
-    const email = localStorage.getItem('currentUserEmail');
-    const storedPassword = localStorage.getItem('userPassword_' + email);
-    
-    // Verify current password
-    if (storedPassword !== currentPassword) {
-        return false;
-    }
-    
-    // Update password
-    localStorage.setItem('userPassword_' + email, newPassword);
-    return true;
+    return new Promise((resolve, reject) => {
+        const user = fbAuth.currentUser;
+        
+        if (!user) {
+            reject(new Error('Not logged in'));
+            return;
+        }
+        
+        // Reauthenticate user
+        const credential = firebase.auth.EmailAuthProvider.credential(
+            user.email, 
+            currentPassword
+        );
+        
+        user.reauthenticateWithCredential(credential)
+            .then(() => {
+                // Update password
+                return user.updatePassword(newPassword);
+            })
+            .then(() => {
+                resolve(true);
+            })
+            .catch((error) => {
+                console.error('Error changing password:', error);
+                reject(error);
+            });
+    });
 }
 
 /**
  * Check if user is admin
- * @returns {boolean} Whether the user is an admin
+ * @returns {Promise<boolean>} Promise resolving with whether the user is an admin
  */
 function isAdminUser() {
-    const currentUser = getCurrentUser();
-    return currentUser && currentUser.role === 'admin';
+    return getCurrentUser().then(user => {
+        return user && (user.role === 'admin' || user.isAdmin === true);
+    });
+}
+
+// Handle the logout function
+function handleLogout() {
+    logoutUser();
 }
 
 // Call updateAuthUI when the DOM is loaded
 document.addEventListener('DOMContentLoaded', updateAuthUI);
 
 // Add this code to the Login.html page or update the existing login form submission handler:
-
 document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.getElementById('loginForm');
     
@@ -341,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const role = document.querySelector('input[name="role"]:checked')?.value || 'teacher'; // Default to teacher if no selection
+            const role = document.querySelector('input[name="role"]:checked')?.value || 'teacher'; 
             const remember = document.getElementById('remember')?.checked || false;
             
             // Show loading indicator

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login -  MACO</title>
+    <title>Login - MACO</title>
     <meta name="description" content="Login - PlayBot Curriculum - Robot Programming Through Play">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Google Fonts -->
@@ -193,9 +193,18 @@
     <!-- Body main wrapper end -->
 
     <!-- All js files are included here. -->
+        <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+    <!-- Your Firebase configuration -->
+    <script src="../js/firebase-config.js"></script>
+    <!-- Your application scripts -->
     <script src="../js/components.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/auth.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Check if user is already logged in

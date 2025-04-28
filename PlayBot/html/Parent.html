@@ -286,8 +286,16 @@
         <!-- Add before closing body tag -->
 
         <!-- All js files are included here. -->
-        <script src="../js/main.js"></script>
+                <!-- Firebase SDK -->
+        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+        <!-- Your Firebase configuration -->
+        <script src="../js/firebase-config.js"></script>
+        <!-- Your application scripts -->
         <script src="../js/components.js"></script>
+        <script src="../js/main.js"></script>
         <script src="../js/auth.js"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
