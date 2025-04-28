@@ -161,6 +161,15 @@
   margin-left: 20px;
 }
 
+.auth-buttons, #user-profile {
+  min-width: 150px;
+  min-height: 40px;
+  transition: opacity 0.2s ease;
+}
+
+.auth-buttons.hidden, #user-profile:not(.visible) {
+  display: none;
+}
 .auth-btn {
   background-color: transparent;
   border: none;

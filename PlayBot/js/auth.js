@@ -1,10 +1,20 @@
 // Add this near the top of the file
 
-// Set up Firebase Auth state observer
+// Set up Firebase Auth state observer - with performance improvements
+let authStateResolved = false;
 fbAuth.onAuthStateChanged(function(user) {
-    // Call updateAuthUI() whenever auth state changes
-    console.log("Firebase Auth state changed:", user ? "User logged in" : "User logged out");
-    updateAuthUI();
+    // Only call updateAuthUI if the DOM is already loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!authStateResolved) {
+                updateAuthUI(user);
+                authStateResolved = true;
+            }
+        });
+    } else {
+        updateAuthUI(user);
+        authStateResolved = true;
+    }
 });
 
 /**
@@ -118,14 +128,17 @@ function isUserLoggedIn() {
 function getCurrentUser() {
     return new Promise((resolve, reject) => {
         const authUser = fbAuth.currentUser;
+        const isLoggedInLocal = localStorage.getItem('isLoggedIn') === 'true';
         
-        if (!authUser && localStorage.getItem('isLoggedIn') !== 'true') {
+        if (!authUser && !isLoggedInLocal) {
             resolve(null);
             return;
         }
         
         // Handle admin case
         const email = localStorage.getItem('currentUserEmail');
+        const userRole = localStorage.getItem('currentUserRole');
+        
         if (email === 'admin@playbot.com') {
             resolve({
                 email: email,
@@ -291,8 +304,16 @@ function checkLoginStatus() {
 /**
  * Updates UI for logged in or logged out state
  */
-function updateAuthUI() {
-    checkLoginStatus().then(({ isLoggedIn, currentUser }) => {
+function updateAuthUI(providedUser) {
+    // Skip the Firebase call if we already have the user
+    const getUserData = providedUser ? 
+        Promise.resolve(providedUser).then(user => {
+            if (!user) return { isLoggedIn: false, currentUser: null };
+            return getCurrentUser().then(currentUser => ({ isLoggedIn: true, currentUser }));
+        }) : 
+        checkLoginStatus();
+    
+    getUserData.then(({ isLoggedIn, currentUser }) => {
         const authButtons = document.querySelector('.auth-buttons');
         const userProfile = document.getElementById('user-profile');
         

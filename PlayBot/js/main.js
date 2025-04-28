@@ -130,3 +130,24 @@ document.addEventListener('DOMContentLoaded', function() {
         firstAccordionItem.classList.add('active');
     }
 });
+
+// Add page transition indicator
+document.addEventListener('DOMContentLoaded', function() {
+    // Remove loading class if it exists
+    document.body.classList.remove('page-loading');
+    
+    // Add click handler to all internal links
+    document.querySelectorAll('a').forEach(link => {
+        // Only for internal links to HTML pages
+        if (link.href && link.href.includes(window.location.hostname) && 
+            link.href.endsWith('.html')) {
+            
+            link.addEventListener('click', function(e) {
+                // Don't add loading indicator for "javascript:void(0)" links
+                if (this.getAttribute('href') === 'javascript:void(0)') return;
+                
+                document.body.classList.add('page-loading');
+            });
+        }
+    });
+});
