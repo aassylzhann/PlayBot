@@ -75,20 +75,23 @@ function loginUser(email, password, role, remember) {
 
 /**
  * Handles user logout
+ * @returns {Promise} Promise that resolves when logout is complete
  */
 function logoutUser() {
-    fbAuth.signOut()
-        .then(() => {
-            localStorage.removeItem('currentUserEmail');
-            localStorage.removeItem('currentUserRole');
-            localStorage.setItem('isLoggedIn', 'false');
-            
-            // Redirect to home page
-            window.location.href = 'Home.html';
-        })
-        .catch((error) => {
-            console.error('Logout error:', error);
-        });
+    return new Promise((resolve, reject) => {
+        fbAuth.signOut()
+            .then(() => {
+                localStorage.removeItem('currentUserEmail');
+                localStorage.removeItem('currentUserRole');
+                localStorage.setItem('isLoggedIn', 'false');
+                
+                resolve();
+            })
+            .catch((error) => {
+                console.error('Logout error:', error);
+                reject(error);
+            });
+    });
 }
 
 /**
@@ -264,6 +267,10 @@ function checkLoginStatus() {
             if (user || localStorage.getItem('isLoggedIn') === 'true') {
                 getCurrentUser().then(currentUser => {
                     resolve({ isLoggedIn: true, currentUser });
+                }).catch(error => {
+                    console.error("Error getting current user:", error);
+                    // Even if getCurrentUser fails, we should resolve with consistent structure
+                    resolve({ isLoggedIn: false, currentUser: null });
                 });
             } else {
                 resolve({ isLoggedIn: false, currentUser: null });

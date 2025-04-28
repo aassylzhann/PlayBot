@@ -409,41 +409,61 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Check if user is logged in
-            if (!isUserLoggedIn()) {
+            // Check login status properly with Promise handling
+            checkLoginStatus().then(({ isLoggedIn, currentUser }) => {
+                if (!isLoggedIn || !currentUser) {
+                    window.location.href = 'Login.html';
+                    return;
+                }
+
+                // Verify role is teacher
+                if (currentUser.role !== 'teacher') {
+                    window.location.href = 'Home.html';
+                    return;
+                }
+
+                // Update welcome message with user name
+                const welcomeTitle = document.querySelector('.dashboard__welcome h1');
+                if (welcomeTitle && currentUser.firstName) {
+                    welcomeTitle.textContent = `Teacher Resources Center - Welcome, ${currentUser.firstName}!`;
+                }
+
+                // Update user name in header
+                const userNameSpan = document.getElementById('user-name');
+                if (userNameSpan && currentUser.firstName) {
+                    userNameSpan.textContent = currentUser.firstName;
+                }
+
+                // Show logged in navigation
+                document.querySelector('.auth-buttons')?.classList.add('hidden');
+                document.getElementById('user-profile')?.classList.add('visible');
+                
+                // Update dropdown menu items
+                const dropdownContent = document.querySelector('#user-profile .dropdown-content');
+                if (dropdownContent) {
+                    dropdownContent.innerHTML = `
+                        <a href="Teacher-Dashboard.html">Dashboard</a>
+                        <a href="Profile.html">My Profile</a>
+                        <a href="#" onclick="handleLogout()">Logout</a>
+                    `;
+                }
+                
+                // Load dashboard data if needed
+                // loadTeacherDashboardData();
+            }).catch(error => {
+                console.error("Authentication error:", error);
+                // Redirect to login on auth error
                 window.location.href = 'Login.html';
-                return;
-            }
-
-            // Get current user information
-            const currentUser = getCurrentUser();
-
-            // Verify role is teacher
-            if (!currentUser || currentUser.role !== 'teacher') {
-                window.location.href = 'Login.html';
-                return;
-            }
-
-            // Update welcome message with user name
-            const welcomeTitle = document.querySelector('.dashboard__welcome h1');
-            if (welcomeTitle && currentUser.firstName) {
-                welcomeTitle.textContent = `Teacher Resources Center - Welcome, ${currentUser.firstName}!`;
-            }
-
-            // Update user name in header
-            const userNameSpan = document.getElementById('user-name');
-            if (userNameSpan && currentUser.firstName) {
-                userNameSpan.textContent = currentUser.firstName;
-            }
-
-            // Show logged in navigation
-            document.querySelector('.auth-buttons')?.classList.add('hidden');
-            document.getElementById('user-profile')?.classList.add('visible');
+            });
         });
 
         function handleLogout() {
-            logoutUser();
-            window.location.href = 'Home.html';
+            logoutUser().then(() => {
+                window.location.href = 'Home.html';
+            }).catch(error => {
+                console.error("Logout error:", error);
+                alert("Error logging out. Please try again.");
+            });
         }
     </script>
 </body>
