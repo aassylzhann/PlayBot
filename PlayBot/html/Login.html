@@ -136,7 +136,11 @@
                                     <label for="remember">Remember me</label>
                                 </div>
 
-                                <button type="submit" class="submit-btn">Login</button>
+                                <!-- Add this error message container -->
+                                <div id="login-error" class="error-message"></div>
+
+                                <!-- Change your submit button to have the correct ID -->
+                                <button type="submit" id="login-submit" class="submit-btn">Login</button>
 
                                 <div class="form__links">
                                     <a href="#" class="forgot-password">Forgot Password?</a>
@@ -208,28 +212,22 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Check if user is already logged in
-            if (isUserLoggedIn()) {
-                const userData = getCurrentUser();
-                if (userData && userData.role === 'teacher') {
-                    window.location.href = 'Teacher-Dashboard.html';
-                } else if (userData) {
-                    window.location.href = 'Parent-Dashboard.html';
+            checkLoginStatus().then(({ isLoggedIn, currentUser }) => {
+                if (isLoggedIn && currentUser) {
+                    if (currentUser.role === 'admin') {
+                        window.location.href = 'Admin-Dashboard.html';
+                    } else if (currentUser.role === 'teacher') {
+                        window.location.href = 'Teacher-Dashboard.html';
+                    } else if (currentUser.role === 'parent') {
+                        window.location.href = 'Parent-Dashboard.html';
+                    }
                 }
-            }
-
-            // Check for "remember me" cookie
-            const cookies = document.cookie.split(';');
-            for (const cookie of cookies) {
-                const [name, value] = cookie.trim().split('=');
-                if (name === 'rememberedUser' && value) {
-                    document.getElementById('email').value = value;
-                    document.getElementById('remember').checked = true;
-                }
-            }
+            }).catch(err => {
+                console.error("Error checking login status:", err);
+            });
 
             // Login form submission
             const loginForm = document.getElementById('loginForm');
-
             if (loginForm) {
                 loginForm.addEventListener('submit', function (e) {
                     e.preventDefault();
@@ -240,10 +238,13 @@
                     const remember = document.getElementById('remember').checked;
 
                     // Reset error state
-                    document.getElementById('login-error').textContent = '';
+                    const errorElement = document.getElementById('login-error');
+                    if (errorElement) {
+                        errorElement.textContent = '';
+                    }
 
                     // Show loading indicator
-                    const submitBtn = document.getElementById('login-submit');
+                    const submitBtn = document.querySelector('.submit-btn');
                     const originalBtnText = submitBtn.innerHTML;
                     submitBtn.disabled = true;
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
@@ -268,7 +269,11 @@
                         })
                         .catch(error => {
                             console.error('Login failed', error);
-                            document.getElementById('login-error').textContent = error.message;
+                            if (errorElement) {
+                                errorElement.textContent = error.message;
+                            } else {
+                                alert('Error: ' + error.message);
+                            }
                             submitBtn.disabled = false;
                             submitBtn.innerHTML = originalBtnText;
                         });
