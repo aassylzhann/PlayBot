@@ -732,6 +732,72 @@
         }
     });
 </script>
+    <script>
+    // Fix dashboard tab switching layout issues
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all tab buttons and content sections
+        const tabButtons = document.querySelectorAll('.sidebar__menu li');
+        const contentSections = document.querySelectorAll('.dashboard__section');
+        
+        // Set initial state - ensure the active tab is visible
+        const activeTabId = document.querySelector('.sidebar__menu li.active')?.getAttribute('data-section');
+        if (activeTabId) {
+            contentSections.forEach(section => {
+                if (section.id === activeTabId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        }
+        
+        // Add click handlers to tab buttons
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-section');
+                
+                // Update active tab button
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update visible section
+                contentSections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Maintain scroll position when switching back to a tab
+        const contentArea = document.querySelector('.dashboard__content');
+        if (contentArea) {
+            contentArea.addEventListener('scroll', function() {
+                // Store scroll position of current active section
+                const activeSection = document.querySelector('.dashboard__section.active');
+                if (activeSection) {
+                    activeSection.dataset.scrollPos = contentArea.scrollTop;
+                }
+            });
+        }
+        
+        // Restore scroll position when switching tabs
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                setTimeout(() => {
+                    const activeSection = document.querySelector('.dashboard__section.active');
+                    if (activeSection && activeSection.dataset.scrollPos) {
+                        contentArea.scrollTop = parseInt(activeSection.dataset.scrollPos, 10);
+                    } else {
+                        contentArea.scrollTop = 0;
+                    }
+                }, 10);
+            });
+        });
+    });
+</script>
 </body>
 
 </html>
