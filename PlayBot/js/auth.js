@@ -46,13 +46,13 @@ function loginUser(email, password, role, remember) {
                 }
                 
                 resolve(userData);
-            } else if (email === 'admin@playbot.com' && password === 'admin123') {
-                // Admin login
-                const userData = {
-                    email: 'admin@playbot.com',
-                    firstName: 'Admin',
-                    lastName: 'User',
-                    role: 'admin'
+            } else if (email === "admin@playbot.com" && password === "123123") {
+                const adminData = {
+                    firstName: "Admin",
+                    lastName: "User",
+                    email: email,
+                    role: "admin",
+                    isAdmin: true
                 };
                 
                 // Set session information
@@ -66,6 +66,11 @@ function loginUser(email, password, role, remember) {
             }
         }, 500); // Simulate network delay
     });
+}
+
+function isAdminUser() {
+    const user = getCurrentUser();
+    return user && user.isAdmin === true;
 }
 
 /**
