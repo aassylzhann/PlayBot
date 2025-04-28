@@ -48,30 +48,17 @@ function scrollSlide(direction) {
     slides.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
 }
 
-// Combined scroll event handler
+// Fix the handleScroll function
 function handleScroll() {
-    const scrollTopBtn = document.getElementById("scroll-top-btn");
-    const prevBtn = document.querySelector(".prev-btn");
-    const nextBtn = document.querySelector(".next-btn");
-    const header = document.querySelector("#sticky-header-with-topbar");
-
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const headerHeight = header.offsetHeight;
-
-    // Show/hide scroll to top button
-    if (scrollTop > 300) {
-        scrollTopBtn.classList.add("show");
-    } else {
-        scrollTopBtn.classList.remove("show");
-    }
-
-    // Show/hide slide buttons based on scroll position
-    if (scrollTop >= headerHeight) {
-        prevBtn.style.display = 'none';
-        nextBtn.style.display = 'none';
-    } else {
-        prevBtn.style.display = 'block';
-        nextBtn.style.display = 'block';
+    const header = document.getElementById('header');
+    
+    // Check if header exists before trying to access its properties
+    if (header) {
+        if (window.scrollY > 50) {
+            header.classList.add('sticky');
+        } else {
+            header.classList.remove('sticky');
+        }
     }
 }
 

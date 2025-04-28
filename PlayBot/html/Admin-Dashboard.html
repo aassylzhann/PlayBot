@@ -128,7 +128,7 @@
                                             <a href="About-us.html">About us</a>
                                             <div class="dropdown-content">
                                                 <a href="Team.html">Team</a>
-                                                <a href="Course.html">Cirriculumn</a>
+                                                <a href="Course.html">Cirriculum</a>
                                                 <a href="Achievement.html">Achievement</a>
                                                 <a href="News.html">News</a>
                                                 <a href="Global Impact.html">Global Impact</a>
@@ -193,7 +193,6 @@
                     <li class="active" data-section="overview"><i class="fas fa-chart-line"></i> Overview</li>
                     <li data-section="materials"><i class="fas fa-book"></i> Materials</li>
                     <li data-section="users"><i class="fas fa-users"></i> Users</li>
-                    <li data-section="news"><i class="fas fa-newspaper"></i> News</li>
                     <li data-section="settings"><i class="fas fa-cog"></i> Settings</li>
                 </ul>
             </div>
@@ -394,80 +393,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-
-                <!-- News Section -->
-                <div id="news" class="dashboard__section">
-                    <h1 class="section__title">Manage News</h1>
-
-                    <!-- Add News Form -->
-                    <div class="material__form">
-                        <h2>Add News Article</h2>
-                        <form id="add-news-form">
-                            <div class="form__grid">
-                                <div class="form__group">
-                                    <label for="news-title">Title</label>
-                                    <input type="text" id="news-title" name="title" required>
-                                </div>
-
-                                <div class="form__group">
-                                    <label for="news-category">Category</label>
-                                    <select id="news-category" name="category" required>
-                                        <option value="">Select Category</option>
-                                        <option value="announcement">Announcement</option>
-                                        <option value="event">Event</option>
-                                        <option value="achievement">Achievement</option>
-                                        <option value="update">Update</option>
-                                    </select>
-                                </div>
-
-                                <div class="form__group grid-full">
-                                    <label for="news-content">Content</label>
-                                    <textarea id="news-content" name="content" required></textarea>
-                                </div>
-
-                                <div class="form__group">
-                                    <label for="news-image-url">Image URL</label>
-                                    <input type="url" id="news-image-url" name="imageUrl">
-                                </div>
-
-                                <div class="form__submit">
-                                    <button type="submit" class="btn-primary">Add News</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- News List -->
-                    <div class="content__card">
-                        <div class="card__header">
-                            <h2>News Articles</h2>
-                            <div class="search-box">
-                                <input type="text" id="news-search" placeholder="Search news...">
-                                <i class="fas fa-search"></i>
-                            </div>
-                        </div>
-
-                        <div class="table-responsive">
-                            <table class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Category</th>
-                                        <th>Date Published</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="news-table-body">
-                                    <tr>
-                                        <td colspan="4" class="loading-cell">
-                                            <i class="fas fa-spinner fa-spin"></i> Loading news...
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
                 </div>
 

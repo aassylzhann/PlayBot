@@ -1,0 +1,177 @@
+/* Footer Styles */
+.footer__area {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 50px 0 20px;
+}
+
+.footer__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.footer-brand {
+    flex: 1 1 300px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    margin-bottom: 15px;
+}
+
+.footer-logo-img {
+    max-width: 120px;
+    height: auto;
+}
+
+.footer-about {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.footer-links-container {
+    flex: 2 1 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-column {
+    flex: 1 1 160px;
+    margin-bottom: 20px;
+}
+
+.footer-heading {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #3498db;
+}
+
+.footer-contact p {
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact i {
+    margin-right: 10px;
+    color: #3498db;
+}
+
+.footer-contact a {
+    color: #bdc3c7;
+    text-decoration: none;
+}
+
+.footer-contact a:hover {
+    color: #3498db;
+}
+
+.footer-social {
+    margin-top: 15px;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    margin-right: 10px;
+    color: #ecf0f1;
+    transition: all 0.3s;
+}
+
+.social-icon:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+.footer__contact {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.university {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.department {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+
+.address {
+    font-style: normal;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.footer__copyright {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.footer__copyright p {
+    margin: 5px 0;
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.rights {
+    font-size: 12px;
+    max-width: 600px;
+    margin: 5px auto;
+}
+
+@media (max-width: 768px) {
+    .footer__content {
+        flex-direction: column;
+    }
+    
+    .footer-brand {
+        margin-right: 0;
+        text-align: center;
+    }
+    
+    .footer-links-container {
+        margin-top: 20px;
+    }
+    
+    .footer-column {
+        text-align: center;
+        flex: 1 1 100%;
+        margin-bottom: 30px;
+    }
+}

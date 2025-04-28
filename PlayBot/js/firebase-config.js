@@ -10,12 +10,22 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-// Initialize services
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-// Export for use in other files
-window.fbAuth = auth;
-window.fbDb = db;
+if (typeof firebase !== 'undefined') {
+  try {
+    firebase.initializeApp(firebaseConfig);
+    console.log("Firebase initialized successfully");
+    
+    // Global Firebase shortcuts
+    const fbAuth = firebase.auth();
+    const fbDb = firebase.firestore();
+    
+    // Display a message if not configured with real values
+    if (firebaseConfig.apiKey.includes("Dummy")) {
+      console.warn("⚠️ Using placeholder Firebase configuration. Replace with actual values.");
+    }
+  } catch (error) {
+    console.error("Error initializing Firebase:", error);
+  }
+} else {
+  console.error("Firebase SDK not loaded");
+}
