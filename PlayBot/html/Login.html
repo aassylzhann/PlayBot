@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body>
@@ -102,48 +102,33 @@
                     <div class="col-xs-12">
                         <div class="login__form">
                             <h2 class="login__title">Login to Your Account</h2>
-                            <form id="loginForm" class="form">
-                                <div class="form__group">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" id="email" name="email" required>
+                            <div class="login-container">
+                                <h2>Log In to PlayBot</h2>
+                                <p>Access your PlayBot account</p>
+                                
+                                <!-- Netlify Identity Login Button -->
+                                <div class="netlify-login-container">
+                                    <button class="login-with-netlify" onclick="netlifyLogin()">Log in with Netlify Identity</button>
+                                    <p class="login-separator">Or log in with email</p>
                                 </div>
-
-                                <div class="form__group">
-                                    <label for="password">Password</label>
-                                    <input type="password" id="password" name="password" required>
-                                </div>
-
-                                <!-- Role Selection -->
-                                <div class="role-selection">
-                                    <label>I am a:</label>
-                                    <div class="role-buttons">
-                                        <label class="role-btn">
-                                            <input type="radio" name="role" value="teacher" checked>
-
-                                            <span class="role-name">Teacher</span>
-                                        </label>
-
-                                        <label class="role-btn">
-                                            <input type="radio" name="role" value="parent">
-
-                                            <span class="role-name">Parent</span>
-                                        </label>
+                                
+                                <!-- Regular login form as backup -->
+                                <form id="login-form" class="login-form">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="email" required>
                                     </div>
-                                </div>
-
-                                <div class="remember">
-                                    <input type="checkbox" id="remember" name="remember">
-                                    <label for="remember">Remember me</label>
-                                </div>
-
-                                <button type="submit" class="submit-btn">Login</button>
-
-                                <div class="form__links">
-                                    <a href="#" class="forgot-password">Forgot Password?</a>
-                                    <p>Don't have an account? <a href="Register.html" class="register-link">Register
-                                            now</a></p>
-                                </div>
-                            </form>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" id="password" name="password" required>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" id="login-button" class="btn btn-primary">Log In</button>
+                                    </div>
+                                </form>
+                                
+                                <p class="signup-link">Don't have an account? <a href="Register.html">Sign up</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -159,11 +144,11 @@
                     <div class="footer-brand">
                         <div class="footer-logo">
                             <a href="Home.html">
-                                <img src="../images/MACO.png" alt="MACO logo" class="footer-logo-img">
+                                <img src="../images/MACO.png"  class="footer-logo-img">
                             </a>
                         </div>
                         <p class="footer-about">
-                            PlayBot is an innovative curriculum for teaching robot programming 
+                            MACO is an innovative curriculum for teaching robot programming 
                             through play, developed at The Education University of Hong Kong.
                         </p>
                     </div>
@@ -299,6 +284,63 @@
                 });
             }
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is already logged in
+            if (netlifyIdentity.currentUser()) {
+                redirectToDashboard();
+            }
+            
+            // Listen for login events
+            netlifyIdentity.on('login', user => {
+                // Store user data
+                localStorage.setItem('user', JSON.stringify({
+                    email: user.email,
+                    name: user.user_metadata.full_name || user.email.split('@')[0],
+                    role: user.app_metadata.roles ? user.app_metadata.roles[0] : 'student'
+                }));
+                
+                redirectToDashboard();
+            });
+            
+            // Handle regular form submission
+            document.getElementById('login-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                netlifyIdentity.login({
+                    email: email,
+                    password: password
+                }).catch(err => {
+                    alert('Login failed: ' + err.message);
+                });
+            });
+        });
+
+        function netlifyLogin() {
+            netlifyIdentity.open('login');
+        }
+
+        function redirectToDashboard() {
+            // Get user role and redirect to appropriate dashboard
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (!user) return;
+            
+            switch(user.role) {
+                case 'admin':
+                    window.location.href = 'Admin-Dashboard.html';
+                    break;
+                case 'teacher':
+                    window.location.href = 'Teacher-Dashboard.html';
+                    break;
+                case 'parent':
+                    window.location.href = 'Parent-Dashboard.html';
+                    break;
+                default:
+                    window.location.href = 'Profile.html';
+            }
+        }
     </script>
 </body>
 

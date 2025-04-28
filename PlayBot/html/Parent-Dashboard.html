@@ -304,7 +304,7 @@
             <div class="footer-brand">
                 <div class="footer-logo">
                     <a href="Home.html">
-                        <img src="../images/MACO.png" alt="MACO logo" class="footer-logo-img">
+                        <img src="../images/MACO.png"  class="footer-logo-img">
                     </a>
                 </div>
                 <p class="footer-about">
@@ -386,8 +386,13 @@
 
             // Verify role is parent
             if (!currentUser || currentUser.role !== 'parent') {
-                window.location.href = 'Login.html';
+                window.location.href = 'Home.html';
                 return;
+            }
+            
+            // Update authentication UI
+            if (typeof updateAuthUI === 'function') {
+                updateAuthUI();
             }
 
             // Update welcome message with user name

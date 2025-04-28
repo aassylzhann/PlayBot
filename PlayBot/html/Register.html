@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body>
@@ -103,55 +103,45 @@
                     <div class="col-xs-12">
                         <div class="register__form">
                             <h2 class="register__title">Create an Account</h2>
-                            <form id="registerForm" class="form">
-                                <div class="form__row">
-                                    <div class="form__group">
-                                        <label for="firstName">First Name</label>
-                                        <input type="text" id="firstName" name="firstName" required>
+                            <div class="register-container">
+                                <h2>Create PlayBot Account</h2>
+                                <p>Join the PlayBot community</p>
+                                
+                                <!-- Netlify Identity Signup Button -->
+                                <div class="netlify-signup-container">
+                                    <button class="signup-with-netlify" onclick="netlifySignup()">Sign up with Netlify Identity</button>
+                                    <p class="signup-separator">Or register with email</p>
+                                </div>
+                                
+                                <!-- Regular registration form -->
+                                <form id="register-form" class="register-form">
+                                    <div class="form-group">
+                                        <label for="fullname">Full Name</label>
+                                        <input type="text" id="fullname" name="fullname" required>
                                     </div>
-                                    <div class="form__group">
-                                        <label for="lastName">Last Name</label>
-                                        <input type="text" id="lastName" name="lastName" required>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="email" required>
                                     </div>
-                                </div>
-                                <div class="form__group">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                <div class="form__group">
-                                    <label for="password">Password</label>
-                                    <input type="password" id="password" name="password" required>
-                                </div>
-                                <div class="form__group">
-                                    <label for="confirmPassword">Confirm Password</label>
-                                    <input type="password" id="confirmPassword" name="confirmPassword" required>
-                                </div>
-                                <div class="form__group role-selection">
-                                    <label>I am registering as a:</label>
-                                    <div class="role-buttons">
-                                        <label class="role-btn">
-                                            <input type="radio" name="role" value="teacher" checked>
-
-                                            <span class="role-name">Teacher</span>
-                                        </label>
-                                        <label class="role-btn">
-                                            <input type="radio" name="role" value="parent">
-
-                                            <span class="role-name">Parent</span>
-                                        </label>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" id="password" name="password" required>
                                     </div>
-                                </div>
-                                <div class="form__group terms">
-                                    <input type="checkbox" id="terms" name="terms" required>
-                                    <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
-                                </div>
-                                <div class="form__group">
-                                    <button type="submit" class="submit-btn">Register</button>
-                                </div>
-                                <div class="form__links">
-                                    <p>Already have an account? <a href="Login.html">Login here</a></p>
-                                </div>
-                            </form>
+                                    <div class="form-group">
+                                        <label for="role">I am a:</label>
+                                        <select id="role" name="role">
+                                            <option value="student">Student</option>
+                                            <option value="parent">Parent</option>
+                                            <option value="teacher">Teacher</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" id="register-button" class="btn btn-primary">Sign Up</button>
+                                    </div>
+                                </form>
+                                
+                                <p class="login-link">Already have an account? <a href="Login.html">Log in</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -167,7 +157,7 @@
             <div class="footer-brand">
                 <div class="footer-logo">
                     <a href="Home.html">
-                        <img src="../images/MACO.png" alt="MACO logo" class="footer-logo-img">
+                        <img src="../images/MACO.png"  class="footer-logo-img">
                     </a>
                 </div>
                 <p class="footer-about">
@@ -294,6 +284,39 @@
                 });
             }
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Listen for signup events
+            netlifyIdentity.on('signup', user => {
+                alert('Registration successful! Please check your email to confirm your account.');
+            });
+            
+            // Handle regular form submission
+            document.getElementById('register-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const fullName = document.getElementById('fullname').value;
+                const role = document.getElementById('role').value;
+                
+                netlifyIdentity.signup({
+                    email: email,
+                    password: password,
+                    user_metadata: {
+                        full_name: fullName
+                    },
+                    app_metadata: {
+                        roles: [role]
+                    }
+                }).catch(err => {
+                    alert('Signup failed: ' + err.message);
+                });
+            });
+        });
+
+        function netlifySignup() {
+            netlifyIdentity.open('signup');
+        }
     </script>
 </body>
 

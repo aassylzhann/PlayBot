@@ -515,7 +515,7 @@
             <div class="footer-brand">
                 <div class="footer-logo">
                     <a href="Home.html">
-                        <img src="../images/MACO.png" alt="MACO logo" class="footer-logo-img">
+                        <img src="../images/MACO.png"  class="footer-logo-img">
                     </a>
                 </div>
                 <p class="footer-about">
@@ -589,6 +589,20 @@
             // Check if user is logged in as admin
             if (!isAdminUser()) {
                 window.location.href = 'Login.html';
+                return;
+            }
+            
+            // Update authentication UI
+            if (typeof updateAuthUI === 'function') {
+                updateAuthUI();
+            }
+            
+            // Get current user information
+            const currentUser = getCurrentUser();
+
+            // Verify correct role access
+            if (!currentUser || currentUser.role !== 'admin') {
+                window.location.href = 'Home.html';
                 return;
             }
 
