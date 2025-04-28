@@ -1,25 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+/Admin-Dashboard.html -->
+<!doctype html>
+<html class="no-js" lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Admin Dashboard - MACO</title>
+    <meta name="description" content="Admin Dashboard - PlayBot Administration">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/auth.css">
     <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/admin.css">
-    <!-- Add Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
-<body>
+<body class="admin-dashboard">
     <!-- Body main wrapper start -->
     <div class="wrapper">
-        <!-- Start Header Style -->
+        <!-- Start Header -->
         <header id="header" class="header__area header--one">
             <!-- Start Mainmenu Area -->
             <div id="sticky-header-with-topbar" class="header__area">
@@ -66,460 +70,362 @@
                                     </ul>
                                 </nav>
 
+
+
+                                <!-- Find the section with auth-buttons and add the user-profile div right after it -->
                                 <div class="language-selector">
                                     <button id="en-btn" class="lang-btn active"
                                         onclick="switchLanguage('en')">EN</button>
                                     <span class="lang-divider">|</span>
                                     <button id="zh-btn" class="lang-btn" onclick="switchLanguage('zh')">中文</button>
                                 </div>
-
-                                <div id="user-profile" class="user-profile visible">
+                                <div class="auth-buttons">
+                                    <a href="Login.html" class="auth-btn login">Login</a>
+                                    <a href="Register.html" class="auth-btn signup">Sign Up</a>
+                                </div>
+                                <div id="user-profile" class="user-profile">
                                     <a class="profile-btn" href="#">
-                                        <span id="user-name">Admin</span>
+                                        <span id="user-name">Account</span>
                                     </a>
                                     <div class="dropdown-content">
-                                        <a href="Admin-Dashboard.html">Dashboard</a>
-                                        <a href="#" onclick="handleLogout()">Logout</a>
+                                        <!-- Dynamically populated by auth.js -->
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- End Mainmenu Area -->
+            </div> <!-- Header content here -->
         </header>
-        <!-- End Header Area -->
+        <!-- End Header -->
 
-        <div class="dashboard admin-dashboard">
-            <div class="dashboard__container">
-                <div class="dashboard__welcome">
-                    <h1>Admin Dashboard</h1>
-                    <p>Manage website content, upload materials for teachers and parents, and edit news articles.</p>
-                </div>
+        <!-- Start Dashboard Content -->
+        <div class="dashboard__container">
+            <!-- Sidebar Navigation -->
+            <div class="dashboard__sidebar">
+                <h3 class="sidebar__title"><i class="fas fa-tachometer-alt"></i> Admin Panel</h3>
+                <ul class="sidebar__menu">
+                    <li class="active" data-section="overview"><i class="fas fa-chart-line"></i> Overview</li>
+                    <li data-section="materials"><i class="fas fa-book"></i> Materials</li>
+                    <li data-section="users"><i class="fas fa-users"></i> Users</li>
+                    <li data-section="news"><i class="fas fa-newspaper"></i> News</li>
+                    <li data-section="settings"><i class="fas fa-cog"></i> Settings</li>
+                </ul>
+            </div>
 
-                <div class="admin-nav">
-                    <button class="admin-nav-btn active" data-section="materials">
-                        <i class="fas fa-file-upload"></i> Materials Management
-                    </button>
-                    <button class="admin-nav-btn" data-section="news">
-                        <i class="fas fa-newspaper"></i> News Management
-                    </button>
-                    <button class="admin-nav-btn" data-section="users">
-                        <i class="fas fa-users"></i> User Management
-                    </button>
-                    <button class="admin-nav-btn" data-section="analytics">
-                        <i class="fas fa-chart-line"></i> Analytics
-                    </button>
-                </div>
+            <!-- Main Content Area -->
+            <div class="dashboard__content">
+                <!-- Overview Section -->
+                <div id="overview" class="dashboard__section active">
+                    <h1 class="section__title">Dashboard Overview</h1>
 
-                <!-- Materials Management Section -->
-                <div id="materials-section" class="admin-section active">
-                    <h2><i class="fas fa-file-upload"></i> Materials Management</h2>
-
-                    <div class="admin-card">
-                        <div class="admin-card-header">
-                            <h3>Upload Learning Materials</h3>
+                    <!-- Stats Cards -->
+                    <div class="stats__cards">
+                        <div class="stat__card">
+                            <h3>Total Users</h3>
+                            <div class="number" id="total-users">0</div>
+                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="users-trend">0%</span> since
+                                last month</div>
                         </div>
-                        <div class="admin-card-content">
-                            <form id="material-upload-form" class="admin-form">
-                                <div class="form-group">
+
+                        <div class="stat__card">
+                            <h3>Teachers</h3>
+                            <div class="number" id="total-teachers">0</div>
+                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="teachers-trend">0%</span>
+                                since last month</div>
+                        </div>
+
+                        <div class="stat__card">
+                            <h3>Parents</h3>
+                            <div class="number" id="total-parents">0</div>
+                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="parents-trend">0%</span>
+                                since last month</div>
+                        </div>
+
+                        <div class="stat__card">
+                            <h3>Materials</h3>
+                            <div class="number" id="total-materials">0</div>
+                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="materials-trend">0%</span>
+                                since last month</div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="content__card">
+                        <div class="card__header">
+                            <h2>Recent Activity</h2>
+                            <a href="#" class="btn-link">View All</a>
+                        </div>
+                        <div class="activity__list" id="recent-activities">
+                            <div class="loading-indicator">
+                                <i class="fas fa-spinner fa-spin"></i> Loading activities...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Materials Section -->
+                <div id="materials" class="dashboard__section">
+                    <h1 class="section__title">Manage Educational Materials</h1>
+
+                    <!-- Add Material Form -->
+                    <div class="material__form">
+                        <h2>Add New Material</h2>
+                        <form id="add-material-form">
+                            <div class="form__grid">
+                                <div class="form__group">
                                     <label for="material-title">Title</label>
-                                    <input type="text" id="material-title" placeholder="Enter material title" required>
+                                    <input type="text" id="material-title" name="title" required>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form__group">
+                                    <label for="material-type">Type</label>
+                                    <select id="material-type" name="type" required>
+                                        <option value="">Select Type</option>
+                                        <option value="document">Document</option>
+                                        <option value="video">Video</option>
+                                        <option value="link">External Link</option>
+                                        <option value="lesson">Lesson Plan</option>
+                                    </select>
+                                </div>
+
+                                <div class="form__group">
+                                    <label for="material-category">Category</label>
+                                    <select id="material-category" name="category" required>
+                                        <option value="">Select Category</option>
+                                        <option value="math">Mathematics</option>
+                                        <option value="language">Language Arts</option>
+                                        <option value="science">Science</option>
+                                        <option value="social">Social Studies</option>
+                                        <option value="art">Arts & Creativity</option>
+                                    </select>
+                                </div>
+
+                                <div class="form__group">
+                                    <label for="material-audience">Audience</label>
+                                    <select id="material-audience" name="audience" required>
+                                        <option value="">Select Audience</option>
+                                        <option value="teachers">Teachers</option>
+                                        <option value="parents">Parents</option>
+                                        <option value="both">Both</option>
+                                    </select>
+                                </div>
+
+                                <div class="form__group grid-full">
                                     <label for="material-description">Description</label>
-                                    <textarea id="material-description" placeholder="Enter material description"
-                                        rows="3" required></textarea>
+                                    <textarea id="material-description" name="description" required></textarea>
                                 </div>
 
-                                <div class="form-row">
-                                    <div class="form-group half">
-                                        <label for="material-category">Category</label>
-                                        <select id="material-category" required>
-                                            <option value="">Select category</option>
-                                            <option value="lesson">Lesson Materials</option>
-                                            <option value="worksheet">Printable Worksheets</option>
-                                            <option value="game">Learning Games</option>
-                                            <option value="reference">Teacher References</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group half">
-                                        <label for="material-audience">Audience</label>
-                                        <select id="material-audience" required>
-                                            <option value="">Select audience</option>
-                                            <option value="teachers">Teachers Only</option>
-                                            <option value="parents">Parents Only</option>
-                                            <option value="both">Both Teachers & Parents</option>
-                                        </select>
-                                    </div>
+                                <div class="form__group">
+                                    <label for="material-url">External URL (if applicable)</label>
+                                    <input type="url" id="material-url" name="externalUrl">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="material-file">Material File (PDF, DOCX, PPT, ZIP)</label>
-                                    <div class="file-upload-container">
-                                        <input type="file" id="material-file" accept=".pdf,.docx,.ppt,.pptx,.zip"
-                                            required>
-                                        <label for="material-file" class="file-upload-btn">
-                                            <i class="fas fa-cloud-upload-alt"></i> Choose File
-                                        </label>
-                                        <span class="file-name">No file chosen</span>
-                                    </div>
+                                <div class="form__group">
+                                    <label for="material-content">Content (for documents)</label>
+                                    <textarea id="material-content" name="content"></textarea>
                                 </div>
 
-                                <div class="form-actions">
-                                    <button type="submit" class="admin-btn primary">
-                                        <i class="fas fa-upload"></i> Upload Material
-                                    </button>
+                                <div class="form__submit">
+                                    <button type="submit" class="btn-primary">Add Material</button>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
 
-                    <div class="admin-card">
-                        <div class="admin-card-header">
-                            <h3>Manage Existing Materials</h3>
-                            <div class="admin-card-actions">
-                                <input type="text" placeholder="Search materials..." class="admin-search">
-                                <select class="admin-filter">
-                                    <option value="all">All Categories</option>
-                                    <option value="lesson">Lesson Materials</option>
-                                    <option value="worksheet">Worksheets</option>
-                                    <option value="game">Games</option>
-                                    <option value="reference">References</option>
-                                </select>
+                    <!-- Material List -->
+                    <div class="content__card">
+                        <div class="card__header">
+                            <h2>Materials List</h2>
+                            <div class="search-box">
+                                <input type="text" id="material-search" placeholder="Search materials...">
+                                <i class="fas fa-search"></i>
                             </div>
                         </div>
-                        <div class="admin-card-content">
-                            <div class="admin-table-container">
-                                <table class="admin-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Title</th>
-                                            <th>Category</th>
-                                            <th>Audience</th>
-                                            <th>Date Added</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Introduction to PlayBot Programming</td>
-                                            <td>Lesson Materials</td>
-                                            <td>Both</td>
-                                            <td>April 10, 2025</td>
-                                            <td>
-                                                <div class="table-actions">
-                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
-                                                    <button class="icon-btn delete"><i
-                                                            class="fas fa-trash-alt"></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sequencing Practice Sheets</td>
-                                            <td>Printable Worksheets</td>
-                                            <td>Parents</td>
-                                            <td>April 8, 2025</td>
-                                            <td>
-                                                <div class="table-actions">
-                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
-                                                    <button class="icon-btn delete"><i
-                                                            class="fas fa-trash-alt"></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lesson Plan: Introduction to Loops</td>
-                                            <td>Teacher References</td>
-                                            <td>Teachers</td>
-                                            <td>April 6, 2025</td>
-                                            <td>
-                                                <div class="table-actions">
-                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
-                                                    <button class="icon-btn delete"><i
-                                                            class="fas fa-trash-alt"></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Type</th>
+                                        <th>Category</th>
+                                        <th>Audience</th>
+                                        <th>Date Added</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="materials-table-body">
+                                    <tr>
+                                        <td colspan="6" class="loading-cell">
+                                            <i class="fas fa-spinner fa-spin"></i> Loading materials...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
-                <!-- News Management Section -->
-                <div id="news-section" class="admin-section">
-                    <h2><i class="fas fa-newspaper"></i> News Management</h2>
+                <!-- Users Section -->
+                <div id="users" class="dashboard__section">
+                    <h1 class="section__title">Manage Users</h1>
 
-                    <div class="admin-card">
-                        <div class="admin-card-header">
-                            <h3>Create/Edit News Article</h3>
+                    <!-- User Filters -->
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="user-role-filter">Filter by Role:</label>
+                            <select id="user-role-filter">
+                                <option value="all">All Roles</option>
+                                <option value="teacher">Teachers</option>
+                                <option value="parent">Parents</option>
+                            </select>
                         </div>
-                        <div class="admin-card-content">
-                            <form id="news-form" class="admin-form">
-                                <div class="form-group">
-                                    <label for="news-title">News Title</label>
-                                    <input type="text" id="news-title" placeholder="Enter news title" required>
+
+                        <div class="search-box">
+                            <input type="text" id="user-search" placeholder="Search users...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+
+                    <!-- Users List -->
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Date Joined</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-table-body">
+                                <tr>
+                                    <td colspan="6" class="loading-cell">
+                                        <i class="fas fa-spinner fa-spin"></i> Loading users...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- News Section -->
+                <div id="news" class="dashboard__section">
+                    <h1 class="section__title">Manage News</h1>
+
+                    <!-- Add News Form -->
+                    <div class="material__form">
+                        <h2>Add News Article</h2>
+                        <form id="add-news-form">
+                            <div class="form__grid">
+                                <div class="form__group">
+                                    <label for="news-title">Title</label>
+                                    <input type="text" id="news-title" name="title" required>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="news-summary">Summary/Preview</label>
-                                    <textarea id="news-summary"
-                                        placeholder="Enter short summary (displayed in news list)" rows="2"
-                                        required></textarea>
+                                <div class="form__group">
+                                    <label for="news-category">Category</label>
+                                    <select id="news-category" name="category" required>
+                                        <option value="">Select Category</option>
+                                        <option value="announcement">Announcement</option>
+                                        <option value="event">Event</option>
+                                        <option value="achievement">Achievement</option>
+                                        <option value="update">Update</option>
+                                    </select>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form__group grid-full">
                                     <label for="news-content">Content</label>
-                                    <textarea id="news-content" class="rich-editor"
-                                        placeholder="Enter full news content" rows="10" required></textarea>
+                                    <textarea id="news-content" name="content" required></textarea>
                                 </div>
 
-                                <div class="form-row">
-                                    <div class="form-group half">
-                                        <label for="news-category">Category</label>
-                                        <select id="news-category" required>
-                                            <option value="">Select category</option>
-                                            <option value="event">Event</option>
-                                            <option value="update">Product Update</option>
-                                            <option value="announcement">Announcement</option>
-                                            <option value="research">Research</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group half">
-                                        <label for="news-date">Publication Date</label>
-                                        <input type="date" id="news-date" required>
-                                    </div>
+                                <div class="form__group">
+                                    <label for="news-image-url">Image URL</label>
+                                    <input type="url" id="news-image-url" name="imageUrl">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="news-image">Featured Image</label>
-                                    <div class="file-upload-container">
-                                        <input type="file" id="news-image" accept="image/*">
-                                        <label for="news-image" class="file-upload-btn">
-                                            <i class="fas fa-cloud-upload-alt"></i> Choose Image
-                                        </label>
-                                        <span class="file-name">No file chosen</span>
-                                    </div>
+                                <div class="form__submit">
+                                    <button type="submit" class="btn-primary">Add News</button>
                                 </div>
-
-                                <div class="form-actions">
-                                    <button type="submit" class="admin-btn primary">
-                                        <i class="fas fa-save"></i> Save News Article
-                                    </button>
-                                    <button type="button" class="admin-btn secondary">
-                                        <i class="fas fa-eye"></i> Preview
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
 
-                    <div class="admin-card">
-                        <div class="admin-card-header">
-                            <h3>Manage News Articles</h3>
-                            <div class="admin-card-actions">
-                                <input type="text" placeholder="Search news..." class="admin-search">
-                                <select class="admin-filter">
-                                    <option value="all">All Categories</option>
-                                    <option value="event">Events</option>
-                                    <option value="update">Product Updates</option>
-                                    <option value="announcement">Announcements</option>
-                                    <option value="research">Research</option>
-                                </select>
+                    <!-- News List -->
+                    <div class="content__card">
+                        <div class="card__header">
+                            <h2>News Articles</h2>
+                            <div class="search-box">
+                                <input type="text" id="news-search" placeholder="Search news...">
+                                <i class="fas fa-search"></i>
                             </div>
                         </div>
-                        <div class="admin-card-content">
-                            <div class="admin-table-container">
-                                <table class="admin-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Title</th>
-                                            <th>Category</th>
-                                            <th>Publication Date</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>PlayBot Wins Educational Technology Award</td>
-                                            <td>Announcement</td>
-                                            <td>April 10, 2025</td>
-                                            <td><span class="status published">Published</span></td>
-                                            <td>
-                                                <div class="table-actions">
-                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
-                                                    <button class="icon-btn delete"><i
-                                                            class="fas fa-trash-alt"></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>New PlayBot Features Coming Soon</td>
-                                            <td>Product Update</td>
-                                            <td>April 15, 2025</td>
-                                            <td><span class="status draft">Draft</span></td>
-                                            <td>
-                                                <div class="table-actions">
-                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
-                                                    <button class="icon-btn delete"><i
-                                                            class="fas fa-trash-alt"></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>PlayBot Workshop Registration Open</td>
-                                            <td>Event</td>
-                                            <td>April 5, 2025</td>
-                                            <td><span class="status published">Published</span></td>
-                                            <td>
-                                                <div class="table-actions">
-                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
-                                                    <button class="icon-btn delete"><i
-                                                            class="fas fa-trash-alt"></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Category</th>
+                                        <th>Date Published</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="news-table-body">
+                                    <tr>
+                                        <td colspan="4" class="loading-cell">
+                                            <i class="fas fa-spinner fa-spin"></i> Loading news...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
-                <!-- User Management Section -->
-                <div id="users-section" class="admin-section">
-                    <h2><i class="fas fa-users"></i> User Management</h2>
+                <!-- Settings Section -->
+                <div id="settings" class="dashboard__section">
+                    <h1 class="section__title">Dashboard Settings</h1>
 
-                    <div class="admin-card">
-                        <div class="admin-card-header">
-                            <h3>Manage Users</h3>
-                            <div class="admin-card-actions">
-                                <input type="text" placeholder="Search users..." class="admin-search">
-                                <select class="admin-filter">
-                                    <option value="all">All Roles</option>
-                                    <option value="teacher">Teachers</option>
-                                    <option value="parent">Parents</option>
-                                    <option value="admin">Admins</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="admin-card-content">
-                            <div class="admin-table-container">
-                                <table class="admin-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Role</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Sarah Wong</td>
-                                            <td>sarah.wong@example.com</td>
-                                            <td>Teacher</td>
-                                            <td><span class="status active">Active</span></td>
-                                            <td>
-                                                <div class="table-actions">
-                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
-                                                    <button class="icon-btn block"><i class="fas fa-ban"></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Michael Chen</td>
-                                            <td>michael.chen@example.com</td>
-                                            <td>Parent</td>
-                                            <td><span class="status active">Active</span></td>
-                                            <td>
-                                                <div class="table-actions">
-                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
-                                                    <button class="icon-btn block"><i class="fas fa-ban"></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Admin User</td>
-                                            <td>admin@playbot.com</td>
-                                            <td>Admin</td>
-                                            <td><span class="status active">Active</span></td>
-                                            <td>
-                                                <div class="table-actions">
-                                                    <button class="icon-btn edit"><i class="fas fa-edit"></i></button>
-                                                    <button class="icon-btn block" disabled><i
-                                                            class="fas fa-ban"></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <div class="content__card">
+                        <h2>Admin Account</h2>
+                        <p>You are logged in as Admin. These settings control your admin dashboard experience.</p>
 
-                <!-- Analytics Section -->
-                <div id="analytics-section" class="admin-section">
-                    <h2><i class="fas fa-chart-line"></i> Analytics</h2>
-
-                    <div class="analytics-overview">
-                        <div class="analytics-card">
-                            <div class="analytics-value">126</div>
-                            <div class="analytics-label">Active Users</div>
-                            <div class="analytics-trend positive">
-                                <i class="fas fa-arrow-up"></i> 12% this month
-                            </div>
-                        </div>
-                        <div class="analytics-card">
-                            <div class="analytics-value">284</div>
-                            <div class="analytics-label">Material Downloads</div>
-                            <div class="analytics-trend positive">
-                                <i class="fas fa-arrow-up"></i> 8% this month
-                            </div>
-                        </div>
-                        <div class="analytics-card">
-                            <div class="analytics-value">18</div>
-                            <div class="analytics-label">News Articles</div>
-                            <div class="analytics-trend neutral">
-                                <i class="fas fa-minus"></i> No change
-                            </div>
-                        </div>
-                        <div class="analytics-card">
-                            <div class="analytics-value">42</div>
-                            <div class="analytics-label">New Registrations</div>
-                            <div class="analytics-trend positive">
-                                <i class="fas fa-arrow-up"></i> 15% this month
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="admin-card">
-                        <div class="admin-card-header">
-                            <h3>Usage Statistics</h3>
-                        </div>
-                        <div class="admin-card-content">
-                            <div class="chart-container">
-                                <div class="chart-placeholder">
-                                    <i class="fas fa-chart-bar"></i>
-                                    <p>Interactive charts would be displayed here</p>
+                        <form id="admin-settings-form" class="settings-form">
+                            <div class="form__group">
+                                <label for="setting-notifications">Email Notifications</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="setting-notifications" name="notifications" checked>
+                                    <label for="setting-notifications"></label>
                                 </div>
+                                <p class="setting-description">Receive email notifications for new user registrations
+                                    and important system events.</p>
                             </div>
-                        </div>
+
+                            <div class="form__group">
+                                <label for="setting-analytics">Analytics Tracking</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="setting-analytics" name="analytics" checked>
+                                    <label for="setting-analytics"></label>
+                                </div>
+                                <p class="setting-description">Enable analytics tracking for dashboard usage statistics.
+                                </p>
+                            </div>
+
+                            <div class="form__submit">
+                                <button type="submit" class="btn-primary">Save Settings</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Start Footer Area -->
+        <!-- Footer -->
         <footer class="footer__area">
             <div class="container">
                 <div class="footer__content">
@@ -591,129 +497,82 @@
                 </div>
             </div>
         </footer>
-        <!-- End Footer Area -->
+        <!-- Footer end -->
+    </div>
+    <!-- Body main wrapper end -->
+
+    <!-- Modal for Editing Materials -->
+    <div id="edit-material-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Material</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="edit-material-form">
+                    <input type="hidden" id="edit-material-id">
+
+                    <div class="form__group">
+                        <label for="edit-material-title">Title</label>
+                        <input type="text" id="edit-material-title" name="title" required>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="edit-material-category">Category</label>
+                        <select id="edit-material-category" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="math">Mathematics</option>
+                            <option value="language">Language Arts</option>
+                            <option value="science">Science</option>
+                            <option value="social">Social Studies</option>
+                            <option value="art">Arts & Creativity</option>
+                        </select>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="edit-material-audience">Audience</label>
+                        <select id="edit-material-audience" name="audience" required>
+                            <option value="">Select Audience</option>
+                            <option value="teachers">Teachers</option>
+                            <option value="parents">Parents</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="edit-material-description">Description</label>
+                        <textarea id="edit-material-description" name="description" required></textarea>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="edit-material-url">External URL</label>
+                        <input type="url" id="edit-material-url" name="externalUrl">
+                    </div>
+
+                    <div class="form__group">
+                        <label for="edit-material-content">Content</label>
+                        <textarea id="edit-material-content" name="content"></textarea>
+                    </div>
+
+                    <div class="form__submit">
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
-    <!-- All js files are included here. -->
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
     <!-- Your Firebase configuration -->
     <script src="../js/firebase-config.js"></script>
     <!-- Your application scripts -->
     <script src="../js/components.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/auth.js"></script>
-    <script src="../js/dashboard.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Check if user is logged in as admin
-            if (!isAdminUser()) {
-                window.location.href = 'Login.html';
-                return;
-            }
-
-            // Update authentication UI
-            if (typeof updateAuthUI === 'function') {
-                updateAuthUI();
-            }
-
-            // Get current user information
-            const currentUser = getCurrentUser();
-
-            // Verify correct role access
-            if (!currentUser || currentUser.role !== 'admin') {
-                window.location.href = 'Home.html';
-                return;
-            }
-
-            // Show file name when file is selected
-            const fileInputs = document.querySelectorAll('input[type="file"]');
-            fileInputs.forEach(input => {
-                input.addEventListener('change', function () {
-                    const fileNameSpan = this.parentElement.querySelector('.file-name');
-                    if (this.files.length > 0) {
-                        fileNameSpan.textContent = this.files[0].name;
-                    } else {
-                        fileNameSpan.textContent = 'No file chosen';
-                    }
-                });
-            });
-
-            // Admin section navigation
-            const navButtons = document.querySelectorAll('.admin-nav-btn');
-            navButtons.forEach(btn => {
-                btn.addEventListener('click', function () {
-                    // Remove active class from all buttons and sections
-                    navButtons.forEach(b => b.classList.remove('active'));
-                    document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
-
-                    // Add active class to clicked button and corresponding section
-                    this.classList.add('active');
-                    const sectionId = this.getAttribute('data-section') + '-section';
-                    document.getElementById(sectionId).classList.add('active');
-                });
-            });
-
-            // Handle form submissions
-            const materialForm = document.getElementById('material-upload-form');
-            if (materialForm) {
-                materialForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    // Demo code - in production would send to server
-                    alert('Material uploaded successfully!');
-                    this.reset();
-                    document.querySelectorAll('.file-name').forEach(span => {
-                        span.textContent = 'No file chosen';
-                    });
-                });
-            }
-
-            const newsForm = document.getElementById('news-form');
-            if (newsForm) {
-                newsForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    // Demo code - in production would send to server
-                    alert('News article saved successfully!');
-                    this.reset();
-                    document.querySelectorAll('.file-name').forEach(span => {
-                        span.textContent = 'No file chosen';
-                    });
-                });
-            }
-        });
-
-        // Check if the current user is an admin
-        function isAdminUser() {
-            // In a real application, this would check against your authentication system
-            const currentUser = getCurrentUser();
-            return currentUser && currentUser.role === 'admin';
-        }
-
-        // For demo purposes, simulate getting current user
-        function getCurrentUser() {
-            // In a real app, this would get user data from localStorage, cookies, or a server session
-            return {
-                firstName: 'Admin',
-                lastName: 'User',
-                email: 'admin@playbot.com',
-                role: 'admin'
-            };
-        }
-
-        function handleLogout() {
-            // In a real app, this would clear authentication tokens/cookies
-            alert('Admin logged out');
-            window.location.href = 'Login.html';
-        }
-    </script>
-    <!-- Preload common resources -->
-    <link rel="preload" as="image" href="../images/MACO.png">
-    <link rel="preload" as="style" href="../css/header.css">
-    <link rel="preload" as="style" href="../css/footer.css">
+    <script src="../js/admin-dashboard.js"></script>
 </body>
 
 </html>
