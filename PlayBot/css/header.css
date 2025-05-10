@@ -406,3 +406,70 @@ body {
   }
 }
 
+/* Add this at the very end of your header.css file to override all previous styles */
+
+/* CRITICAL FIXES - DO NOT MODIFY */
+.header__area {
+  height: 80px !important;
+  padding: 0 !important;
+}
+
+/* Logo size fix */
+.logo {
+  display: flex !important;
+  align-items: center !important;
+  height: 80px !important;
+}
+
+.logo a {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.header-logo {
+  height: 60px !important; /* Increased size */
+  width: auto !important;
+  max-height: none !important; /* Override max-height */
+}
+
+/* Button alignment fixes */
+.auth-buttons, 
+#user-profile,
+.language-selector {
+  height: 80px !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-top: 0 !important;
+}
+
+/* Reset all vertical position overrides */
+.auth-btn, 
+.lang-btn,
+.profile-btn {
+  padding: 8px 15px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  height: 36px !important;
+  line-height: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Ensure column container is properly aligned */
+.col-md-7,
+.col-lg-8,
+.col-sm-5,
+.col-xs-3 {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  height: 80px !important;
+}
+
+/* Fix dropdown hover issue */
+.dropdown:hover > a {
+  height: auto !important;
+}
+
