@@ -1,35 +1,10 @@
-// Firebase initialization
-const firebaseConfig = {
-    apiKey: "AIzaSyAedr0odqXmKxgbMdoEm0aYYlfLYyBqMoM",
-    authDomain: "playbot-ed-tech.firebaseapp.com",
-    projectId: "playbot-ed-tech",
-    storageBucket: "playbot-ed-tech.appspot.com",
-    messagingSenderId: "409133432749",
-    appId: "1:409133432749:web:af36ffd161e5a20c12baf0"
-};
+// Get Firebase references from global scope (set by firebase-config.js)
+let fbAuth = window.fbAuth;
+let fbDb = window.fbDb;
 
-// Declare variables in the global scope
-let fbAuth;
-let fbDb;
-
-// Initialize Firebase only if not already initialized
-try {
-    if (typeof firebase !== 'undefined') {
-        // Initialize the Firebase app if not already initialized
-        if (!firebase.apps || !firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
-        }
-
-        // Create reference to Firebase services
-        fbAuth = firebase.auth();
-        fbDb = firebase.firestore();
-        console.log("Firebase initialized successfully");
-    } else {
-        throw new Error("Firebase SDK not loaded");
-    }
-} catch (error) {
-    console.error("Firebase initialization error:", error.message);
-    // Create dummy objects to prevent errors
+// Create dummy objects if Firebase services aren't available
+if (!fbAuth) {
+    console.warn("Firebase Auth not available - using fallbacks");
     fbAuth = {
         onAuthStateChanged: (callback) => callback(null),
         signOut: () => Promise.resolve(),
@@ -38,7 +13,10 @@ try {
         createUserWithEmailAndPassword: () => Promise.reject(new Error("Firebase not available")),
         setPersistence: () => Promise.resolve()
     };
-    
+}
+
+if (!fbDb) {
+    console.warn("Firebase Firestore not available - using fallbacks");
     fbDb = {
         collection: () => ({
             doc: () => ({
