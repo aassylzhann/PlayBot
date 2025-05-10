@@ -6,7 +6,7 @@ let fbDb = window.fbDb;
 if (!fbAuth) {
     console.warn("Firebase Auth not available - using fallbacks");
     fbAuth = {
-        onAuthStateChanged: (callback) => callback(null),
+        onAuthStateChanged: (callback) => setTimeout(() => callback(null), 0),
         signOut: () => Promise.resolve(),
         currentUser: null,
         signInWithEmailAndPassword: () => Promise.reject(new Error("Firebase not available")),
@@ -32,22 +32,36 @@ if (!fbDb) {
     };
 }
 
-// Set up Firebase Auth state observer - with performance improvements
+// Set up Firebase Auth state observer - with proper error handling
 let authStateResolved = false;
-if (typeof fbAuth !== 'undefined') {
-    fbAuth.onAuthStateChanged(function(user) {
-        // Only call updateAuthUI if the DOM is already loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                if (!authStateResolved) {
-                    updateAuthUI(user);
-                    authStateResolved = true;
-                }
-            });
-        } else {
-            updateAuthUI(user);
-            authStateResolved = true;
-        }
+try {
+    if (fbAuth && typeof fbAuth.onAuthStateChanged === 'function') {
+        fbAuth.onAuthStateChanged(function(user) {
+            // Only call updateAuthUI if the DOM is already loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    if (!authStateResolved) {
+                        updateAuthUI(user);
+                        authStateResolved = true;
+                    }
+                });
+            } else {
+                updateAuthUI(user);
+                authStateResolved = true;
+            }
+        });
+    } else {
+        console.warn("onAuthStateChanged not available, using fallback");
+        // Fallback to localStorage check
+        ensurePageReady(function() {
+            updateAuthUI(null);
+        });
+    }
+} catch (error) {
+    console.error("Error setting up auth observer:", error);
+    // Fallback
+    ensurePageReady(function() {
+        updateAuthUI(null);
     });
 }
 
@@ -66,7 +80,7 @@ function ensurePageReady(callback) {
 // Auth state observer
 let currentUserData = null;
 
-// Check login status and get current user data
+// Updated checkLoginStatus function for auth.js
 function checkLoginStatus() {
     return new Promise((resolve, reject) => {
         try {
@@ -89,16 +103,24 @@ function checkLoginStatus() {
                 return;
             }
             
-            // If no localStorage data or Firebase not available, use Firebase
-            if (typeof fbAuth === 'undefined') {
-                console.error("Firebase Auth not initialized");
+            // If Firebase Auth not properly initialized or missing onAuthStateChanged
+            if (!fbAuth || typeof fbAuth.onAuthStateChanged !== 'function') {
+                console.warn("Firebase Auth not properly initialized");
                 resolve({ isLoggedIn: false, currentUser: null });
                 return;
             }
             
+            // Use a timeout to prevent infinite waiting
+            let authTimeout = setTimeout(() => {
+                console.warn("Auth state check timed out");
+                resolve({ isLoggedIn: false, currentUser: null });
+            }, 3000);
+            
             fbAuth.onAuthStateChanged(user => {
+                clearTimeout(authTimeout);
+                
                 if (user) {
-                    // User is signed in.
+                    // User is signed in
                     fbDb.collection('users').doc(user.uid).get()
                         .then(doc => {
                             if (doc.exists) {
@@ -129,11 +151,12 @@ function checkLoginStatus() {
                             });
                         });
                 } else {
-                    // User is signed out.
+                    // User is signed out
                     currentUserData = null;
                     resolve({ isLoggedIn: false, currentUser: null });
                 }
             }, error => {
+                clearTimeout(authTimeout);
                 console.error("Auth state observer error:", error);
                 reject(error);
             });
@@ -317,6 +340,8 @@ function loginUser(email, password, role, remember) {
             return;
         }
         
+        console.log(`Login attempt: ${email}, role: ${role}`);
+        
         // Special case for admin
         if (email === "admin@playbot.com" && password === "123123") {
             console.log("Admin login detected");
@@ -333,36 +358,84 @@ function loginUser(email, password, role, remember) {
             localStorage.setItem('currentUserRole', 'admin');
             localStorage.setItem('isLoggedIn', 'true');
             
-            // Add a log to confirm values were stored
-            console.log("Admin login successful - localStorage values set:", {
-                email: localStorage.getItem('currentUserEmail'),
-                role: localStorage.getItem('currentUserRole'),
-                isLoggedIn: localStorage.getItem('isLoggedIn')
-            });
-            
+            console.log("Admin login successful");
             resolve(adminData);
             return;
         }
         
-        // If Firebase Auth is not available, reject
-        if (typeof fbAuth === 'undefined') {
+        // Special case for test teacher
+        if (email === "teacher@playbot.com" && password === "123123") {
+            console.log("Teacher login detected");
+            const teacherData = {
+                firstName: "Test",
+                lastName: "Teacher",
+                email: email,
+                role: "teacher"
+            };
+            
+            // Set session information
+            localStorage.setItem('currentUserEmail', email);
+            localStorage.setItem('currentUserRole', 'teacher');
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            console.log("Teacher login successful");
+            resolve(teacherData);
+            return;
+        }
+        
+        // Special case for test parent
+        if (email === "parent@playbot.com" && password === "123123") {
+            console.log("Parent login detected");
+            const parentData = {
+                firstName: "Test",
+                lastName: "Parent",
+                email: email,
+                role: "parent"
+            };
+            
+            // Set session information
+            localStorage.setItem('currentUserEmail', email);
+            localStorage.setItem('currentUserRole', 'parent');
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            console.log("Parent login successful");
+            resolve(parentData);
+            return;
+        }
+        
+        // If Firebase Auth is not available or methods are missing, reject
+        if (!fbAuth || typeof fbAuth.signInWithEmailAndPassword !== 'function') {
             reject(new Error('Authentication service not available'));
             return;
         }
         
-        // Set persistence based on remember checkbox
-        const persistenceType = remember ? 
-            firebase.auth.Auth.Persistence.LOCAL : 
-            firebase.auth.Auth.Persistence.SESSION;
+        // Try to set persistence if the function is available
+        let authPromise;
+        if (typeof fbAuth.setPersistence === 'function' && typeof firebase !== 'undefined' && firebase.auth) {
+            const persistenceType = remember ? 
+                firebase.auth.Auth.Persistence.LOCAL : 
+                firebase.auth.Auth.Persistence.SESSION;
+            
+            authPromise = fbAuth.setPersistence(persistenceType)
+                .then(() => fbAuth.signInWithEmailAndPassword(email, password));
+        } else {
+            // Fallback if setPersistence is not available
+            console.warn("Firebase setPersistence not available, skipping");
+            authPromise = fbAuth.signInWithEmailAndPassword(email, password);
+        }
         
-        fbAuth.setPersistence(persistenceType)
-            .then(() => {
-                // Sign in with email and password
-                return fbAuth.signInWithEmailAndPassword(email, password);
-            })
+        // Continue with login process
+        authPromise
             .then((userCredential) => {
-                // Track login activity
-                trackUserActivity(userCredential.user.uid, "User logged in", "login");
+                // Track login activity if possible
+                try {
+                    if (userCredential.user && userCredential.user.uid) {
+                        trackUserActivity(userCredential.user.uid, "User logged in", "login")
+                            .catch(err => console.warn("Could not track activity:", err));
+                    }
+                } catch (e) {
+                    console.warn("Could not track login activity:", e);
+                }
                 
                 // Get user data from Firestore
                 return fbDb.collection('users').doc(userCredential.user.uid).get();
@@ -388,7 +461,8 @@ function loginUser(email, password, role, remember) {
                 }
             })
             .catch((error) => {
-                reject(new Error(error.message));
+                console.error("Login error details:", error);
+                reject(new Error(error.message || 'Authentication failed'));
             });
     });
 }

@@ -16,6 +16,17 @@
     <link rel="stylesheet" href="../css/auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+    <!-- Add these scripts in the head section of Login.html -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- Add this if you need storage -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <!-- Make sure firebase-config.js is loaded before auth.js -->
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/auth.js"></script>
 </head>
 
 <body>
@@ -289,6 +300,20 @@
     <link rel="preload" as="image" href="../images/MACO.png">
     <link rel="preload" as="style" href="../css/header.css">
     <link rel="preload" as="style" href="../css/footer.css">
+
+    <!-- Add at the end of Login.html body -->
+    <script>
+        // Direct login helper - useful for testing while fixing auth issues
+        function directAdminLogin() {
+            console.log("Direct admin login attempt");
+            localStorage.setItem('currentUserEmail', 'admin@playbot.com');
+            localStorage.setItem('currentUserRole', 'admin');
+            localStorage.setItem('isLoggedIn', 'true');
+            window.location.href = 'Admin-Dashboard.html';
+        }
+
+        // You can call this from the console: directAdminLogin()
+    </script>
 </body>
 
 </html>

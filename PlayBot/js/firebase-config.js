@@ -11,21 +11,47 @@ const firebaseConfig = {
 
 // Initialize Firebase
 try {
-  firebase.initializeApp(firebaseConfig);
-  console.log("Firebase initialized successfully");
-  
-  // Define global variables for Firebase services
-  window.fbAuth = firebase.auth();
-  window.fbDb = firebase.firestore();
-  window.fbStorage = firebase.storage();
-  
-  if (firebaseConfig.apiKey.includes("Dummy")) {
-    console.warn("⚠️ Using placeholder Firebase configuration. Replace with actual values.");
+  // Check if Firebase SDK is loaded
+  if (typeof firebase !== 'undefined') {
+    // Initialize only if not already initialized
+    if (!firebase.apps || !firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+    console.log("Firebase initialized successfully");
+    
+    // Define global variables for Firebase services - with proper error handling
+    try {
+      window.fbAuth = firebase.auth && firebase.auth();
+    } catch (e) {
+      console.warn("Firebase Auth not available:", e);
+      window.fbAuth = null;
+    }
+    
+    try {
+      window.fbDb = firebase.firestore && firebase.firestore();
+    } catch (e) {
+      console.warn("Firebase Firestore not available:", e);
+      window.fbDb = null;
+    }
+    
+    try {
+      // Only use storage if the function exists
+      window.fbStorage = typeof firebase.storage === 'function' ? firebase.storage() : null;
+    } catch (e) {
+      console.warn("Firebase Storage not available:", e);
+      window.fbStorage = null;
+    }
+    
+    if (firebaseConfig.apiKey.includes("Dummy")) {
+      console.warn("⚠️ Using placeholder Firebase configuration. Replace with actual values.");
+    }
+  } else {
+    throw new Error("Firebase SDK not loaded");
   }
 } catch (error) {
   console.error("Error initializing Firebase:", error);
   // Provide fallback references to prevent errors
-  window.fbAuth = { signInWithEmailAndPassword: () => Promise.reject(new Error("Firebase not initialized")) };
-  window.fbDb = { collection: () => ({ get: () => Promise.reject(new Error("Firebase not initialized")) }) };
-  window.fbStorage = {};
+  window.fbAuth = null;
+  window.fbDb = null;
+  window.fbStorage = null;
 }

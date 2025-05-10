@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"="width=device-width, initial-scale=1.0">
     <title>Teacher Resources - MACO</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/header.css">
@@ -467,10 +467,38 @@
         }
     </script>
 
-        <!-- Preload common resources -->
-        <link rel="preload" as="image" href="../images/MACO.png">
-        <link rel="preload" as="style" href="../css/header.css">
-        <link rel="preload" as="style" href="../css/footer.css">
+    <!-- For Teacher-Dashboard.html -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication for teacher dashboard
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const userRole = localStorage.getItem('currentUserRole');
+            
+            if (!isLoggedIn || userRole !== 'teacher') {
+                console.log("Not authenticated as teacher, redirecting to login");
+                window.location.href = 'Login.html';
+            }
+        });
+    </script>
+
+    <!-- For Parent-Dashboard.html -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication for parent dashboard
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const userRole = localStorage.getItem('currentUserRole');
+            
+            if (!isLoggedIn || userRole !== 'parent') {
+                console.log("Not authenticated as parent, redirecting to login");
+                window.location.href = 'Login.html';
+            }
+        });
+    </script>
+
+    <!-- Preload common resources -->
+    <link rel="preload" as="image" href="../images/MACO.png">
+    <link rel="preload" as="style" href="../css/header.css">
+    <link rel="preload" as="style" href="../css/footer.css">
 </body>
 
 </html>
