@@ -186,8 +186,8 @@ function updateAuthUI(providedUser) {
         if (isLoggedIn && userEmail) {
             console.log("User is logged in via localStorage:", userEmail, userRole);
             // User is logged in via localStorage (admin path)
-            authButtons.style.display = 'none';
-            userProfile.style.display = 'block';
+            authButtons.classList.add('hidden');
+            userProfile.classList.add('visible');
             
             // Set user name
             const userNameElement = document.getElementById('user-name');
