@@ -478,3 +478,23 @@ body {
   height: auto !important;
 }
 
+/* User profile visibility control - Add this to your CRITICAL FIXES section */
+#user-profile {
+  display: none !important; /* Hidden by default */
+}
+
+#user-profile.visible {
+  display: flex !important; /* Only show when .visible class is added */
+}
+
+/* Make sure auth buttons show by default, but hide when user is logged in */
+.auth-buttons {
+  display: flex !important;
+  align-items: center !important;
+  height: 80px !important;
+}
+
+.auth-buttons.hidden {
+  display: none !important; /* Hide only with .hidden class */
+}
+
