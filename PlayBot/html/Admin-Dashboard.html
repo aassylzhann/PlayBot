@@ -4,35 +4,31 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Admin Dashboard - MACO</title>
-    <meta name="description" content="Admin Dashboard - PlayBot Administration">
+    <title>Admin Dashboard - PlayBot</title>
+    <meta name="description" content="PlayBot Admin Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+    
     <!-- CSS -->
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body class="admin-dashboard">
-    <!-- Body main wrapper start -->
     <div class="wrapper">
-        <!-- Start Header -->
+        <!-- Header -->
         <header id="header" class="header__area header--one">
-            <!-- Start Mainmenu Area -->
             <div id="sticky-header-with-topbar" class="header__area">
                 <div class="container">
                     <div class="row">
                         <div class="menumenu__container clearfix">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                                 <div class="logo">
-                                    <a href="Home.html"><img src="../images/logo.png" alt="PlayBot logo"
-                                            class="header-logo"></a>
+                                    <a href="Home.html"><img src="../images/logo.png" alt="PlayBot logo" class="header-logo"></a>
                                 </div>
                             </div>
                             <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
@@ -69,39 +65,37 @@
                                     </ul>
                                 </nav>
 
-
-
-                                <!-- Find the section with auth-buttons and add the user-profile div right after it -->
                                 <div class="language-selector">
-                                    <button id="en-btn" class="lang-btn active"
-                                        onclick="switchLanguage('en')">EN</button>
+                                    <button id="en-btn" class="lang-btn active" onclick="switchLanguage('en')">EN</button>
                                     <span class="lang-divider">|</span>
                                     <button id="zh-btn" class="lang-btn" onclick="switchLanguage('zh')">中文</button>
                                 </div>
+                                
                                 <div class="auth-buttons">
                                     <a href="Login.html" class="auth-btn login">Login</a>
                                     <a href="Register.html" class="auth-btn signup">Sign Up</a>
                                 </div>
+                                
                                 <div id="user-profile" class="user-profile">
                                     <a class="profile-btn" href="#">
-                                        <span id="user-name">Account</span>
+                                        <span id="user-name">Admin</span>
                                     </a>
                                     <div class="dropdown-content">
-                                        <!-- Dynamically populated by auth.js -->
+                                        <a href="Profile.html">My Profile</a>
+                                        <a href="Admin-Dashboard.html">Admin Dashboard</a>
+                                        <a href="#" id="admin-logout-link">Log Out</a>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> <!-- Header content here -->
+            </div>
         </header>
-        <!-- End Header -->
 
-        <!-- Start Dashboard Content -->
+        <!-- Dashboard Container -->
         <div class="dashboard__container">
-            <!-- Sidebar Navigation -->
+            <!-- Sidebar -->
             <div class="dashboard__sidebar">
                 <h3 class="sidebar__title"><i class="fas fa-tachometer-alt"></i> Admin Panel</h3>
                 <ul class="sidebar__menu">
@@ -112,40 +106,36 @@
                 </ul>
             </div>
 
-            <!-- Main Content Area -->
+            <!-- Content Area -->
             <div class="dashboard__content">
                 <!-- Overview Section -->
                 <div id="overview" class="dashboard__section active">
                     <h1 class="section__title">Dashboard Overview</h1>
-
+                    
                     <!-- Stats Cards -->
                     <div class="stats__cards">
                         <div class="stat__card">
                             <h3>Total Users</h3>
-                            <div class="number" id="total-users">0</div>
-                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="users-trend">0%</span> since
-                                last month</div>
+                            <div class="number" id="total-users">127</div>
+                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="users-trend">12%</span> since last month</div>
                         </div>
 
                         <div class="stat__card">
                             <h3>Teachers</h3>
-                            <div class="number" id="total-teachers">0</div>
-                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="teachers-trend">0%</span>
-                                since last month</div>
+                            <div class="number" id="total-teachers">43</div>
+                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="teachers-trend">8%</span> since last month</div>
                         </div>
 
                         <div class="stat__card">
                             <h3>Parents</h3>
-                            <div class="number" id="total-parents">0</div>
-                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="parents-trend">0%</span>
-                                since last month</div>
+                            <div class="number" id="total-parents">84</div>
+                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="parents-trend">15%</span> since last month</div>
                         </div>
 
                         <div class="stat__card">
                             <h3>Materials</h3>
-                            <div class="number" id="total-materials">0</div>
-                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="materials-trend">0%</span>
-                                since last month</div>
+                            <div class="number" id="total-materials">56</div>
+                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="materials-trend">7%</span> since last month</div>
                         </div>
                     </div>
 
@@ -155,9 +145,35 @@
                             <h2>Recent Activity</h2>
                             <a href="#" class="btn-link">View All</a>
                         </div>
-                        <div class="activity__list" id="recent-activities">
-                            <div class="loading-indicator">
-                                <i class="fas fa-spinner fa-spin"></i> Loading activities...
+                        <div class="card__body">
+                            <div class="activity__list" id="recent-activities">
+                                <div class="activity__item">
+                                    <div class="activity__icon">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div class="activity__content">
+                                        <p class="activity__title">New teacher registered</p>
+                                        <span class="activity__meta">2 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity__item">
+                                    <div class="activity__icon">
+                                        <i class="fas fa-file-upload"></i>
+                                    </div>
+                                    <div class="activity__content">
+                                        <p class="activity__title">New material uploaded</p>
+                                        <span class="activity__meta">5 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity__item">
+                                    <div class="activity__icon">
+                                        <i class="fas fa-user-edit"></i>
+                                    </div>
+                                    <div class="activity__content">
+                                        <p class="activity__title">User profile updated</p>
+                                        <span class="activity__meta">Yesterday</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -166,20 +182,21 @@
                 <!-- Materials Section -->
                 <div id="materials" class="dashboard__section">
                     <h1 class="section__title">Manage Educational Materials</h1>
-
+                    
+                    <!-- Filters -->
                     <div class="filters">
                         <div class="filter-group">
-                            <label for="curriculum-filter">Filter by Curriculum:</label>
+                            <label for="curriculum-filter">Curriculum:</label>
                             <select id="curriculum-filter">
                                 <option value="all">All Materials</option>
-                                <option value="playbot">PlayBot Curriculum</option>
-                                <option value="tinker">Tinker Maker Curriculum</option>
-                                <option value="general">General Resources</option>
+                                <option value="playbot">PlayBot</option>
+                                <option value="tinker">Tinker Maker</option>
+                                <option value="general">General</option>
                             </select>
                         </div>
                         
                         <div class="filter-group">
-                            <label for="level-filter">Filter by Level:</label>
+                            <label for="level-filter">Level:</label>
                             <select id="level-filter">
                                 <option value="all">All Levels</option>
                                 <option value="beginner">Beginner</option>
@@ -194,281 +211,300 @@
                         </div>
                     </div>
 
-                    <!-- Add Material Form -->
-                    <div class="material__form">
-                        <h2>Add New Material</h2>
-                        <form id="add-material-form">
-                            <div class="form__grid">
-                                <div class="form__group">
-                                    <label for="material-title">Title</label>
-                                    <input type="text" id="material-title" name="title" required>
-                                </div>
-
-                                <div class="form__group">
-                                    <label for="material-type">Type</label>
-                                    <select id="material-type" name="type" required>
-                                        <option value="">Select Type</option>
-                                        <option value="lesson">Lesson Plan</option>
-                                        <option value="activity">Activity Sheet</option>
-                                        <option value="video">Instructional Video</option>
-                                        <option value="tutorial">Programming Tutorial</option>
-                                        <option value="assessment">Assessment Tool</option>
-                                        <option value="guide">Teacher/Parent Guide</option>
-                                        <option value="link">External Resource</option>
-                                    </select>
-                                </div>
-
-                                <div class="form__group">
-                                    <label for="material-category">Category</label>
-                                    <select id="material-category" name="category" required>
-                                        <option value="">Select Category</option>
-                                        <option value="playbot-beginner">PlayBot - Beginner Level</option>
-                                        <option value="playbot-intermediate">PlayBot - Intermediate Level</option>
-                                        <option value="playbot-advanced">PlayBot - Advanced Level</option>
-                                        <option value="tinker-beginner">Tinker Maker - Beginner Level</option>
-                                        <option value="tinker-intermediate">Tinker Maker - Intermediate Level</option>
-                                        <option value="tinker-advanced">Tinker Maker - Advanced Level</option>
-                                        <option value="general">General Resources</option>
-                                    </select>
-                                </div>
-
-                                <div class="form__group">
-                                    <label for="material-audience">Audience</label>
-                                    <select id="material-audience" name="audience" required>
-                                        <option value="">Select Audience</option>
-                                        <option value="teachers">Teachers</option>
-                                        <option value="parents">Parents</option>
-                                        <option value="both">Both</option>
-                                    </select>
-                                </div>
-
-                                <div class="form__group">
-                                    <label for="material-difficulty">Difficulty Level</label>
-                                    <select id="material-difficulty" name="difficulty" required>
-                                        <option value="">Select Difficulty</option>
-                                        <option value="beginner">Beginner</option>
-                                        <option value="intermediate">Intermediate</option>
-                                        <option value="advanced">Advanced</option>
-                                        <option value="mixed">Mixed/Adaptable</option>
-                                    </select>
-                                </div>
-
-                                <div class="form__group grid-full">
-                                    <label for="material-description">Description</label>
-                                    <textarea id="material-description" name="description" required></textarea>
-                                </div>
-
-                                <div class="form__group">
-                                    <label for="material-url">External URL (if applicable)</label>
-                                    <input type="url" id="material-url" name="externalUrl">
-                                </div>
-
-                                <div class="form__group">
-                                    <label for="material-content">Content (for documents)</label>
-                                    <textarea id="material-content" name="content"></textarea>
-                                </div>
-
-                                <div class="form__submit">
-                                    <button type="submit" class="btn-primary">Add Material</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Material List -->
+                    <!-- Materials Table -->
                     <div class="content__card">
                         <div class="card__header">
-                            <h2>Materials List</h2>
-                            <div class="search-box">
-                                <input type="text" id="material-search" placeholder="Search materials...">
-                                <i class="fas fa-search"></i>
-                            </div>
+                            <h2>Materials Library</h2>
+                            <button class="btn-primary" id="add-material-btn">
+                                <i class="fas fa-plus"></i> Add Material
+                            </button>
                         </div>
-
-                        <div class="table-responsive">
-                            <table class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Type</th>
-                                        <th>Curriculum</th>
-                                        <th>Skill Focus</th>
-                                        <th>Difficulty</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="materials-table-body">
-                                    <tr>
-                                        <td colspan="6" class="loading-cell">
-                                            <i class="fas fa-spinner fa-spin"></i> Loading materials...
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="card__body">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Type</th>
+                                            <th>Curriculum</th>
+                                            <th>Level</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="materials-table-body">
+                                        <tr data-curriculum="playbot" data-level="beginner">
+                                            <td>Introduction to Robots</td>
+                                            <td>Lesson Plan</td>
+                                            <td>PlayBot - Beginner</td>
+                                            <td>Beginner</td>
+                                            <td>
+                                                <button class="action-btn edit" onclick="editMaterial(1)">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn delete" onclick="deleteMaterial(1)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr data-curriculum="playbot" data-level="intermediate">
+                                            <td>Programming Logic</td>
+                                            <td>Activity</td>
+                                            <td>PlayBot - Intermediate</td>
+                                            <td>Intermediate</td>
+                                            <td>
+                                                <button class="action-btn edit" onclick="editMaterial(2)">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn delete" onclick="deleteMaterial(2)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr data-curriculum="tinker" data-level="advanced">
+                                            <td>Sensor Integration</td>
+                                            <td>Tutorial</td>
+                                            <td>Tinker Maker - Advanced</td>
+                                            <td>Advanced</td>
+                                            <td>
+                                                <button class="action-btn edit" onclick="editMaterial(3)">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn delete" onclick="deleteMaterial(3)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Users Section -->
                 <div id="users" class="dashboard__section">
-                    <h1 class="section__title">Manage Users</h1>
-
-                    <!-- User Filters -->
+                    <h1 class="section__title">User Management</h1>
+                    
+                    <!-- Filters -->
                     <div class="filters">
                         <div class="filter-group">
-                            <label for="user-role-filter">Filter by Role:</label>
+                            <label for="user-role-filter">Role:</label>
                             <select id="user-role-filter">
                                 <option value="all">All Roles</option>
                                 <option value="teacher">Teachers</option>
                                 <option value="parent">Parents</option>
                             </select>
                         </div>
-
+                        
                         <div class="search-box">
                             <input type="text" id="user-search" placeholder="Search users...">
                             <i class="fas fa-search"></i>
                         </div>
                     </div>
 
-                    <!-- Users List -->
-                    <div class="table-responsive">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Date Joined</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="users-table-body">
-                                <tr>
-                                    <td colspan="6" class="loading-cell">
-                                        <i class="fas fa-spinner fa-spin"></i> Loading users...
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <!-- Users Table -->
+                    <div class="content__card">
+                        <div class="card__header">
+                            <h2>Registered Users</h2>
+                        </div>
+                        <div class="card__body">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="users-table-body">
+                                        <tr>
+                                            <td>John Smith</td>
+                                            <td>john.smith@example.com</td>
+                                            <td>Teacher</td>
+                                            <td>Active</td>
+                                            <td>
+                                                <button class="action-btn" onclick="viewUser(1)">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn delete" onclick="deleteUser(1)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Maria Garcia</td>
+                                            <td>maria.garcia@example.com</td>
+                                            <td>Parent</td>
+                                            <td>Active</td>
+                                            <td>
+                                                <button class="action-btn" onclick="viewUser(2)">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn delete" onclick="deleteUser(2)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Robert Johnson</td>
+                                            <td>robert.johnson@example.com</td>
+                                            <td>Teacher</td>
+                                            <td>Inactive</td>
+                                            <td>
+                                                <button class="action-btn" onclick="viewUser(3)">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn delete" onclick="deleteUser(3)">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Settings Section -->
                 <div id="settings" class="dashboard__section">
-                    <h1 class="section__title">Dashboard Settings</h1>
-
+                    <h1 class="section__title">System Settings</h1>
+                    
                     <div class="content__card">
-                        <h2>Admin Account</h2>
-                        <p>You are logged in as Admin. These settings control your admin dashboard experience.</p>
-
-                        <form id="admin-settings-form" class="settings-form">
-                            <div class="form__group">
-                                <label for="setting-notifications">Email Notifications</label>
-                                <div class="toggle-switch">
-                                    <input type="checkbox" id="setting-notifications" name="notifications" checked>
-                                    <label for="setting-notifications"></label>
+                        <div class="card__header">
+                            <h2>Admin Preferences</h2>
+                        </div>
+                        <div class="card__body">
+                            <form id="admin-settings-form" class="settings-form">
+                                <div class="setting-group">
+                                    <div class="setting-info">
+                                        <h4>Email Notifications</h4>
+                                        <p class="setting-description">Receive email alerts for new registrations and system events</p>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="setting-notifications" name="notifications" checked>
+                                        <label for="setting-notifications"></label>
+                                    </div>
                                 </div>
-                                <p class="setting-description">Receive email notifications for new user registrations
-                                    and important system events.</p>
-                            </div>
-
-                            <div class="form__group">
-                                <label for="setting-analytics">Analytics Tracking</label>
-                                <div class="toggle-switch">
-                                    <input type="checkbox" id="setting-analytics" name="analytics" checked>
-                                    <label for="setting-analytics"></label>
+                                
+                                <div class="setting-group">
+                                    <div class="setting-info">
+                                        <h4>Analytics Tracking</h4>
+                                        <p class="setting-description">Enable usage statistics for dashboard activities</p>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="setting-analytics" name="analytics" checked>
+                                        <label for="setting-analytics"></label>
+                                    </div>
                                 </div>
-                                <p class="setting-description">Enable analytics tracking for dashboard usage statistics.
-                                </p>
-                            </div>
-
-                            <div class="form__submit">
-                                <button type="submit" class="btn-primary">Save Settings</button>
-                            </div>
-                        </form>
+                                
+                                <div class="setting-group">
+                                    <div class="setting-info">
+                                        <h4>Automatic Backups</h4>
+                                        <p class="setting-description">Schedule automatic database backups</p>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="setting-backups" name="backups">
+                                        <label for="setting-backups"></label>
+                                    </div>
+                                </div>
+                                
+                                <div class="setting-group">
+                                    <div class="setting-info">
+                                        <h4>Content Moderation</h4>
+                                        <p class="setting-description">Auto-moderate user-generated content</p>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="setting-moderation" name="moderation" checked>
+                                        <label for="setting-moderation"></label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form__submit">
+                                    <button type="submit" class="btn-primary">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Footer -->
-        <footer class="footer__area">
-            <div class="container">
-                <div class="footer__content">
-                    <!-- Logo and About Section -->
-                    <div class="footer-brand">
-                        <div class="footer-logo">
-                            <a href="Home.html">
-                                <img src="../images/MACO.png" class="footer-logo-img">
-                            </a>
-                        </div>
-                        <p class="footer-about">
-                            MACO is an innovative curriculum for teaching robot programming
-                            through play, developed at The Education University of Hong Kong.
-                        </p>
-                    </div>
-
-                    <!-- Navigation Links -->
-                    <div class="footer-links-container">
-                        <!-- Quick Links -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">Quick Links</h4>
-                            <ul class="footer-links">
-                                <li><a href="Home.html">Home</a></li>
-                                <li><a href="About us.html">About us</a></li>
-                                <li><a href="Course.html">Curriculum</a></li>
-                                <li><a href="News.html">News</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- For Schools -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">For Schools</h4>
-                            <ul class="footer-links">
-                                <li><a href="School.html">Schools</a></li>
-                                <li><a href="Teacher.html">Teachers</a></li>
-                                <li><a href="Platform.html">Platform</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Contact Information -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">Contact Us</h4>
-                            <div class="footer-contact">
-                                <p><i class="fas fa-map-marker-alt"></i> 10 Lo Ping Road, Tai Po, Hong Kong</p>
-                                <p><i class="fas fa-envelope"></i> <a
-                                        href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></p>
-                            </div>
-                            <div class="footer-social">
-                                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- University Information -->
-                <div class="footer__contact">
-                    <div class="university">The Education University of Hong Kong</div>
-                    <div class="department">Department of Early Childhood Education</div>
-                    <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
-                </div>
-
-                <!-- Copyright Section -->
-                <div class="footer__copyright">
-                    <p>&copy; 2024 The Education University of Hong Kong</p>
-                    <p class="rights">All rights reserved. No part of this publication may be reproduced, stored in a
-                        retrieval system or transmitted in any form or by any means without written permission.</p>
-                </div>
-            </div>
-        </footer>
-        <!-- Footer end -->
     </div>
-    <!-- Body main wrapper end -->
 
-    <!-- Modal for Editing Materials -->
+    <!-- Add Material Modal -->
+    <div id="add-material-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Material</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-material-form">
+                    <div class="form__group">
+                        <label for="material-title">Title</label>
+                        <input type="text" id="material-title" name="title" required>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="material-type">Type</label>
+                        <select id="material-type" name="type" required>
+                            <option value="">Select Type</option>
+                            <option value="lesson">Lesson Plan</option>
+                            <option value="activity">Activity Sheet</option>
+                            <option value="video">Instructional Video</option>
+                            <option value="tutorial">Programming Tutorial</option>
+                            <option value="assessment">Assessment Tool</option>
+                            <option value="guide">Teacher/Parent Guide</option>
+                        </select>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="material-category">Category</label>
+                        <select id="material-category" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="playbot-beginner">PlayBot - Beginner Level</option>
+                            <option value="playbot-intermediate">PlayBot - Intermediate Level</option>
+                            <option value="playbot-advanced">PlayBot - Advanced Level</option>
+                            <option value="tinker-beginner">Tinker Maker - Beginner Level</option>
+                            <option value="tinker-intermediate">Tinker Maker - Intermediate Level</option>
+                            <option value="tinker-advanced">Tinker Maker - Advanced Level</option>
+                            <option value="general">General Resources</option>
+                        </select>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="material-difficulty">Difficulty Level</label>
+                        <select id="material-difficulty" name="difficulty" required>
+                            <option value="">Select Difficulty</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="mixed">Mixed/Adaptable</option>
+                        </select>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="material-description">Description</label>
+                        <textarea id="material-description" name="description" required></textarea>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="material-file">Upload File</label>
+                        <input type="file" id="material-file" name="file">
+                    </div>
+
+                    <div class="form__submit">
+                        <button type="submit" class="btn-primary">Save Material</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Material Modal -->
     <div id="edit-material-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -478,10 +514,22 @@
             <div class="modal-body">
                 <form id="edit-material-form">
                     <input type="hidden" id="edit-material-id">
-
                     <div class="form__group">
                         <label for="edit-material-title">Title</label>
                         <input type="text" id="edit-material-title" name="title" required>
+                    </div>
+
+                    <div class="form__group">
+                        <label for="edit-material-type">Type</label>
+                        <select id="edit-material-type" name="type" required>
+                            <option value="">Select Type</option>
+                            <option value="lesson">Lesson Plan</option>
+                            <option value="activity">Activity Sheet</option>
+                            <option value="video">Instructional Video</option>
+                            <option value="tutorial">Programming Tutorial</option>
+                            <option value="assessment">Assessment Tool</option>
+                            <option value="guide">Teacher/Parent Guide</option>
+                        </select>
                     </div>
 
                     <div class="form__group">
@@ -499,23 +547,6 @@
                     </div>
 
                     <div class="form__group">
-                        <label for="edit-material-skill">Primary Skill Focus</label>
-                        <select id="edit-material-skill" name="skill" required>
-                            <option value="">Select Skill Focus</option>
-                            <option value="basic-commands">Basic Robot Commands</option>
-                            <option value="sequences">Sequencing</option>
-                            <option value="loops">Loops & Repetition</option>
-                            <option value="conditionals">Conditional Logic</option>
-                            <option value="functions">Functions</option>
-                            <option value="sensors">Sensor Integration</option>
-                            <option value="problem-solving">Problem Solving</option>
-                            <option value="engineering">Engineering Concepts</option>
-                            <option value="creativity">Creative Design</option>
-                            <option value="collaboration">Collaborative Work</option>
-                        </select>
-                    </div>
-
-                    <div class="form__group">
                         <label for="edit-material-difficulty">Difficulty Level</label>
                         <select id="edit-material-difficulty" name="difficulty" required>
                             <option value="">Select Difficulty</option>
@@ -527,323 +558,142 @@
                     </div>
 
                     <div class="form__group">
-                        <label for="edit-material-audience">Audience</label>
-                        <select id="edit-material-audience" name="audience" required>
-                            <option value="">Select Audience</option>
-                            <option value="teachers">Teachers</option>
-                            <option value="parents">Parents</option>
-                            <option value="both">Both</option>
-                        </select>
-                    </div>
-
-                    <div class="form__group">
                         <label for="edit-material-description">Description</label>
                         <textarea id="edit-material-description" name="description" required></textarea>
                     </div>
 
-                    <div class="form__group">
-                        <label for="edit-material-url">External URL</label>
-                        <input type="url" id="edit-material-url" name="externalUrl">
-                    </div>
-
-                    <div class="form__group">
-                        <label for="edit-material-content">Content</label>
-                        <textarea id="edit-material-content" name="content"></textarea>
-                    </div>
-
                     <div class="form__submit">
-                        <button type="submit" class="btn-primary">Save Changes</button>
+                        <button type="submit" class="btn-primary">Update Material</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-    <!-- Your Firebase configuration -->
-    <script src="../js/firebase-config.js"></script>
-    <!-- Your application scripts -->
-    <script src="../js/components.js"></script>
-    <script src="../js/main.js"></script>
+    <!-- JavaScript -->
     <script src="../js/auth.js"></script>
-    <script src="../js/admin-dashboard.js"></script>
     <script>
-        // Add this after your other script tags at the bottom of the file
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if user is logged in as admin
+            // Check admin authentication
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
             const userRole = localStorage.getItem('currentUserRole');
             
             if (!isLoggedIn || userRole !== 'admin') {
-                console.log("Not logged in as admin, redirecting to login");
                 window.location.href = 'Login.html';
                 return;
             }
             
-            // Make sure the user profile is visible
+            // Show user profile, hide auth buttons
             const userProfile = document.getElementById('user-profile');
             const authButtons = document.querySelector('.auth-buttons');
             
-            if (userProfile) {
-                userProfile.style.display = 'block';
-                
-                // Set username
-                const userNameElement = document.getElementById('user-name');
-                if (userNameElement) {
-                    userNameElement.textContent = 'Admin';
-                }
-                
-                // Populate dropdown menu
-                const dropdownContent = userProfile.querySelector('.dropdown-content');
-                if (dropdownContent) {
-                    dropdownContent.innerHTML = `
-                        <a href="Profile.html">My Profile</a>
-                        <a href="Admin-Dashboard.html">Admin Dashboard</a>
-                        <a href="#" id="admin-logout-link">Log Out</a>
-                    `;
-                    
-                    // Add logout handler
-                    document.getElementById('admin-logout-link')?.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        // Clear session storage
-                        localStorage.removeItem('isLoggedIn');
-                        localStorage.removeItem('currentUserEmail');
-                        localStorage.removeItem('currentUserRole');
-                        // Redirect to home
-                        window.location.href = 'Home.html';
-                    });
-                }
-            }
+            if (userProfile) userProfile.style.display = 'block';
+            if (authButtons) authButtons.style.display = 'none';
             
-            if (authButtons) {
-                authButtons.style.display = 'none';
-            }
+            // Add logout handler
+            document.getElementById('admin-logout-link')?.addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('currentUserEmail');
+                localStorage.removeItem('currentUserRole');
+                window.location.href = 'Home.html';
+            });
             
-            console.log("Admin dashboard initialization complete");
-        });
-    </script>
-    <script>
-    // Tab navigation functionality - simplified and fixed
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log("Setting up tab navigation - fixed version");
-        
-        // Get all tab menu items and section elements
-        const tabButtons = document.querySelectorAll('.sidebar__menu li');
-        const sections = document.querySelectorAll('.dashboard__section');
-        
-        // Add click event listeners to tabs
-        tabButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-section');
-                console.log("Switching to tab:", targetId);
-                
-                // Update active tab button
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Update visible section
-                sections.forEach(section => {
-                    if (section.id === targetId) {
-                        section.classList.add('active');
-                    } else {
-                        section.classList.remove('active');
-                    }
-                });
+            // Tab navigation
+            setupTabs();
+            
+            // Modal functionality
+            setupModals();
+            
+            // Add material button
+            document.getElementById('add-material-btn')?.addEventListener('click', function() {
+                document.getElementById('add-material-modal').style.display = 'block';
             });
         });
         
-        // Make sure one tab is active on page load
-        if (!document.querySelector('.sidebar__menu li.active')) {
-            const firstTab = document.querySelector('.sidebar__menu li');
-            if (firstTab) {
-                firstTab.click();
-            }
-        }
-    });
-</script>
-    <script>
-    // Materials filtering functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get filter elements
-        const curriculumFilter = document.getElementById('curriculum-filter');
-        const levelFilter = document.getElementById('level-filter');
-        const searchBox = document.getElementById('material-search');
-        
-        // Add event listeners if elements exist
-        if (curriculumFilter) {
-            curriculumFilter.addEventListener('change', filterMaterials);
-        }
-        
-        if (levelFilter) {
-            levelFilter.addEventListener('change', filterMaterials);
-        }
-        
-        if (searchBox) {
-            searchBox.addEventListener('input', filterMaterials);
-        }
-        
-        // Filter materials based on current filters
-        function filterMaterials() {
-            const curriculum = curriculumFilter ? curriculumFilter.value : 'all';
-            const level = levelFilter ? levelFilter.value : 'all';
-            const searchTerm = searchBox ? searchBox.value.toLowerCase() : '';
-            
-            // Get all material rows
-            const rows = document.querySelectorAll('#materials-table-body tr');
-            
-            rows.forEach(row => {
-                // Skip loading message rows
-                if (row.classList.contains('loading-cell') || row.querySelector('.loading-cell')) {
-                    return;
-                }
-                
-                const rowText = row.textContent.toLowerCase();
-                const rowCurriculum = row.getAttribute('data-curriculum') || '';
-                const rowLevel = row.getAttribute('data-level') || '';
-                
-                // Check if row matches all filters
-                const matchesCurriculum = curriculum === 'all' || rowCurriculum.includes(curriculum);
-                const matchesLevel = level === 'all' || rowLevel === level;
-                const matchesSearch = searchTerm === '' || rowText.includes(searchTerm);
-                
-                // Show or hide row based on filter matches
-                if (matchesCurriculum && matchesLevel && matchesSearch) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        }
-    });
-</script>
-    <script>
-    // Fix dashboard tab switching layout issues
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get all tab buttons and content sections
-        const tabButtons = document.querySelectorAll('.sidebar__menu li');
-        const contentSections = document.querySelectorAll('.dashboard__section');
-        
-        // Set initial state - ensure the active tab is visible
-        const activeTabId = document.querySelector('.sidebar__menu li.active')?.getAttribute('data-section');
-        if (activeTabId) {
-            contentSections.forEach(section => {
-                if (section.id === activeTabId) {
-                    section.classList.add('active');
-                } else {
-                    section.classList.remove('active');
-                }
-            });
-        }
-        
-        // Add click handlers to tab buttons
-        tabButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-section');
-                
-                // Update active tab button
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Update visible section
-                contentSections.forEach(section => {
-                    if (section.id === targetId) {
-                        section.classList.add('active');
-                    } else {
-                        section.classList.remove('active');
-                    }
-                });
-            });
-        });
-        
-        // Maintain scroll position when switching back to a tab
-        const contentArea = document.querySelector('.dashboard__content');
-        if (contentArea) {
-            contentArea.addEventListener('scroll', function() {
-                // Store scroll position of current active section
-                const activeSection = document.querySelector('.dashboard__section.active');
-                if (activeSection) {
-                    activeSection.dataset.scrollPos = contentArea.scrollTop;
-                }
-            });
-        }
-        
-        // Restore scroll position when switching tabs
-        tabButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                setTimeout(() => {
-                    const activeSection = document.querySelector('.dashboard__section.active');
-                    if (activeSection && activeSection.dataset.scrollPos) {
-                        contentArea.scrollTop = parseInt(activeSection.dataset.scrollPos, 10);
-                    } else {
-                        contentArea.scrollTop = 0;
-                    }
-                }, 10);
-            });
-        });
-    });
-</script>
-    <script>
-    // Consolidated tab switching script - replaces all previous tab scripts
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log("Setting up consolidated tab navigation");
-        
-        // Remove any duplicate event listeners by cloning and replacing elements
-        const sidebar = document.querySelector('.dashboard__sidebar');
-        if (sidebar) {
-            const newSidebar = sidebar.cloneNode(true);
-            sidebar.parentNode.replaceChild(newSidebar, sidebar);
-            
-            // Get all tab menu items and section elements with fresh references
-            const tabButtons = newSidebar.querySelectorAll('.sidebar__menu li');
+        function setupTabs() {
+            const tabButtons = document.querySelectorAll('.sidebar__menu li');
             const sections = document.querySelectorAll('.dashboard__section');
             
-            // Make sure all sections have the same height
-            sections.forEach(section => {
-                section.style.minHeight = '100%';
-            });
-            
-            // Add click event listeners to tabs
             tabButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const targetId = this.getAttribute('data-section');
-                    console.log("Switching to tab:", targetId);
                     
                     // Update active tab button
                     tabButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Update visible section with smooth transition
+                    // Update visible section
                     sections.forEach(section => {
                         if (section.id === targetId) {
                             section.classList.add('active');
-                            section.style.opacity = 0;
-                            setTimeout(() => {
-                                section.style.opacity = 1;
-                            }, 50);
                         } else {
                             section.classList.remove('active');
                         }
                     });
                 });
             });
+        }
+        
+        function setupModals() {
+            // Close modals on X click
+            document.querySelectorAll('.close-modal').forEach(closeBtn => {
+                closeBtn.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
             
-            // Make sure one tab is active on page load
-            const activeTab = newSidebar.querySelector('.sidebar__menu li.active');
-            if (!activeTab) {
-                const firstTab = newSidebar.querySelector('.sidebar__menu li');
-                if (firstTab) {
-                    firstTab.click();
+            // Close modals on outside click
+            window.addEventListener('click', function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
                 }
-            } else {
-                // Trigger the active tab to ensure content is shown
-                activeTab.click();
+            });
+            
+            // Form submission handlers
+            document.getElementById('add-material-form')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Material added successfully');
+                document.getElementById('add-material-modal').style.display = 'none';
+            });
+            
+            document.getElementById('edit-material-form')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Material updated successfully');
+                document.getElementById('edit-material-modal').style.display = 'none';
+            });
+        }
+        
+        // Action functions
+        function editMaterial(id) {
+            const modal = document.getElementById('edit-material-modal');
+            document.getElementById('edit-material-id').value = id;
+            
+            // In a real app, you would fetch the material data and populate the form
+            document.getElementById('edit-material-title').value = 'Material #' + id;
+            
+            modal.style.display = 'block';
+        }
+        
+        function deleteMaterial(id) {
+            if (confirm('Are you sure you want to delete this material?')) {
+                alert('Material #' + id + ' deleted successfully');
+                // In a real app, you would make an API call to delete the material
             }
         }
-    });
-</script>
+        
+        function viewUser(id) {
+            alert('Viewing user #' + id);
+            // In a real app, you would navigate to a user detail page or open a modal
+        }
+        
+        function deleteUser(id) {
+            if (confirm('Are you sure you want to delete this user?')) {
+                alert('User #' + id + ' deleted successfully');
+                // In a real app, you would make an API call to delete the user
+            }
+        }
+    </script>
 </body>
 
 </html>
