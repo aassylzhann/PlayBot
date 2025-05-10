@@ -427,7 +427,7 @@ body {
 }
 
 .header-logo {
-  height: 100px !important; /* Increased size */
+  height: 150px !important; /* Increased size */
   width: auto !important;
   max-height: none !important; /* Override max-height */
 }
