@@ -144,12 +144,13 @@
                                     <a href="Register.html" class="auth-btn signup">Sign Up</a>
                                 </div>
 
-                                <div id="user-profile" class="user-profile">
-                                    <a class="profile-btn" href="#">
-                                        <span id="user-name">Account</span>
+                                <!-- Add this to your header.html or equivalent file -->
+                                <div id="user-profile" class="dropdown">
+                                    <a href="#" class="profile-btn dropdown-toggle">
+                                        <span id="user-name">Account</span> <i class="fas fa-user"></i>
                                     </a>
                                     <div class="dropdown-content">
-                                        <!-- Dynamically populated by auth.js -->
+                                        <!-- Dropdown items will be populated by JavaScript -->
                                     </div>
                                 </div>
                             </div>
@@ -157,122 +158,123 @@
                     </div>
                 </div>
             </div>
-            <!-- End Mainmenu Area -->
-        </header>
-        <!-- End Header Area -->
+    </div>
+    <!-- End Mainmenu Area -->
+    </header>
+    <!-- End Header Area -->
 
-        <div class="profile">
-            <div class="profile__container">
-                <div class="profile__card">
-                    <h1>My Profile</h1>
-                    <div class="profile__info">
-                        <div class="profile__avatar-container">
-                            <div class="profile__avatar" id="profile-avatar">U</div>
-                        </div>
-                        <div class="profile__details">
-                            <div class="profile__label">First Name:</div>
-                            <div class="profile__value" id="profile-first-name">-</div>
-
-                            <div class="profile__label">Last Name:</div>
-                            <div class="profile__value" id="profile-last-name">-</div>
-
-                            <div class="profile__label">Email:</div>
-                            <div class="profile__value" id="profile-email">-</div>
-
-                            <div class="profile__label">Role:</div>
-                            <div class="profile__value" id="profile-role">-</div>
-
-                            <div class="profile__label">Member Since:</div>
-                            <div class="profile__value" id="profile-member-since">-</div>
-                        </div>
+    <div class="profile">
+        <div class="profile__container">
+            <div class="profile__card">
+                <h1>My Profile</h1>
+                <div class="profile__info">
+                    <div class="profile__avatar-container">
+                        <div class="profile__avatar" id="profile-avatar">U</div>
                     </div>
+                    <div class="profile__details">
+                        <div class="profile__label">First Name:</div>
+                        <div class="profile__value" id="profile-first-name">-</div>
 
-                    <div class="profile__actions">
-                        <a href="Edit-Profile.html" class="dashboard__action">Edit Profile</a>
-                        <a href="Change-Password.html" class="dashboard__action">Change Password</a>
+                        <div class="profile__label">Last Name:</div>
+                        <div class="profile__value" id="profile-last-name">-</div>
+
+                        <div class="profile__label">Email:</div>
+                        <div class="profile__value" id="profile-email">-</div>
+
+                        <div class="profile__label">Role:</div>
+                        <div class="profile__value" id="profile-role">-</div>
+
+                        <div class="profile__label">Member Since:</div>
+                        <div class="profile__value" id="profile-member-since">-</div>
                     </div>
                 </div>
 
-                <div class="profile__card">
-                    <h2>Activity Summary</h2>
-                    <p>Your recent activity will appear here.</p>
+                <div class="profile__actions">
+                    <a href="Edit-Profile.html" class="dashboard__action">Edit Profile</a>
+                    <a href="Change-Password.html" class="dashboard__action">Change Password</a>
                 </div>
+            </div>
+
+            <div class="profile__card">
+                <h2>Activity Summary</h2>
+                <p>Your recent activity will appear here.</p>
             </div>
         </div>
+    </div>
 
-        <!-- Start Footer Area -->
-        <footer class="footer__area">
-            <div class="container">
-                <div class="footer__content">
-                    <!-- Logo and About Section -->
-                    <div class="footer-brand">
-                        <div class="footer-logo">
-                            <a href="Home.html">
-                                <img src="../images/MACO.png" class="footer-logo-img">
-                            </a>
-                        </div>
-                        <p class="footer-about">
-                            MACO is an innovative curriculum for teaching robot programming
-                            through play, developed at The Education University of Hong Kong.
-                        </p>
+    <!-- Start Footer Area -->
+    <footer class="footer__area">
+        <div class="container">
+            <div class="footer__content">
+                <!-- Logo and About Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <a href="Home.html">
+                            <img src="../images/MACO.png" class="footer-logo-img">
+                        </a>
                     </div>
-
-                    <!-- Navigation Links -->
-                    <div class="footer-links-container">
-                        <!-- Quick Links -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">Quick Links</h4>
-                            <ul class="footer-links">
-                                <li><a href="Home.html">Home</a></li>
-                                <li><a href="About us.html">About us</a></li>
-                                <li><a href="Course.html">Curriculum</a></li>
-                                <li><a href="News.html">News</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- For Schools -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">For Schools</h4>
-                            <ul class="footer-links">
-                                <li><a href="School.html">Schools</a></li>
-                                <li><a href="Teacher.html">Teachers</a></li>
-                                <li><a href="Platform.html">Platform</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Contact Information -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">Contact Us</h4>
-                            <div class="footer-contact">
-                                <p><i class="fas fa-map-marker-alt"></i> 10 Lo Ping Road, Tai Po, Hong Kong</p>
-                                <p><i class="fas fa-envelope"></i> <a
-                                        href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></p>
-                            </div>
-                            <div class="footer-social">
-                                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="footer-about">
+                        MACO is an innovative curriculum for teaching robot programming
+                        through play, developed at The Education University of Hong Kong.
+                    </p>
                 </div>
 
-                <!-- University Information -->
-                <div class="footer__contact">
-                    <div class="university">The Education University of Hong Kong</div>
-                    <div class="department">Department of Early Childhood Education</div>
-                    <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
-                </div>
+                <!-- Navigation Links -->
+                <div class="footer-links-container">
+                    <!-- Quick Links -->
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="Home.html">Home</a></li>
+                            <li><a href="About us.html">About us</a></li>
+                            <li><a href="Course.html">Curriculum</a></li>
+                            <li><a href="News.html">News</a></li>
+                        </ul>
+                    </div>
 
-                <!-- Copyright Section -->
-                <div class="footer__copyright">
-                    <p>&copy; 2024 The Education University of Hong Kong</p>
-                    <p class="rights">All rights reserved. No part of this publication may be reproduced, stored in a
-                        retrieval system or transmitted in any form or by any means without written permission.</p>
+                    <!-- For Schools -->
+                    <div class="footer-column">
+                        <h4 class="footer-heading">For Schools</h4>
+                        <ul class="footer-links">
+                            <li><a href="School.html">Schools</a></li>
+                            <li><a href="Teacher.html">Teachers</a></li>
+                            <li><a href="Platform.html">Platform</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Contact Us</h4>
+                        <div class="footer-contact">
+                            <p><i class="fas fa-map-marker-alt"></i> 10 Lo Ping Road, Tai Po, Hong Kong</p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a>
+                            </p>
+                        </div>
+                        <div class="footer-social">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </footer>
-        <!-- End Footer Area -->
+
+            <!-- University Information -->
+            <div class="footer__contact">
+                <div class="university">The Education University of Hong Kong</div>
+                <div class="department">Department of Early Childhood Education</div>
+                <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="footer__copyright">
+                <p>&copy; 2024 The Education University of Hong Kong</p>
+                <p class="rights">All rights reserved. No part of this publication may be reproduced, stored in a
+                    retrieval system or transmitted in any form or by any means without written permission.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer Area -->
     </div>
 
     <!-- Firebase SDK -->
@@ -300,10 +302,10 @@
                 document.getElementById('profile-first-name').textContent = currentUser.firstName || '-';
                 document.getElementById('profile-last-name').textContent = currentUser.lastName || '-';
                 document.getElementById('profile-email').textContent = currentUser.email || '-';
-                
+
                 // Format role name with capitalization
-                const roleName = currentUser.role ? 
-                    currentUser.role.charAt(0).toUpperCase() + currentUser.role.slice(1) : 
+                const roleName = currentUser.role ?
+                    currentUser.role.charAt(0).toUpperCase() + currentUser.role.slice(1) :
                     '-';
                 document.getElementById('profile-role').textContent = roleName;
 
@@ -320,8 +322,8 @@
                 // Set member since date from Firestore data or fetch from database
                 if (currentUser.createdAt) {
                     // Format Firebase timestamp
-                    const memberSince = currentUser.createdAt.toDate ? 
-                        currentUser.createdAt.toDate().toLocaleDateString() : 
+                    const memberSince = currentUser.createdAt.toDate ?
+                        currentUser.createdAt.toDate().toLocaleDateString() :
                         new Date(currentUser.createdAt).toLocaleDateString();
                     document.getElementById('profile-member-since').textContent = memberSince;
                 } else {
@@ -331,16 +333,16 @@
                             .then(doc => {
                                 if (doc.exists && doc.data().createdAt) {
                                     const createdAt = doc.data().createdAt.toDate();
-                                    document.getElementById('profile-member-since').textContent = 
+                                    document.getElementById('profile-member-since').textContent =
                                         createdAt.toLocaleDateString();
                                 } else {
-                                    document.getElementById('profile-member-since').textContent = 
+                                    document.getElementById('profile-member-since').textContent =
                                         'Not available';
                                 }
                             })
                             .catch(error => {
                                 console.error("Error fetching user data:", error);
-                                document.getElementById('profile-member-since').textContent = 
+                                document.getElementById('profile-member-since').textContent =
                                     'Not available';
                             });
                     } else {
@@ -405,10 +407,10 @@
 
                     snapshot.forEach(doc => {
                         const activity = doc.data();
-                        const date = activity.timestamp ? 
-                            activity.timestamp.toDate().toLocaleDateString() : 
+                        const date = activity.timestamp ?
+                            activity.timestamp.toDate().toLocaleDateString() :
                             'Unknown date';
-                        
+
                         activitiesHTML += `
                             <div class="activity-item">
                                 <div class="activity-date">${date}</div>

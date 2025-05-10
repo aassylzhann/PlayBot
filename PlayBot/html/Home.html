@@ -77,66 +77,68 @@
                                     <a href="Login.html" class="auth-btn login">Login</a>
                                     <a href="Register.html" class="auth-btn signup">Sign Up</a>
                                 </div>
-                                <div id="user-profile" class="user-profile">
-                                    <a class="profile-btn" href="#">
-                                        <span id="user-name">Account</span>
+                                <!-- Add this to your header.html or equivalent file -->
+                                <div id="user-profile" class="dropdown">
+                                    <a href="#" class="profile-btn dropdown-toggle">
+                                        <span id="user-name">Account</span> <i class="fas fa-user"></i>
                                     </a>
                                     <div class="dropdown-content">
-                                        <!-- Dynamically populated by auth.js -->
+                                        <!-- Dropdown items will be populated by JavaScript -->
                                     </div>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- End Mainmenu Area -->
-        </header>
-        <!-- End Header Area -->
+    </div>
+    <!-- End Mainmenu Area -->
+    </header>
+    <!-- End Header Area -->
 
-        <!-- Start Hero Banner Area -->
-        <div class="hero__banner">
-            <div class="slider-container">
-                <div class="language-content">
-                    <!-- English Content -->
-                    <div class="lang-content" data-lang="en">
-                        <div class="slider">
-                            <div class="slider-item">
-                                <h1>Robot Programming Through Play:
-                                    Effects on Kindergarten Children’s
-                                    Engagement and Computational Thinking</h1>
-                                <h3>Dr YANG Weipeng</h3>
-                            </div>
-                            <div class="slider-item">
-                                <p>Teacher Training Features</p>
-                                <li>Comprehensive Training Materials & Practical Operation Opportunities</li>
-                                <li>Continuous Support System & Integration of Innovative Technology</li>
-                            </div>
-                            <div class="slider-item">
-                                <p>Curriculum Enrichment Features</p>
-                                <li>Interdisciplinary Integration & Interactive and Interesting Teaching</li>
-                                <li>Social and Emotional Development & Logical Problem - Solving</li>
-                                <li>Encouragement of Creativity and Exploration & Personalized Learning Experience</li>
-                            </div>
+    <!-- Start Hero Banner Area -->
+    <div class="hero__banner">
+        <div class="slider-container">
+            <div class="language-content">
+                <!-- English Content -->
+                <div class="lang-content" data-lang="en">
+                    <div class="slider">
+                        <div class="slider-item">
+                            <h1>Robot Programming Through Play:
+                                Effects on Kindergarten Children’s
+                                Engagement and Computational Thinking</h1>
+                            <h3>Dr YANG Weipeng</h3>
+                        </div>
+                        <div class="slider-item">
+                            <p>Teacher Training Features</p>
+                            <li>Comprehensive Training Materials & Practical Operation Opportunities</li>
+                            <li>Continuous Support System & Integration of Innovative Technology</li>
+                        </div>
+                        <div class="slider-item">
+                            <p>Curriculum Enrichment Features</p>
+                            <li>Interdisciplinary Integration & Interactive and Interesting Teaching</li>
+                            <li>Social and Emotional Development & Logical Problem - Solving</li>
+                            <li>Encouragement of Creativity and Exploration & Personalized Learning Experience</li>
                         </div>
                     </div>
-                    <!-- Chinese Content -->
-                    <div class="lang-content" data-lang="zh" style="display: none;">
-                        <div class="slider">
-                            <div class="slider-item">
-                                <h1>通过游戏进行机器人编程：</h1>
-                                <h1>对幼儿园儿童的影响
-                                    参与和计算思维</h1>
-                                <h3>杨伟鹏博士</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="control-btn prev-btn" onclick="scrollSlide(-1)">&#10094;</button>
-                    <button class="control-btn next-btn" onclick="scrollSlide(1)">&#10095;</button>
                 </div>
+                <!-- Chinese Content -->
+                <div class="lang-content" data-lang="zh" style="display: none;">
+                    <div class="slider">
+                        <div class="slider-item">
+                            <h1>通过游戏进行机器人编程：</h1>
+                            <h1>对幼儿园儿童的影响
+                                参与和计算思维</h1>
+                            <h3>杨伟鹏博士</h3>
+                        </div>
+                    </div>
+                </div>
+                <button class="control-btn prev-btn" onclick="scrollSlide(-1)">&#10094;</button>
+                <button class="control-btn next-btn" onclick="scrollSlide(1)">&#10095;</button>
             </div>
         </div>
+    </div>
     </div>
     <!-- End Hero Banner Area -->
 

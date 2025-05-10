@@ -78,12 +78,13 @@
                                     <a href="Login.html" class="auth-btn login">Login</a>
                                     <a href="Register.html" class="auth-btn signup">Sign Up</a>
                                 </div>
-                                <div id="user-profile" class="user-profile">
-                                    <a class="profile-btn" href="#">
-                                        <span id="user-name">Account</span>
+                                <!-- Add this to your header.html or equivalent file -->
+                                <div id="user-profile" class="dropdown">
+                                    <a href="#" class="profile-btn dropdown-toggle">
+                                        <span id="user-name">Account</span> <i class="fas fa-user"></i>
                                     </a>
                                     <div class="dropdown-content">
-                                        <!-- Dynamically populated by auth.js -->
+                                        <!-- Dropdown items will be populated by JavaScript -->
                                     </div>
                                 </div>
                             </div>
@@ -91,147 +92,148 @@
                     </div>
                 </div>
             </div>
-            <!-- End Mainmenu Area -->
-        </header>
-        <!-- End Header Area -->
+    </div>
+    <!-- End Mainmenu Area -->
+    </header>
+    <!-- End Header Area -->
 
-        <!-- Start News Header Area -->
-        <section class="school__area bg__white ptb--100">
-            <div class="container">
-                <div class="school-row">
-                    <div class="col-xs-12">
-                        <div class="school__title--2 text-center">
-                            <div class="language-content">
-                                <!-- English Content -->
-                                <div class="lang-content" data-lang="en">
-                                    <h2 class="title__line">News</h2>
-                                    <p>Follow our official WeChat account to stay updated with the latest news</p>
-                                </div>
-                                <!-- Chinese Content -->
-                                <div class="lang-content" data-lang="zh" style="display: none;">
-                                    <h2 class="title__line">新聞</h2>
-                                    <p>關注我們的官方微信賬號，獲取最新消息</p>
-                                </div>
+    <!-- Start News Header Area -->
+    <section class="school__area bg__white ptb--100">
+        <div class="container">
+            <div class="school-row">
+                <div class="col-xs-12">
+                    <div class="school__title--2 text-center">
+                        <div class="language-content">
+                            <!-- English Content -->
+                            <div class="lang-content" data-lang="en">
+                                <h2 class="title__line">News</h2>
+                                <p>Follow our official WeChat account to stay updated with the latest news</p>
+                            </div>
+                            <!-- Chinese Content -->
+                            <div class="lang-content" data-lang="zh" style="display: none;">
+                                <h2 class="title__line">新聞</h2>
+                                <p>關注我們的官方微信賬號，獲取最新消息</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- End News Header Area -->
+        </div>
+    </section>
+    <!-- End News Header Area -->
 
-        <!-- Replace News Content Area with WeChat QR Code -->
-        <section class="wechat-section bg__white ptb--80">
-            <div class="container">
-                <div class="language-content">
-                    <!-- English Content -->
-                    <div class="lang-content" data-lang="en">
-                        <div class="wechat-container">
-                            <h3 class="wechat-title">Follow Our WeChat Official Account</h3>
-                            <p class="wechat-subtitle">Scan the QR code below to follow our official WeChat account for
-                                the latest updates, news, and events about PlayBot Curriculum.</p>
-                            <div class="qr-container">
-                                <img src="../images/gzh.jpg" alt="WeChat QR Code" class="qr-code-img">
-                                <p class="qr-caption">Scan with WeChat app to follow</p>
-                            </div>
-                            <div class="wechat-info">
-                                <p>Our WeChat account is regularly updated with the latest news, events, and educational
-                                    resources. Follow us to stay connected!</p>
-                            </div>
+    <!-- Replace News Content Area with WeChat QR Code -->
+    <section class="wechat-section bg__white ptb--80">
+        <div class="container">
+            <div class="language-content">
+                <!-- English Content -->
+                <div class="lang-content" data-lang="en">
+                    <div class="wechat-container">
+                        <h3 class="wechat-title">Follow Our WeChat Official Account</h3>
+                        <p class="wechat-subtitle">Scan the QR code below to follow our official WeChat account for
+                            the latest updates, news, and events about PlayBot Curriculum.</p>
+                        <div class="qr-container">
+                            <img src="../images/gzh.jpg" alt="WeChat QR Code" class="qr-code-img">
+                            <p class="qr-caption">Scan with WeChat app to follow</p>
+                        </div>
+                        <div class="wechat-info">
+                            <p>Our WeChat account is regularly updated with the latest news, events, and educational
+                                resources. Follow us to stay connected!</p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Chinese Content -->
-                    <div class="lang-content" data-lang="zh" style="display: none;">
-                        <div class="wechat-container">
-                            <h3 class="wechat-title">關注我們的微信公眾號</h3>
-                            <p class="wechat-subtitle">掃描下方二維碼關注我們的官方微信公眾號，獲取有關PlayBot課程的最新更新、新聞和活動。</p>
-                            <div class="qr-container">
-                                <img src="../images/gzh.jpg" alt="微信二維碼" class="qr-code-img">
-                                <p class="qr-caption">使用微信應用掃描關注</p>
-                            </div>
-                            <div class="wechat-info">
-                                <p>我們的微信帳號會定期更新最新的新聞、活動和教育資源。關注我們以保持聯繫！</p>
-                            </div>
+                <!-- Chinese Content -->
+                <div class="lang-content" data-lang="zh" style="display: none;">
+                    <div class="wechat-container">
+                        <h3 class="wechat-title">關注我們的微信公眾號</h3>
+                        <p class="wechat-subtitle">掃描下方二維碼關注我們的官方微信公眾號，獲取有關PlayBot課程的最新更新、新聞和活動。</p>
+                        <div class="qr-container">
+                            <img src="../images/gzh.jpg" alt="微信二維碼" class="qr-code-img">
+                            <p class="qr-caption">使用微信應用掃描關注</p>
+                        </div>
+                        <div class="wechat-info">
+                            <p>我們的微信帳號會定期更新最新的新聞、活動和教育資源。關注我們以保持聯繫！</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Start Footer Area -->
-        <footer class="footer__area">
-            <div class="container">
-                <div class="footer__content">
-                    <!-- Logo and About Section -->
-                    <div class="footer-brand">
-                        <div class="footer-logo">
-                            <a href="Home.html">
-                                <img src="../images/MACO.png" class="footer-logo-img">
-                            </a>
-                        </div>
-                        <p class="footer-about">
-                            MACO is an innovative curriculum for teaching robot programming
-                            through play, developed at The Education University of Hong Kong.
-                        </p>
+    <!-- Start Footer Area -->
+    <footer class="footer__area">
+        <div class="container">
+            <div class="footer__content">
+                <!-- Logo and About Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <a href="Home.html">
+                            <img src="../images/MACO.png" class="footer-logo-img">
+                        </a>
                     </div>
-
-                    <!-- Navigation Links -->
-                    <div class="footer-links-container">
-                        <!-- Quick Links -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">Quick Links</h4>
-                            <ul class="footer-links">
-                                <li><a href="Home.html">Home</a></li>
-                                <li><a href="About us.html">About us</a></li>
-                                <li><a href="Course.html">Curriculum</a></li>
-                                <li><a href="News.html">News</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- For Schools -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">For Schools</h4>
-                            <ul class="footer-links">
-                                <li><a href="School.html">Schools</a></li>
-                                <li><a href="Teacher.html">Teachers</a></li>
-                                <li><a href="Platform.html">Platform</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Contact Information -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">Contact Us</h4>
-                            <div class="footer-contact">
-                                <p><i class="fas fa-map-marker-alt"></i> 10 Lo Ping Road, Tai Po, Hong Kong</p>
-                                <p><i class="fas fa-envelope"></i> <a
-                                        href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></p>
-                            </div>
-                            <div class="footer-social">
-                                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="footer-about">
+                        MACO is an innovative curriculum for teaching robot programming
+                        through play, developed at The Education University of Hong Kong.
+                    </p>
                 </div>
 
-                <!-- University Information -->
-                <div class="footer__contact">
-                    <div class="university">The Education University of Hong Kong</div>
-                    <div class="department">Department of Early Childhood Education</div>
-                    <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
-                </div>
+                <!-- Navigation Links -->
+                <div class="footer-links-container">
+                    <!-- Quick Links -->
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="Home.html">Home</a></li>
+                            <li><a href="About us.html">About us</a></li>
+                            <li><a href="Course.html">Curriculum</a></li>
+                            <li><a href="News.html">News</a></li>
+                        </ul>
+                    </div>
 
-                <!-- Copyright Section -->
-                <div class="footer__copyright">
-                    <p>&copy; 2024 The Education University of Hong Kong</p>
-                    <p class="rights">All rights reserved. No part of this publication may be reproduced, stored in a
-                        retrieval system or transmitted in any form or by any means without written permission.</p>
+                    <!-- For Schools -->
+                    <div class="footer-column">
+                        <h4 class="footer-heading">For Schools</h4>
+                        <ul class="footer-links">
+                            <li><a href="School.html">Schools</a></li>
+                            <li><a href="Teacher.html">Teachers</a></li>
+                            <li><a href="Platform.html">Platform</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Contact Us</h4>
+                        <div class="footer-contact">
+                            <p><i class="fas fa-map-marker-alt"></i> 10 Lo Ping Road, Tai Po, Hong Kong</p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a>
+                            </p>
+                        </div>
+                        <div class="footer-social">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </footer>
-        <!-- End Footer Area -->
+
+            <!-- University Information -->
+            <div class="footer__contact">
+                <div class="university">The Education University of Hong Kong</div>
+                <div class="department">Department of Early Childhood Education</div>
+                <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="footer__copyright">
+                <p>&copy; 2024 The Education University of Hong Kong</p>
+                <p class="rights">All rights reserved. No part of this publication may be reproduced, stored in a
+                    retrieval system or transmitted in any form or by any means without written permission.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer Area -->
     </div>
     <!-- Body main wrapper end -->
 
@@ -261,7 +263,7 @@
             if (albums.length > 0) {
                 const leftButtons = document.querySelectorAll('.scroll-button.left');
                 const rightButtons = document.querySelectorAll('.scroll-button.right');
-                
+
                 // Add event listeners to scroll buttons
                 leftButtons.forEach((leftBtn, index) => {
                     if (leftBtn && albums[index]) {
@@ -270,7 +272,7 @@
                         });
                     }
                 });
-                
+
                 rightButtons.forEach((rightBtn, index) => {
                     if (rightBtn && albums[index]) {
                         rightBtn.addEventListener('click', () => {
@@ -278,39 +280,39 @@
                         });
                     }
                 });
-                
+
                 // Update scroll indicators
                 albums.forEach((album) => {
                     album.addEventListener('scroll', () => {
                         updateScrollIndicator(album);
                     });
-                    
+
                     // Initialize scroll indicators
                     setTimeout(() => {
                         updateScrollIndicator(album);
                     }, 100);
                 });
             }
-            
+
             function updateScrollIndicator(album) {
                 try {
                     const scrollPosition = album.scrollLeft;
                     const maxScroll = album.scrollWidth - album.clientWidth;
-                    
+
                     // Get dots for this album
                     const albumContainer = album.closest('.news-album-container');
                     if (!albumContainer) return;
-                    
+
                     const indicatorContainer = albumContainer.nextElementSibling;
                     if (!indicatorContainer) return;
-                    
+
                     const dots = indicatorContainer.querySelectorAll('.scroll-dot');
                     if (!dots.length) return;
-                    
+
                     // Calculate which dot should be active
                     let activeIndex = Math.floor((scrollPosition / maxScroll) * 3);
                     if (activeIndex > 2) activeIndex = 2;
-                    
+
                     // Update dots
                     dots.forEach((dot, i) => {
                         dot.classList.toggle('active', i === activeIndex);

@@ -78,13 +78,15 @@
                                     <a href="Login.html" class="auth-btn login">Login</a>
                                     <a href="Register.html" class="auth-btn signup">Sign Up</a>
                                 </div>
-                                <div id="user-profile" class="user-profile">
-                                    <a class="profile-btn" href="#">
-                                        <span id="user-name">Account</span>
-                                    </a>
-                                    <div class="dropdown-content">
-                                        <!-- Dynamically populated by auth.js -->
-                                    </div>
+                                <!-- Add this to your header.html or equivalent file -->
+<div id="user-profile" class="dropdown">
+    <a href="#" class="profile-btn dropdown-toggle">
+        <span id="user-name">Account</span> <i class="fas fa-user"></i>
+    </a>
+    <div class="dropdown-content">
+        <!-- Dropdown items will be populated by JavaScript -->
+    </div>
+</div>
                                 </div>
                             </div>
                         </div>

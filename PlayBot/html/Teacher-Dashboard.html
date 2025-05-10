@@ -108,7 +108,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <!-- Teaching Resources Section -->
             <div class="content-card resources-section">
                 <div class="card-header">
@@ -120,7 +120,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="resources-filters">
                     <div class="filter-group">
                         <label>Resource Type:</label>
@@ -142,7 +142,7 @@
                         </select>
                     </div>
                 </div>
-                
+
                 <!-- Resources will be loaded dynamically from database -->
                 <div id="resources-container" class="resources-grid">
                     <!-- Loading state -->
@@ -150,7 +150,7 @@
                         <div class="loading-spinner"></div>
                         <p>Loading resources...</p>
                     </div>
-                    
+
                     <!-- Empty state - shown when no resources are available -->
                     <div id="resources-empty" class="empty-state" style="display: none;">
                         <div class="empty-icon">
@@ -161,7 +161,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Getting Started Guide -->
             <div class="content-card getting-started">
                 <div class="card-header">
@@ -191,7 +191,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Help Section -->
             <div class="content-card help-card">
                 <div class="card-header">
@@ -294,7 +294,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
-    
+
     <!-- Your scripts -->
     <script src="../js/firebase-config.js"></script>
     <script src="../js/components.js"></script>
@@ -306,52 +306,52 @@
         document.addEventListener('DOMContentLoaded', function () {
             // Apply fade-in effect when page loads
             document.body.classList.add('page-transition');
-            
+
             setTimeout(() => {
                 document.body.classList.remove('page-transition');
             }, 100);
-            
+
             // Set current date
             const today = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', options);
-            
+
             // Check login status
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
             const userRole = localStorage.getItem('currentUserRole');
             const userEmail = localStorage.getItem('currentUserEmail');
-            
+
             if (!isLoggedIn || userRole !== 'teacher') {
                 console.log("Not authenticated as teacher, redirecting to login");
                 window.location.href = 'Login.html';
                 return;
             }
-            
+
             // Update teacher name
             const firstName = localStorage.getItem('userFirstName_' + userEmail) || 'Teacher';
             const lastName = localStorage.getItem('userLastName_' + userEmail) || '';
-            
+
             document.getElementById('teacher-name').textContent = firstName;
             document.getElementById('user-name').textContent = firstName;
-            
+
             // Hide auth buttons, show user profile
             document.querySelector('.auth-buttons').style.display = 'none';
             document.getElementById('user-profile').style.display = 'flex';
-            
+
             // Load resources from database
             loadResources();
         });
-        
+
         // Load resources from database
         function loadResources() {
             const resourcesContainer = document.getElementById('resources-container');
             const loadingElement = document.getElementById('resources-loading');
             const emptyElement = document.getElementById('resources-empty');
-            
+
             // Show loading state
             if (loadingElement) loadingElement.style.display = 'flex';
             if (emptyElement) emptyElement.style.display = 'none';
-            
+
             // Try to get resources from Firebase
             if (typeof fbDb !== 'undefined' && fbDb) {
                 fbDb.collection('resources')
@@ -360,27 +360,27 @@
                     .then(snapshot => {
                         // Hide loading state
                         if (loadingElement) loadingElement.style.display = 'none';
-                        
+
                         if (snapshot.empty) {
                             // Show empty state if no resources
                             if (emptyElement) emptyElement.style.display = 'flex';
                             return;
                         }
-                        
+
                         // Clear any existing resources (except loading and empty states)
                         Array.from(resourcesContainer.children).forEach(child => {
                             if (child.id !== 'resources-loading' && child.id !== 'resources-empty') {
                                 resourcesContainer.removeChild(child);
                             }
                         });
-                        
+
                         // Add resources from database
                         snapshot.forEach(doc => {
                             const resource = doc.data();
                             const resourceElement = createResourceElement(doc.id, resource);
                             resourcesContainer.appendChild(resourceElement);
                         });
-                        
+
                         // Set up search and filter functionality
                         setupResourceFilters();
                     })
@@ -389,14 +389,14 @@
                         if (loadingElement) loadingElement.style.display = 'none';
                         if (emptyElement) {
                             emptyElement.style.display = 'flex';
-                            emptyElement.querySelector('.empty-description').textContent = 
+                            emptyElement.querySelector('.empty-description').textContent =
                                 'Error loading resources. Please try again later.';
                         }
                     });
             } else {
                 // Firebase not available, load sample data
                 if (loadingElement) loadingElement.style.display = 'none';
-                
+
                 // Create sample resources if no database
                 const sampleResources = [
                     {
@@ -433,17 +433,17 @@
                         fileUrl: '#'
                     }
                 ];
-                
+
                 sampleResources.forEach(resource => {
                     const resourceElement = createResourceElement(resource.id, resource);
                     resourcesContainer.appendChild(resourceElement);
                 });
-                
+
                 // Set up filters
                 setupResourceFilters();
             }
         }
-        
+
         // Create resource element
         function createResourceElement(id, resource) {
             const div = document.createElement('div');
@@ -451,7 +451,7 @@
             div.dataset.id = id;
             div.dataset.type = resource.type || 'other';
             div.dataset.grade = resource.gradeLevel || 'all';
-            
+
             // Determine icon based on file type
             let iconClass = 'fas fa-file';
             if (resource.fileType === 'pdf') {
@@ -463,7 +463,7 @@
             } else if (resource.fileType === 'ppt' || resource.fileType === 'pptx') {
                 iconClass = 'fas fa-file-powerpoint';
             }
-            
+
             div.innerHTML = `
                 <div class="resource-icon ${resource.fileType}-icon">
                     <i class="${iconClass}"></i>
@@ -483,17 +483,17 @@
                     </button>
                 </div>
             `;
-            
+
             return div;
         }
-        
+
         // Download resource function
         function downloadResource(id, url) {
             if (url === '#') {
                 alert('This is a sample resource. In the actual application, you would download the file.');
                 return;
             }
-            
+
             // Create an invisible anchor to trigger download
             const a = document.createElement('a');
             a.href = url;
@@ -502,7 +502,7 @@
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-            
+
             // Track download in database if possible
             if (typeof fbDb !== 'undefined' && fbDb) {
                 fbDb.collection('resource_downloads').add({
@@ -512,64 +512,64 @@
                 }).catch(err => console.warn("Could not track download:", err));
             }
         }
-        
+
         // Set up resource filters and search
         function setupResourceFilters() {
             const searchInput = document.getElementById('resource-search');
             const typeFilter = document.getElementById('resource-type-filter');
             const gradeFilter = document.getElementById('grade-level-filter');
-            
+
             // Filter function
             function filterResources() {
                 const searchTerm = searchInput.value.toLowerCase();
                 const typeValue = typeFilter.value;
                 const gradeValue = gradeFilter.value;
-                
+
                 const resources = document.querySelectorAll('.resource-card');
-                
+
                 resources.forEach(resource => {
                     const title = resource.querySelector('h3').textContent.toLowerCase();
                     const description = resource.querySelector('p').textContent.toLowerCase();
                     const type = resource.dataset.type;
                     const grade = resource.dataset.grade;
-                    
+
                     const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
                     const matchesType = typeValue === 'all' || type === typeValue;
                     const matchesGrade = gradeValue === 'all' || grade === gradeValue;
-                    
+
                     if (matchesSearch && matchesType && matchesGrade) {
                         resource.style.display = 'flex';
                     } else {
                         resource.style.display = 'none';
                     }
                 });
-                
+
                 // Check if any resources are visible
                 const visibleResources = document.querySelectorAll('.resource-card[style="display: flex"]');
                 const emptyElement = document.getElementById('resources-empty');
-                
+
                 if (visibleResources.length === 0 && emptyElement) {
                     emptyElement.style.display = 'flex';
                     emptyElement.querySelector('.empty-title').textContent = 'No Matching Resources';
-                    emptyElement.querySelector('.empty-description').textContent = 
+                    emptyElement.querySelector('.empty-description').textContent =
                         'Try adjusting your search or filters to find resources.';
                 } else if (emptyElement) {
                     emptyElement.style.display = 'none';
                 }
             }
-            
+
             // Add event listeners
             if (searchInput) searchInput.addEventListener('input', filterResources);
             if (typeFilter) typeFilter.addEventListener('change', filterResources);
             if (gradeFilter) gradeFilter.addEventListener('change', filterResources);
         }
-        
+
         function handleLogout() {
             // Clear localStorage
             localStorage.removeItem('isLoggedIn');
             localStorage.removeItem('currentUserEmail');
             localStorage.removeItem('currentUserRole');
-            
+
             // Try Firebase logout if available
             if (typeof fbAuth !== 'undefined' && fbAuth) {
                 fbAuth.signOut().then(() => {

@@ -89,12 +89,13 @@
                                     <a href="Login.html" class="auth-btn login">Login</a>
                                     <a href="Register.html" class="auth-btn signup">Sign Up</a>
                                 </div>
-                                <div id="user-profile" class="user-profile">
-                                    <a class="profile-btn" href="#">
-                                        <span id="user-name">Account</span>
+                                <!-- Add this to your header.html or equivalent file -->
+                                <div id="user-profile" class="dropdown">
+                                    <a href="#" class="profile-btn dropdown-toggle">
+                                        <span id="user-name">Account</span> <i class="fas fa-user"></i>
                                     </a>
                                     <div class="dropdown-content">
-                                        <!-- Dynamically populated by auth.js -->
+                                        <!-- Dropdown items will be populated by JavaScript -->
                                     </div>
                                 </div>
                             </div>
@@ -102,143 +103,145 @@
                     </div>
                 </div>
             </div>
-            <!-- End Mainmenu Area -->
-        </header>
-        <!-- End Header Area -->
+    </div>
+    <!-- End Mainmenu Area -->
+    </header>
+    <!-- End Header Area -->
 
-        <!-- Start Login Area -->
-        <section class="login__area ptb--100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="login__form">
-                            <h2 class="login__title">Login to Your Account</h2>
-                            <form id="loginForm" class="form">
-                                <div class="form__group">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" id="email" name="email" autocomplete="email" required>
+    <!-- Start Login Area -->
+    <section class="login__area ptb--100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="login__form">
+                        <h2 class="login__title">Login to Your Account</h2>
+                        <form id="loginForm" class="form">
+                            <div class="form__group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" autocomplete="email" required>
+                            </div>
+
+                            <div class="form__group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" autocomplete="current-password"
+                                    required>
+                            </div>
+
+                            <!-- Role Selection -->
+                            <div class="role-selection">
+                                <label>I am a:</label>
+                                <div class="role-buttons">
+                                    <label class="role-btn">
+                                        <input type="radio" name="role" value="teacher" checked>
+
+                                        <span class="role-name">Teacher</span>
+                                    </label>
+
+                                    <label class="role-btn">
+                                        <input type="radio" name="role" value="parent">
+
+                                        <span class="role-name">Parent</span>
+                                    </label>
                                 </div>
+                            </div>
 
-                                <div class="form__group">
-                                    <label for="password">Password</label>
-                                    <input type="password" id="password" name="password" autocomplete="current-password" required>
-                                </div>
+                            <div class="remember">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
 
-                                <!-- Role Selection -->
-                                <div class="role-selection">
-                                    <label>I am a:</label>
-                                    <div class="role-buttons">
-                                        <label class="role-btn">
-                                            <input type="radio" name="role" value="teacher" checked>
+                            <!-- Add this error message container -->
+                            <div id="login-error" class="error-message"></div>
 
-                                            <span class="role-name">Teacher</span>
-                                        </label>
+                            <!-- Change your submit button to have the correct ID -->
+                            <button type="submit" id="login-submit" class="submit-btn">Login</button>
 
-                                        <label class="role-btn">
-                                            <input type="radio" name="role" value="parent">
+                            <div class="form__links">
+                                <a href="#" class="forgot-password">Forgot Password?</a>
+                                <p>Don't have an account? <a href="Register.html" class="register-link">Register
+                                        now</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Login Area -->
 
-                                            <span class="role-name">Parent</span>
-                                        </label>
-                                    </div>
-                                </div>
+    <!-- Start Footer Area -->
+    <footer class="footer__area">
+        <div class="container">
+            <div class="footer__content">
+                <!-- Logo and About Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <a href="Home.html">
+                            <img src="../images/MACO.png" class="footer-logo-img">
+                        </a>
+                    </div>
+                    <p class="footer-about">
+                        MACO is an innovative curriculum for teaching robot programming
+                        through play, developed at The Education University of Hong Kong.
+                    </p>
+                </div>
 
-                                <div class="remember">
-                                    <input type="checkbox" id="remember" name="remember">
-                                    <label for="remember">Remember me</label>
-                                </div>
+                <!-- Navigation Links -->
+                <div class="footer-links-container">
+                    <!-- Quick Links -->
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="Home.html">Home</a></li>
+                            <li><a href="About us.html">About us</a></li>
+                            <li><a href="Course.html">Curriculum</a></li>
+                            <li><a href="News.html">News</a></li>
+                        </ul>
+                    </div>
 
-                                <!-- Add this error message container -->
-                                <div id="login-error" class="error-message"></div>
+                    <!-- For Schools -->
+                    <div class="footer-column">
+                        <h4 class="footer-heading">For Schools</h4>
+                        <ul class="footer-links">
+                            <li><a href="School.html">Schools</a></li>
+                            <li><a href="Teacher.html">Teachers</a></li>
+                            <li><a href="Platform.html">Platform</a></li>
+                        </ul>
+                    </div>
 
-                                <!-- Change your submit button to have the correct ID -->
-                                <button type="submit" id="login-submit" class="submit-btn">Login</button>
-
-                                <div class="form__links">
-                                    <a href="#" class="forgot-password">Forgot Password?</a>
-                                    <p>Don't have an account? <a href="Register.html" class="register-link">Register
-                                            now</a></p>
-                                </div>
-                            </form>
+                    <!-- Contact Information -->
+                    <div class="footer-column">
+                        <h4 class="footer-heading">Contact Us</h4>
+                        <div class="footer-contact">
+                            <p><i class="fas fa-map-marker-alt"></i> 10 Lo Ping Road, Tai Po, Hong Kong</p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a>
+                            </p>
+                        </div>
+                        <div class="footer-social">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- End Login Area -->
 
-        <!-- Start Footer Area -->
-        <footer class="footer__area">
-            <div class="container">
-                <div class="footer__content">
-                    <!-- Logo and About Section -->
-                    <div class="footer-brand">
-                        <div class="footer-logo">
-                            <a href="Home.html">
-                                <img src="../images/MACO.png" class="footer-logo-img">
-                            </a>
-                        </div>
-                        <p class="footer-about">
-                            MACO is an innovative curriculum for teaching robot programming
-                            through play, developed at The Education University of Hong Kong.
-                        </p>
-                    </div>
-
-                    <!-- Navigation Links -->
-                    <div class="footer-links-container">
-                        <!-- Quick Links -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">Quick Links</h4>
-                            <ul class="footer-links">
-                                <li><a href="Home.html">Home</a></li>
-                                <li><a href="About us.html">About us</a></li>
-                                <li><a href="Course.html">Curriculum</a></li>
-                                <li><a href="News.html">News</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- For Schools -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">For Schools</h4>
-                            <ul class="footer-links">
-                                <li><a href="School.html">Schools</a></li>
-                                <li><a href="Teacher.html">Teachers</a></li>
-                                <li><a href="Platform.html">Platform</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Contact Information -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">Contact Us</h4>
-                            <div class="footer-contact">
-                                <p><i class="fas fa-map-marker-alt"></i> 10 Lo Ping Road, Tai Po, Hong Kong</p>
-                                <p><i class="fas fa-envelope"></i> <a
-                                        href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></p>
-                            </div>
-                            <div class="footer-social">
-                                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- University Information -->
-                <div class="footer__contact">
-                    <div class="university">The Education University of Hong Kong</div>
-                    <div class="department">Department of Early Childhood Education</div>
-                    <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
-                </div>
-
-                <!-- Copyright Section -->
-                <div class="footer__copyright">
-                    <p>&copy; 2024 The Education University of Hong Kong</p>
-                    <p class="rights">All rights reserved. No part of this publication may be reproduced, stored in a
-                        retrieval system or transmitted in any form or by any means without written permission.</p>
-                </div>
+            <!-- University Information -->
+            <div class="footer__contact">
+                <div class="university">The Education University of Hong Kong</div>
+                <div class="department">Department of Early Childhood Education</div>
+                <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
             </div>
-        </footer>
-        <!-- End Footer Area -->
+
+            <!-- Copyright Section -->
+            <div class="footer__copyright">
+                <p>&copy; 2024 The Education University of Hong Kong</p>
+                <p class="rights">All rights reserved. No part of this publication may be reproduced, stored in a
+                    retrieval system or transmitted in any form or by any means without written permission.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer Area -->
     </div>
     <!-- Body main wrapper end -->
 
@@ -354,12 +357,12 @@
         // Direct login function for testing/development
         function directLogin(email, role) {
             console.log("Using direct login function for: " + email + " as " + role);
-            
+
             // Store login info in localStorage
             localStorage.setItem('currentUserEmail', email);
             localStorage.setItem('currentUserRole', role);
             localStorage.setItem('isLoggedIn', 'true');
-            
+
             // Redirect based on role
             if (role === 'admin') {
                 window.location.href = 'Admin-Dashboard.html';
