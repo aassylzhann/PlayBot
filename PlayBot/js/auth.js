@@ -403,6 +403,40 @@ function loginUser(email, password, role, remember) {
             return;
         }
         
+        // Check for registered users (any email that ends with @playbot.com)
+        if (email.endsWith('@playbot.com')) {
+            console.log("Registered PlayBot user detected");
+            // Extract role from email if not provided (e.g., teacher@playbot.com -> teacher)
+            let userRole = role;
+            if (!userRole || userRole === 'unknown') {
+                // Try to extract role from email (e.g., teacher@playbot.com -> teacher)
+                const emailParts = email.split('@');
+                if (emailParts.length > 0) {
+                    userRole = emailParts[0];
+                    // Only use if it's a valid role
+                    if (userRole !== 'teacher' && userRole !== 'parent' && userRole !== 'admin') {
+                        userRole = role || 'user';
+                    }
+                }
+            }
+            
+            const userData = {
+                firstName: "PlayBot",
+                lastName: "User",
+                email: email,
+                role: userRole
+            };
+            
+            // Set session information
+            localStorage.setItem('currentUserEmail', email);
+            localStorage.setItem('currentUserRole', userRole);
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            console.log(`PlayBot user login successful as ${userRole}`);
+            resolve(userData);
+            return;
+        }
+        
         // Try Firebase Authentication
         if (fbAuth && typeof fbAuth.signInWithEmailAndPassword === 'function') {
             // Set persistence based on remember checkbox

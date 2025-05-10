@@ -314,6 +314,30 @@
 
         // You can call this from the console: directAdminLogin()
     </script>
+
+    <script>
+        // Direct login function for testing/development
+        function directLogin(email, role) {
+            console.log("Using direct login function for: " + email + " as " + role);
+            
+            // Store login info in localStorage
+            localStorage.setItem('currentUserEmail', email);
+            localStorage.setItem('currentUserRole', role);
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            // Redirect based on role
+            if (role === 'admin') {
+                window.location.href = 'Admin-Dashboard.html';
+            } else if (role === 'teacher') {
+                window.location.href = 'Teacher-Dashboard.html';
+            } else if (role === 'parent') {
+                window.location.href = 'Parent-Dashboard.html';
+            }
+        }
+
+        // Make available in global scope
+        window.directLogin = directLogin;
+    </script>
 </body>
 
 </html>
