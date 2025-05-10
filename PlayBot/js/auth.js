@@ -341,6 +341,7 @@ function loginUser(email, password, role, remember) {
         
         // Special case for admin
         if (email === "admin@playbot.com" && password === "123123") {
+            console.log("Admin login detected");
             const adminData = {
                 firstName: "Admin",
                 lastName: "User",
@@ -353,6 +354,13 @@ function loginUser(email, password, role, remember) {
             localStorage.setItem('currentUserEmail', email);
             localStorage.setItem('currentUserRole', 'admin');
             localStorage.setItem('isLoggedIn', 'true');
+            
+            // Add a log to confirm values were stored
+            console.log("Admin login successful - localStorage values set:", {
+                email: localStorage.getItem('currentUserEmail'),
+                role: localStorage.getItem('currentUserRole'),
+                isLoggedIn: localStorage.getItem('isLoggedIn')
+            });
             
             resolve(adminData);
             return;
@@ -579,34 +587,59 @@ window.loginUser = loginUser;
 window.registerUser = registerUser;
 window.getCurrentUser = getCurrentUser;
 
+// Test function for direct login (can be called from console)
+window.testAdminLogin = function() {
+    console.log("Testing admin login");
+    return loginUser("admin@playbot.com", "123123", "admin", true)
+        .then(userData => {
+            console.log("Login test successful:", userData);
+            return userData;
+        })
+        .catch(error => {
+            console.error("Login test failed:", error);
+            throw error;
+        });
+};
+
 // Call updateAuthUI when the DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+ensurePageReady(function() {
     // Check if we're on the admin dashboard
     if (window.location.href.includes('Admin-Dashboard.html')) {
+        console.log("On Admin Dashboard - checking authentication");
         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
         const userRole = localStorage.getItem('currentUserRole');
         
+        console.log("Admin check:", {isLoggedIn, userRole});
+        
         if (!isLoggedIn || userRole !== 'admin') {
+            console.log("Not authenticated as admin, redirecting to login");
             window.location.href = 'Login.html';
+            return; // Stop execution to allow redirect
         }
+        
+        console.log("Admin authentication confirmed");
     }
     
     // Normal auth UI update for other pages
     updateAuthUI();
 });
 
-// Login form handler
-document.addEventListener('DOMContentLoaded', function () {
+// Login form handler - use ensurePageReady for reliability
+ensurePageReady(function() {
     const loginForm = document.getElementById('loginForm');
+    console.log("Login form check:", loginForm ? "Found" : "Not found");
     
     if (loginForm) {
         loginForm.addEventListener('submit', function (e) {
             e.preventDefault();
+            console.log("Login form submitted");
             
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            const email = document.getElementById('email')?.value || '';
+            const password = document.getElementById('password')?.value || '';
             const role = document.querySelector('input[name="role"]:checked')?.value || 'teacher'; 
             const remember = document.getElementById('remember')?.checked || false;
+            
+            console.log("Login attempt with email:", email, "and role:", role);
             
             // Show loading indicator
             const submitBtn = this.querySelector('.submit-btn');
