@@ -243,8 +243,8 @@ function updateAuthUI(providedUser) {
         getUserData.then(({ isLoggedIn, currentUser }) => {
             if (isLoggedIn && currentUser) {
                 // User is logged in
-                if (authButtons) authButtons.style.display = 'none';
-                if (userProfile) userProfile.style.display = 'block';
+                if (authButtons) authButtons.classList.add('hidden');
+                if (userProfile) userProfile.classList.add('visible');
                 
                 // Set user name
                 const userNameElement = document.getElementById('user-name');
@@ -285,14 +285,14 @@ function updateAuthUI(providedUser) {
                 }
             } else {
                 // User is not logged in
-                if (authButtons) authButtons.style.display = 'flex';
-                if (userProfile) userProfile.style.display = 'none';
+                if (authButtons) authButtons.classList.remove('hidden');
+                if (userProfile) userProfile.classList.remove('visible');
             }
         }).catch(error => {
             console.error("Error updating auth UI:", error);
             // Show login buttons as fallback
-            if (authButtons) authButtons.style.display = 'flex';
-            if (userProfile) userProfile.style.display = 'none';
+            if (authButtons) authButtons.classList.remove('hidden');
+            if (userProfile) userProfile.classList.remove('visible');
         });
     } catch (error) {
         console.error("Error in updateAuthUI:", error);
