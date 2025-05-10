@@ -8,33 +8,48 @@ const firebaseConfig = {
     appId: "1:409133432749:web:af36ffd161e5a20c12baf0"
 };
 
-// Initialize Firebase only if not already initialized
-if (typeof firebase !== 'undefined') {
-    // Initialize the Firebase app if not already initialized
-    if (!firebase.apps || !firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-    }
+// Declare variables in the global scope
+let fbAuth;
+let fbDb;
 
-    // Create reference to Firebase services
-    const fbAuth = firebase.auth();
-    const fbDb = firebase.firestore();
-} else {
-    console.error("Firebase SDK not loaded. Auth functions will use localStorage fallbacks.");
+// Initialize Firebase only if not already initialized
+try {
+    if (typeof firebase !== 'undefined') {
+        // Initialize the Firebase app if not already initialized
+        if (!firebase.apps || !firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+
+        // Create reference to Firebase services
+        fbAuth = firebase.auth();
+        fbDb = firebase.firestore();
+        console.log("Firebase initialized successfully");
+    } else {
+        throw new Error("Firebase SDK not loaded");
+    }
+} catch (error) {
+    console.error("Firebase initialization error:", error.message);
     // Create dummy objects to prevent errors
-    const fbAuth = {
+    fbAuth = {
         onAuthStateChanged: (callback) => callback(null),
         signOut: () => Promise.resolve(),
-        currentUser: null
+        currentUser: null,
+        signInWithEmailAndPassword: () => Promise.reject(new Error("Firebase not available")),
+        createUserWithEmailAndPassword: () => Promise.reject(new Error("Firebase not available")),
+        setPersistence: () => Promise.resolve()
     };
     
-    const fbDb = {
+    fbDb = {
         collection: () => ({
             doc: () => ({
                 get: () => Promise.resolve({exists: false, data: () => ({})}),
                 set: () => Promise.resolve(),
                 update: () => Promise.resolve()
             }),
-            add: () => Promise.resolve()
+            add: () => Promise.resolve(),
+            where: () => ({
+                get: () => Promise.resolve({docs: []})
+            })
         })
     };
 }
@@ -56,6 +71,18 @@ if (typeof fbAuth !== 'undefined') {
             authStateResolved = true;
         }
     });
+}
+
+/**
+ * Ensures a callback is only executed when the page is ready
+ * @param {Function} callback - The function to execute when page is ready
+ */
+function ensurePageReady(callback) {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', callback);
+    } else {
+        callback();
+    }
 }
 
 // Auth state observer
