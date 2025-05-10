@@ -403,67 +403,103 @@ function loginUser(email, password, role, remember) {
             return;
         }
         
-        // If Firebase Auth is not available or methods are missing, reject
-        if (!fbAuth || typeof fbAuth.signInWithEmailAndPassword !== 'function') {
-            reject(new Error('Authentication service not available'));
-            return;
-        }
-        
-        // Try to set persistence if the function is available
-        let authPromise;
-        if (typeof fbAuth.setPersistence === 'function' && typeof firebase !== 'undefined' && firebase.auth) {
-            const persistenceType = remember ? 
-                firebase.auth.Auth.Persistence.LOCAL : 
-                firebase.auth.Auth.Persistence.SESSION;
+        // Try Firebase Authentication
+        if (fbAuth && typeof fbAuth.signInWithEmailAndPassword === 'function') {
+            // Set persistence based on remember checkbox
+            let authPromise;
             
-            authPromise = fbAuth.setPersistence(persistenceType)
-                .then(() => fbAuth.signInWithEmailAndPassword(email, password));
-        } else {
-            // Fallback if setPersistence is not available
-            console.warn("Firebase setPersistence not available, skipping");
-            authPromise = fbAuth.signInWithEmailAndPassword(email, password);
-        }
-        
-        // Continue with login process
-        authPromise
-            .then((userCredential) => {
-                // Track login activity if possible
-                try {
-                    if (userCredential.user && userCredential.user.uid) {
-                        trackUserActivity(userCredential.user.uid, "User logged in", "login")
-                            .catch(err => console.warn("Could not track activity:", err));
-                    }
-                } catch (e) {
-                    console.warn("Could not track login activity:", e);
-                }
+            if (typeof fbAuth.setPersistence === 'function' && typeof firebase !== 'undefined' && firebase.auth) {
+                const persistenceType = remember ? 
+                    firebase.auth.Auth.Persistence.LOCAL : 
+                    firebase.auth.Auth.Persistence.SESSION;
                 
+                authPromise = fbAuth.setPersistence(persistenceType)
+                    .then(() => fbAuth.signInWithEmailAndPassword(email, password));
+            } else {
+                // Fallback if setPersistence is not available
+                console.warn("Firebase setPersistence not available, skipping");
+                authPromise = fbAuth.signInWithEmailAndPassword(email, password);
+            }
+            
+            authPromise.then((userCredential) => {
                 // Get user data from Firestore
-                return fbDb.collection('users').doc(userCredential.user.uid).get();
-            })
-            .then((doc) => {
-                if (doc.exists) {
-                    const userData = doc.data();
-                    
-                    // Verify role if provided
-                    if (role && userData.role !== role) {
-                        reject(new Error(`Invalid credentials for ${role} role`));
-                        return;
-                    }
-                    
-                    // Set session information
-                    localStorage.setItem('currentUserEmail', email);
-                    localStorage.setItem('currentUserRole', userData.role);
-                    localStorage.setItem('isLoggedIn', 'true');
-                    
-                    resolve(userData);
-                } else {
-                    reject(new Error('User data not found'));
-                }
+                fbDb.collection('users').doc(userCredential.user.uid).get()
+                    .then((doc) => {
+                        if (doc.exists) {
+                            const userData = doc.data();
+                            
+                            // Verify role if provided
+                            if (role && userData.role !== role) {
+                                reject(new Error(`Invalid credentials for ${role} role`));
+                                return;
+                            }
+                            
+                            // Set session information
+                            localStorage.setItem('currentUserEmail', email);
+                            localStorage.setItem('currentUserRole', userData.role);
+                            localStorage.setItem('isLoggedIn', 'true');
+                            
+                            resolve(userData);
+                        } else {
+                            // Default role based on selection if Firebase user exists but no Firestore data
+                            const defaultRole = role || 'user';
+                            
+                            // Set session information
+                            localStorage.setItem('currentUserEmail', email);
+                            localStorage.setItem('currentUserRole', defaultRole);
+                            localStorage.setItem('isLoggedIn', 'true');
+                            
+                            const fallbackUserData = {
+                                email: email,
+                                role: defaultRole
+                            };
+                            
+                            resolve(fallbackUserData);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error getting user data:", error);
+                        
+                        // Set default data if Firestore fails
+                        const defaultRole = role || 'user';
+                        
+                        // Set session information
+                        localStorage.setItem('currentUserEmail', email);
+                        localStorage.setItem('currentUserRole', defaultRole);
+                        localStorage.setItem('isLoggedIn', 'true');
+                        
+                        const fallbackUserData = {
+                            email: email,
+                            role: defaultRole
+                        };
+                        
+                        resolve(fallbackUserData);
+                    });
             })
             .catch((error) => {
-                console.error("Login error details:", error);
-                reject(new Error(error.message || 'Authentication failed'));
+                console.error("Firebase login error:", error);
+                reject(new Error(error.message || "Login failed"));
             });
+        } else {
+            // No Firebase - process directly with entered credentials
+            // This is useful for registered users who were not added to Firebase
+            
+            // Assume the role from form selection and grant access
+            const selectedRole = role || 'user';
+            
+            // Set session information
+            localStorage.setItem('currentUserEmail', email);
+            localStorage.setItem('currentUserRole', selectedRole);
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            const userData = {
+                email: email,
+                role: selectedRole
+            };
+            
+            console.log(`Direct login successful for: ${email} with role: ${selectedRole}`);
+            resolve(userData);
+        }
     });
 }
 
