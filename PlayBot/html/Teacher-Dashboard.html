@@ -943,6 +943,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Apply fade-in effect when page loads
+            document.body.classList.add('page-transition');
+            
+            setTimeout(() => {
+                document.body.classList.remove('page-transition');
+            }, 100);
+            
             // Set current date
             const today = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };

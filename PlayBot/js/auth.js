@@ -334,8 +334,12 @@ function handleLogout() {
  */
 function loginUser(email, password, role, remember) {
     return new Promise((resolve, reject) => {
+        // Show loading overlay before authentication
+        showLoadingOverlay("Logging in...");
+        
         // Simple validation
         if (!email || !password) {
+            hideLoadingOverlay();
             reject(new Error('Please enter both email and password'));
             return;
         }
@@ -358,8 +362,11 @@ function loginUser(email, password, role, remember) {
             localStorage.setItem('currentUserRole', 'admin');
             localStorage.setItem('isLoggedIn', 'true');
             
-            console.log("Admin login successful");
-            resolve(adminData);
+            // Delay slightly to show loading animation
+            setTimeout(() => {
+                hideLoadingOverlay();
+                resolve(adminData);
+            }, 800);
             return;
         }
         
@@ -379,6 +386,7 @@ function loginUser(email, password, role, remember) {
             localStorage.setItem('isLoggedIn', 'true');
             
             console.log("Teacher login successful");
+            hideLoadingOverlay();
             resolve(teacherData);
             return;
         }
@@ -399,6 +407,7 @@ function loginUser(email, password, role, remember) {
             localStorage.setItem('isLoggedIn', 'true');
             
             console.log("Parent login successful");
+            hideLoadingOverlay();
             resolve(parentData);
             return;
         }
@@ -433,6 +442,7 @@ function loginUser(email, password, role, remember) {
             localStorage.setItem('isLoggedIn', 'true');
             
             console.log(`PlayBot user login successful as ${userRole}`);
+            hideLoadingOverlay();
             resolve(userData);
             return;
         }
@@ -464,6 +474,7 @@ function loginUser(email, password, role, remember) {
                             
                             // Verify role if provided
                             if (role && userData.role !== role) {
+                                hideLoadingOverlay();
                                 reject(new Error(`Invalid credentials for ${role} role`));
                                 return;
                             }
@@ -473,6 +484,7 @@ function loginUser(email, password, role, remember) {
                             localStorage.setItem('currentUserRole', userData.role);
                             localStorage.setItem('isLoggedIn', 'true');
                             
+                            hideLoadingOverlay();
                             resolve(userData);
                         } else {
                             // Default role based on selection if Firebase user exists but no Firestore data
@@ -488,6 +500,7 @@ function loginUser(email, password, role, remember) {
                                 role: defaultRole
                             };
                             
+                            hideLoadingOverlay();
                             resolve(fallbackUserData);
                         }
                     })
@@ -507,11 +520,13 @@ function loginUser(email, password, role, remember) {
                             role: defaultRole
                         };
                         
+                        hideLoadingOverlay();
                         resolve(fallbackUserData);
                     });
             })
             .catch((error) => {
                 console.error("Firebase login error:", error);
+                hideLoadingOverlay();
                 reject(new Error(error.message || "Login failed"));
             });
         } else {
@@ -532,6 +547,7 @@ function loginUser(email, password, role, remember) {
             };
             
             console.log(`Direct login successful for: ${email} with role: ${selectedRole}`);
+            hideLoadingOverlay();
             resolve(userData);
         }
     });
@@ -799,3 +815,37 @@ ensurePageReady(function() {
         });
     }
 });
+
+// Add these helper functions at the bottom of auth.js
+function showLoadingOverlay(message) {
+    // Create overlay if it doesn't exist
+    let overlay = document.getElementById('loading-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'loading-overlay';
+        overlay.innerHTML = `
+            <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p class="loading-message">${message || 'Loading...'}</p>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+    }
+    
+    // Show the overlay with fade-in animation
+    overlay.style.display = 'flex';
+    setTimeout(() => {
+        overlay.style.opacity = '1';
+    }, 10);
+}
+
+function hideLoadingOverlay() {
+    const overlay = document.getElementById('loading-overlay');
+    if (overlay) {
+        // Fade out
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 300);
+    }
+}
