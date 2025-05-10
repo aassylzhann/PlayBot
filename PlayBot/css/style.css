@@ -32,7 +32,7 @@ body.page-loading:before {
 .wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Makes sure the footer stays at bottom */
+  min-height: 100; /* Makes sure the footer stays at bottom */
 }
 
 .container {
