@@ -78,7 +78,7 @@ body.page-loading:before {
 .header-logo {
   max-height: 120px;
   width: auto;
-  margin-top: -40px;
+  margin-top: 0px;
 }
 
 /* Adjust header layout */
