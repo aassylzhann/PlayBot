@@ -1,16 +1,14 @@
 /* ======================================================
    Table of Contents:
    1. Variables
-   2. Base & Layout
-   3. Header & Navigation
-   4. Cards & Content Containers
-   5. Resource Grid
-   6. Buttons & Interactive Elements
-   7. Typography & Text Styling
-   8. Helper Components
-   9. Animations & Transitions
-   10. Responsive Design
-   11. Utility Classes
+   2. Base & Dashboard Layout
+   3. Dashboard Content
+   4. Resource Cards & Grid
+   5. Filters & Search
+   6. Help Section Components
+   7. Animations & Loading
+   8. Responsive Design
+   9. Utility Classes
 ====================================================== */
 
 /* 1. Variables
@@ -67,7 +65,6 @@
   /* Background colors */
   --bg-body: #F8F9FC;
   --bg-card: var(--white);
-  --bg-sidebar: var(--white);
   --bg-hover: var(--gray-100);
   
   /* Border & shadow */
@@ -98,61 +95,27 @@
   --transition-slow: all 0.5s ease;
   
   /* Layout */
-  --sidebar-width: 250px;
-  --header-height: 60px;
   --max-content-width: 1280px;
   --card-min-width: 280px;
 }
 
-/* 2. Base & Layout
+/* 2. Base & Dashboard Layout
 ====================================================== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text-primary);
-  background-color: var(--bg-body);
-  transition: opacity 0.3s ease;
-}
-
 body.page-transition {
   opacity: 0;
 }
 
-.teacher-dashboard {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  width: 100%;
-}
-
-.dashboard-container {
-  display: flex;
-  position: relative;
-  flex: 1;
-}
-
-/* 4. Cards & Content Containers
-====================================================== */
 .dashboard-content.single-page {
   max-width: var(--max-content-width);
   width: 100%;
   margin: 0 auto;
   padding: var(--spacing-xl);
+  min-height: 70vh;
+  background-color: var(--bg-body);
 }
 
+/* 3. Dashboard Content
+====================================================== */
 .dashboard-header {
   display: flex;
   justify-content: space-between;
@@ -250,73 +213,7 @@ body.page-transition {
   gap: var(--spacing-md);
 }
 
-.search-box {
-  position: relative;
-}
-
-.search-box input {
-  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) calc(var(--spacing-md) * 2 + 16px);
-  border: 1px solid var(--border-color);
-  border-radius: 20px;
-  background-color: var(--bg-body);
-  font-size: 0.9rem;
-  transition: var(--transition-normal);
-  width: 220px;
-}
-
-.search-box input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.1);
-  width: 280px;
-}
-
-.search-box i {
-  position: absolute;
-  left: var(--spacing-md);
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--gray-500);
-}
-
-.resources-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--gray-50);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.filter-group {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-.filter-group label {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-.filter-select {
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-sm);
-  background-color: var(--white);
-  font-size: 0.9rem;
-  color: var(--text-primary);
-  transition: var(--transition-normal);
-}
-
-.filter-select:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.1);
-}
-
-/* 5. Resource Grid
+/* 4. Resource Cards & Grid
 ====================================================== */
 .resources-grid {
   display: grid;
@@ -446,78 +343,75 @@ body.page-transition {
   transform: translateY(-2px);
 }
 
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-xxl);
-  width: 100%;
+/* 5. Filters & Search
+====================================================== */
+.search-box {
+  position: relative;
 }
 
-.loading-spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid var(--gray-200);
-  border-top: 4px solid var(--primary-color);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: var(--spacing-md);
-}
-
-.loading-container p {
-  color: var(--text-secondary);
-  font-size: 1rem;
-}
-
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-xxl);
-  width: 100%;
-  text-align: center;
-}
-
-.empty-icon {
-  font-size: 64px;
-  color: var(--gray-400);
-  margin-bottom: var(--spacing-md);
-}
-
-.empty-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: var(--spacing-sm);
-}
-
-.empty-description {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  max-width: 500px;
-  margin-bottom: var(--spacing-xl);
-}
-
-.empty-button {
-  padding: var(--spacing-md) var(--spacing-lg);
-  background: var(--primary-gradient);
-  color: var(--white);
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-weight: 500;
+.search-box input {
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) calc(var(--spacing-md) * 2 + 16px);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  background-color: var(--bg-body);
+  font-size: 0.9rem;
   transition: var(--transition-normal);
-  box-shadow: var(--box-shadow);
+  width: 220px;
 }
 
-.empty-button:hover {
-  box-shadow: 0 4px 12px rgba(63, 81, 181, 0.3);
-  transform: translateY(-2px);
+.search-box input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.1);
+  width: 280px;
 }
 
-/* 6. Help Section
+.search-box i {
+  position: absolute;
+  left: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-500);
+}
+
+.resources-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--gray-50);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.filter-group label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.filter-select {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--white);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  transition: var(--transition-normal);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.1);
+}
+
+/* 6. Help Section Components
 ====================================================== */
 .getting-started-steps {
   display: flex;
@@ -623,7 +517,79 @@ body.page-transition {
   z-index: 1;
 }
 
-/* 8. Animations & Loading
+/* Loading States */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxl);
+  width: 100%;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--gray-200);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--spacing-md);
+}
+
+.loading-container p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxl);
+  width: 100%;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 64px;
+  color: var(--gray-400);
+  margin-bottom: var(--spacing-md);
+}
+
+.empty-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.empty-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin-bottom: var(--spacing-xl);
+}
+
+.empty-button {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--primary-gradient);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition-normal);
+  box-shadow: var(--box-shadow);
+}
+
+.empty-button:hover {
+  box-shadow: 0 4px 12px rgba(63, 81, 181, 0.3);
+  transform: translateY(-2px);
+}
+
+/* 7. Animations & Loading
 ====================================================== */
 #loading-overlay {
   position: fixed;
@@ -689,7 +655,7 @@ body.page-transition {
   animation-delay: 0.5s;
 }
 
-/* 9. Responsive Design
+/* 8. Responsive Design
 ====================================================== */
 @media (max-width: 992px) {
   :root {
@@ -778,11 +744,6 @@ body.page-transition {
   .filter-select {
     flex: 1;
   }
-  
-  .footer__content {
-    flex-direction: column;
-    gap: var(--spacing-lg);
-  }
 }
 
 @media (max-width: 480px) {
@@ -792,7 +753,7 @@ body.page-transition {
   }
 }
 
-/* 10. Utility Classes
+/* 9. Utility Classes
 ====================================================== */
 .text-primary { color: var(--primary-color); }
 .text-success { color: var(--success-color); }
