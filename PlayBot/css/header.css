@@ -419,17 +419,22 @@ body {
   display: flex !important;
   align-items: center !important;
   height: 80px !important;
+  overflow: visible !important; /* Allow logo to overflow container */
 }
 
 .logo a {
   display: flex !important;
   align-items: center !important;
+  position: relative !important; /* Enable positioning for the logo */
 }
 
 .header-logo {
   height: 150px !important; /* Increased size */
   width: auto !important;
   max-height: none !important; /* Override max-height */
+  position: relative !important; /* Allow for vertical positioning */
+  top: 0 !important; /* Reset any top position */
+  transform: translateY(0) !important; /* Center the logo within its container */
 }
 
 /* Button alignment fixes */
