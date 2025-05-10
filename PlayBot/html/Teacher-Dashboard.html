@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/auth.css">
     <link rel="stylesheet" href="../css/teacher-dashboard.css">
-    <!-- Add Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
@@ -116,12 +115,6 @@
                         <li class="active" data-tab="overview">
                             <a href="#overview"><i class="fas fa-th-large"></i> Dashboard</a>
                         </li>
-                        <li data-tab="courses">
-                            <a href="#courses"><i class="fas fa-book"></i> My Courses</a>
-                        </li>
-                        <li data-tab="students">
-                            <a href="#students"><i class="fas fa-users"></i> My Students</a>
-                        </li>
                         <li data-tab="resources">
                             <a href="#resources"><i class="fas fa-download"></i> Resources</a>
                         </li>
@@ -147,424 +140,39 @@
                         <p class="current-date" id="current-date">Today's Date</p>
                     </div>
                     
-                    <div class="stats-container">
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-book"></i>
-                            </div>
-                            <div class="stat-info">
-                                <h3>3</h3>
-                                <p>Active Courses</p>
-                            </div>
-                        </div>
-                        
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="stat-info">
-                                <h3>24</h3>
-                                <p>Total Students</p>
-                            </div>
-                        </div>
-                        
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-tasks"></i>
-                            </div>
-                            <div class="stat-info">
-                                <h3>15</h3>
-                                <p>Pending Tasks</p>
-                            </div>
-                        </div>
-                        
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-calendar-check"></i>
-                            </div>
-                            <div class="stat-info">
-                                <h3>8</h3>
-                                <p>Upcoming Events</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="dashboard-row">
-                        <div class="dashboard-col">
-                            <div class="content-card">
-                                <div class="card-header">
-                                    <h2>Recent Activity</h2>
-                                    <button class="view-all-btn">View All</button>
-                                </div>
-                                <div class="activity-list">
-                                    <div class="activity-item">
-                                        <div class="activity-icon"><i class="fas fa-user-plus"></i></div>
-                                        <div class="activity-content">
-                                            <p class="activity-title">New student joined <span class="highlight">Robotics Basics</span></p>
-                                            <p class="activity-time">Today, 9:15 AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="activity-item">
-                                        <div class="activity-icon"><i class="fas fa-file-upload"></i></div>
-                                        <div class="activity-content">
-                                            <p class="activity-title">You uploaded <span class="highlight">Lesson 5 Materials</span></p>
-                                            <p class="activity-time">Yesterday, 4:30 PM</p>
-                                        </div>
-                                    </div>
-                                    <div class="activity-item">
-                                        <div class="activity-icon"><i class="fas fa-check-circle"></i></div>
-                                        <div class="activity-content">
-                                            <p class="activity-title"><span class="highlight">12 students</span> completed Assignment #3</p>
-                                            <p class="activity-time">Yesterday, 2:10 PM</p>
-                                        </div>
-                                    </div>
-                                    <div class="activity-item">
-                                        <div class="activity-icon"><i class="fas fa-calendar-plus"></i></div>
-                                        <div class="activity-content">
-                                            <p class="activity-title">You scheduled <span class="highlight">Demo Day</span> event</p>
-                                            <p class="activity-time">May 8, 11:20 AM</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="dashboard-col">
-                            <div class="content-card">
-                                <div class="card-header">
-                                    <h2>Upcoming Schedule</h2>
-                                    <button class="view-all-btn">View Calendar</button>
-                                </div>
-                                <div class="schedule-list">
-                                    <div class="schedule-item">
-                                        <div class="schedule-date">
-                                            <span class="schedule-day">12</span>
-                                            <span class="schedule-month">MAY</span>
-                                        </div>
-                                        <div class="schedule-content">
-                                            <h4>Introduction to Robotics</h4>
-                                            <p>Class 4B - Room 201</p>
-                                            <p class="schedule-time"><i class="far fa-clock"></i> 9:30 AM - 11:00 AM</p>
-                                        </div>
-                                    </div>
-                                    <div class="schedule-item">
-                                        <div class="schedule-date">
-                                            <span class="schedule-day">12</span>
-                                            <span class="schedule-month">MAY</span>
-                                        </div>
-                                        <div class="schedule-content">
-                                            <h4>Programming Basics</h4>
-                                            <p>Class 5A - Computer Lab</p>
-                                            <p class="schedule-time"><i class="far fa-clock"></i> 1:15 PM - 2:45 PM</p>
-                                        </div>
-                                    </div>
-                                    <div class="schedule-item">
-                                        <div class="schedule-date">
-                                            <span class="schedule-day">14</span>
-                                            <span class="schedule-month">MAY</span>
-                                        </div>
-                                        <div class="schedule-content">
-                                            <h4>Teacher Training Session</h4>
-                                            <p>Staff Room</p>
-                                            <p class="schedule-time"><i class="far fa-clock"></i> 3:00 PM - 4:30 PM</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="dashboard-row">
-                        <div class="dashboard-col full-width">
-                            <div class="content-card">
-                                <div class="card-header">
-                                    <h2>Course Progress Overview</h2>
-                                </div>
-                                <div class="courses-progress">
-                                    <div class="course-progress-item">
-                                        <div class="course-info">
-                                            <h4>Introduction to Robotics</h4>
-                                            <p>Class 4B • 18 Students</p>
-                                        </div>
-                                        <div class="progress-container">
-                                            <div class="progress-bar">
-                                                <div class="progress" style="width: 65%"></div>
-                                            </div>
-                                            <span class="progress-text">65% Complete</span>
-                                        </div>
-                                    </div>
-                                    <div class="course-progress-item">
-                                        <div class="course-info">
-                                            <h4>Programming Fundamentals</h4>
-                                            <p>Class 5A • 22 Students</p>
-                                        </div>
-                                        <div class="progress-container">
-                                            <div class="progress-bar">
-                                                <div class="progress" style="width: 42%"></div>
-                                            </div>
-                                            <span class="progress-text">42% Complete</span>
-                                        </div>
-                                    </div>
-                                    <div class="course-progress-item">
-                                        <div class="course-info">
-                                            <h4>Advanced Problem Solving</h4>
-                                            <p>Class 6C • 15 Students</p>
-                                        </div>
-                                        <div class="progress-container">
-                                            <div class="progress-bar">
-                                                <div class="progress" style="width: 28%"></div>
-                                            </div>
-                                            <span class="progress-text">28% Complete</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <!-- Courses Tab -->
-                <section id="courses" class="dashboard-tab">
-                    <div class="dashboard-header">
-                        <h1>My Courses</h1>
-                        <button class="primary-btn"><i class="fas fa-plus"></i> Add New Course</button>
-                    </div>
-                    
-                    <div class="courses-container">
-                        <div class="course-card">
-                            <div class="course-header">
-                                <h3>Introduction to Robotics</h3>
-                                <span class="course-badge beginner">Beginner</span>
-                            </div>
-                            <div class="course-details">
-                                <p>A beginner-friendly course introducing fundamental robotics concepts through PlayBot.</p>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-users"></i> 18 Students</span>
-                                    <span><i class="fas fa-calendar-alt"></i> Monday, Wednesday</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress" style="width: 65%"></div>
-                                </div>
-                                <div class="progress-info">
-                                    <span>Progress: 65%</span>
-                                    <span>12/20 Lessons</span>
-                                </div>
-                            </div>
-                            <div class="course-actions">
-                                <button class="action-btn"><i class="fas fa-eye"></i> View</button>
-                                <button class="action-btn"><i class="fas fa-edit"></i> Edit</button>
-                                <button class="action-btn"><i class="fas fa-users"></i> Students</button>
-                            </div>
-                        </div>
-                        
-                        <div class="course-card">
-                            <div class="course-header">
-                                <h3>Programming Fundamentals</h3>
-                                <span class="course-badge intermediate">Intermediate</span>
-                            </div>
-                            <div class="course-details">
-                                <p>Learn core programming concepts through engaging activities with PlayBot.</p>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-users"></i> 22 Students</span>
-                                    <span><i class="fas fa-calendar-alt"></i> Tuesday, Thursday</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress" style="width: 42%"></div>
-                                </div>
-                                <div class="progress-info">
-                                    <span>Progress: 42%</span>
-                                    <span>8/20 Lessons</span>
-                                </div>
-                            </div>
-                            <div class="course-actions">
-                                <button class="action-btn"><i class="fas fa-eye"></i> View</button>
-                                <button class="action-btn"><i class="fas fa-edit"></i> Edit</button>
-                                <button class="action-btn"><i class="fas fa-users"></i> Students</button>
-                            </div>
-                        </div>
-                        
-                        <div class="course-card">
-                            <div class="course-header">
-                                <h3>Advanced Problem Solving</h3>
-                                <span class="course-badge advanced">Advanced</span>
-                            </div>
-                            <div class="course-details">
-                                <p>Challenge students with complex problems requiring algorithmic thinking and robotics.</p>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-users"></i> 15 Students</span>
-                                    <span><i class="fas fa-calendar-alt"></i> Friday</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress" style="width: 28%"></div>
-                                </div>
-                                <div class="progress-info">
-                                    <span>Progress: 28%</span>
-                                    <span>5/18 Lessons</span>
-                                </div>
-                            </div>
-                            <div class="course-actions">
-                                <button class="action-btn"><i class="fas fa-eye"></i> View</button>
-                                <button class="action-btn"><i class="fas fa-edit"></i> Edit</button>
-                                <button class="action-btn"><i class="fas fa-users"></i> Students</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                
-                <!-- Students Tab -->
-                <section id="students" class="dashboard-tab">
-                    <div class="dashboard-header">
-                        <h1>My Students</h1>
-                        <div class="header-actions">
-                            <div class="search-box">
-                                <input type="text" placeholder="Search students...">
-                                <i class="fas fa-search"></i>
-                            </div>
-                            <button class="primary-btn"><i class="fas fa-plus"></i> Add Student</button>
+                    <div class="content-card welcome-card">
+                        <div class="welcome-message">
+                            <h2>Welcome to PlayBot Teacher Dashboard</h2>
+                            <p>This streamlined dashboard provides access to teaching resources uploaded by administrators. Use these materials to enhance your robotics and programming lessons.</p>
                         </div>
                     </div>
                     
                     <div class="content-card">
                         <div class="card-header">
-                            <h2>Student List</h2>
-                            <div class="filter-dropdown">
-                                <button class="filter-btn">Filter By <i class="fas fa-chevron-down"></i></button>
-                                <div class="filter-menu">
-                                    <a href="#">All Students</a>
-                                    <a href="#">Class 4B</a>
-                                    <a href="#">Class 5A</a>
-                                    <a href="#">Class 6C</a>
+                            <h2>Getting Started</h2>
+                        </div>
+                        <div class="getting-started-steps">
+                            <div class="step-item">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3>Explore Resources</h3>
+                                    <p>Browse through curriculum materials, lesson plans, and teaching guides.</p>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="students-table-container">
-                            <table class="students-table">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Class</th>
-                                        <th>Course</th>
-                                        <th>Progress</th>
-                                        <th>Last Active</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="student-info">
-                                                <div class="student-avatar"><i class="fas fa-user"></i></div>
-                                                <div class="student-name">Emma Wong</div>
-                                            </div>
-                                        </td>
-                                        <td>Class 4B</td>
-                                        <td>Introduction to Robotics</td>
-                                        <td>
-                                            <div class="progress-mini">
-                                                <div class="progress-bar">
-                                                    <div class="progress" style="width: 85%"></div>
-                                                </div>
-                                                <span>85%</span>
-                                            </div>
-                                        </td>
-                                        <td>Today</td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <button class="table-action-btn" title="View Profile"><i class="fas fa-eye"></i></button>
-                                                <button class="table-action-btn" title="Send Message"><i class="fas fa-envelope"></i></button>
-                                                <button class="table-action-btn" title="Edit"><i class="fas fa-edit"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="student-info">
-                                                <div class="student-avatar"><i class="fas fa-user"></i></div>
-                                                <div class="student-name">Michael Chen</div>
-                                            </div>
-                                        </td>
-                                        <td>Class 4B</td>
-                                        <td>Introduction to Robotics</td>
-                                        <td>
-                                            <div class="progress-mini">
-                                                <div class="progress-bar">
-                                                    <div class="progress" style="width: 72%"></div>
-                                                </div>
-                                                <span>72%</span>
-                                            </div>
-                                        </td>
-                                        <td>Yesterday</td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <button class="table-action-btn" title="View Profile"><i class="fas fa-eye"></i></button>
-                                                <button class="table-action-btn" title="Send Message"><i class="fas fa-envelope"></i></button>
-                                                <button class="table-action-btn" title="Edit"><i class="fas fa-edit"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="student-info">
-                                                <div class="student-avatar"><i class="fas fa-user"></i></div>
-                                                <div class="student-name">Sophia Martinez</div>
-                                            </div>
-                                        </td>
-                                        <td>Class 5A</td>
-                                        <td>Programming Fundamentals</td>
-                                        <td>
-                                            <div class="progress-mini">
-                                                <div class="progress-bar">
-                                                    <div class="progress" style="width: 63%"></div>
-                                                </div>
-                                                <span>63%</span>
-                                            </div>
-                                        </td>
-                                        <td>2 days ago</td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <button class="table-action-btn" title="View Profile"><i class="fas fa-eye"></i></button>
-                                                <button class="table-action-btn" title="Send Message"><i class="fas fa-envelope"></i></button>
-                                                <button class="table-action-btn" title="Edit"><i class="fas fa-edit"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="student-info">
-                                                <div class="student-avatar"><i class="fas fa-user"></i></div>
-                                                <div class="student-name">James Johnson</div>
-                                            </div>
-                                        </td>
-                                        <td>Class 6C</td>
-                                        <td>Advanced Problem Solving</td>
-                                        <td>
-                                            <div class="progress-mini">
-                                                <div class="progress-bar">
-                                                    <div class="progress" style="width: 58%"></div>
-                                                </div>
-                                                <span>58%</span>
-                                            </div>
-                                        </td>
-                                        <td>3 days ago</td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <button class="table-action-btn" title="View Profile"><i class="fas fa-eye"></i></button>
-                                                <button class="table-action-btn" title="Send Message"><i class="fas fa-envelope"></i></button>
-                                                <button class="table-action-btn" title="Edit"><i class="fas fa-edit"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        
-                        <div class="pagination">
-                            <button class="pagination-btn" disabled><i class="fas fa-chevron-left"></i></button>
-                            <button class="pagination-btn active">1</button>
-                            <button class="pagination-btn">2</button>
-                            <button class="pagination-btn">3</button>
-                            <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                            <div class="step-item">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3>Download Materials</h3>
+                                    <p>Download resources for offline use in your classroom.</p>
+                                </div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3>Implement Lessons</h3>
+                                    <p>Follow the guides to implement PlayBot curriculum in your teaching.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -575,7 +183,7 @@
                         <h1>Teaching Resources</h1>
                         <div class="header-actions">
                             <div class="search-box">
-                                <input type="text" placeholder="Search resources...">
+                                <input type="text" id="resource-search" placeholder="Search resources...">
                                 <i class="fas fa-search"></i>
                             </div>
                         </div>
@@ -584,7 +192,7 @@
                     <div class="resources-filters">
                         <div class="filter-group">
                             <label>Resource Type:</label>
-                            <select class="filter-select">
+                            <select id="resource-type-filter" class="filter-select">
                                 <option value="all">All Types</option>
                                 <option value="lesson-plans">Lesson Plans</option>
                                 <option value="activities">Activities</option>
@@ -594,131 +202,30 @@
                         </div>
                         <div class="filter-group">
                             <label>Grade Level:</label>
-                            <select class="filter-select">
+                            <select id="grade-level-filter" class="filter-select">
                                 <option value="all">All Levels</option>
                                 <option value="k-3">K-3</option>
                                 <option value="4-6">Grades 4-6</option>
                                 <option value="7-8">Grades 7-8</option>
                             </select>
                         </div>
-                        <div class="filter-group">
-                            <label>Subject:</label>
-                            <select class="filter-select">
-                                <option value="all">All Subjects</option>
-                                <option value="coding">Coding</option>
-                                <option value="robotics">Robotics</option>
-                                <option value="stem">STEM Integration</option>
-                            </select>
-                        </div>
                     </div>
                     
-                    <div class="resources-grid">
-                        <div class="resource-card">
-                            <div class="resource-icon pdf-icon">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                            <div class="resource-info">
-                                <h3>PlayBot Curriculum Overview</h3>
-                                <p>A comprehensive overview of the PlayBot curriculum structure and learning objectives.</p>
-                                <div class="resource-meta">
-                                    <span><i class="fas fa-file"></i> PDF</span>
-                                    <span><i class="fas fa-download"></i> 2.4 MB</span>
-                                    <span><i class="fas fa-calendar-alt"></i> Mar 2024</span>
-                                </div>
-                            </div>
-                            <div class="resource-actions">
-                                <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-                            </div>
+                    <!-- Resources will be loaded dynamically from database -->
+                    <div id="resources-container" class="resources-grid">
+                        <!-- Loading state -->
+                        <div id="resources-loading" class="loading-container">
+                            <div class="loading-spinner"></div>
+                            <p>Loading resources...</p>
                         </div>
                         
-                        <div class="resource-card">
-                            <div class="resource-icon zip-icon">
-                                <i class="fas fa-file-archive"></i>
+                        <!-- Empty state - shown when no resources are available -->
+                        <div id="resources-empty" class="empty-state" style="display: none;">
+                            <div class="empty-icon">
+                                <i class="fas fa-folder-open"></i>
                             </div>
-                            <div class="resource-info">
-                                <h3>Module 1: Introduction to Programming</h3>
-                                <p>5 lesson plans introducing basic programming concepts through play.</p>
-                                <div class="resource-meta">
-                                    <span><i class="fas fa-file"></i> ZIP</span>
-                                    <span><i class="fas fa-download"></i> 8.2 MB</span>
-                                    <span><i class="fas fa-calendar-alt"></i> Mar 2024</span>
-                                </div>
-                            </div>
-                            <div class="resource-actions">
-                                <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-                            </div>
-                        </div>
-                        
-                        <div class="resource-card">
-                            <div class="resource-icon pdf-icon">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                            <div class="resource-info">
-                                <h3>Teacher Implementation Guide</h3>
-                                <p>Step-by-step instructions for implementing PlayBot in your classroom.</p>
-                                <div class="resource-meta">
-                                    <span><i class="fas fa-file"></i> PDF</span>
-                                    <span><i class="fas fa-download"></i> 3.1 MB</span>
-                                    <span><i class="fas fa-calendar-alt"></i> Mar 2024</span>
-                                </div>
-                            </div>
-                            <div class="resource-actions">
-                                <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-                            </div>
-                        </div>
-                        
-                        <div class="resource-card">
-                            <div class="resource-icon zip-icon">
-                                <i class="fas fa-file-archive"></i>
-                            </div>
-                            <div class="resource-info">
-                                <h3>Module 2: Sequential Programming</h3>
-                                <p>5 lesson plans focusing on sequences and step-by-step instructions.</p>
-                                <div class="resource-meta">
-                                    <span><i class="fas fa-file"></i> ZIP</span>
-                                    <span><i class="fas fa-download"></i> 7.5 MB</span>
-                                    <span><i class="fas fa-calendar-alt"></i> Mar 2024</span>
-                                </div>
-                            </div>
-                            <div class="resource-actions">
-                                <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-                            </div>
-                        </div>
-                        
-                        <div class="resource-card">
-                            <div class="resource-icon pdf-icon">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                            <div class="resource-info">
-                                <h3>Assessment Rubrics</h3>
-                                <p>Tools for evaluating student understanding and progress.</p>
-                                <div class="resource-meta">
-                                    <span><i class="fas fa-file"></i> PDF</span>
-                                    <span><i class="fas fa-download"></i> 1.2 MB</span>
-                                    <span><i class="fas fa-calendar-alt"></i> Jan 2024</span>
-                                </div>
-                            </div>
-                            <div class="resource-actions">
-                                <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-                            </div>
-                        </div>
-                        
-                        <div class="resource-card">
-                            <div class="resource-icon pdf-icon">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                            <div class="resource-info">
-                                <h3>Printable Coding Cards</h3>
-                                <p>Visual coding cards for offline programming activities.</p>
-                                <div class="resource-meta">
-                                    <span><i class="fas fa-file"></i> PDF</span>
-                                    <span><i class="fas fa-download"></i> 5.3 MB</span>
-                                    <span><i class="fas fa-calendar-alt"></i> Feb 2024</span>
-                                </div>
-                            </div>
-                            <div class="resource-actions">
-                                <button class="download-btn"><i class="fas fa-download"></i> Download</button>
-                            </div>
+                            <h3 class="empty-title">No Resources Available</h3>
+                            <p class="empty-description">No teaching resources have been uploaded yet.</p>
                         </div>
                     </div>
                     
@@ -732,14 +239,6 @@
                                 <span>Email Support</span>
                             </a>
                             <a href="#" class="help-option">
-                                <i class="fas fa-video"></i>
-                                <span>Schedule Training</span>
-                            </a>
-                            <a href="#" class="help-option">
-                                <i class="fas fa-users"></i>
-                                <span>Teacher Community</span>
-                            </a>
-                            <a href="#" class="help-option">
                                 <i class="fas fa-question-circle"></i>
                                 <span>FAQ</span>
                             </a>
@@ -751,7 +250,7 @@
                 <section id="profile" class="dashboard-tab">
                     <div class="dashboard-header">
                         <h1>My Profile</h1>
-                        <button class="primary-btn"><i class="fas fa-save"></i> Save Changes</button>
+                        <button id="save-profile" class="primary-btn"><i class="fas fa-save"></i> Save Changes</button>
                     </div>
                     
                     <div class="dashboard-row">
@@ -763,31 +262,19 @@
                                 <div class="profile-form">
                                     <div class="form-group">
                                         <label>First Name</label>
-                                        <input type="text" value="Jane" class="form-control">
+                                        <input type="text" id="profile-first-name" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label>Last Name</label>
-                                        <input type="text" value="Smith" class="form-control">
+                                        <input type="text" id="profile-last-name" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label>Email Address</label>
-                                        <input type="email" value="jane.smith@schooldomain.edu" class="form-control" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone Number</label>
-                                        <input type="tel" value="(555) 123-4567" class="form-control">
+                                        <input type="email" id="profile-email" class="form-control" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label>School</label>
-                                        <input type="text" value="Edison Elementary School" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Subject(s) Taught</label>
-                                        <input type="text" value="Technology, Science" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Grade Level(s)</label>
-                                        <input type="text" value="4th, 5th, 6th" class="form-control">
+                                        <input type="text" id="profile-school" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -801,21 +288,8 @@
                                 <div class="profile-form">
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" value="********" class="form-control">
+                                        <input type="password" value="********" class="form-control" disabled>
                                         <button class="text-btn">Change Password</button>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label>Profile Picture</label>
-                                        <div class="profile-picture-uploader">
-                                            <div class="current-picture">
-                                                <i class="fas fa-user-circle"></i>
-                                            </div>
-                                            <div class="upload-actions">
-                                                <button class="secondary-btn">Upload Image</button>
-                                                <p class="upload-info">JPG or PNG, max 2MB</p>
-                                            </div>
-                                        </div>
                                     </div>
                                     
                                     <div class="form-group">
@@ -823,35 +297,18 @@
                                         <div class="toggle-option">
                                             <span>Email Notifications</span>
                                             <label class="toggle">
-                                                <input type="checkbox" checked>
-                                                <span class="toggle-slider"></span>
-                                            </label>
-                                        </div>
-                                        <div class="toggle-option">
-                                            <span>Student Activity Alerts</span>
-                                            <label class="toggle">
-                                                <input type="checkbox" checked>
+                                                <input type="checkbox" id="email-notifications" checked>
                                                 <span class="toggle-slider"></span>
                                             </label>
                                         </div>
                                         <div class="toggle-option">
                                             <span>Resource Updates</span>
                                             <label class="toggle">
-                                                <input type="checkbox" checked>
+                                                <input type="checkbox" id="resource-updates" checked>
                                                 <span class="toggle-slider"></span>
                                             </label>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <div class="content-card">
-                                <div class="card-header">
-                                    <h2>Account Management</h2>
-                                </div>
-                                <div class="profile-actions">
-                                    <button class="danger-btn"><i class="fas fa-trash"></i> Delete Account</button>
-                                    <p class="helper-text">This action is permanent and cannot be undone.</p>
                                 </div>
                             </div>
                         </div>
@@ -877,41 +334,14 @@
                         </p>
                     </div>
 
-                    <!-- Navigation Links -->
+                    <!-- Footer content shortened for brevity -->
                     <div class="footer-links-container">
-                        <!-- Quick Links -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">Quick Links</h4>
-                            <ul class="footer-links">
-                                <li><a href="Home.html">Home</a></li>
-                                <li><a href="About-us.html">About us</a></li>
-                                <li><a href="Course.html">Curriculum</a></li>
-                                <li><a href="News.html">News</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- For Schools -->
-                        <div class="footer-column">
-                            <h4 class="footer-heading">For Schools</h4>
-                            <ul class="footer-links">
-                                <li><a href="School.html">Schools</a></li>
-                                <li><a href="Teacher.html">Teachers</a></li>
-                                <li><a href="Platform.html">Platform</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Contact Information -->
                         <div class="footer-column">
                             <h4 class="footer-heading">Contact Us</h4>
                             <div class="footer-contact">
                                 <p><i class="fas fa-map-marker-alt"></i> 10 Lo Ping Road, Tai Po, Hong Kong</p>
                                 <p><i class="fas fa-envelope"></i> <a
                                         href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a></p>
-                            </div>
-                            <div class="footer-social">
-                                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
                             </div>
                         </div>
                     </div>
@@ -920,8 +350,6 @@
                 <!-- Copyright Section -->
                 <div class="footer__copyright">
                     <p>&copy; 2024 The Education University of Hong Kong</p>
-                    <p class="rights">All rights reserved. No part of this publication may be reproduced, stored in a
-                        retrieval system or transmitted in any form or by any means without written permission.</p>
                 </div>
             </div>
         </footer>
@@ -933,9 +361,9 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
-    <!-- Your Firebase configuration -->
+    
+    <!-- Your scripts -->
     <script src="../js/firebase-config.js"></script>
-    <!-- Your application scripts -->
     <script src="../js/components.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/auth.js"></script>
@@ -968,9 +396,22 @@
             
             // Update teacher name
             const firstName = localStorage.getItem('userFirstName_' + userEmail) || 'Teacher';
+            const lastName = localStorage.getItem('userLastName_' + userEmail) || '';
+            
             document.getElementById('teacher-name').textContent = firstName;
             document.getElementById('sidebar-teacher-name').textContent = firstName;
             document.getElementById('user-name').textContent = firstName;
+            
+            // Fill profile form
+            if (document.getElementById('profile-first-name')) {
+                document.getElementById('profile-first-name').value = firstName;
+            }
+            if (document.getElementById('profile-last-name')) {
+                document.getElementById('profile-last-name').value = lastName;
+            }
+            if (document.getElementById('profile-email')) {
+                document.getElementById('profile-email').value = userEmail;
+            }
             
             // Set up tab navigation
             setupTabs();
@@ -984,10 +425,13 @@
             if (dropdownContent) {
                 dropdownContent.innerHTML = `
                     <a href="Teacher-Dashboard.html">Dashboard</a>
-                    <a href="Profile.html">My Profile</a>
+                    <a href="#profile" onclick="activateTab('profile')">My Profile</a>
                     <a href="#" onclick="handleLogout()">Logout</a>
                 `;
             }
+            
+            // Load resources from database
+            loadResources();
         });
         
         function setupTabs() {
@@ -1028,6 +472,211 @@
             }
         }
         
+        function activateTab(tabId) {
+            const targetButton = document.querySelector(`.sidebar-nav li[data-tab="${tabId}"]`);
+            if (targetButton) {
+                targetButton.click();
+            }
+        }
+        
+        // Load resources from database
+        function loadResources() {
+            const resourcesContainer = document.getElementById('resources-container');
+            const loadingElement = document.getElementById('resources-loading');
+            const emptyElement = document.getElementById('resources-empty');
+            
+            // Show loading state
+            if (loadingElement) loadingElement.style.display = 'flex';
+            if (emptyElement) emptyElement.style.display = 'none';
+            
+            // Try to get resources from Firebase
+            if (typeof fbDb !== 'undefined' && fbDb) {
+                fbDb.collection('resources')
+                    .orderBy('uploadDate', 'desc')
+                    .get()
+                    .then(snapshot => {
+                        // Hide loading state
+                        if (loadingElement) loadingElement.style.display = 'none';
+                        
+                        if (snapshot.empty) {
+                            // Show empty state if no resources
+                            if (emptyElement) emptyElement.style.display = 'flex';
+                            return;
+                        }
+                        
+                        // Clear any existing resources (except loading and empty states)
+                        Array.from(resourcesContainer.children).forEach(child => {
+                            if (child.id !== 'resources-loading' && child.id !== 'resources-empty') {
+                                resourcesContainer.removeChild(child);
+                            }
+                        });
+                        
+                        // Add resources from database
+                        snapshot.forEach(doc => {
+                            const resource = doc.data();
+                            const resourceElement = createResourceElement(doc.id, resource);
+                            resourcesContainer.appendChild(resourceElement);
+                        });
+                        
+                        // Set up search and filter functionality
+                        setupResourceFilters();
+                    })
+                    .catch(error => {
+                        console.error("Error loading resources:", error);
+                        if (loadingElement) loadingElement.style.display = 'none';
+                        if (emptyElement) {
+                            emptyElement.style.display = 'flex';
+                            emptyElement.querySelector('.empty-description').textContent = 
+                                'Error loading resources. Please try again later.';
+                        }
+                    });
+            } else {
+                // Firebase not available
+                if (loadingElement) loadingElement.style.display = 'none';
+                if (emptyElement) {
+                    emptyElement.style.display = 'flex';
+                    emptyElement.querySelector('.empty-description').textContent = 
+                        'Database connection not available. Please try again later.';
+                }
+            }
+        }
+        
+        // Create resource element
+        function createResourceElement(id, resource) {
+            const div = document.createElement('div');
+            div.className = 'resource-card';
+            div.dataset.id = id;
+            div.dataset.type = resource.type || 'other';
+            div.dataset.grade = resource.gradeLevel || 'all';
+            
+            // Determine icon based on file type
+            let iconClass = 'fas fa-file';
+            if (resource.fileType === 'pdf') {
+                iconClass = 'fas fa-file-pdf';
+            } else if (resource.fileType === 'zip' || resource.fileType === 'archive') {
+                iconClass = 'fas fa-file-archive';
+            } else if (resource.fileType === 'doc' || resource.fileType === 'docx') {
+                iconClass = 'fas fa-file-word';
+            } else if (resource.fileType === 'ppt' || resource.fileType === 'pptx') {
+                iconClass = 'fas fa-file-powerpoint';
+            }
+            
+            div.innerHTML = `
+                <div class="resource-icon ${resource.fileType}-icon">
+                    <i class="${iconClass}"></i>
+                </div>
+                <div class="resource-info">
+                    <h3>${resource.title}</h3>
+                    <p>${resource.description || 'No description provided.'}</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-file"></i> ${resource.fileType.toUpperCase() || 'FILE'}</span>
+                        <span><i class="fas fa-download"></i> ${resource.fileSize || 'N/A'}</span>
+                        <span><i class="fas fa-calendar-alt"></i> ${new Date(resource.uploadDate).toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="resource-actions">
+                    <button class="download-btn" onclick="downloadResource('${id}', '${resource.fileUrl}')">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            `;
+            
+            return div;
+        }
+        
+        // Download resource function
+        function downloadResource(id, url) {
+            // Create an invisible anchor to trigger download
+            const a = document.createElement('a');
+            a.href = url;
+            a.target = '_blank';
+            a.download = '';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            // Track download in database if possible
+            if (typeof fbDb !== 'undefined' && fbDb) {
+                fbDb.collection('resource_downloads').add({
+                    resourceId: id,
+                    userId: localStorage.getItem('currentUserEmail'),
+                    downloadDate: new Date()
+                }).catch(err => console.warn("Could not track download:", err));
+            }
+        }
+        
+        // Set up resource filters and search
+        function setupResourceFilters() {
+            const searchInput = document.getElementById('resource-search');
+            const typeFilter = document.getElementById('resource-type-filter');
+            const gradeFilter = document.getElementById('grade-level-filter');
+            
+            // Filter function
+            function filterResources() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const typeValue = typeFilter.value;
+                const gradeValue = gradeFilter.value;
+                
+                const resources = document.querySelectorAll('.resource-card');
+                
+                resources.forEach(resource => {
+                    const title = resource.querySelector('h3').textContent.toLowerCase();
+                    const description = resource.querySelector('p').textContent.toLowerCase();
+                    const type = resource.dataset.type;
+                    const grade = resource.dataset.grade;
+                    
+                    const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                    const matchesType = typeValue === 'all' || type === typeValue;
+                    const matchesGrade = gradeValue === 'all' || grade === gradeValue;
+                    
+                    if (matchesSearch && matchesType && matchesGrade) {
+                        resource.style.display = 'flex';
+                    } else {
+                        resource.style.display = 'none';
+                    }
+                });
+                
+                // Check if any resources are visible
+                const visibleResources = document.querySelectorAll('.resource-card[style="display: flex"]');
+                const emptyElement = document.getElementById('resources-empty');
+                
+                if (visibleResources.length === 0 && emptyElement) {
+                    emptyElement.style.display = 'flex';
+                    emptyElement.querySelector('.empty-title').textContent = 'No Matching Resources';
+                    emptyElement.querySelector('.empty-description').textContent = 
+                        'Try adjusting your search or filters to find resources.';
+                } else if (emptyElement) {
+                    emptyElement.style.display = 'none';
+                }
+            }
+            
+            // Add event listeners
+            if (searchInput) searchInput.addEventListener('input', filterResources);
+            if (typeFilter) typeFilter.addEventListener('change', filterResources);
+            if (gradeFilter) gradeFilter.addEventListener('change', filterResources);
+        }
+        
+        // Save profile changes
+        document.getElementById('save-profile')?.addEventListener('click', function() {
+            const firstName = document.getElementById('profile-first-name').value;
+            const lastName = document.getElementById('profile-last-name').value;
+            const school = document.getElementById('profile-school').value;
+            const email = document.getElementById('profile-email').value;
+            
+            // Save to localStorage
+            localStorage.setItem('userFirstName_' + email, firstName);
+            localStorage.setItem('userLastName_' + email, lastName);
+            localStorage.setItem('userSchool_' + email, school);
+            
+            // Update displayed name
+            document.getElementById('teacher-name').textContent = firstName;
+            document.getElementById('sidebar-teacher-name').textContent = firstName;
+            document.getElementById('user-name').textContent = firstName;
+            
+            // Show success message
+            alert('Profile updated successfully!');
+        });
+        
         function handleLogout() {
             // Clear localStorage
             localStorage.removeItem('isLoggedIn');
@@ -1035,8 +684,12 @@
             localStorage.removeItem('currentUserRole');
             
             // Try Firebase logout if available
-            if (typeof window.handleLogout === 'function') {
-                window.handleLogout();
+            if (typeof fbAuth !== 'undefined' && fbAuth) {
+                fbAuth.signOut().then(() => {
+                    window.location.href = 'Home.html';
+                }).catch(() => {
+                    window.location.href = 'Home.html';
+                });
             } else {
                 // Fallback direct redirect
                 window.location.href = 'Home.html';
