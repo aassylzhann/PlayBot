@@ -16,6 +16,14 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Authentication JS - Load this first -->
+    <script src="../js/auth.js"></script>
 </head>
 
 <body class="admin-dashboard">
@@ -570,36 +578,10 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
-    <script src="../js/auth.js"></script>
+    <!-- Dashboard JavaScript - Added at the end for better performance -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Check admin authentication
-            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            const userRole = localStorage.getItem('currentUserRole');
-            
-            if (!isLoggedIn || userRole !== 'admin') {
-                window.location.href = 'Login.html';
-                return;
-            }
-            
-            // Show user profile, hide auth buttons
-            const userProfile = document.getElementById('user-profile');
-            const authButtons = document.querySelector('.auth-buttons');
-            
-            if (userProfile) userProfile.style.display = 'block';
-            if (authButtons) authButtons.style.display = 'none';
-            
-            // Add logout handler
-            document.getElementById('admin-logout-link')?.addEventListener('click', function(e) {
-                e.preventDefault();
-                localStorage.removeItem('isLoggedIn');
-                localStorage.removeItem('currentUserEmail');
-                localStorage.removeItem('currentUserRole');
-                window.location.href = 'Home.html';
-            });
-            
-            // Tab navigation
+            // Tab navigation setup
             setupTabs();
             
             // Modal functionality
@@ -608,6 +590,26 @@
             // Add material button
             document.getElementById('add-material-btn')?.addEventListener('click', function() {
                 document.getElementById('add-material-modal').style.display = 'block';
+            });
+            
+            // Admin settings form
+            document.getElementById('admin-settings-form')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Settings saved successfully');
+            });
+            
+            // Handle logout button in header
+            document.getElementById('admin-logout-link')?.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (window.handleLogout) {
+                    window.handleLogout();
+                } else {
+                    // Fallback logout
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('currentUserEmail');
+                    localStorage.removeItem('currentUserRole');
+                    window.location.href = 'Home.html';
+                }
             });
         });
         
