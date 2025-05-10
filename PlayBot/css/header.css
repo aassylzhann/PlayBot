@@ -24,6 +24,8 @@
   z-index: 1000;
   padding: 10px 0;
   height: 80px !important;
+  height: 80px !important;
+  padding: 0 !important; /* Remove the padding that was causing extra height */
 }
 
 .main__menu li a {
@@ -34,6 +36,7 @@
   transition: color 0.3s ease;
   display: inline-block;
   margin-top: -20px;
+  margin-top: 0; /* Remove negative margin causing misalignment */
 }
 
 .main__menu li a:hover {
@@ -61,6 +64,8 @@
   line-height: 80px;
   display: inline-flex;
   align-items: center;
+  height: 80px;
+  line-height: normal; /* Let flexbox handle the alignment */
 } 
 
 .main__menu > li:hover > a {
@@ -83,6 +88,7 @@
   display: flex;
   align-items: center;
   height: 80px !important;
+  padding: 0 15px;
 }
 
 /* Sticky Header */
@@ -124,6 +130,10 @@
   padding:auto;
   width: auto;
   margin:auto; 
+  top: 80px; /* Match header height exactly */
+  min-width: 200px; /* Ensure minimum width for dropdown items */
+  left: 50%;
+  transform: translateX(-50%); /* Center dropdown under menu item */
 }
 
 .dropdown .dropdown-content a {
@@ -194,6 +204,9 @@
   line-height: 80px;
   display: inline-flex;
   align-items: center;
+  padding: 8px 15px;
+  height: auto;
+  line-height: normal;
 }
 
 .auth-btn:first-child {
@@ -220,6 +233,9 @@
 .header-logo {
   max-height: 60px;
   width: auto;
+  height: 50px; /* Specific height to ensure consistency */
+  width: auto;
+  vertical-align: middle;
 }
 
 /* Responsive styles for auth buttons */
@@ -237,6 +253,82 @@
 @media (max-width: 767px) {
   .auth-buttons {
     margin-right: 50px; /* Make room for mobile menu toggle */
+  }
+}
+
+/* Header sizing fixes - Add these to the end of header.css */
+
+/* Ensure consistent header height */
+.header__area {
+  height: 80px !important;
+  padding: 0 !important; /* Remove the padding that was causing extra height */
+}
+
+/* Fix container width */
+.header__area .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+/* Fix logo vertical alignment */
+.logo {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+/* Ensure logo has consistent size */
+.header-logo {
+  height: 50px; /* Specific height to ensure consistency */
+  width: auto;
+  vertical-align: middle;
+}
+
+/* Fix dropdown positioning */
+.dropdown .dropdown-content {
+  top: 80px; /* Match header height exactly */
+  min-width: 200px; /* Ensure minimum width for dropdown items */
+  left: 50%;
+  transform: translateX(-50%); /* Center dropdown under menu item */
+}
+
+/* Fix menu item vertical alignment */
+.main__menu li a {
+  margin-top: 0; /* Remove negative margin causing misalignment */
+}
+
+/* Fix auth buttons vertical alignment */
+.auth-btn {
+  padding: 8px 15px;
+  height: auto;
+  line-height: normal;
+}
+
+/* Remove redundant height/line-height */
+.main__menu > li > a {
+  height: 80px;
+  line-height: normal; /* Let flexbox handle the alignment */
+}
+
+/* Fix body padding to account for fixed header */
+body {
+  padding-top: 80px;
+}
+
+/* Fix menu container */
+.menumenu__container {
+  padding: 0 15px;
+}
+
+/* Fix alignment issues in smaller screens */
+@media (max-width: 768px) {
+  .header-logo {
+    height: 40px;
+  }
+  
+  .auth-btn {
+    padding: 6px 12px;
   }
 }
 
