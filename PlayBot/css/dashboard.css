@@ -28,11 +28,6 @@
     overflow: hidden;
 }
 
-/* Fix admin dashboard spacing */
-.admin-dashboard .dashboard__container {
-  margin-top: 0;
-}
-
 /* Fixed Sidebar */
 .dashboard__sidebar {
     width: 250px !important;
@@ -43,11 +38,6 @@
     color: white;
     padding: 20px 0;
     height: 100% !important;
-}
-
-/* Ensure the sidebar starts right after the header */
-.dashboard__sidebar {
-  margin-top: 0;
 }
 
 /* Sidebar Title */
@@ -619,4 +609,8 @@
     .modal-content {
         width: 95%;
     }
+    .dashboard__sidebar {
+        width: 100%;
+        min-width: 100%;
+    }   
 }

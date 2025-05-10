@@ -23,7 +23,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1000 !important;
 }
 
 .header__area .container {
@@ -315,7 +315,7 @@
 }
 
 /*======================
- * 9. Critical Overrides
+ * 9. Critical Overrides - UPDATED
  =======================*/
 /* Fix body padding to account for fixed header */
 body {
@@ -323,10 +323,12 @@ body {
   margin-top: 0 !important;
 }
 
-/* Fix spacing issues across all pages */
+/* Fix wrapper div spacing globally */
 .wrapper {
   margin-top: 0 !important;
   padding-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 /* Remove extra space from main containers */
@@ -344,11 +346,27 @@ section:first-of-type,
   padding-top: 0 !important;
 }
 
-/* Dashboard specific fixes */
+/* Specific page type fixes */
 body.admin-dashboard {
-  padding-top: 80px;
+  padding-top: 80px !important;
 }
 
 .dashboard__container {
-  margin-top: 0;
+  margin-top: 20px !important; /* Small gap between header and dashboard */
+}
+
+/* Fix for teacher dashboard pages */
+body.teacher-dashboard .dashboard-content {
+  padding-top: 20px !important;
+}
+
+/* Ensure the header's box-shadow is visible */
+.header__area {
+  z-index: 1000 !important;
+}
+
+/* Ensure main content doesn't overflow under fixed elements */
+main, .main-content, .content {
+  position: relative;
+  z-index: 1;
 }
