@@ -513,3 +513,41 @@ body.admin-dashboard {
   margin-top: 0; /* Remove any additional margin */
 }
 
+/* Fix spacing issues across all pages - Add this at the end of your file */
+
+/* Reduce body padding to minimum needed for fixed header */
+body {
+  padding-top: 80px !important;
+  margin-top: 0 !important;
+}
+
+/* Fix wrapper div spacing - this is causing the large gap */
+.wrapper {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Remove any additional space from main containers that follow the header */
+.wrapper > *:first-child:not(header),
+header + * {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Ensure all first containers after header have no extra space */
+.main-content,
+.container:first-of-type,
+.slider__container,
+.hero-section,
+.banner-section,
+section:first-of-type,
+.dashboard__container {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Fix for specific layouts */
+.row:first-child {
+  margin-top: 0 !important;
+}
+
