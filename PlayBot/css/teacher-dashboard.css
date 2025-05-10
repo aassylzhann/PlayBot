@@ -869,3 +869,188 @@ body {
 body.page-transition {
     opacity: 0;
 }
+
+/* Add to teacher-dashboard.css */
+
+/* Single page dashboard styles */
+.dashboard-content.single-page {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.quick-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.resources-section {
+  margin-bottom: 30px;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.resource-card {
+  display: flex;
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  transition: var(--transition);
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resource-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-right: 15px;
+  color: var(--primary-color);
+}
+
+.resource-info {
+  flex: 1;
+}
+
+.resource-info h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.resource-info p {
+  color: var(--gray-dark);
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.resource-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 12px;
+  color: var(--gray-dark);
+}
+
+.resource-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.download-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.download-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.getting-started {
+  margin-bottom: 30px;
+}
+
+.getting-started-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 250px;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.step-content h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.help-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.help-option {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+  background-color: var(--gray-light);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  text-decoration: none;
+  color: var(--text-dark);
+}
+
+.help-option:hover {
+  background-color: var(--primary-light);
+  color: white;
+  transform: translateY(-5px);
+}
+
+.help-option i {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .step-item, .help-option {
+    min-width: 100%;
+  }
+}

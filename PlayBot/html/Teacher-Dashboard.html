@@ -1,4 +1,4 @@
-/Teacher-Dashboard.html -->
+Dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,7 +82,8 @@
                                         <span id="user-name">Account</span>
                                     </a>
                                     <div class="dropdown-content">
-                                        <!-- Dynamically populated by auth.js -->
+                                        <a href="Teacher-Dashboard.html">Dashboard</a>
+                                        <a href="#" onclick="handleLogout()">Logout</a>
                                     </div>
                                 </div>
                             </div>
@@ -94,228 +95,125 @@
         </header>
         <!-- End Header Area -->
 
-        <!-- Dashboard Container -->
-        <div class="dashboard-container">
-            <!-- Dashboard Sidebar -->
-            <aside class="dashboard-sidebar">
-                <div class="sidebar-header">
-                    <div class="teacher-profile">
-                        <div class="teacher-avatar">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <div class="teacher-info">
-                            <h3 id="sidebar-teacher-name">Teacher</h3>
-                            <p class="teacher-role">Teacher Dashboard</p>
-                        </div>
-                    </div>
+        <!-- Dashboard Content -->
+        <main class="dashboard-content single-page">
+            <!-- Teacher Welcome & Profile Quick Edit -->
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h1>Welcome, <span id="teacher-name">Teacher</span>!</h1>
+                    <p class="current-date" id="current-date">Today's Date</p>
                 </div>
-                
-                <nav class="sidebar-nav">
-                    <ul>
-                        <li class="active" data-tab="overview">
-                            <a href="#overview"><i class="fas fa-th-large"></i> Dashboard</a>
-                        </li>
-                        <li data-tab="resources">
-                            <a href="#resources"><i class="fas fa-download"></i> Resources</a>
-                        </li>
-                        <li data-tab="profile">
-                            <a href="#profile"><i class="fas fa-user-cog"></i> My Profile</a>
-                        </li>
-                    </ul>
-                </nav>
-                
-                <div class="sidebar-footer">
-                    <button class="logout-btn" onclick="handleLogout()">
+                <div class="quick-profile">
+                    <button id="logout-btn" class="logout-btn" onclick="handleLogout()">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </button>
                 </div>
-            </aside>
-
-            <!-- Dashboard Main Content -->
-            <main class="dashboard-content">
-                <!-- Dashboard Overview Tab -->
-                <section id="overview" class="dashboard-tab active">
-                    <div class="dashboard-header">
-                        <h1>Welcome, <span id="teacher-name">Teacher</span>!</h1>
-                        <p class="current-date" id="current-date">Today's Date</p>
-                    </div>
-                    
-                    <div class="content-card welcome-card">
-                        <div class="welcome-message">
-                            <h2>Welcome to PlayBot Teacher Dashboard</h2>
-                            <p>This streamlined dashboard provides access to teaching resources uploaded by administrators. Use these materials to enhance your robotics and programming lessons.</p>
+            </div>
+            
+            <!-- Teaching Resources Section -->
+            <div class="content-card resources-section">
+                <div class="card-header">
+                    <h2><i class="fas fa-books"></i> Teaching Resources</h2>
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" id="resource-search" placeholder="Search resources...">
+                            <i class="fas fa-search"></i>
                         </div>
                     </div>
-                    
-                    <div class="content-card">
-                        <div class="card-header">
-                            <h2>Getting Started</h2>
-                        </div>
-                        <div class="getting-started-steps">
-                            <div class="step-item">
-                                <div class="step-number">1</div>
-                                <div class="step-content">
-                                    <h3>Explore Resources</h3>
-                                    <p>Browse through curriculum materials, lesson plans, and teaching guides.</p>
-                                </div>
-                            </div>
-                            <div class="step-item">
-                                <div class="step-number">2</div>
-                                <div class="step-content">
-                                    <h3>Download Materials</h3>
-                                    <p>Download resources for offline use in your classroom.</p>
-                                </div>
-                            </div>
-                            <div class="step-item">
-                                <div class="step-number">3</div>
-                                <div class="step-content">
-                                    <h3>Implement Lessons</h3>
-                                    <p>Follow the guides to implement PlayBot curriculum in your teaching.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                </div>
                 
-                <!-- Resources Tab -->
-                <section id="resources" class="dashboard-tab">
-                    <div class="dashboard-header">
-                        <h1>Teaching Resources</h1>
-                        <div class="header-actions">
-                            <div class="search-box">
-                                <input type="text" id="resource-search" placeholder="Search resources...">
-                                <i class="fas fa-search"></i>
-                            </div>
-                        </div>
+                <div class="resources-filters">
+                    <div class="filter-group">
+                        <label>Resource Type:</label>
+                        <select id="resource-type-filter" class="filter-select">
+                            <option value="all">All Types</option>
+                            <option value="lesson-plans">Lesson Plans</option>
+                            <option value="activities">Activities</option>
+                            <option value="guides">Teacher Guides</option>
+                            <option value="assessments">Assessments</option>
+                        </select>
                     </div>
-                    
-                    <div class="resources-filters">
-                        <div class="filter-group">
-                            <label>Resource Type:</label>
-                            <select id="resource-type-filter" class="filter-select">
-                                <option value="all">All Types</option>
-                                <option value="lesson-plans">Lesson Plans</option>
-                                <option value="activities">Activities</option>
-                                <option value="guides">Teacher Guides</option>
-                                <option value="assessments">Assessments</option>
-                            </select>
-                        </div>
-                        <div class="filter-group">
-                            <label>Grade Level:</label>
-                            <select id="grade-level-filter" class="filter-select">
-                                <option value="all">All Levels</option>
-                                <option value="k-3">K-3</option>
-                                <option value="4-6">Grades 4-6</option>
-                                <option value="7-8">Grades 7-8</option>
-                            </select>
-                        </div>
+                    <div class="filter-group">
+                        <label>Grade Level:</label>
+                        <select id="grade-level-filter" class="filter-select">
+                            <option value="all">All Levels</option>
+                            <option value="k-3">K-3</option>
+                            <option value="4-6">Grades 4-6</option>
+                            <option value="7-8">Grades 7-8</option>
+                        </select>
                     </div>
-                    
-                    <!-- Resources will be loaded dynamically from database -->
-                    <div id="resources-container" class="resources-grid">
-                        <!-- Loading state -->
-                        <div id="resources-loading" class="loading-container">
-                            <div class="loading-spinner"></div>
-                            <p>Loading resources...</p>
-                        </div>
-                        
-                        <!-- Empty state - shown when no resources are available -->
-                        <div id="resources-empty" class="empty-state" style="display: none;">
-                            <div class="empty-icon">
-                                <i class="fas fa-folder-open"></i>
-                            </div>
-                            <h3 class="empty-title">No Resources Available</h3>
-                            <p class="empty-description">No teaching resources have been uploaded yet.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="content-card help-card">
-                        <div class="card-header">
-                            <h2>Need Help?</h2>
-                        </div>
-                        <div class="help-options">
-                            <a href="mailto:teacher-support@playbot.edu" class="help-option">
-                                <i class="fas fa-envelope"></i>
-                                <span>Email Support</span>
-                            </a>
-                            <a href="#" class="help-option">
-                                <i class="fas fa-question-circle"></i>
-                                <span>FAQ</span>
-                            </a>
-                        </div>
-                    </div>
-                </section>
+                </div>
                 
-                <!-- Profile Tab -->
-                <section id="profile" class="dashboard-tab">
-                    <div class="dashboard-header">
-                        <h1>My Profile</h1>
-                        <button id="save-profile" class="primary-btn"><i class="fas fa-save"></i> Save Changes</button>
+                <!-- Resources will be loaded dynamically from database -->
+                <div id="resources-container" class="resources-grid">
+                    <!-- Loading state -->
+                    <div id="resources-loading" class="loading-container">
+                        <div class="loading-spinner"></div>
+                        <p>Loading resources...</p>
                     </div>
                     
-                    <div class="dashboard-row">
-                        <div class="dashboard-col">
-                            <div class="content-card">
-                                <div class="card-header">
-                                    <h2>Personal Information</h2>
-                                </div>
-                                <div class="profile-form">
-                                    <div class="form-group">
-                                        <label>First Name</label>
-                                        <input type="text" id="profile-first-name" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input type="text" id="profile-last-name" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email Address</label>
-                                        <input type="email" id="profile-email" class="form-control" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>School</label>
-                                        <input type="text" id="profile-school" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Empty state - shown when no resources are available -->
+                    <div id="resources-empty" class="empty-state" style="display: none;">
+                        <div class="empty-icon">
+                            <i class="fas fa-folder-open"></i>
                         </div>
-                        
-                        <div class="dashboard-col">
-                            <div class="content-card">
-                                <div class="card-header">
-                                    <h2>Account Settings</h2>
-                                </div>
-                                <div class="profile-form">
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" value="********" class="form-control" disabled>
-                                        <button class="text-btn">Change Password</button>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label>Notification Preferences</label>
-                                        <div class="toggle-option">
-                                            <span>Email Notifications</span>
-                                            <label class="toggle">
-                                                <input type="checkbox" id="email-notifications" checked>
-                                                <span class="toggle-slider"></span>
-                                            </label>
-                                        </div>
-                                        <div class="toggle-option">
-                                            <span>Resource Updates</span>
-                                            <label class="toggle">
-                                                <input type="checkbox" id="resource-updates" checked>
-                                                <span class="toggle-slider"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <h3 class="empty-title">No Resources Available</h3>
+                        <p class="empty-description">No teaching resources have been uploaded yet.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Getting Started Guide -->
+            <div class="content-card getting-started">
+                <div class="card-header">
+                    <h2>Getting Started with PlayBot</h2>
+                </div>
+                <div class="getting-started-steps">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Explore Resources</h3>
+                            <p>Browse through curriculum materials, lesson plans, and teaching guides.</p>
                         </div>
                     </div>
-                </section>
-            </main>
-        </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Download Materials</h3>
+                            <p>Download resources for offline use in your classroom.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Implement Lessons</h3>
+                            <p>Follow the guides to implement PlayBot curriculum in your teaching.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Help Section -->
+            <div class="content-card help-card">
+                <div class="card-header">
+                    <h2>Need Help?</h2>
+                </div>
+                <div class="help-options">
+                    <a href="mailto:teacher-support@playbot.edu" class="help-option">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email Support</span>
+                    </a>
+                    <a href="#" class="help-option">
+                        <i class="fas fa-question-circle"></i>
+                        <span>FAQ</span>
+                    </a>
+                    <a href="#" class="help-option">
+                        <i class="fas fa-book"></i>
+                        <span>Teacher Guide</span>
+                    </a>
+                </div>
+            </div>
+        </main>
 
         <!-- Start Footer Area -->
         <footer class="footer__area">
@@ -399,85 +297,15 @@
             const lastName = localStorage.getItem('userLastName_' + userEmail) || '';
             
             document.getElementById('teacher-name').textContent = firstName;
-            document.getElementById('sidebar-teacher-name').textContent = firstName;
             document.getElementById('user-name').textContent = firstName;
-            
-            // Fill profile form
-            if (document.getElementById('profile-first-name')) {
-                document.getElementById('profile-first-name').value = firstName;
-            }
-            if (document.getElementById('profile-last-name')) {
-                document.getElementById('profile-last-name').value = lastName;
-            }
-            if (document.getElementById('profile-email')) {
-                document.getElementById('profile-email').value = userEmail;
-            }
-            
-            // Set up tab navigation
-            setupTabs();
             
             // Hide auth buttons, show user profile
             document.querySelector('.auth-buttons').style.display = 'none';
             document.getElementById('user-profile').style.display = 'flex';
             
-            // Update user dropdown
-            const dropdownContent = document.querySelector('#user-profile .dropdown-content');
-            if (dropdownContent) {
-                dropdownContent.innerHTML = `
-                    <a href="Teacher-Dashboard.html">Dashboard</a>
-                    <a href="#profile" onclick="activateTab('profile')">My Profile</a>
-                    <a href="#" onclick="handleLogout()">Logout</a>
-                `;
-            }
-            
             // Load resources from database
             loadResources();
         });
-        
-        function setupTabs() {
-            const tabButtons = document.querySelectorAll('.sidebar-nav li');
-            const tabSections = document.querySelectorAll('.dashboard-tab');
-            
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetTab = this.getAttribute('data-tab');
-                    
-                    // Update active tab button
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Show active tab content
-                    tabSections.forEach(section => {
-                        if (section.id === targetTab) {
-                            section.classList.add('active');
-                        } else {
-                            section.classList.remove('active');
-                        }
-                    });
-                    
-                    // Update URL hash without scrolling
-                    history.pushState(null, null, `#${targetTab}`);
-                });
-            });
-            
-            // Check for hash in URL
-            if (window.location.hash) {
-                const hash = window.location.hash.substring(1);
-                const targetButton = document.querySelector(`.sidebar-nav li[data-tab="${hash}"]`);
-                if (targetButton) {
-                    targetButton.click();
-                }
-            }
-        }
-        
-        function activateTab(tabId) {
-            const targetButton = document.querySelector(`.sidebar-nav li[data-tab="${tabId}"]`);
-            if (targetButton) {
-                targetButton.click();
-            }
-        }
         
         // Load resources from database
         function loadResources() {
@@ -531,13 +359,53 @@
                         }
                     });
             } else {
-                // Firebase not available
+                // Firebase not available, load sample data
                 if (loadingElement) loadingElement.style.display = 'none';
-                if (emptyElement) {
-                    emptyElement.style.display = 'flex';
-                    emptyElement.querySelector('.empty-description').textContent = 
-                        'Database connection not available. Please try again later.';
-                }
+                
+                // Create sample resources if no database
+                const sampleResources = [
+                    {
+                        id: 'sample1',
+                        title: 'Introduction to PlayBot',
+                        description: 'A comprehensive guide to getting started with PlayBot in your classroom.',
+                        fileType: 'pdf',
+                        fileSize: '2.4 MB',
+                        uploadDate: new Date().toISOString(),
+                        type: 'guides',
+                        gradeLevel: 'all',
+                        fileUrl: '#'
+                    },
+                    {
+                        id: 'sample2',
+                        title: 'Robotics Lesson Plan - Beginner',
+                        description: 'Lesson plan for introducing basic robotics concepts to elementary students.',
+                        fileType: 'doc',
+                        fileSize: '1.2 MB',
+                        uploadDate: new Date().toISOString(),
+                        type: 'lesson-plans',
+                        gradeLevel: 'k-3',
+                        fileUrl: '#'
+                    },
+                    {
+                        id: 'sample3',
+                        title: 'Programming Activities Pack',
+                        description: 'A collection of hands-on programming activities for middle school students.',
+                        fileType: 'zip',
+                        fileSize: '5.6 MB',
+                        uploadDate: new Date().toISOString(),
+                        type: 'activities',
+                        gradeLevel: '4-6',
+                        fileUrl: '#'
+                    }
+                ];
+                
+                sampleResources.forEach(resource => {
+                    const resourceElement = createResourceElement(resource.id, resource);
+                    resourcesContainer.appendChild(resourceElement);
+                });
+                
+                // Set up filters
+                setupResourceFilters();
             }
         }
         
@@ -575,7 +443,7 @@
                     </div>
                 </div>
                 <div class="resource-actions">
-                    <button class="download-btn" onclick="downloadResource('${id}', '${resource.fileUrl}')">
+                    <button class="download-btn" onclick="downloadResource('${id}', '${resource.fileUrl || '#'}')">
                         <i class="fas fa-download"></i> Download
                     </button>
                 </div>
@@ -586,6 +454,11 @@
         
         // Download resource function
         function downloadResource(id, url) {
+            if (url === '#') {
+                alert('This is a sample resource. In the actual application, you would download the file.');
+                return;
+            }
+            
             // Create an invisible anchor to trigger download
             const a = document.createElement('a');
             a.href = url;
@@ -655,27 +528,6 @@
             if (typeFilter) typeFilter.addEventListener('change', filterResources);
             if (gradeFilter) gradeFilter.addEventListener('change', filterResources);
         }
-        
-        // Save profile changes
-        document.getElementById('save-profile')?.addEventListener('click', function() {
-            const firstName = document.getElementById('profile-first-name').value;
-            const lastName = document.getElementById('profile-last-name').value;
-            const school = document.getElementById('profile-school').value;
-            const email = document.getElementById('profile-email').value;
-            
-            // Save to localStorage
-            localStorage.setItem('userFirstName_' + email, firstName);
-            localStorage.setItem('userLastName_' + email, lastName);
-            localStorage.setItem('userSchool_' + email, school);
-            
-            // Update displayed name
-            document.getElementById('teacher-name').textContent = firstName;
-            document.getElementById('sidebar-teacher-name').textContent = firstName;
-            document.getElementById('user-name').textContent = firstName;
-            
-            // Show success message
-            alert('Profile updated successfully!');
-        });
         
         function handleLogout() {
             // Clear localStorage
