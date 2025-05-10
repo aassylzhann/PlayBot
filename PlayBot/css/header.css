@@ -1,20 +1,22 @@
-/* Header Styling */
-.header {
-  z-index: 10;
-  position: relative;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+/*=======================
+ * TABLE OF CONTENTS
+ * 1. Header Structure
+ * 2. Logo Styling
+ * 3. Main Menu
+ * 4. Dropdown Menu
+ * 5. Authentication Buttons
+ * 6. User Profile
+ * 7. Language Selector
+ * 8. Responsive Styles
+ * 9. Critical Overrides
+========================*/
 
-.main__menu {
-  display: flex;
-  justify-content: flex-end;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
+/*======================
+ * 1. Header Structure
+ =======================*/
 .header__area {
+  height: 80px !important;
+  padding: 0 !important;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
@@ -22,58 +24,19 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 10px 0;
-  height: 80px !important;
-  height: 80px !important;
-  padding: 0 !important; /* Remove the padding that was causing extra height */
 }
 
-.main__menu li a {
-  color: #333;
-  font-weight: 500;
-  padding: 10px 15px;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  display: inline-block;
-  margin-top: -20px;
-  margin-top: 0; /* Remove negative margin causing misalignment */
+.header__area .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
 }
 
-.main__menu li a:hover {
-  color: #4285f4;
-  
-}
-
-.main__menu > li {
-  position: relative;
-  margin: 0 15px;
-}
-
-.main__menu > li > a {
-  color: #333333;
-  display: block;
-  font-size: 14px;
-  height: 80px;
-  line-height: 80px;
-  position: relative;
-  text-transform: uppercase;
-  font-family: 'Poppins', sans-serif;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  height: 80px;
-  line-height: 80px;
-  display: inline-flex;
+.menumenu__container {
+  display: flex;
   align-items: center;
-  height: 80px;
-  line-height: normal; /* Let flexbox handle the alignment */
-} 
-
-.main__menu > li:hover > a {
-  color: #4285f4;
-}
-
-.logo a {
-  display: block;
+  height: 80px !important;
+  padding: 0 15px;
 }
 
 .header__right {
@@ -83,19 +46,9 @@
   align-items: center;
 }
 
-/* Adjust header layout */
-.menumenu__container {
-  display: flex;
-  align-items: center;
-  height: 80px !important;
-  padding: 0 15px;
-}
-
-/* Sticky Header */
 .sticky__header.scroll-header {
-  -webkit-animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
   animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
-  background: rgba(246, 246, 248, 0.9) none repeat scroll 0 0;
+  background: rgba(246, 246, 248, 0.9);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   left: 0;
   margin: 0 auto;
@@ -106,11 +59,80 @@
   z-index: 99;
 }
 
-.header--3 .scroll-header .menumenu__container {
-  background: transparent;
+/* Column layout adjustments */
+.col-md-7,
+.col-lg-8,
+.col-sm-5,
+.col-xs-3 {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  height: 80px !important;
 }
 
-/* Dropdown Menu */
+/*======================
+ * 2. Logo Styling
+ =======================*/
+.logo {
+  display: flex !important;
+  align-items: center !important;
+  height: 80px !important;
+  overflow: visible !important;
+}
+
+.logo a {
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+}
+
+.header-logo {
+  height: 130px !important;
+  width: auto !important;
+  max-height: none !important;
+  position: relative !important;
+  top: 0 !important;
+  transform: translateY(0) !important;
+}
+
+/*======================
+ * 3. Main Menu
+ =======================*/
+.main__menu {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main__menu > li {
+  position: relative;
+  margin: 0 15px;
+}
+
+.main__menu > li > a {
+  color: #333333;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  line-height: normal;
+  padding: 10px 15px;
+}
+
+.main__menu li a:hover,
+.main__menu > li:hover > a {
+  color: #4285f4;
+}
+
+/*======================
+ * 4. Dropdown Menu
+ =======================*/
 .dropdown {
   position: relative;
   display: inline-block;
@@ -120,93 +142,85 @@
   display: none;
   position: absolute;
   top: 80px;
-  left: 0;
-  right: 0;
-  background-color: #ffffff; 
+  min-width: 200px;
+  background-color: #ffffff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  z-index: 1000; 
-  border-radius: 0px; 
+  z-index: 1000;
+  border-radius: 0;
   overflow: hidden;
-  padding:auto;
-  width: auto;
-  margin:auto; 
-  top: 80px; /* Match header height exactly */
-  min-width: 200px; /* Ensure minimum width for dropdown items */
   left: 50%;
-  transform: translateX(-50%); /* Center dropdown under menu item */
+  transform: translateX(-50%);
 }
 
 .dropdown .dropdown-content a {
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  padding: 20px 15px; 
-  color: #333333; 
-  margin-top: 1px;
-  text-decoration: none; 
-  font-size: 14px; 
-  font-family: 'Poppins', sans-serif; 
-  transition: background-color 0.3s ease; 
-  white-space: nowrap; 
-  border-bottom: 0px solid #eee; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 15px;
+  color: #333333;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  border-bottom: 0px solid #eee;
 }
 
 .dropdown .dropdown-content a:last-child {
-  border-bottom: none; 
+  border-bottom: none;
 }
 
 .dropdown .dropdown-content a:hover {
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
   color: #4285f4;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
-  align-items: center;
 }
 
 .dropdown:hover > a {
   color: #4285f4;
   background-color: #f8f8f8;
-  height: 55px;
-}
-/* Login/Signup Button Styling - Updated to match site theme */
-.auth-buttons {
-  display: flex;
-  margin-left: 20px;
+  height: auto !important;
 }
 
-.auth-buttons, #user-profile {
+/*======================
+ * 5. Authentication Buttons
+ =======================*/
+.auth-buttons {
+  display: flex !important;
+  align-items: center !important;
+  height: 80px !important;
   min-width: 150px;
   min-height: 40px;
   transition: opacity 0.2s ease;
+  margin-left: 20px;
 }
 
-.auth-buttons.hidden, #user-profile:not(.visible) {
-  display: none;
+.auth-buttons.hidden {
+  display: none !important;
 }
+
 .auth-btn {
   background-color: transparent;
   border: none;
   color: #333333;
   font-size: 14px;
   font-weight: 500;
-  padding: 10px 15px;
-  padding-bottom: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
-  margin-left: 10px;
-  display: inline-block;
   text-transform: uppercase;
   font-family: 'Poppins', sans-serif;
-  height: 80px;
-  line-height: 80px;
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 15px;
-  height: auto;
-  line-height: normal;
+  margin-left: 10px;
+  padding: 8px 15px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  height: 36px !important;
+  line-height: 20px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .auth-btn:first-child {
@@ -217,240 +231,50 @@
   color: #333333;
 }
 
-.auth-btn:hover {
-  color: #4285f4;
-}
-
-.auth-btn.login:hover {
-  color: #4285f4;
-}
-
+.auth-btn:hover,
+.auth-btn.login:hover,
 .auth-btn.signup:hover {
   color: #4285f4;
 }
 
-/* Ensure logo has consistent size */
-.header-logo {
-  max-height: 60px;
-  width: auto;
-  height: 50px; /* Specific height to ensure consistency */
-  width: auto;
-  vertical-align: middle;
-}
-
-/* Responsive styles for auth buttons */
-@media (max-width: 991px) {
-  .header-right-wrap {
-    flex-wrap: wrap;
-  }
-  
-  .auth-buttons {
-    margin-top: 10px;
-    margin-left: 0;
-  }
-}
-
-@media (max-width: 767px) {
-  .auth-buttons {
-    margin-right: 50px; /* Make room for mobile menu toggle */
-  }
-}
-
-/* Header sizing fixes - Add these to the end of header.css */
-
-/* Ensure consistent header height */
-.header__area {
-  height: 80px !important;
-  padding: 0 !important; /* Remove the padding that was causing extra height */
-}
-
-/* Fix container width */
-.header__area .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 100%;
-}
-
-/* Fix logo vertical alignment */
-.logo {
-  display: flex;
-  align-items: center;
-  height: 80px;
-}
-
-/* Ensure logo has consistent size */
-.header-logo {
-  height: 50px; /* Specific height to ensure consistency */
-  width: auto;
-  vertical-align: middle;
-}
-
-/* Fix dropdown positioning */
-.dropdown .dropdown-content {
-  top: 80px; /* Match header height exactly */
-  min-width: 200px; /* Ensure minimum width for dropdown items */
-  left: 50%;
-  transform: translateX(-50%); /* Center dropdown under menu item */
-}
-
-/* Fix menu item vertical alignment */
-.main__menu li a {
-  margin-top: 0; /* Remove negative margin causing misalignment */
-}
-
-/* Fix auth buttons vertical alignment */
-.auth-btn {
-  padding: 8px 15px;
-  height: auto;
-  line-height: normal;
-}
-
-/* Remove redundant height/line-height */
-.main__menu > li > a {
-  height: 80px;
-  line-height: normal; /* Let flexbox handle the alignment */
-}
-
-/* Fix body padding to account for fixed header */
-body {
-  padding-top: 80px;
-}
-
-/* Fix menu container */
-.menumenu__container {
-  padding: 0 15px;
-}
-
-/* Fix alignment issues in smaller screens */
-@media (max-width: 768px) {
-  .header-logo {
-    height: 40px;
-  }
-  
-  .auth-btn {
-    padding: 6px 12px;
-  }
-}
-
-/* Add these specific fixes at the end of your header.css file */
-
-/* Fix logo size - make it bigger */
-.header-logo {
-  height: 55px !important; /* Increased from 50px */
-  max-height: 55px !important;
-  width: auto;
-  object-fit: contain;
-}
-
-/* Fix vertical alignment of language selector */
-.language-selector {
-  display: flex;
-  align-items: center;
-  height: 80px;
-}
-
-.lang-btn {
-  padding: 8px;
-  height: auto;
-  line-height: normal;
-  display: flex;
-  align-items: center;
-}
-
-/* Fix profile button alignment */
+/*======================
+ * 6. User Profile
+ =======================*/
 #user-profile {
-  display: flex;
-  align-items: center;
-  height: 80px;
-}
-
-.profile-btn {
-  height: auto;
-  line-height: normal;
-  display: flex;
-  align-items: center;
-  padding: 8px 15px;
-}
-
-/* Fix auth buttons alignment */
-.auth-buttons {
-  display: flex;
-  align-items: center;
-  height: 80px;
-}
-
-/* Make sure everything in the right column is vertically centered */
-.col-md-7,
-.col-lg-8,
-.col-sm-5,
-.col-xs-3 {
-  display: flex;
-  align-items: center;
-  height: 80px;
-}
-
-/* Remove duplicated styles that might be causing conflicts */
-.auth-btn {
-  padding: 8px 15px !important;
-  height: auto !important;
-  line-height: normal !important;
-  padding-bottom: 8px !important; /* Override the padding-bottom: 30px */
-  display: flex !important;
-  align-items: center !important;
-}
-
-/* Fix for responsive views */
-@media (max-width: 768px) {
-  .header-logo {
-    height: 45px !important; /* Still larger than before but better for mobile */
-  }
-}
-
-/* Add this at the very end of your header.css file to override all previous styles */
-
-/* CRITICAL FIXES - DO NOT MODIFY */
-.header__area {
+  display: none !important;
+  min-width: 150px;
+  min-height: 40px;
+  transition: opacity 0.2s ease;
   height: 80px !important;
-  padding: 0 !important;
-}
-
-/* Logo size fix */
-.logo {
-  display: flex !important;
-  align-items: center !important;
-  height: 80px !important;
-  overflow: visible !important; /* Allow logo to overflow container */
-}
-
-.logo a {
-  display: flex !important;
-  align-items: center !important;
-  position: relative !important; /* Enable positioning for the logo */
-}
-
-.header-logo {
-  height: 130px !important; /* Increased size */
-  width: auto !important;
-  max-height: none !important; /* Override max-height */
-  position: relative !important; /* Allow for vertical positioning */
-  top: 0 !important; /* Reset any top position */
-  transform: translateY(0) !important; /* Center the logo within its container */
-}
-
-/* Button alignment fixes */
-.auth-buttons, 
-#user-profile,
-.language-selector {
-  height: 80px !important;
-  display: flex !important;
   align-items: center !important;
   margin-top: 0 !important;
 }
 
-/* Reset all vertical position overrides */
-.auth-btn, 
-.lang-btn,
+#user-profile.visible {
+  display: flex !important;
+}
+
 .profile-btn {
+  height: 36px !important;
+  line-height: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 8px 15px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/*======================
+ * 7. Language Selector
+ =======================*/
+.language-selector {
+  display: flex !important;
+  align-items: center !important;
+  height: 80px !important;
+  margin-top: 0 !important;
+}
+
+.lang-btn {
   padding: 8px 15px !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
@@ -462,92 +286,69 @@ body {
   align-items: center !important;
 }
 
-/* Ensure column container is properly aligned */
-.col-md-7,
-.col-lg-8,
-.col-sm-5,
-.col-xs-3 {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  height: 80px !important;
+/*======================
+ * 8. Responsive Styles
+ =======================*/
+@media (max-width: 991px) {
+  .header-right-wrap {
+    flex-wrap: wrap;
+  }
+  
+  .auth-buttons {
+    margin-top: 10px;
+    margin-left: 0;
+  }
 }
 
-/* Fix dropdown hover issue */
-.dropdown:hover > a {
-  height: auto !important;
+@media (max-width: 768px) {
+  .header-logo {
+    height: 45px !important;
+  }
+  
+  .auth-buttons {
+    margin-right: 50px;
+  }
+  
+  .auth-btn {
+    padding: 6px 12px;
+  }
 }
 
-/* User profile visibility control - Add this to your CRITICAL FIXES section */
-#user-profile {
-  display: none !important; /* Hidden by default */
-}
-
-#user-profile.visible {
-  display: flex !important; /* Only show when .visible class is added */
-}
-
-/* Make sure auth buttons show by default, but hide when user is logged in */
-.auth-buttons {
-  display: flex !important;
-  align-items: center !important;
-  height: 80px !important;
-}
-
-.auth-buttons.hidden {
-  display: none !important; /* Hide only with .hidden class */
-}
-
+/*======================
+ * 9. Critical Overrides
+ =======================*/
 /* Fix body padding to account for fixed header */
-body {
-  padding-top: 80px; /* Reduce this if needed */
-}
-
-/* For Admin Dashboard specifically */
-body.admin-dashboard {
-  padding-top: 80px; /* Keep consistent with header height */
-}
-
-/* Dashboard container positioning fix */
-.dashboard__container {
-  margin-top: 0; /* Remove any additional margin */
-}
-
-/* Fix spacing issues across all pages - Add this at the end of your file */
-
-/* Reduce body padding to minimum needed for fixed header */
 body {
   padding-top: 80px !important;
   margin-top: 0 !important;
 }
 
-/* Fix wrapper div spacing - this is causing the large gap */
+/* Fix spacing issues across all pages */
 .wrapper {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
 
-/* Remove any additional space from main containers that follow the header */
+/* Remove extra space from main containers */
 .wrapper > *:first-child:not(header),
-header + * {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-/* Ensure all first containers after header have no extra space */
+header + *,
 .main-content,
 .container:first-of-type,
 .slider__container,
 .hero-section,
 .banner-section,
 section:first-of-type,
-.dashboard__container {
+.dashboard__container,
+.row:first-child {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
 
-/* Fix for specific layouts */
-.row:first-child {
-  margin-top: 0 !important;
+/* Dashboard specific fixes */
+body.admin-dashboard {
+  padding-top: 80px;
 }
 
+.dashboard__container {
+  margin-top: 0;
+}
