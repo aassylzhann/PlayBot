@@ -498,3 +498,18 @@ body {
   display: none !important; /* Hide only with .hidden class */
 }
 
+/* Fix body padding to account for fixed header */
+body {
+  padding-top: 80px; /* Reduce this if needed */
+}
+
+/* For Admin Dashboard specifically */
+body.admin-dashboard {
+  padding-top: 80px; /* Keep consistent with header height */
+}
+
+/* Dashboard container positioning fix */
+.dashboard__container {
+  margin-top: 0; /* Remove any additional margin */
+}
+
