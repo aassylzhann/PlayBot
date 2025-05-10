@@ -429,7 +429,7 @@ body {
 }
 
 .header-logo {
-  height: 150px !important; /* Increased size */
+  height: 130px !important; /* Increased size */
   width: auto !important;
   max-height: none !important; /* Override max-height */
   position: relative !important; /* Allow for vertical positioning */
