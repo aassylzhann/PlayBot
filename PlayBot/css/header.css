@@ -1,4 +1,4 @@
-  /* Header Styling */
+/* Header Styling */
 .header {
   z-index: 10;
   position: relative;
@@ -23,7 +23,7 @@
   width: 100%;
   z-index: 1000;
   padding: 10px 0;
-  height: 50px;
+  height: 80px !important;
 }
 
 .main__menu li a {
@@ -57,6 +57,10 @@
   font-family: 'Poppins', sans-serif;
   text-decoration: none;
   transition: color 0.3s ease;
+  height: 80px;
+  line-height: 80px;
+  display: inline-flex;
+  align-items: center;
 } 
 
 .main__menu > li:hover > a {
@@ -78,6 +82,7 @@
 .menumenu__container {
   display: flex;
   align-items: center;
+  height: 80px !important;
 }
 
 /* Sticky Header */
@@ -108,7 +113,7 @@
 .dropdown .dropdown-content {
   display: none;
   position: absolute;
-  top: 75%; 
+  top: 80px;
   left: 0;
   right: 0;
   background-color: #ffffff; 
@@ -185,6 +190,10 @@
   display: inline-block;
   text-transform: uppercase;
   font-family: 'Poppins', sans-serif;
+  height: 80px;
+  line-height: 80px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .auth-btn:first-child {
@@ -205,6 +214,12 @@
 
 .auth-btn.signup:hover {
   color: #4285f4;
+}
+
+/* Ensure logo has consistent size */
+.header-logo {
+  max-height: 60px;
+  width: auto;
 }
 
 /* Responsive styles for auth buttons */

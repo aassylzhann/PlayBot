@@ -660,3 +660,20 @@
   top: 80px;
   right: 0;
 }
+
+/* Add at the end of your file */
+/* Global fixes for header and footer alignment */
+.wrapper {
+  padding-top: 80px; /* Account for fixed header */
+}
+
+.footer__area .footer-logo-img {
+  max-height: 60px;
+  width: auto;
+  filter: none !important;
+}
+
+/* This ensures all header elements are properly aligned */
+.header__area * {
+  box-sizing: border-box;
+}
