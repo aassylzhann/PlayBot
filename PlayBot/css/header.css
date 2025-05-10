@@ -332,3 +332,77 @@ body {
   }
 }
 
+/* Add these specific fixes at the end of your header.css file */
+
+/* Fix logo size - make it bigger */
+.header-logo {
+  height: 55px !important; /* Increased from 50px */
+  max-height: 55px !important;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Fix vertical alignment of language selector */
+.language-selector {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+.lang-btn {
+  padding: 8px;
+  height: auto;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+}
+
+/* Fix profile button alignment */
+#user-profile {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+.profile-btn {
+  height: auto;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  padding: 8px 15px;
+}
+
+/* Fix auth buttons alignment */
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+/* Make sure everything in the right column is vertically centered */
+.col-md-7,
+.col-lg-8,
+.col-sm-5,
+.col-xs-3 {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+/* Remove duplicated styles that might be causing conflicts */
+.auth-btn {
+  padding: 8px 15px !important;
+  height: auto !important;
+  line-height: normal !important;
+  padding-bottom: 8px !important; /* Override the padding-bottom: 30px */
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Fix for responsive views */
+@media (max-width: 768px) {
+  .header-logo {
+    height: 45px !important; /* Still larger than before but better for mobile */
+  }
+}
+
