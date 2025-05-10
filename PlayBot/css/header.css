@@ -427,7 +427,7 @@ body {
 }
 
 .header-logo {
-  height: 60px !important; /* Increased size */
+  height: 100px !important; /* Increased size */
   width: auto !important;
   max-height: none !important; /* Override max-height */
 }
@@ -471,42 +471,5 @@ body {
 /* Fix dropdown hover issue */
 .dropdown:hover > a {
   height: auto !important;
-}
-
-/* 1. Logo Size Fix */
-.header-logo {
-  height: 65px !important;
-  width: auto !important;
-  max-height: 65px !important;
-  min-height: 65px !important;
-  object-fit: contain !important;
-}
-
-.logo {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-}
-
-.logo a {
-  display: flex !important;
-  align-items: center !important;
-}
-
-/* 2. Authentication Display Logic */
-.auth-buttons {
-  display: none !important; /* Hidden by default */
-}
-
-.auth-buttons.visible {
-  display: flex !important; /* Show when visible class is applied */
-}
-
-#user-profile {
-  display: none !important; /* Hidden by default */
-}
-
-#user-profile.visible {
-  display: flex !important; /* Show when visible class is applied */
 }
 
