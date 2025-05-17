@@ -175,14 +175,15 @@
   color: #4285f4;
 }
 
+/* Modified: Removed height auto that was causing positioning issues */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
+/* Modified: Removed height auto that was causing positioning issues */
 .dropdown:hover > a {
   color: #4285f4;
   background-color: #f8f8f8;
-  height: auto !important;
 }
 
 /*======================
