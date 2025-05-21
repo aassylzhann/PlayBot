@@ -1,0 +1,586 @@
+/* Parent Dashboard Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+.dashboard-content {
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.welcome-section h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #333;
+}
+
+.current-date {
+    margin: 0.5rem 0 0;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.logout-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Content Cards */
+.content-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 1.2rem 1.5rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card-header h2 i {
+    color: #4285f4;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+/* Child Progress Section */
+.child-progress-section {
+    margin-bottom: 2rem;
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.stat-box {
+    flex: 1;
+    min-width: 150px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.2rem;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.stat-box:hover {
+    transform: translateY(-3px);
+}
+
+.stat-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #4285f4;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    color: #333;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.recent-activities {
+    padding: 1.5rem;
+}
+
+.recent-activities h3 {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    gap: 1rem;
+}
+
+.activity-icon {
+    background-color: #e8f0fe;
+    color: #4285f4;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.activity-info {
+    flex: 1;
+}
+
+.activity-info h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.activity-info p {
+    margin: 0.3rem 0;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.activity-result {
+    font-size: 0.9rem;
+}
+
+.activity-result .score {
+    font-weight: 500;
+    color: #4CAF50;
+}
+
+/* Resources Section */
+.resources-section {
+    margin-bottom: 2rem;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    padding: 0.6rem 2.5rem 0.6rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    width: 220px;
+    font-size: 0.9rem;
+}
+
+.search-box i {
+    position: absolute;
+    right: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.resources-filters {
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.filter-select {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.resource-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.resource-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+}
+
+.resource-icon {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    font-size: 2rem;
+    color: #4285f4;
+}
+
+.pdf-icon {
+    color: #F44336;
+}
+
+.doc-icon, .docx-icon {
+    color: #4285F4;
+}
+
+.ppt-icon, .pptx-icon {
+    color: #FF9800;
+}
+
+.zip-icon, .archive-icon {
+    color: #795548;
+}
+
+.resource-info {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.resource-info h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.resource-info p {
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    flex: 1;
+}
+
+.resource-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.resource-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.resource-actions {
+    padding: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.download-btn {
+    width: 100%;
+    padding: 0.6rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.download-btn:hover {
+    background-color: #3d8b40;
+}
+
+/* Loading and Empty States */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    grid-column: 1 / -1;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #4285f4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    text-align: center;
+    grid-column: 1 / -1;
+}
+
+.empty-icon {
+    font-size: 3rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.empty-title {
+    margin: 0 0 0.5rem;
+    color: #666;
+}
+
+.empty-description {
+    margin: 0;
+    color: #888;
+    max-width: 400px;
+}
+
+/* Getting Started Guide */
+.getting-started-steps {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.step-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    align-items: center;
+}
+
+.step-number {
+    width: 36px;
+    height: 36px;
+    background-color: #4285f4;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content h3 {
+    margin: 0 0 0.3rem;
+    font-size: 1.1rem;
+}
+
+.step-content p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Communication with Teacher Section */
+.communication-container {
+    padding: 1.5rem;
+}
+
+.teacher-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.teacher-avatar {
+    width: 60px;
+    height: 60px;
+    background-color: #e8f0fe;
+    color: #4285f4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.teacher-details h3 {
+    margin: 0 0 0.3rem;
+    font-size: 1.1rem;
+}
+
+.teacher-details p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.communication-options {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.communication-option {
+    flex: 1;
+    min-width: 160px;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.communication-option:hover {
+    background-color: #e8f0fe;
+    transform: translateY(-3px);
+}
+
+.communication-option i {
+    font-size: 1.5rem;
+    color: #4285f4;
+}
+
+/* Help Section */
+.help-card {
+    margin-bottom: 2rem;
+}
+
+.help-options {
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.help-option {
+    flex: 1;
+    min-width: 160px;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.help-option:hover {
+    background-color: #e8f0fe;
+    transform: translateY(-3px);
+}
+
+.help-option i {
+    font-size: 1.5rem;
+    color: #4285f4;
+}
+
+/* Animations */
+.page-transition {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .progress-stats {
+        flex-direction: column;
+    }
+
+    .resources-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .communication-options,
+    .help-options {
+        flex-direction: column;
+    }
+}

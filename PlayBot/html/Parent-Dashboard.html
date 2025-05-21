@@ -4,16 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parent Dashboard - MACO</title>
+    <title>Parent Dashboard - PlayBot</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/auth.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
-        <!-- Add this line for favicon -->
+    <link rel="stylesheet" href="../css/parent-dashboard.css">
+    <!-- Add this line for favicon -->
     <link rel="icon" href="../images/favicon.png" type="image/png">
-    <!-- Add Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
@@ -77,15 +76,14 @@
                                     <a href="Register.html" class="auth-btn signup">Sign Up</a>
                                 </div>
 
-                                <!-- Add this to your header.html or equivalent file -->
-<div id="user-profile" class="dropdown">
-    <a href="#" class="profile-btn dropdown-toggle">
-        <span id="user-name">Account</span> <i class="fas fa-user"></i>
-    </a>
-    <div class="dropdown-content">
-        <!-- Dropdown items will be populated by JavaScript -->
-    </div>
-</div>
+                                <div id="user-profile" class="user-profile">
+                                    <a class="profile-btn" href="#">
+                                        <span id="user-name">Account</span>
+                                    </a>
+                                    <div class="dropdown-content">
+                                        <a href="Parent-Dashboard.html">Dashboard</a>
+                                        <a href="#" onclick="handleLogout()">Logout</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -96,209 +94,199 @@
         </header>
         <!-- End Header Area -->
 
-        <div class="dashboard">
-            <div class="dashboard__container">
-                <div class="dashboard__welcome">
-                    <h1>Parent Dashboard</h1>
-                    <p>Monitor your child's PlayBot learning journey and discover ways to support their programming
-                        education at home.</p>
+        <!-- Dashboard Content -->
+        <main class="dashboard-content single-page">
+            <!-- Parent Welcome & Profile Quick Edit -->
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h1>Welcome, <span id="parent-name">Parent</span>!</h1>
+                    <p class="current-date" id="current-date">Today's Date</p>
                 </div>
-
-                <div class="dashboard__stats">
-                    <div class="dashboard__stat-box">
-                        <div class="dashboard__stat-value"><i class="fas fa-check-circle"></i><span>5</span></div>
-                        <div class="dashboard__stat-label">Completed Activities</div>
-                    </div>
-                    <div class="dashboard__stat-box">
-                        <div class="dashboard__stat-value"><i class="fas fa-code"></i><span>3</span></div>
-                        <div class="dashboard__stat-label">Programming Skills</div>
-                    </div>
-                    <div class="dashboard__stat-box">
-                        <div class="dashboard__stat-value"><i class="fas fa-clock"></i><span>2</span></div>
-                        <div class="dashboard__stat-label">Hours of Engagement</div>
-                    </div>
-                </div>
-
-                <!-- Parent Resources Section -->
-                <div class="resources-section">
-                    <h2><i class="fas fa-book-reader"></i> Parent Resources</h2>
-                    <div class="resources-grid">
-                        <div class="resource-card">
-                            <div class="resource-icon">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            <div class="resource-content">
-                                <h3>At-Home Activities</h3>
-                                <p>Fun programming activities you can do at home to reinforce learning</p>
-                                <a href="#" class="resource-link">View Activities <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-
-                        <div class="resource-card">
-                            <div class="resource-icon">
-                                <i class="fas fa-video"></i>
-                            </div>
-                            <div class="resource-content">
-                                <h3>Tutorial Videos</h3>
-                                <p>Instructional videos to help you understand what your child is learning</p>
-                                <a href="#" class="resource-link">Watch Videos <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-
-                        <div class="resource-card">
-                            <div class="resource-icon">
-                                <i class="fas fa-question-circle"></i>
-                            </div>
-                            <div class="resource-content">
-                                <h3>FAQs for Parents</h3>
-                                <p>Answers to common questions about early programming education</p>
-                                <a href="#" class="resource-link">Read FAQs <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-
-                        <div class="resource-card">
-                            <div class="resource-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <div class="resource-content">
-                                <h3>Upcoming Events</h3>
-                                <p>Parent workshops and family programming events</p>
-                                <a href="#" class="resource-link">View Calendar <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Learning Materials Download Section -->
-                <div class="materials-section">
-                    <h2><i class="fas fa-download"></i> Learning Materials</h2>
-
-                    <div class="materials-category">
-                        <div class="materials-category-header">
-                            <h3><i class="fas fa-book"></i> Lesson Materials</h3>
-                        </div>
-                        <div class="materials-list">
-                            <div class="material-item">
-                                <div class="material-info">
-                                    <h4>Introduction to PlayBot Programming</h4>
-                                    <p>Basic guide for parents to understand the fundamentals of PlayBot programming
-                                        concepts.</p>
-                                    <div class="file-info">PDF • 2.5 MB</div>
-                                </div>
-                                <a href="#" class="download-btn">
-                                    <i class="fas fa-download"></i> Download
-                                </a>
-                            </div>
-
-                            <div class="material-item">
-                                <div class="material-info">
-                                    <h4>Home Practice Activities</h4>
-                                    <p>Collection of offline activities to practice programming concepts at home.</p>
-                                    <div class="file-info">PDF • 1.8 MB</div>
-                                </div>
-                                <a href="#" class="download-btn">
-                                    <i class="fas fa-download"></i> Download
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="materials-category">
-                        <div class="materials-category-header">
-                            <h3><i class="fas fa-file-alt"></i> Printable Worksheets</h3>
-                        </div>
-                        <div class="materials-list">
-                            <div class="material-item">
-                                <div class="material-info">
-                                    <h4>Sequencing Practice Sheets</h4>
-                                    <p>Printable worksheets to help children practice sequencing commands.</p>
-                                    <div class="file-info">PDF • 3.2 MB</div>
-                                </div>
-                                <a href="#" class="download-btn">
-                                    <i class="fas fa-download"></i> Download
-                                </a>
-                            </div>
-
-                            <div class="material-item">
-                                <div class="material-info">
-                                    <h4>Robot Command Cards</h4>
-                                    <p>Cut-out cards with programming commands for hands-on learning activities.</p>
-                                    <div class="file-info">PDF • 4.5 MB</div>
-                                </div>
-                                <a href="#" class="download-btn">
-                                    <i class="fas fa-download"></i> Download
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="materials-category">
-                        <div class="materials-category-header">
-                            <h3><i class="fas fa-puzzle-piece"></i> Learning Games</h3>
-                        </div>
-                        <div class="materials-list">
-                            <div class="material-item">
-                                <div class="material-info">
-                                    <h4>PlayBot Board Game</h4>
-                                    <p>Printable board game that teaches programming concepts through play.</p>
-                                    <div class="file-info">PDF • 5.3 MB</div>
-                                </div>
-                                <a href="#" class="download-btn">
-                                    <i class="fas fa-download"></i> Download
-                                </a>
-                            </div>
-
-                            <div class="material-item">
-                                <div class="material-info">
-                                    <h4>Coding Card Game</h4>
-                                    <p>Card-based game that helps children learn sequencing and logic.</p>
-                                    <div class="file-info">PDF • 3.7 MB</div>
-                                </div>
-                                <a href="#" class="download-btn">
-                                    <i class="fas fa-download"></i> Download
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Teacher Communication -->
-                <div class="communication-section">
-                    <h2><i class="fas fa-comments"></i> Communicate with Teacher</h2>
-                    <div class="communication-card">
-                        <div class="teacher-info">
-                            <div class="teacher-avatar">
-                                <i class="fas fa-user-tie"></i>
-                            </div>
-                            <div class="teacher-details">
-                                <h3>Ms. Wong</h3>
-                                <p>K3 Class Teacher</p>
-                            </div>
-                        </div>
-                        <div class="communication-options">
-                            <a href="#" class="comm-option">
-                                <i class="fas fa-envelope"></i>
-                                <span>Send Message</span>
-                            </a>
-                            <a href="#" class="comm-option">
-                                <i class="fas fa-video"></i>
-                                <span>Schedule Meeting</span>
-                            </a>
-                            <a href="#" class="comm-option">
-                                <i class="fas fa-clipboard-list"></i>
-                                <span>View Notes</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dashboard-actions">
-                    <button onclick="handleLogout()" class="dashboard__action logout-btn">
+                <div class="quick-profile">
+                    <button id="logout-btn" class="logout-btn" onclick="handleLogout()">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </button>
                 </div>
             </div>
-        </div>
+
+            <!-- Child Progress Section -->
+            <div class="content-card child-progress-section">
+                <div class="card-header">
+                    <h2><i class="fas fa-chart-line"></i> Your Child's Progress</h2>
+                </div>
+                
+                <div class="progress-stats">
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Completed Activities</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="fas fa-code"></i></div>
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Programming Skills</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Hours of Learning</div>
+                    </div>
+                </div>
+
+                <div class="recent-activities">
+                    <h3>Recent Activities</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon"><i class="fas fa-robot"></i></div>
+                            <div class="activity-info">
+                                <h4>Basic Robot Movement</h4>
+                                <p>Completed on <span class="date">May 18, 2025</span></p>
+                                <div class="activity-result">Score: <span class="score">90%</span></div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon"><i class="fas fa-puzzle-piece"></i></div>
+                            <div class="activity-info">
+                                <h4>Programming Logic Puzzle</h4>
+                                <p>Completed on <span class="date">May 15, 2025</span></p>
+                                <div class="activity-result">Score: <span class="score">85%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parent Resources Section -->
+            <div class="content-card resources-section">
+                <div class="card-header">
+                    <h2><i class="fas fa-book-reader"></i> Parent Resources</h2>
+                    <div class="header-actions">
+                        <div class="search-box">
+                            <input type="text" id="resource-search" placeholder="Search resources...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resources-filters">
+                    <div class="filter-group">
+                        <label>Resource Type:</label>
+                        <select id="resource-type-filter" class="filter-select">
+                            <option value="all">All Types</option>
+                            <option value="at-home">At-Home Activities</option>
+                            <option value="guides">Parent Guides</option>
+                            <option value="videos">Tutorial Videos</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Age Group:</label>
+                        <select id="age-group-filter" class="filter-select">
+                            <option value="all">All Ages</option>
+                            <option value="5-7">Ages 5-7</option>
+                            <option value="8-10">Ages 8-10</option>
+                            <option value="11-13">Ages 11-13</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Resources will be loaded dynamically from database -->
+                <div id="resources-container" class="resources-grid">
+                    <!-- Loading state -->
+                    <div id="resources-loading" class="loading-container">
+                        <div class="loading-spinner"></div>
+                        <p>Loading resources...</p>
+                    </div>
+
+                    <!-- Empty state - shown when no resources are available -->
+                    <div id="resources-empty" class="empty-state" style="display: none;">
+                        <div class="empty-icon">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <h3 class="empty-title">No Resources Available</h3>
+                        <p class="empty-description">No parent resources have been uploaded yet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Getting Started Guide -->
+            <div class="content-card getting-started">
+                <div class="card-header">
+                    <h2>Supporting Your Child with PlayBot</h2>
+                </div>
+                <div class="getting-started-steps">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Explore Together</h3>
+                            <p>Spend time exploring PlayBot programming concepts with your child.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Practice at Home</h3>
+                            <p>Use our at-home activities to reinforce programming skills.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Track Progress</h3>
+                            <p>Monitor your child's progress and celebrate their achievements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Communication with Teacher Section -->
+            <div class="content-card communication-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-comments"></i> Communicate with Teacher</h2>
+                </div>
+                <div class="communication-container">
+                    <div class="teacher-info">
+                        <div class="teacher-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="teacher-details">
+                            <h3>Ms. Johnson</h3>
+                            <p>PlayBot Instructor</p>
+                        </div>
+                    </div>
+                    <div class="communication-options">
+                        <a href="mailto:teacher@playbot.edu" class="communication-option">
+                            <i class="fas fa-envelope"></i>
+                            <span>Send Email</span>
+                        </a>
+                        <a href="#" class="communication-option">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Schedule Meeting</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help Section -->
+            <div class="content-card help-card">
+                <div class="card-header">
+                    <h2>Need Help?</h2>
+                </div>
+                <div class="help-options">
+                    <a href="mailto:parent-support@playbot.edu" class="help-option">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email Support</span>
+                    </a>
+                    <a href="#" class="help-option">
+                        <i class="fas fa-question-circle"></i>
+                        <span>FAQ</span>
+                    </a>
+                    <a href="#" class="help-option">
+                        <i class="fas fa-book"></i>
+                        <span>Parent Guide</span>
+                    </a>
+                </div>
+            </div>
+        </main>
 
         <!-- Start Footer Area -->
         <footer class="footer__area">
@@ -375,15 +363,14 @@
         <!-- End Footer Area -->
     </div>
 
-    <!-- All js files are included here. -->
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
-    <!-- Your Firebase configuration -->
+
+    <!-- Your scripts -->
     <script src="../js/firebase-config.js"></script>
-    <!-- Your application scripts -->
     <script src="../js/components.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/auth.js"></script>
@@ -391,57 +378,287 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Check login status properly with Promise handling
-            checkLoginStatus().then(({ isLoggedIn, currentUser }) => {
-                if (!isLoggedIn || !currentUser) {
-                    window.location.href = 'Login.html';
-                    return;
-                }
+            // Apply fade-in effect when page loads
+            document.body.classList.add('page-transition');
 
-                // Verify role is parent
-                if (currentUser.role !== 'parent') {
-                    window.location.href = 'Home.html';
-                    return;
-                }
+            setTimeout(() => {
+                document.body.classList.remove('page-transition');
+            }, 100);
 
-                // Update welcome message with user name
-                const welcomeTitle = document.querySelector('.dashboard__welcome h1');
-                if (welcomeTitle && currentUser.firstName) {
-                    welcomeTitle.textContent = `Welcome, ${currentUser.firstName}!`;
-                }
+            // Set current date
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', options);
 
-                // Update user name in header
-                const userNameSpan = document.getElementById('user-name');
-                if (userNameSpan && currentUser.firstName) {
-                    userNameSpan.textContent = currentUser.firstName;
-                }
+            // Check login status
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const userRole = localStorage.getItem('currentUserRole');
+            const userEmail = localStorage.getItem('currentUserEmail');
 
-                // Now we know user is properly authenticated, update UI
-                document.querySelector('.auth-buttons')?.classList.add('hidden');
-                document.getElementById('user-profile')?.classList.add('visible');
-
-                // Load dashboard data if needed
-                // loadParentDashboardData(currentUser.uid);
-            }).catch(error => {
-                console.error("Authentication error:", error);
-                // Redirect to login on auth error
+            if (!isLoggedIn || userRole !== 'parent') {
+                console.log("Not authenticated as parent, redirecting to login");
                 window.location.href = 'Login.html';
-            });
+                return;
+            }
+
+            // Update parent name
+            const firstName = localStorage.getItem('userFirstName_' + userEmail) || 'Parent';
+            const lastName = localStorage.getItem('userLastName_' + userEmail) || '';
+
+            document.getElementById('parent-name').textContent = firstName;
+            document.getElementById('user-name').textContent = firstName;
+
+            // Hide auth buttons, show user profile
+            document.querySelector('.auth-buttons').style.display = 'none';
+            document.getElementById('user-profile').style.display = 'flex';
+
+            // Load resources from database
+            loadResources();
         });
 
+        // Load resources from database
+        function loadResources() {
+            const resourcesContainer = document.getElementById('resources-container');
+            const loadingElement = document.getElementById('resources-loading');
+            const emptyElement = document.getElementById('resources-empty');
+
+            // Show loading state
+            if (loadingElement) loadingElement.style.display = 'flex';
+            if (emptyElement) emptyElement.style.display = 'none';
+
+            // Try to get resources from Firebase
+            if (typeof fbDb !== 'undefined' && fbDb) {
+                fbDb.collection('parent_resources')
+                    .orderBy('uploadDate', 'desc')
+                    .get()
+                    .then(snapshot => {
+                        // Hide loading state
+                        if (loadingElement) loadingElement.style.display = 'none';
+
+                        if (snapshot.empty) {
+                            // Show empty state if no resources
+                            if (emptyElement) emptyElement.style.display = 'flex';
+                            return;
+                        }
+
+                        // Clear any existing resources (except loading and empty states)
+                        Array.from(resourcesContainer.children).forEach(child => {
+                            if (child.id !== 'resources-loading' && child.id !== 'resources-empty') {
+                                resourcesContainer.removeChild(child);
+                            }
+                        });
+
+                        // Add resources from database
+                        snapshot.forEach(doc => {
+                            const resource = doc.data();
+                            const resourceElement = createResourceElement(doc.id, resource);
+                            resourcesContainer.appendChild(resourceElement);
+                        });
+
+                        // Set up search and filter functionality
+                        setupResourceFilters();
+                    })
+                    .catch(error => {
+                        console.error("Error loading resources:", error);
+                        if (loadingElement) loadingElement.style.display = 'none';
+                        if (emptyElement) {
+                            emptyElement.style.display = 'flex';
+                            emptyElement.querySelector('.empty-description').textContent =
+                                'Error loading resources. Please try again later.';
+                        }
+                    });
+            } else {
+                // Firebase not available, load sample data
+                if (loadingElement) loadingElement.style.display = 'none';
+
+                // Create sample resources if no database
+                const sampleResources = [
+                    {
+                        id: 'sample1',
+                        title: 'Supporting Your Child\'s Programming Journey',
+                        description: 'A guide for parents to help children develop programming skills at home.',
+                        fileType: 'pdf',
+                        fileSize: '1.8 MB',
+                        uploadDate: new Date().toISOString(),
+                        type: 'guides',
+                        ageGroup: 'all',
+                        fileUrl: '#'
+                    },
+                    {
+                        id: 'sample2',
+                        title: 'Weekend Programming Activities',
+                        description: 'Fun programming activities to do with your child during weekends.',
+                        fileType: 'doc',
+                        fileSize: '1.5 MB',
+                        uploadDate: new Date().toISOString(),
+                        type: 'at-home',
+                        ageGroup: '5-7',
+                        fileUrl: '#'
+                    },
+                    {
+                        id: 'sample3',
+                        title: 'PlayBot Basics Tutorial Videos',
+                        description: 'Video tutorials explaining the basics of PlayBot programming for parents.',
+                        fileType: 'zip',
+                        fileSize: '45 MB',
+                        uploadDate: new Date().toISOString(),
+                        type: 'videos',
+                        ageGroup: '8-10',
+                        fileUrl: '#'
+                    }
+                ];
+
+                sampleResources.forEach(resource => {
+                    const resourceElement = createResourceElement(resource.id, resource);
+                    resourcesContainer.appendChild(resourceElement);
+                });
+
+                // Set up filters
+                setupResourceFilters();
+            }
+        }
+
+        // Create resource element
+        function createResourceElement(id, resource) {
+            const div = document.createElement('div');
+            div.className = 'resource-card';
+            div.dataset.id = id;
+            div.dataset.type = resource.type || 'other';
+            div.dataset.age = resource.ageGroup || 'all';
+
+            // Determine icon based on file type
+            let iconClass = 'fas fa-file';
+            if (resource.fileType === 'pdf') {
+                iconClass = 'fas fa-file-pdf';
+            } else if (resource.fileType === 'zip' || resource.fileType === 'archive') {
+                iconClass = 'fas fa-file-archive';
+            } else if (resource.fileType === 'doc' || resource.fileType === 'docx') {
+                iconClass = 'fas fa-file-word';
+            } else if (resource.fileType === 'ppt' || resource.fileType === 'pptx') {
+                iconClass = 'fas fa-file-powerpoint';
+            } else if (resource.type === 'videos') {
+                iconClass = 'fas fa-video';
+            }
+
+            div.innerHTML = `
+                <div class="resource-icon ${resource.fileType}-icon">
+                    <i class="${iconClass}"></i>
+                </div>
+                <div class="resource-info">
+                    <h3>${resource.title}</h3>
+                    <p>${resource.description || 'No description provided.'}</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-file"></i> ${resource.fileType.toUpperCase() || 'FILE'}</span>
+                        <span><i class="fas fa-download"></i> ${resource.fileSize || 'N/A'}</span>
+                        <span><i class="fas fa-calendar-alt"></i> ${new Date(resource.uploadDate).toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="resource-actions">
+                    <button class="download-btn" onclick="downloadResource('${id}', '${resource.fileUrl || '#'}')">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            `;
+
+            return div;
+        }
+
+        // Download resource function
+        function downloadResource(id, url) {
+            if (url === '#') {
+                alert('This is a sample resource. In the actual application, you would download the file.');
+                return;
+            }
+
+            // Create an invisible anchor to trigger download
+            const a = document.createElement('a');
+            a.href = url;
+            a.target = '_blank';
+            a.download = '';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            // Track download in database if possible
+            if (typeof fbDb !== 'undefined' && fbDb) {
+                fbDb.collection('resource_downloads').add({
+                    resourceId: id,
+                    userId: localStorage.getItem('currentUserEmail'),
+                    downloadDate: new Date()
+                }).catch(err => console.warn("Could not track download:", err));
+            }
+        }
+
+        // Set up resource filters and search
+        function setupResourceFilters() {
+            const searchInput = document.getElementById('resource-search');
+            const typeFilter = document.getElementById('resource-type-filter');
+            const ageFilter = document.getElementById('age-group-filter');
+
+            // Filter function
+            function filterResources() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const typeValue = typeFilter.value;
+                const ageValue = ageFilter.value;
+
+                const resources = document.querySelectorAll('.resource-card');
+
+                resources.forEach(resource => {
+                    const title = resource.querySelector('h3').textContent.toLowerCase();
+                    const description = resource.querySelector('p').textContent.toLowerCase();
+                    const type = resource.dataset.type;
+                    const age = resource.dataset.age;
+
+                    const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                    const matchesType = typeValue === 'all' || type === typeValue;
+                    const matchesAge = ageValue === 'all' || age === ageValue;
+
+                    if (matchesSearch && matchesType && matchesAge) {
+                        resource.style.display = 'flex';
+                    } else {
+                        resource.style.display = 'none';
+                    }
+                });
+
+                // Check if any resources are visible
+                const visibleResources = document.querySelectorAll('.resource-card[style="display: flex"]');
+                const emptyElement = document.getElementById('resources-empty');
+
+                if (visibleResources.length === 0 && emptyElement) {
+                    emptyElement.style.display = 'flex';
+                    emptyElement.querySelector('.empty-title').textContent = 'No Matching Resources';
+                    emptyElement.querySelector('.empty-description').textContent =
+                        'Try adjusting your search or filters to find resources.';
+                } else if (emptyElement) {
+                    emptyElement.style.display = 'none';
+                }
+            }
+
+            // Add event listeners
+            if (searchInput) searchInput.addEventListener('input', filterResources);
+            if (typeFilter) typeFilter.addEventListener('change', filterResources);
+            if (ageFilter) ageFilter.addEventListener('change', filterResources);
+        }
+
         function handleLogout() {
-            logoutUser().then(() => {
+            // Clear localStorage
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('currentUserEmail');
+            localStorage.removeItem('currentUserRole');
+
+            // Try Firebase logout if available
+            if (typeof fbAuth !== 'undefined' && fbAuth) {
+                fbAuth.signOut().then(() => {
+                    window.location.href = 'Home.html';
+                }).catch(() => {
+                    window.location.href = 'Home.html';
+                });
+            } else {
+                // Fallback direct redirect
                 window.location.href = 'Home.html';
-            }).catch(error => {
-                console.error("Logout error:", error);
-                alert("Error logging out. Please try again.");
-            });
+            }
         }
     </script>
-    <!-- Preload common resources -->
-    <link rel="preload" as="image" href="../images/MACO.png">
-    <link rel="preload" as="style" href="../css/header.css">
-    <link rel="preload" as="style" href="../css/footer.css">
 </body>
 
 </html>
