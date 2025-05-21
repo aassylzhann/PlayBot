@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Set up tab navigation
     setupTabs();
+    
+    // Setup sidebar navigation
+    setupSidebar();
 });
 
 /**
@@ -112,6 +115,46 @@ function setupTabs() {
 
             // Log for debugging
             console.log('Tab clicked:', targetId);
+        });
+    });
+}
+
+/**
+ * Setup sidebar navigation
+ */
+function setupSidebar() {
+    const sidebarItems = document.querySelectorAll('.sidebar__menu li');
+    const sections = document.querySelectorAll('.dashboard__section');
+
+    // Hide all sections except dashboard initially
+    sections.forEach(section => {
+        if (section.id !== 'dashboard') {
+            section.style.display = 'none';
+        }
+    });
+
+    sidebarItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Get section to show
+            const sectionId = this.getAttribute('data-section');
+            const sectionToShow = document.getElementById(sectionId);
+
+            // Update active states
+            sidebarItems.forEach(si => si.classList.remove('active'));
+            this.classList.add('active');
+
+            // Show/hide sections
+            sections.forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+
+            if (sectionToShow) {
+                sectionToShow.style.display = 'block';
+                sectionToShow.classList.add('active');
+            }
+
+            console.log('Switched to section:', sectionId); // Debug log
         });
     });
 }
