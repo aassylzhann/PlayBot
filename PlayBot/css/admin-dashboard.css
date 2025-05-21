@@ -16,25 +16,36 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Sidebar Menu Styles */
+.sidebar__menu {
+    padding: 1rem 0;
+}
+
 .sidebar__menu li {
-    padding: 15px 20px;
+    padding: 1rem 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.sidebar__menu li i {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
 }
 
 .sidebar__menu li:hover {
     background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
 }
 
 .sidebar__menu li.active {
     background-color: rgba(255, 255, 255, 0.2);
-    font-weight: bold;
-}
-
-.sidebar__menu li i {
-    margin-right: 10px;
-    width: 20px;
-    text-align: center;
+    color: #fff;
+    font-weight: 500;
+    border-left: 4px solid #fff;
 }
 
 /* Main Content Area */
@@ -45,10 +56,13 @@
 /* Dashboard Section Styles */
 .dashboard__section {
     display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .dashboard__section.active {
     display: block;
+    opacity: 1;
 }
 
 /* Cards Styling */

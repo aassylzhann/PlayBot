@@ -86,23 +86,32 @@ function initializeDashboard() {
  * Setup sidebar tab navigation
  */
 function setupTabs() {
-    console.log("Setting up tabs");
     const tabItems = document.querySelectorAll('.sidebar__menu li');
     const sections = document.querySelectorAll('.dashboard__section');
     
+    // Hide all sections except the first one
+    sections.forEach((section, index) => {
+        if (index !== 0) section.style.display = 'none';
+    });
+
     tabItems.forEach(item => {
         item.addEventListener('click', function() {
-            // Get the target section id from data-section attribute
-            const targetSection = this.getAttribute('data-section');
-            console.log("Switching to section:", targetSection);
-            
-            // Remove active class from all tabs and sections
+            // Get the target section
+            const targetId = this.getAttribute('data-section');
+            const targetSection = document.getElementById(targetId);
+
+            // Remove active class from all tabs and hide all sections
             tabItems.forEach(tab => tab.classList.remove('active'));
-            sections.forEach(section => section.classList.remove('active'));
-            
-            // Add active class to clicked tab and corresponding section
+            sections.forEach(section => section.style.display = 'none');
+
+            // Add active class to clicked tab and show target section
             this.classList.add('active');
-            document.getElementById(targetSection)?.classList.add('active');
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
+
+            // Log for debugging
+            console.log('Tab clicked:', targetId);
         });
     });
 }
