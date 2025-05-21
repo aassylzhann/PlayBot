@@ -20,38 +20,34 @@ function setupNavigation() {
     const sidebarItems = document.querySelectorAll('.sidebar__menu li');
     const sections = document.querySelectorAll('.dashboard__section');
 
-    // First hide all sections except dashboard
+    // Hide all sections except the one with .active
     sections.forEach(section => {
-        if (section.id === 'dashboard') {
-            section.style.display = 'block';
-            section.classList.add('active');
-        } else {
+        if (!section.classList.contains('active')) {
             section.style.display = 'none';
-            section.classList.remove('active');
         }
     });
 
     // Add click handlers to sidebar items
     sidebarItems.forEach(item => {
         item.addEventListener('click', function() {
-            const sectionId = this.getAttribute('data-section');
-            console.log('Clicking section:', sectionId); // Debug log
-
-            // Update sidebar active state
-            sidebarItems.forEach(si => si.classList.remove('active'));
+            // Remove active from all sidebar items
+            sidebarItems.forEach(i => i.classList.remove('active'));
+            // Add active to clicked item
             this.classList.add('active');
 
-            // Update sections visibility
+            // Hide all sections
             sections.forEach(section => {
-                if (section.id === sectionId) {
-                    section.style.display = 'block';
-                    section.classList.add('active');
-                    console.log('Showing section:', section.id); // Debug log
-                } else {
-                    section.style.display = 'none';
-                    section.classList.remove('active');
-                }
+                section.classList.remove('active');
+                section.style.display = 'none';
             });
+
+            // Show the selected section
+            const sectionId = this.getAttribute('data-section');
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                targetSection.style.display = 'block';
+            }
         });
     });
 }
