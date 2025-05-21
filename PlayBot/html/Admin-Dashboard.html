@@ -77,13 +77,12 @@
                                     <a href="Login.html" class="auth-btn login">Login</a>
                                     <a href="Register.html" class="auth-btn signup">Sign Up</a>
                                 </div>
-
-                                <div id="user-profile" class="user-profile">
+                                <div id="user-profile" class="user-profile" style="display:none;">
                                     <a class="profile-btn" href="#">
-                                        <span id="user-name">Account</span>
+                                        <span id="user-name">Admin</span>
                                     </a>
                                     <div class="dropdown-content">
-                                        <a href="Parent-Dashboard.html">Dashboard</a>
+                                        <a href="Admin-Dashboard.html">Dashboard</a>
                                         <a href="#" onclick="handleLogout()">Logout</a>
                                     </div>
                                 </div>
@@ -389,9 +388,18 @@
                     }
                 });
             });
+
             // Hide auth buttons, show user profile for admin
-            document.querySelector('.auth-buttons').style.display = 'none';
-            document.getElementById('user-profile').style.display = 'flex';
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const userRole = localStorage.getItem('currentUserRole');
+            if (isLoggedIn && userRole === 'admin') {
+                document.querySelector('.auth-buttons').style.display = 'none';
+                document.getElementById('user-profile').style.display = 'inline-block';
+                document.getElementById('user-name').textContent = 'Admin';
+            } else {
+                document.querySelector('.auth-buttons').style.display = '';
+                document.getElementById('user-profile').style.display = 'none';
+            }
         });
 
         function handleLogout() {
