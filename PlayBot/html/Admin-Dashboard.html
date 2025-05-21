@@ -764,14 +764,83 @@
             loadSettings();
         }
 
-        // Edit Material
+        // Setup tab navigation
+        function setupTabs() {
+            const tabItems = document.querySelectorAll('.sidebar__menu li');
+            const sections = document.querySelectorAll('.dashboard__section');
+            
+            if (!tabItems.length || !sections.length) {
+                console.warn("Tab elements not found");
+                return;
+            }
+            
+            console.log("Setting up tabs with", tabItems.length, "tabs and", sections.length, "sections");
+            
+            tabItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    
+                    // Remove active class from all tabs and sections
+                    tabItems.forEach(tab => tab.classList.remove('active'));
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to current tab and section
+                    this.classList.add('active');
+                    const currentSection = document.getElementById(sectionId);
+                    if (currentSection) {
+                        currentSection.classList.add('active');
+                    } else {
+                        console.warn("Section not found:", sectionId);
+                    }
+                });
+            });
+            
+            // Set default active tab if none is active
+            if (!document.querySelector('.sidebar__menu li.active')) {
+                const firstTab = tabItems[0];
+                if (firstTab) {
+                    firstTab.click();
+                }
+            }
+        }
+
+        // Setup modals
+        function setupModals() {
+            // Get all modals
+            const modals = document.querySelectorAll('.modal');
+            
+            // Get all close buttons
+            const closeButtons = document.querySelectorAll('.close-modal');
+            
+            // Close modal when clicking close button
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal-id');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                modals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Edit Material (called from HTML)
         function editMaterial(id) {
             const modal = document.getElementById('edit-material-modal');
             if (!modal) return;
             
             document.getElementById('edit-material-id').value = id;
             
-            // Get material data from Firebase
+            // Get material data
             getMaterial(id)
                 .then(material => {
                     // Populate form fields with material data
@@ -791,20 +860,20 @@
                 });
         }
 
-        // Delete Material
+        // Delete Material (called from HTML)
         function deleteMaterial(id) {
             if (confirm('Are you sure you want to delete this material?')) {
                 deleteMaterialFromDB(id);
             }
         }
 
-        // View User
+        // View User (called from HTML)
         function viewUser(id) {
             // In a real app, you would navigate to a user detail page or open a modal
             alert('Viewing user details will be implemented in the next phase');
         }
 
-        // Delete User
+        // Delete User (called from HTML)
         function deleteUser(id) {
             if (confirm('Are you sure you want to delete this user?')) {
                 deleteUserFromDB(id);
