@@ -18,40 +18,31 @@ body {
 }
 
 .dashboard__container {
-  display: flex;
-  padding: 0;
-  margin: 0;
-  background-color: #f5f7fa;
-  min-height: calc(100vh - 80px);
-  flex: 1;
-  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  padding: 2rem;
   max-width: 1920px;
   margin: 0 auto;
-  width: 100%;
+  background-color: #f8f9fa;
 }
 
 /* Sidebar */
 .dashboard__sidebar {
-  width: 250px;
-  background-color: #2c3e50;
-  color: #fff;
-  padding: 20px 0;
-  border-radius: 5px;
-  margin-left: 20px;
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  height: calc(100vh - 4rem);
+  position: sticky;
+  top: 2rem;
 }
 
 .sidebar__title {
-  padding: 0 20px 15px;
-  margin: 0 0 15px;
-  font-size: 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.sidebar__title i {
-  color: #3498db;
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .sidebar__menu {
@@ -61,40 +52,29 @@ body {
 }
 
 .sidebar__menu li {
-  padding: 12px 20px;
-  cursor: pointer;
-  transition: background 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  color: rgba(255,255,255,0.8);
 }
 
 .sidebar__menu li:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
 }
 
 .sidebar__menu li.active {
-  background-color: #3498db;
-  position: relative;
-}
-
-.sidebar__menu li.active::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background-color: #ecf0f1;
-}
-
-.sidebar__menu li i {
-  width: 20px;
-  text-align: center;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
 }
 
 /* Main content area */
 .dashboard__content {
+  border-radius: 16px;
+  background: #fff;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   flex: 1;
   padding: 0 20px 20px 20px;
   overflow-y: auto;
@@ -155,16 +135,21 @@ body {
 /* Stats cards */
 .stats__cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 15px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .stat__card {
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 15px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.stat__card:hover {
+  transform: translateY(-5px);
 }
 
 .stat__card h3 {
@@ -425,20 +410,23 @@ body {
 
 .data-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .data-table th,
 .data-table td {
-  padding: 12px 15px;
+  padding: 1rem;
   text-align: left;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid #e9ecef;
 }
 
 .data-table th {
-  background-color: #f9f9f9;
-  font-weight: 600;
-  color: #2c3e50;
+  background: #f8f9fa;
+  padding: 1rem;
+  font-weight: 500;
+  text-align: left;
+  border-bottom: 2px solid #e9ecef;
 }
 
 .data-table tr:hover {
@@ -599,127 +587,77 @@ body {
 
 /* Form elements */
 .form__group {
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 }
 
 .form__group label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #2c3e50;
 }
 
 .form__group input,
 .form__group select,
 .form__group textarea {
   width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
 }
 
-.form__group textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-.form__submit {
-  margin-top: 20px;
+.form__group input:focus,
+.form__group select:focus,
+.form__group textarea:focus {
+  border-color: #3498db;
+  outline: none;
 }
 
 /* Buttons */
 .btn-primary {
-  background-color: #3498db;
-  color: white;
+  background: #3498db;
+  color: #fff;
   border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #2980b9;
+  background: #2980b9;
 }
 
 .action-btn {
-  background: none;
+  padding: 0.5rem;
+  border-radius: 6px;
   border: none;
-  cursor: pointer;
-  padding: 5px;
-  margin-right: 5px;
-  color: #3498db;
+  background: transparent;
+  transition: all 0.3s ease;
 }
 
-.action-btn.delete {
-  color: #e74c3c;
+.action-btn:hover {
+  background: #f8f9fa;
 }
 
-/* Header/Menu customization for admin interface */
-.header__area {
-  background-color: #2c3e50;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* Modal Styling */
+.modal {
+  background: rgba(0,0,0,0.5);
 }
 
-.main__menu > li > a {
-  color: #ecf0f1;
+.modal-content {
+  border-radius: 16px;
+  max-width: 600px;
 }
 
-.main__menu > li > a:hover {
-  color: #3498db;
+.modal-header {
+  background: #f8f9fa;
+  border-radius: 16px 16px 0 0;
+  padding: 1.5rem;
 }
 
-.auth-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.user-profile {
-  position: relative;
-}
-
-.profile-btn {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.profile-btn:hover {
-  background-color: #2980b9;
-}
-
-.user-profile .dropdown-content {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: white;
-  min-width: 160px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  z-index: 1;
-  border-radius: 4px;
-  display: none;
-}
-
-.user-profile:hover .dropdown-content {
-  display: block;
-}
-
-.user-profile .dropdown-content a {
-  color: #333;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.user-profile .dropdown-content a:hover {
-  background-color: #f1f1f1;
+.modal-body {
+  padding: 2rem;
 }
 
 /* Status indicators */
