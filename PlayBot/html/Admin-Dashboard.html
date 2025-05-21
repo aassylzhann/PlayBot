@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Admin Dashboard - PlayBot</title>
-    <meta name="description" content="PlayBot Admin Dashboard">
+    <title>Parent Dashboard - PlayBot</title>
+    <meta name="description" content="PlayBot Parent Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Google Fonts -->
@@ -15,7 +15,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/admin-dashboard.css">
+    <link rel="stylesheet" href="../css/parent-dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- Firebase SDK -->
@@ -27,7 +27,7 @@
     <script src="../js/auth.js"></script>
 </head>
 
-<body class="admin-dashboard">
+<body class="parent-dashboard">
     <div class="wrapper">
         <!-- Header -->
         <header id="header" class="header__area header--one">
@@ -87,12 +87,12 @@
 
                                 <div id="user-profile" class="user-profile">
                                     <a class="profile-btn" href="#">
-                                        <span id="user-name">Admin</span>
+                                        <span id="user-name">Parent</span>
                                     </a>
                                     <div class="dropdown-content">
                                         <a href="Profile.html">My Profile</a>
-                                        <a href="Admin-Dashboard.html">Admin Dashboard</a>
-                                        <a href="#" id="admin-logout-link">Log Out</a>
+                                        <a href="Parent-Dashboard.html">Dashboard</a>
+                                        <a href="#" id="parent-logout-link">Log Out</a>
                                     </div>
                                 </div>
                             </div>
@@ -106,12 +106,12 @@
         <div class="dashboard__container">
             <!-- Sidebar -->
             <div class="dashboard__sidebar">
-                <h3 class="sidebar__title"><i class="fas fa-tachometer-alt"></i> Admin Panel</h3>
+                <h3 class="sidebar__title"><i class="fas fa-user-circle"></i> Parent Panel</h3>
                 <ul class="sidebar__menu">
                     <li class="active" data-section="overview"><i class="fas fa-chart-line"></i> Overview</li>
-                    <li data-section="materials"><i class="fas fa-book"></i> Materials</li>
-                    <li data-section="users"><i class="fas fa-users"></i> Users</li>
-                    <li data-section="settings"><i class="fas fa-cog"></i> Settings</li>
+                    <li data-section="progress"><i class="fas fa-tasks"></i> Child's Progress</li>
+                    <li data-section="resources"><i class="fas fa-book-reader"></i> Resources</li>
+                    <li data-section="communication"><i class="fas fa-comments"></i> Communication</li>
                 </ul>
             </div>
 
@@ -124,31 +124,27 @@
                     <!-- Stats Cards -->
                     <div class="stats__cards">
                         <div class="stat__card">
-                            <h3>Total Users</h3>
-                            <div class="number" id="total-users">127</div>
-                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="users-trend">12%</span>
-                                since last month</div>
+                            <h3>Completed Activities</h3>
+                            <div class="number" id="completed-activities">5</div>
+                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="activities-trend">2</span> since last month</div>
                         </div>
 
                         <div class="stat__card">
-                            <h3>Teachers</h3>
-                            <div class="number" id="total-teachers">43</div>
-                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="teachers-trend">8%</span>
-                                since last month</div>
+                            <h3>Programming Skills</h3>
+                            <div class="number" id="programming-skills">3</div>
+                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="skills-trend">1</span> new skill</div>
                         </div>
 
                         <div class="stat__card">
-                            <h3>Parents</h3>
-                            <div class="number" id="total-parents">84</div>
-                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="parents-trend">15%</span>
-                                since last month</div>
+                            <h3>Learning Hours</h3>
+                            <div class="number" id="learning-hours">2</div>
+                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="hours-trend">0.5</span> since last week</div>
                         </div>
 
                         <div class="stat__card">
-                            <h3>Materials</h3>
-                            <div class="number" id="total-materials">56</div>
-                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="materials-trend">7%</span>
-                                since last month</div>
+                            <h3>Downloaded Resources</h3>
+                            <div class="number" id="downloaded-resources">3</div>
+                            <div class="trend up"><i class="fas fa-arrow-up"></i> <span id="resources-trend">1</span> new</div>
                         </div>
                     </div>
 
@@ -162,29 +158,61 @@
                             <div class="activity__list" id="recent-activities">
                                 <div class="activity__item">
                                     <div class="activity__icon">
-                                        <i class="fas fa-user-plus"></i>
+                                        <i class="fas fa-robot"></i>
                                     </div>
                                     <div class="activity__content">
-                                        <p class="activity__title">New teacher registered</p>
-                                        <span class="activity__meta">2 hours ago</span>
+                                        <p class="activity__title">Basic Robot Movement</p>
+                                        <span class="activity__meta">Completed on May 18, 2025</span>
                                     </div>
                                 </div>
                                 <div class="activity__item">
                                     <div class="activity__icon">
-                                        <i class="fas fa-file-upload"></i>
+                                        <i class="fas fa-puzzle-piece"></i>
                                     </div>
                                     <div class="activity__content">
-                                        <p class="activity__title">New material uploaded</p>
-                                        <span class="activity__meta">5 hours ago</span>
+                                        <p class="activity__title">Programming Logic Puzzle</p>
+                                        <span class="activity__meta">Completed on May 15, 2025</span>
                                     </div>
                                 </div>
                                 <div class="activity__item">
                                     <div class="activity__icon">
-                                        <i class="fas fa-user-edit"></i>
+                                        <i class="fas fa-file-download"></i>
                                     </div>
                                     <div class="activity__content">
-                                        <p class="activity__title">User profile updated</p>
-                                        <span class="activity__meta">Yesterday</span>
+                                        <p class="activity__title">Downloaded Parent Guide</p>
+                                        <span class="activity__meta">3 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Getting Started Guide -->
+                    <div class="content__card">
+                        <div class="card__header">
+                            <h2>Supporting Your Child with PlayBot</h2>
+                        </div>
+                        <div class="card__body">
+                            <div class="steps__container">
+                                <div class="step__item">
+                                    <div class="step__number">1</div>
+                                    <div class="step__content">
+                                        <h3>Explore Together</h3>
+                                        <p>Spend time exploring PlayBot programming concepts with your child.</p>
+                                    </div>
+                                </div>
+                                <div class="step__item">
+                                    <div class="step__number">2</div>
+                                    <div class="step__content">
+                                        <h3>Practice at Home</h3>
+                                        <p>Use our at-home activities to reinforce programming skills.</p>
+                                    </div>
+                                </div>
+                                <div class="step__item">
+                                    <div class="step__number">3</div>
+                                    <div class="step__content">
+                                        <h3>Track Progress</h3>
+                                        <p>Monitor your child's progress and celebrate their achievements.</p>
                                     </div>
                                 </div>
                             </div>
@@ -192,45 +220,144 @@
                     </div>
                 </div>
 
-                <!-- Materials Section -->
-                <div id="materials" class="dashboard__section">
-                    <h1 class="section__title">Manage Educational Materials</h1>
+                <!-- Child Progress Section -->
+                <div id="progress" class="dashboard__section">
+                    <h1 class="section__title">Child's Learning Progress</h1>
+
+                    <!-- Progress Chart -->
+                    <div class="content__card">
+                        <div class="card__header">
+                            <h2>Skill Development</h2>
+                        </div>
+                        <div class="card__body">
+                            <div class="progress__chart">
+                                <!-- In a real app, you would use a chart library here -->
+                                <div class="skills__container">
+                                    <div class="skill__item">
+                                        <div class="skill__name">Logical Thinking</div>
+                                        <div class="skill__bar-container">
+                                            <div class="skill__bar" style="width: 75%;"></div>
+                                        </div>
+                                        <div class="skill__percentage">75%</div>
+                                    </div>
+                                    <div class="skill__item">
+                                        <div class="skill__name">Problem Solving</div>
+                                        <div class="skill__bar-container">
+                                            <div class="skill__bar" style="width: 60%;"></div>
+                                        </div>
+                                        <div class="skill__percentage">60%</div>
+                                    </div>
+                                    <div class="skill__item">
+                                        <div class="skill__name">Coding Basics</div>
+                                        <div class="skill__bar-container">
+                                            <div class="skill__bar" style="width: 40%;"></div>
+                                        </div>
+                                        <div class="skill__percentage">40%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Achievements -->
+                    <div class="content__card">
+                        <div class="card__header">
+                            <h2>Recent Achievements</h2>
+                        </div>
+                        <div class="card__body">
+                            <div class="achievements__list">
+                                <div class="achievement__item">
+                                    <div class="achievement__icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div class="achievement__content">
+                                        <h3>First Program</h3>
+                                        <p>Completed first robot movement sequence</p>
+                                        <span class="achievement__date">May 18, 2025</span>
+                                    </div>
+                                </div>
+                                <div class="achievement__item">
+                                    <div class="achievement__icon">
+                                        <i class="fas fa-medal"></i>
+                                    </div>
+                                    <div class="achievement__content">
+                                        <h3>Logic Master</h3>
+                                        <p>Solved 5 programming logic puzzles</p>
+                                        <span class="achievement__date">May 15, 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Activities -->
+                    <div class="content__card">
+                        <div class="card__header">
+                            <h2>Upcoming Activities</h2>
+                        </div>
+                        <div class="card__body">
+                            <div class="upcoming__list">
+                                <div class="upcoming__item">
+                                    <div class="upcoming__date">
+                                        <div class="month">Jun</div>
+                                        <div class="day">5</div>
+                                    </div>
+                                    <div class="upcoming__content">
+                                        <h3>Robot Navigation Challenge</h3>
+                                        <p>The next lesson will focus on robot navigation through obstacle courses</p>
+                                    </div>
+                                </div>
+                                <div class="upcoming__item">
+                                    <div class="upcoming__date">
+                                        <div class="month">Jun</div>
+                                        <div class="day">12</div>
+                                    </div>
+                                    <div class="upcoming__content">
+                                        <h3>Parent-Teacher Meeting</h3>
+                                        <p>Review your child's progress with their PlayBot instructor</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parent Resources Section -->
+                <div id="resources" class="dashboard__section">
+                    <h1 class="section__title">Parent Resources</h1>
 
                     <!-- Filters -->
                     <div class="filters">
                         <div class="filter-group">
-                            <label for="curriculum-filter">Curriculum:</label>
-                            <select id="curriculum-filter">
-                                <option value="all">All Materials</option>
-                                <option value="playbot">PlayBot</option>
-                                <option value="tinker">Tinker Maker</option>
-                                <option value="general">General</option>
+                            <label for="resource-type-filter">Resource Type:</label>
+                            <select id="resource-type-filter">
+                                <option value="all">All Types</option>
+                                <option value="at-home">At-Home Activities</option>
+                                <option value="guides">Parent Guides</option>
+                                <option value="videos">Tutorial Videos</option>
                             </select>
                         </div>
 
                         <div class="filter-group">
-                            <label for="level-filter">Level:</label>
-                            <select id="level-filter">
-                                <option value="all">All Levels</option>
-                                <option value="beginner">Beginner</option>
-                                <option value="intermediate">Intermediate</option>
-                                <option value="advanced">Advanced</option>
+                            <label for="age-group-filter">Age Group:</label>
+                            <select id="age-group-filter">
+                                <option value="all">All Ages</option>
+                                <option value="5-7">Ages 5-7</option>
+                                <option value="8-10">Ages 8-10</option>
+                                <option value="11-13">Ages 11-13</option>
                             </select>
                         </div>
 
                         <div class="search-box">
-                            <input type="text" id="material-search" placeholder="Search materials...">
+                            <input type="text" id="resource-search" placeholder="Search resources...">
                             <i class="fas fa-search"></i>
                         </div>
                     </div>
 
-                    <!-- Materials Table -->
+                    <!-- Resources Table -->
                     <div class="content__card">
                         <div class="card__header">
-                            <h2>Materials Library</h2>
-                            <button class="btn-primary" id="add-material-btn">
-                                <i class="fas fa-plus"></i> Add Material
-                            </button>
+                            <h2>Resources Library</h2>
                         </div>
                         <div class="card__body">
                             <div class="table-responsive">
@@ -239,51 +366,42 @@
                                         <tr>
                                             <th>Title</th>
                                             <th>Type</th>
-                                            <th>Curriculum</th>
-                                            <th>Level</th>
+                                            <th>Age Group</th>
+                                            <th>File Size</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="materials-table-body">
-                                        <tr data-curriculum="playbot" data-level="beginner">
-                                            <td>Introduction to Robots</td>
-                                            <td>Lesson Plan</td>
-                                            <td>PlayBot - Beginner</td>
-                                            <td>Beginner</td>
+                                    <tbody id="resources-table-body">
+                                        <tr data-type="guides" data-age="all">
+                                            <td>Supporting Your Child's Programming Journey</td>
+                                            <td>Parent Guide</td>
+                                            <td>All Ages</td>
+                                            <td>1.8 MB</td>
                                             <td>
-                                                <button class="action-btn edit" onclick="editMaterial(1)">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="action-btn delete" onclick="deleteMaterial(1)">
-                                                    <i class="fas fa-trash"></i>
+                                                <button class="action-btn" onclick="downloadResource('guide1', '#')">
+                                                    <i class="fas fa-download"></i>
                                                 </button>
                                             </td>
                                         </tr>
-                                        <tr data-curriculum="playbot" data-level="intermediate">
-                                            <td>Programming Logic</td>
-                                            <td>Activity</td>
-                                            <td>PlayBot - Intermediate</td>
-                                            <td>Intermediate</td>
+                                        <tr data-type="at-home" data-age="5-7">
+                                            <td>Weekend Programming Activities</td>
+                                            <td>At-Home Activity</td>
+                                            <td>Ages 5-7</td>
+                                            <td>1.5 MB</td>
                                             <td>
-                                                <button class="action-btn edit" onclick="editMaterial(2)">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="action-btn delete" onclick="deleteMaterial(2)">
-                                                    <i class="fas fa-trash"></i>
+                                                <button class="action-btn" onclick="downloadResource('activity1', '#')">
+                                                    <i class="fas fa-download"></i>
                                                 </button>
                                             </td>
                                         </tr>
-                                        <tr data-curriculum="tinker" data-level="advanced">
-                                            <td>Sensor Integration</td>
-                                            <td>Tutorial</td>
-                                            <td>Tinker Maker - Advanced</td>
-                                            <td>Advanced</td>
+                                        <tr data-type="videos" data-age="8-10">
+                                            <td>PlayBot Basics Tutorial Videos</td>
+                                            <td>Video Tutorial</td>
+                                            <td>Ages 8-10</td>
+                                            <td>45 MB</td>
                                             <td>
-                                                <button class="action-btn edit" onclick="editMaterial(3)">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                <button class="action-btn delete" onclick="deleteMaterial(3)">
-                                                    <i class="fas fa-trash"></i>
+                                                <button class="action-btn" onclick="downloadResource('video1', '#')">
+                                                    <i class="fas fa-download"></i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -294,370 +412,160 @@
                     </div>
                 </div>
 
-                <!-- Users Section -->
-                <div id="users" class="dashboard__section">
-                    <h1 class="section__title">User Management</h1>
+                <!-- Communication Section -->
+                <div id="communication" class="dashboard__section">
+                    <h1 class="section__title">Teacher Communication</h1>
 
-                    <!-- Filters -->
-                    <div class="filters">
-                        <div class="filter-group">
-                            <label for="user-role-filter">Role:</label>
-                            <select id="user-role-filter">
-                                <option value="all">All Roles</option>
-                                <option value="teacher">Teachers</option>
-                                <option value="parent">Parents</option>
-                            </select>
+                    <!-- Teacher Contact -->
+                    <div class="content__card">
+                        <div class="card__header">
+                            <h2>Your Child's Teacher</h2>
                         </div>
-
-                        <div class="search-box">
-                            <input type="text" id="user-search" placeholder="Search users...">
-                            <i class="fas fa-search"></i>
+                        <div class="card__body">
+                            <div class="teacher__profile">
+                                <div class="teacher__avatar">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="teacher__info">
+                                    <h3>Ms. Johnson</h3>
+                                    <p>PlayBot Instructor</p>
+                                    <div class="teacher__contact">
+                                        <a href="mailto:teacher@playbot.edu" class="contact__btn">
+                                            <i class="fas fa-envelope"></i> Email Teacher
+                                        </a>
+                                        <a href="#" class="contact__btn">
+                                            <i class="fas fa-calendar-alt"></i> Schedule Meeting
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Users Table -->
+                    <!-- Message Center -->
                     <div class="content__card">
                         <div class="card__header">
-                            <h2>Registered Users</h2>
+                            <h2>Message Center</h2>
                         </div>
                         <div class="card__body">
-                            <div class="table-responsive">
-                                <table class="data-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Role</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="users-table-body">
-                                        <tr>
-                                            <td>John Smith</td>
-                                            <td>john.smith@example.com</td>
-                                            <td>Teacher</td>
-                                            <td>Active</td>
-                                            <td>
-                                                <button class="action-btn" onclick="viewUser(1)">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="action-btn delete" onclick="deleteUser(1)">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maria Garcia</td>
-                                            <td>maria.garcia@example.com</td>
-                                            <td>Parent</td>
-                                            <td>Active</td>
-                                            <td>
-                                                <button class="action-btn" onclick="viewUser(2)">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="action-btn delete" onclick="deleteUser(2)">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Robert Johnson</td>
-                                            <td>robert.johnson@example.com</td>
-                                            <td>Teacher</td>
-                                            <td>Inactive</td>
-                                            <td>
-                                                <button class="action-btn" onclick="viewUser(3)">
-                                                    <i class="fas fa-eye"></i>
-                                                </button>
-                                                <button class="action-btn delete" onclick="deleteUser(3)">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="messages__container">
+                                <div class="message__list">
+                                    <div class="message__item">
+                                        <div class="message__header">
+                                            <span class="message__from">From: Ms. Johnson</span>
+                                            <span class="message__date">May 16, 2025</span>
+                                        </div>
+                                        <div class="message__body">
+                                            <p>Your child did great in the robot programming exercise today! They showed excellent logical thinking skills.</p>
+                                        </div>
+                                    </div>
+                                    <div class="message__item">
+                                        <div class="message__header">
+                                            <span class="message__from">From: PlayBot System</span>
+                                            <span class="message__date">May 10, 2025</span>
+                                        </div>
+                                        <div class="message__body">
+                                            <p>New parent resources have been added to the dashboard. Check them out in the Resources section!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="send-message">
+                                    <h3>Send Message to Teacher</h3>
+                                    <form id="send-message-form">
+                                        <div class="form__group">
+                                            <label for="message-subject">Subject</label>
+                                            <input type="text" id="message-subject" name="subject" placeholder="Message subject" required>
+                                        </div>
+                                        <div class="form__group">
+                                            <label for="message-body">Message</label>
+                                            <textarea id="message-body" name="message" placeholder="Your message to the teacher" required></textarea>
+                                        </div>
+                                        <div class="form__submit">
+                                            <button type="submit" class="btn-primary">Send Message</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Footer Area -->
+        <footer class="footer__area">
+            <div class="container">
+                <div class="footer__content">
+                    <!-- Logo and About Section -->
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <a href="Home.html">
+                                <img src="../images/MACO.png" class="footer-logo-img">
+                            </a>
+                        </div>
+                        <p class="footer-about">
+                            MACO is an innovative curriculum for teaching robot programming
+                            through play, developed at The Education University of Hong Kong.
+                        </p>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <div class="footer-links-container">
+                        <!-- Quick Links -->
+                        <div class="footer-column">
+                            <h4 class="footer-heading">Quick Links</h4>
+                            <ul class="footer-links">
+                                <li><a href="Home.html">Home</a></li>
+                                <li><a href="About us.html">About us</a></li>
+                                <li><a href="Course.html">Curriculum</a></li>
+                                <li><a href="News.html">News</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- For Schools -->
+                        <div class="footer-column">
+                            <h4 class="footer-heading">For Schools</h4>
+                            <ul class="footer-links">
+                                <li><a href="School.html">Schools</a></li>
+                                <li><a href="Teacher.html">Teachers</a></li>
+                                <li><a href="Platform.html">Platform</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="footer-column">
+                            <h4 class="footer-heading">Contact Us</h4>
+                            <div class="footer-contact">
+                                <p><i class="fas fa-map-marker-alt"></i> 10 Lo Ping Road, Tai Po, Hong Kong</p>
+                                <p><i class="fas fa-envelope"></i> <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a>
+                                </p>
+                            </div>
+                            <div class="footer-social">
+                                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Settings Section -->
-                <div id="settings" class="dashboard__section">
-                    <h1 class="section__title">System Settings</h1>
-
-                    <div class="content__card">
-                        <div class="card__header">
-                            <h2>Admin Preferences</h2>
-                        </div>
-                        <div class="card__body">
-                            <form id="admin-settings-form" class="settings-form">
-                                <div class="setting-group">
-                                    <div class="setting-info">
-                                        <h4>Email Notifications</h4>
-                                        <p class="setting-description">Receive email alerts for new registrations and
-                                            system events</p>
-                                    </div>
-                                    <div class="toggle-switch">
-                                        <input type="checkbox" id="setting-notifications" name="notifications" checked>
-                                        <label for="setting-notifications"></label>
-                                    </div>
-                                </div>
-
-                                <div class="setting-group">
-                                    <div class="setting-info">
-                                        <h4>Analytics Tracking</h4>
-                                        <p class="setting-description">Enable usage statistics for dashboard activities
-                                        </p>
-                                    </div>
-                                    <div class="toggle-switch">
-                                        <input type="checkbox" id="setting-analytics" name="analytics" checked>
-                                        <label for="setting-analytics"></label>
-                                    </div>
-                                </div>
-
-                                <div class="setting-group">
-                                    <div class="setting-info">
-                                        <h4>Automatic Backups</h4>
-                                        <p class="setting-description">Schedule automatic database backups</p>
-                                    </div>
-                                    <div class="toggle-switch">
-                                        <input type="checkbox" id="setting-backups" name="backups">
-                                        <label for="setting-backups"></label>
-                                    </div>
-                                </div>
-
-                                <div class="setting-group">
-                                    <div class="setting-info">
-                                        <h4>Content Moderation</h4>
-                                        <p class="setting-description">Auto-moderate user-generated content</p>
-                                    </div>
-                                    <div class="toggle-switch">
-                                        <input type="checkbox" id="setting-moderation" name="moderation" checked>
-                                        <label for="setting-moderation"></label>
-                                    </div>
-                                </div>
-
-                                <div class="form__submit">
-                                    <button type="submit" class="btn-primary">Save Changes</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add Material Modal -->
-    <div id="add-material-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Add New Material</h2>
-                <span class="close-modal">&times;</span>
-            </div>
-            <div class="modal-body">
-                <form id="add-material-form">
-                    <div class="form__group">
-                        <label for="material-title">Title</label>
-                        <input type="text" id="material-title" name="title" required>
-                    </div>
-
-                    <div class="form__group">
-                        <label for="material-type">Type</label>
-                        <select id="material-type" name="type" required>
-                            <option value="">Select Type</option>
-                            <option value="lesson">Lesson Plan</option>
-                            <option value="activity">Activity Sheet</option>
-                            <option value="video">Instructional Video</option>
-                            <option value="tutorial">Programming Tutorial</option>
-                            <option value="assessment">Assessment Tool</option>
-                            <option value="guide">Teacher/Parent Guide</option>
-                        </select>
-                    </div>
-
-                    <div class="form__group">
-                        <label for="material-category">Category</label>
-                        <select id="material-category" name="category" required>
-                            <option value="">Select Category</option>
-                            <option value="playbot-beginner">PlayBot - Beginner Level</option>
-                            <option value="playbot-intermediate">PlayBot - Intermediate Level</option>
-                            <option value="playbot-advanced">PlayBot - Advanced Level</option>
-                            <option value="tinker-beginner">Tinker Maker - Beginner Level</option>
-                            <option value="tinker-intermediate">Tinker Maker - Intermediate Level</option>
-                            <option value="tinker-advanced">Tinker Maker - Advanced Level</option>
-                            <option value="general">General Resources</option>
-                        </select>
-                    </div>
-
-                    <div class="form__group">
-                        <label for="material-difficulty">Difficulty Level</label>
-                        <select id="material-difficulty" name="difficulty" required>
-                            <option value="">Select Difficulty</option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advanced">Advanced</option>
-                            <option value="mixed">Mixed/Adaptable</option>
-                        </select>
-                    </div>
-
-                    <div class="form__group">
-                        <label for="material-description">Description</label>
-                        <textarea id="material-description" name="description" required></textarea>
-                    </div>
-
-                    <div class="form__group">
-                        <label for="material-file">Upload File</label>
-                        <input type="file" id="material-file" name="file">
-                    </div>
-
-                    <div class="form__submit">
-                        <button type="submit" class="btn-primary">Save Material</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Edit Material Modal -->
-    <div id="edit-material-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Edit Material</h2>
-                <span class="close-modal">&times;</span>
-            </div>
-            <div class="modal-body">
-                <form id="edit-material-form">
-                    <input type="hidden" id="edit-material-id">
-                    <div class="form__group">
-                        <label for="edit-material-title">Title</label>
-                        <input type="text" id="edit-material-title" name="title" required>
-                    </div>
-
-                    <div class="form__group">
-                        <label for="edit-material-type">Type</label>
-                        <select id="edit-material-type" name="type" required>
-                            <option value="">Select Type</option>
-                            <option value="lesson">Lesson Plan</option>
-                            <option value="activity">Activity Sheet</option>
-                            <option value="video">Instructional Video</option>
-                            <option value="tutorial">Programming Tutorial</option>
-                            <option value="assessment">Assessment Tool</option>
-                            <option value="guide">Teacher/Parent Guide</option>
-                        </select>
-                    </div>
-
-                    <div class="form__group">
-                        <label for="edit-material-category">Category</label>
-                        <select id="edit-material-category" name="category" required>
-                            <option value="">Select Category</option>
-                            <option value="playbot-beginner">PlayBot - Beginner Level</option>
-                            <option value="playbot-intermediate">PlayBot - Intermediate Level</option>
-                            <option value="playbot-advanced">PlayBot - Advanced Level</option>
-                            <option value="tinker-beginner">Tinker Maker - Beginner Level</option>
-                            <option value="tinker-intermediate">Tinker Maker - Intermediate Level</option>
-                            <option value="tinker-advanced">Tinker Maker - Advanced Level</option>
-                            <option value="general">General Resources</option>
-                        </select>
-                    </div>
-
-                    <div class="form__group">
-                        <label for="edit-material-difficulty">Difficulty Level</label>
-                        <select id="edit-material-difficulty" name="difficulty" required>
-                            <option value="">Select Difficulty</option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="advanced">Advanced</option>
-                            <option value="mixed">Mixed/Adaptable</option>
-                        </select>
-                    </div>
-
-                    <div class="form__group">
-                        <label for="edit-material-description">Description</label>
-                        <textarea id="edit-material-description" name="description" required></textarea>
-                    </div>
-
-                    <div class="form__submit">
-                        <button type="submit" class="btn-primary">Update Material</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Start Footer Area -->
-    <footer class="footer__area">
-        <div class="container">
-            <div class="footer__content">
-                <!-- Logo and About Section -->
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <a href="Home.html">
-                            <img src="../images/MACO.png" class="footer-logo-img">
-                        </a>
-                    </div>
-                    <p class="footer-about">
-                        MACO is an innovative curriculum for teaching robot programming
-                        through play, developed at The Education University of Hong Kong.
-                    </p>
+                <!-- University Information -->
+                <div class="footer__contact">
+                    <div class="university">The Education University of Hong Kong</div>
+                    <div class="department">Department of Early Childhood Education</div>
+                    <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="footer-links-container">
-                    <!-- Quick Links -->
-                    <div class="footer-column">
-                        <h4 class="footer-heading">Quick Links</h4>
-                        <ul class="footer-links">
-                            <li><a href="Home.html">Home</a></li>
-                            <li><a href="About us.html">About us</a></li>
-                            <li><a href="Course.html">Curriculum</a></li>
-                            <li><a href="News.html">News</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- For Schools -->
-                    <div class="footer-column">
-                        <h4 class="footer-heading">For Schools</h4>
-                        <ul class="footer-links">
-                            <li><a href="School.html">Schools</a></li>
-                            <li><a href="Teacher.html">Teachers</a></li>
-                            <li><a href="Platform.html">Platform</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Contact Information -->
-                    <div class="footer-column">
-                        <h4 class="footer-heading">Contact Us</h4>
-                        <div class="footer-contact">
-                            <p><i class="fas fa-map-marker-alt"></i> 10 Lo Ping Road, Tai Po, Hong Kong</p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:playbot@eduhk.hk">playbot@eduhk.hk</a>
-                            </p>
-                        </div>
-                        <div class="footer-social">
-                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
-                        </div>
-                    </div>
+                <!-- Copyright Section -->
+                <div class="footer__copyright">
+                    <p>&copy; 2024 The Education University of Hong Kong</p>
+                    <p class="rights">All rights reserved. No part of this publication may be reproduced, stored in a
+                        retrieval system or transmitted in any form or by any means without written permission.</p>
                 </div>
             </div>
-
-            <!-- University Information -->
-            <div class="footer__contact">
-                <div class="university">The Education University of Hong Kong</div>
-                <div class="department">Department of Early Childhood Education</div>
-                <address class="address">10 Lo Ping Road, Tai Po, Hong Kong, China</address>
-            </div>
-
-            <!-- Copyright Section -->
-            <div class="footer__copyright">
-                <p>&copy; 2024 The Education University of Hong Kong</p>
-                <p class="rights">All rights reserved. No part of this publication may be reproduced, stored in a
-                    retrieval system or transmitted in any form or by any means without written permission.</p>
-            </div>
-        </div>
-    </footer>
-    <!-- End Footer Area -->
+        </footer>
+        <!-- End Footer Area -->
+    </div>
 
     <!-- Dashboard JavaScript - Added at the end for better performance -->
     <script>
@@ -665,32 +573,42 @@
             // Tab navigation setup
             setupTabs();
 
-            // Modal functionality
-            setupModals();
+            // Check login status
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const userRole = localStorage.getItem('currentUserRole');
+            const userEmail = localStorage.getItem('currentUserEmail');
 
-            // Add material button
-            document.getElementById('add-material-btn')?.addEventListener('click', function () {
-                document.getElementById('add-material-modal').style.display = 'block';
-            });
+            if (!isLoggedIn || userRole !== 'parent') {
+                console.log("Not authenticated as parent, redirecting to login");
+                window.location.href = 'Login.html';
+                return;
+            }
 
-            // Admin settings form
-            document.getElementById('admin-settings-form')?.addEventListener('submit', function (e) {
-                e.preventDefault();
-                alert('Settings saved successfully');
-            });
+            // Update parent name
+            const firstName = localStorage.getItem('userFirstName_' + userEmail) || 'Parent';
+            const lastName = localStorage.getItem('userLastName_' + userEmail) || '';
+
+            document.getElementById('user-name').textContent = firstName;
+
+            // Hide auth buttons, show user profile
+            document.querySelector('.auth-buttons').style.display = 'none';
+            document.getElementById('user-profile').style.display = 'flex';
+
+            // Setup resource filters
+            setupResourceFilters();
 
             // Handle logout button in header
-            document.getElementById('admin-logout-link')?.addEventListener('click', function (e) {
+            document.getElementById('parent-logout-link')?.addEventListener('click', function (e) {
                 e.preventDefault();
-                if (window.handleLogout) {
-                    window.handleLogout();
-                } else {
-                    // Fallback logout
-                    localStorage.removeItem('isLoggedIn');
-                    localStorage.removeItem('currentUserEmail');
-                    localStorage.removeItem('currentUserRole');
-                    window.location.href = 'Home.html';
-                }
+                handleLogout();
+            });
+
+            // Handle send message form
+            document.getElementById('send-message-form')?.addEventListener('submit', function (e) {
+                e.preventDefault();
+                alert('Message sent successfully to teacher');
+                document.getElementById('message-subject').value = '';
+                document.getElementById('message-body').value = '';
             });
         });
 
@@ -718,62 +636,83 @@
             });
         }
 
-        function setupModals() {
-            // Close modals on X click
-            document.querySelectorAll('.close-modal').forEach(closeBtn => {
-                closeBtn.addEventListener('click', function () {
-                    this.closest('.modal').style.display = 'none';
+        function setupResourceFilters() {
+            const searchInput = document.getElementById('resource-search');
+            const typeFilter = document.getElementById('resource-type-filter');
+            const ageFilter = document.getElementById('age-group-filter');
+
+            // Filter function
+            function filterResources() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const typeValue = typeFilter.value;
+                const ageValue = ageFilter.value;
+
+                const rows = document.querySelectorAll('#resources-table-body tr');
+
+                rows.forEach(row => {
+                    const title = row.cells[0].textContent.toLowerCase();
+                    const type = row.dataset.type;
+                    const age = row.dataset.age;
+
+                    const matchesSearch = title.includes(searchTerm);
+                    const matchesType = typeValue === 'all' || type === typeValue;
+                    const matchesAge = ageValue === 'all' || age === ageValue;
+
+                    if (matchesSearch && matchesType && matchesAge) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
                 });
-            });
+            }
 
-            // Close modals on outside click
-            window.addEventListener('click', function (event) {
-                if (event.target.classList.contains('modal')) {
-                    event.target.style.display = 'none';
-                }
-            });
-
-            // Form submission handlers
-            document.getElementById('add-material-form')?.addEventListener('submit', function (e) {
-                e.preventDefault();
-                alert('Material added successfully');
-                document.getElementById('add-material-modal').style.display = 'none';
-            });
-
-            document.getElementById('edit-material-form')?.addEventListener('submit', function (e) {
-                e.preventDefault();
-                alert('Material updated successfully');
-                document.getElementById('edit-material-modal').style.display = 'none';
-            });
+            // Add event listeners
+            if (searchInput) searchInput.addEventListener('input', filterResources);
+            if (typeFilter) typeFilter.addEventListener('change', filterResources);
+            if (ageFilter) ageFilter.addEventListener('change', filterResources);
         }
 
-        // Action functions
-        function editMaterial(id) {
-            const modal = document.getElementById('edit-material-modal');
-            document.getElementById('edit-material-id').value = id;
+        function downloadResource(id, url) {
+            if (url === '#') {
+                alert('This is a sample resource. In the actual application, you would download the file.');
+                return;
+            }
 
-            // In a real app, you would fetch the material data and populate the form
-            document.getElementById('edit-material-title').value = 'Material #' + id;
+            // Create an invisible anchor to trigger download
+            const a = document.createElement('a');
+            a.href = url;
+            a.target = '_blank';
+            a.download = '';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
 
-            modal.style.display = 'block';
-        }
-
-        function deleteMaterial(id) {
-            if (confirm('Are you sure you want to delete this material?')) {
-                alert('Material #' + id + ' deleted successfully');
-                // In a real app, you would make an API call to delete the material
+            // Track download in database if possible
+            if (typeof fbDb !== 'undefined' && fbDb) {
+                fbDb.collection('resource_downloads').add({
+                    resourceId: id,
+                    userId: localStorage.getItem('currentUserEmail'),
+                    downloadDate: new Date()
+                }).catch(err => console.warn("Could not track download:", err));
             }
         }
 
-        function viewUser(id) {
-            alert('Viewing user #' + id);
-            // In a real app, you would navigate to a user detail page or open a modal
-        }
+        function handleLogout() {
+            // Clear localStorage
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('currentUserEmail');
+            localStorage.removeItem('currentUserRole');
 
-        function deleteUser(id) {
-            if (confirm('Are you sure you want to delete this user?')) {
-                alert('User #' + id + ' deleted successfully');
-                // In a real app, you would make an API call to delete the user
+            // Try Firebase logout if available
+            if (typeof fbAuth !== 'undefined' && fbAuth) {
+                fbAuth.signOut().then(() => {
+                    window.location.href = 'Home.html';
+                }).catch(() => {
+                    window.location.href = 'Home.html';
+                });
+            } else {
+                // Fallback direct redirect
+                window.location.href = 'Home.html';
             }
         }
     </script>
