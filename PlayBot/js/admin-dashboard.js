@@ -86,27 +86,23 @@ function initializeDashboard() {
  * Setup sidebar tab navigation
  */
 function setupTabs() {
-    console.log("Setting up tabs from admin-dashboard.js");
+    console.log("Setting up tabs");
     const tabItems = document.querySelectorAll('.sidebar__menu li');
-    console.log("Found tab items:", tabItems.length);
-    
     const sections = document.querySelectorAll('.dashboard__section');
     
     tabItems.forEach(item => {
         item.addEventListener('click', function() {
+            // Get the target section id from data-section attribute
             const targetSection = this.getAttribute('data-section');
+            console.log("Switching to section:", targetSection);
             
-            // Update active tab
+            // Remove active class from all tabs and sections
             tabItems.forEach(tab => tab.classList.remove('active'));
-            this.classList.add('active');
+            sections.forEach(section => section.classList.remove('active'));
             
-            // Show corresponding section
-            sections.forEach(section => {
-                section.classList.remove('active');
-                if (section.id === targetSection) {
-                    section.classList.add('active');
-                }
-            });
+            // Add active class to clicked tab and corresponding section
+            this.classList.add('active');
+            document.getElementById(targetSection)?.classList.add('active');
         });
     });
 }
