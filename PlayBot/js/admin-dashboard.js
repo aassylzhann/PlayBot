@@ -9,152 +9,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log("Admin dashboard script loaded");
     
-    // First, check if the user is an admin
-    checkAdminAuth();
-    
-    // Set up tab navigation
-    setupTabs();
-    
-    // Setup sidebar navigation
-    setupSidebar();
+    // Setup navigation
+    setupNavigation();
 });
 
 /**
- * Check if the user is authenticated as an admin
+ * Setup sidebar navigation and tab switching
  */
-function checkAdminAuth() {
-    // Check if auth.js is loaded
-    if (typeof checkLoginStatus !== 'function') {
-        console.error("Auth.js not loaded properly");
-        return;
-    }
-
-    checkLoginStatus()
-        .then(({ isLoggedIn, currentUser }) => {
-            if (!isLoggedIn) {
-                console.log("User not logged in, redirecting to login");
-                window.location.href = 'Login.html';
-                return;
-            }
-
-            if (currentUser.role !== 'admin' && !currentUser.isAdmin) {
-                console.log("User not an admin, redirecting to home");
-                window.location.href = 'Home.html';
-                return;
-            }
-
-            console.log("Admin authenticated successfully");
-            
-            // Initialize dashboard after successful authentication
-            initializeDashboard();
-        })
-        .catch(error => {
-            console.error("Authentication error:", error);
-            // Don't redirect automatically on error to avoid redirect loops
-            // Just log the error and let the user try to navigate manually
-        });
-}
-
-/**
- * Initialize all dashboard components and data loading
- */
-function initializeDashboard() {
-    try {
-        // Load overview stats
-        loadDashboardStats();
-        
-        // Load recent activities
-        loadRecentActivities();
-        
-        // Load materials list
-        loadMaterials();
-        
-        // Load users list
-        loadUsers();
-        
-        // Setup form handlers
-        setupFormSubmissions();
-        
-        // Setup search functionality
-        setupSearchFilters();
-        
-        // Setup modal interactions
-        setupModals();
-    } catch (error) {
-        console.error("Error initializing dashboard:", error);
-    }
-}
-
-/**
- * Setup sidebar tab navigation
- */
-function setupTabs() {
-    const tabItems = document.querySelectorAll('.sidebar__menu li');
-    const sections = document.querySelectorAll('.dashboard__section');
-    
-    // Hide all sections except the first one
-    sections.forEach((section, index) => {
-        if (index !== 0) section.style.display = 'none';
-    });
-
-    tabItems.forEach(item => {
-        item.addEventListener('click', function() {
-            // Get the target section
-            const targetId = this.getAttribute('data-section');
-            const targetSection = document.getElementById(targetId);
-
-            // Remove active class from all tabs and hide all sections
-            tabItems.forEach(tab => tab.classList.remove('active'));
-            sections.forEach(section => section.style.display = 'none');
-
-            // Add active class to clicked tab and show target section
-            this.classList.add('active');
-            if (targetSection) {
-                targetSection.style.display = 'block';
-            }
-
-            // Log for debugging
-            console.log('Tab clicked:', targetId);
-        });
-    });
-}
-
-/**
- * Setup sidebar navigation
- */
-function setupSidebar() {
+function setupNavigation() {
     const sidebarItems = document.querySelectorAll('.sidebar__menu li');
     const sections = document.querySelectorAll('.dashboard__section');
 
-    // Hide all sections except dashboard initially
+    // First hide all sections except dashboard
     sections.forEach(section => {
-        if (section.id !== 'dashboard') {
+        if (section.id === 'dashboard') {
+            section.style.display = 'block';
+            section.classList.add('active');
+        } else {
             section.style.display = 'none';
+            section.classList.remove('active');
         }
     });
 
+    // Add click handlers to sidebar items
     sidebarItems.forEach(item => {
         item.addEventListener('click', function() {
-            // Get section to show
             const sectionId = this.getAttribute('data-section');
-            const sectionToShow = document.getElementById(sectionId);
+            console.log('Clicking section:', sectionId); // Debug log
 
-            // Update active states
+            // Update sidebar active state
             sidebarItems.forEach(si => si.classList.remove('active'));
             this.classList.add('active');
 
-            // Show/hide sections
+            // Update sections visibility
             sections.forEach(section => {
-                section.style.display = 'none';
-                section.classList.remove('active');
+                if (section.id === sectionId) {
+                    section.style.display = 'block';
+                    section.classList.add('active');
+                    console.log('Showing section:', section.id); // Debug log
+                } else {
+                    section.style.display = 'none';
+                    section.classList.remove('active');
+                }
             });
-
-            if (sectionToShow) {
-                sectionToShow.style.display = 'block';
-                sectionToShow.classList.add('active');
-            }
-
-            console.log('Switched to section:', sectionId); // Debug log
         });
     });
 }
