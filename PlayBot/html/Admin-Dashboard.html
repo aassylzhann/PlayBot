@@ -4,124 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MACO Admin Dashboard</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/admin-dashboard.css">
+    <link rel="icon" href="../images/favicon.png" type="image/png">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom styles (reuse teacher dashboard style as reference) -->
+    <link rel="stylesheet" href="../css/teacher-dashboard.css">
+    <style>
+        body {
+            background-color: #f5f7fa;
+            font-family: 'Roboto', sans-serif;
+        }
+        .sidebar {
+            min-height: 100vh;
+            background: #fff;
+            border-right: 1px solid #eee;
+            padding-top: 1.5rem;
+        }
+        .sidebar .nav-link {
+            color: #333;
+            font-weight: 500;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .sidebar .nav-link.active, .sidebar .nav-link:hover {
+            background: #e8f0fe;
+            color: #4285f4;
+        }
+        .navbar {
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .navbar .dropdown-menu {
+            min-width: 180px;
+        }
+        .main-content {
+            padding: 2rem 2rem 2rem 0;
+        }
+        .overview-card {
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: #fff;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .overview-icon {
+            font-size: 2rem;
+            color: #4285f4;
+            background: #e8f0fe;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .overview-value {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        .overview-label {
+            color: #666;
+            font-size: 1rem;
+        }
+        .section-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+        }
+        .table-responsive {
+            margin-top: 1rem;
+        }
+        .search-input {
+            max-width: 300px;
+        }
+        @media (max-width: 991px) {
+            .sidebar {
+                min-height: auto;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-top: 0.5rem;
+            }
+            .main-content {
+                padding: 1rem 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<div class="admin-dashboard d-flex">
-    <!-- Sidebar -->
-    <div class="sidebar bg-dark text-white">
-        <div class="sidebar__header p-3">
-            <h3>MACO Admin</h3>
-        </div>
-        <ul class="sidebar__menu list-unstyled">
-            <li class="active" data-section="dashboard">
-                <i class="fas fa-chart-line"></i> Dashboard
-            </li>
-            <li data-section="users">
-                <i class="fas fa-users"></i> Users
-            </li>
-            <li data-section="materials">
-                <i class="fas fa-book"></i> Materials
-            </li>
-            <li data-section="submissions">
-                <i class="fas fa-paper-plane"></i> Submissions
-            </li>
-            <li data-section="activities">
-                <i class="fas fa-history"></i> Activities
-            </li>
-        </ul>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content flex-grow-1">
-        <!-- Top Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="adminDropdown" data-bs-toggle="dropdown">
-                            <i class="fas fa-user-circle"></i> Admin
-                        </button>
-                        <ul class="dropdown-menu">
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <!-- Sidebar -->
+        <nav class="col-auto col-md-3 col-lg-2 sidebar d-flex flex-column align-items-start">
+            <a href="#" class="mb-4 ms-3">
+                <img src="../images/logo.png" alt="MACO Logo" style="height:40px;">
+            </a>
+            <ul class="nav flex-column w-100">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" data-section="dashboard"><i class="fas fa-tachometer-alt me-2"></i>Dashboard Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-section="users"><i class="fas fa-users me-2"></i>Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-section="materials"><i class="fas fa-book me-2"></i>Materials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-section="forms"><i class="fas fa-file-alt me-2"></i>Form Submissions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-section="activities"><i class="fas fa-clipboard-list me-2"></i>Activities Log</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Main Content -->
+        <div class="col px-0">
+            <!-- Top Navbar -->
+            <nav class="navbar navbar-expand navbar-light px-4">
+                <div class="ms-auto d-flex align-items-center">
+                    <div class="dropdown me-3">
+                        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="me-2" id="admin-name">Admin</span>
+                            <img src="../images/admin-avatar.png" alt="Admin" width="36" height="36" class="rounded-circle border">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
                             <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
+                            <li><a class="dropdown-item text-danger" href="#" id="logout-btn"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
                         </ul>
                     </div>
                 </div>
-            </div>
-        </nav>
-
-        <!-- Dashboard Section -->
-        <section id="dashboard" class="dashboard__section active p-4">
-            <h2>Dashboard Overview</h2>
-            <div class="row mt-4">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5>Total Users</h5>
-                            <h3 id="total-users">0</h3>
+            </nav>
+            <!-- Content Area -->
+            <main class="main-content">
+                <!-- Dashboard Overview -->
+                <section id="dashboard" class="section-card">
+                    <h2 class="mb-4"><i class="fas fa-tachometer-alt me-2"></i>Dashboard Overview</h2>
+                    <div class="row g-4 mb-4">
+                        <div class="col-6 col-md-3">
+                            <div class="overview-card">
+                                <div class="overview-icon"><i class="fas fa-users"></i></div>
+                                <div>
+                                    <div class="overview-value" id="stat-total-users">0</div>
+                                    <div class="overview-label">Total Users</div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5>Teachers</h5>
-                            <h3 id="total-teachers">0</h3>
+                        <div class="col-6 col-md-3">
+                            <div class="overview-card">
+                                <div class="overview-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                                <div>
+                                    <div class="overview-value" id="stat-teachers">0</div>
+                                    <div class="overview-label">Teachers</div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5>Parents</h5>
-                            <h3 id="total-parents">0</h3>
+                        <div class="col-6 col-md-3">
+                            <div class="overview-card">
+                                <div class="overview-icon"><i class="fas fa-user-friends"></i></div>
+                                <div>
+                                    <div class="overview-value" id="stat-parents">0</div>
+                                    <div class="overview-label">Parents</div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5>Materials</h5>
-                            <h3 id="total-materials">0</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5>Recent Activities</h5>
-                            <div id="recent-activities">
-                                <!-- Activities will be loaded here -->
+                        <div class="col-6 col-md-3">
+                            <div class="overview-card">
+                                <div class="overview-icon"><i class="fas fa-book"></i></div>
+                                <div>
+                                    <div class="overview-value" id="stat-materials">0</div>
+                                    <div class="overview-label">Materials</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Users Section -->
-        <section id="users" class="dashboard__section p-4">
-            <h2>Users Management</h2>
-            <div class="card mt-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between mb-3">
-                        <input type="text" class="form-control w-25" placeholder="Search users...">
+                </section>
+                <!-- Users Section -->
+                <section id="users" class="section-card" style="display:none;">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2><i class="fas fa-users me-2"></i>Users</h2>
+                        <input type="text" class="form-control search-input" id="user-search" placeholder="Search users...">
                     </div>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-hover align-middle">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -131,123 +204,105 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody id="users-table-body">
-                                <!-- Users will be loaded here -->
+                            <tbody id="user-table-body">
+                                <!-- Populated by JS -->
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Materials Section -->
-        <section id="materials" class="dashboard__section p-4">
-            <h2>Learning Materials</h2>
-            <div class="card mt-4">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between mb-3">
-                        <input type="text" class="form-control w-25" placeholder="Search materials...">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMaterialModal">
-                            Add Material
-                        </button>
+                </section>
+                <!-- Materials Section -->
+                <section id="materials" class="section-card" style="display:none;">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2><i class="fas fa-book me-2"></i>Materials</h2>
+                        <input type="text" class="form-control search-input" id="material-search" placeholder="Search materials...">
                     </div>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-hover align-middle">
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Category</th>
                                     <th>Type</th>
-                                    <th>Date Added</th>
+                                    <th>Grade</th>
+                                    <th>Uploaded</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody id="materials-table-body">
-                                <!-- Materials will be loaded here -->
+                            <tbody id="material-table-body">
+                                <!-- Populated by JS -->
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Submissions Section -->
-        <section id="submissions" class="dashboard__section p-4">
-            <h2>Submissions</h2>
-            <div class="card mt-4">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
+                </section>
+                <!-- Form Submissions Section -->
+                <section id="forms" class="section-card" style="display:none;">
+                    <h2><i class="fas fa-file-alt me-2"></i>Form Submissions</h2>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-hover align-middle">
                             <thead>
                                 <tr>
-                                    <th>Submission ID</th>
-                                    <th>User</th>
-                                    <th>Material</th>
-                                    <th>Date Submitted</th>
+                                    <th>Form Name</th>
+                                    <th>Submitted By</th>
+                                    <th>Date</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    <th>View</th>
                                 </tr>
                             </thead>
-                            <tbody id="submissions-table-body">
-                                <!-- Submissions will be loaded here -->
+                            <tbody id="form-table-body">
+                                <!-- Populated by JS -->
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Activities Section -->
-        <section id="activities" class="dashboard__section p-4">
-            <h2>Activity Logs</h2>
-            <div class="card mt-4">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
+                </section>
+                <!-- Activities Log Section -->
+                <section id="activities" class="section-card" style="display:none;">
+                    <h2><i class="fas fa-clipboard-list me-2"></i>Activities Log</h2>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-hover align-middle">
                             <thead>
                                 <tr>
-                                    <th>Activity ID</th>
+                                    <th>Date</th>
                                     <th>User</th>
-                                    <th>Activity Type</th>
-                                    <th>Timestamp</th>
+                                    <th>Action</th>
                                     <th>Details</th>
                                 </tr>
                             </thead>
-                            <tbody id="activities-table-body">
-                                <!-- Activities will be loaded here -->
+                            <tbody id="activity-table-body">
+                                <!-- Populated by JS -->
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
-
-<!-- Modals -->
-<div class="modal fade" id="editMaterialModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Edit Material</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <form id="edit-material-form">
-                    <!-- Form fields will be added dynamically -->
-                </form>
-            </div>
+                </section>
+            </main>
         </div>
     </div>
 </div>
 
-<!-- Bootstrap JS and Popper.js -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Modal Template -->
+<div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="adminModalLabel">Modal Title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="adminModalBody">
+        <!-- Populated dynamically -->
+      </div>
+      <div class="modal-footer" id="adminModalFooter">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- Firebase and Custom Scripts -->
-<script type="module" src="../js/firebase-config.js"></script>
-<script type="module" src="../js/auth.js"></script>
-<script type="module" src="../js/admin-dashboard.js"></script>
-
+<!-- Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+<!-- Admin Dashboard JS -->
+<script src="../js/admin-dashboard.js"></script>
 </body>
 </html>
