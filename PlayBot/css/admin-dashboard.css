@@ -722,6 +722,33 @@ body {
   background-color: #f1f1f1;
 }
 
+/* Status indicators */
+.status-active {
+  background-color: #27ae60;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-inactive {
+  background-color: #95a5a6;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Empty table */
+.empty-table {
+  text-align: center;
+  color: #7f8c8d;
+  padding: 20px 0;
+  font-style: italic;
+}
+
 /* Page transitions */
 .page-transition {
   opacity: 0;
