@@ -229,9 +229,8 @@ body.page-loading:before {
 }
 
 .footer-logo-img {
-  max-height: 100px;
+  max-height: 180px;
   width: auto;
-  filter: brightness(0) invert(1); /* Makes the logo white for dark footer background */
 }
 
 .footer-about {
