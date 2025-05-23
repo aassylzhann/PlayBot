@@ -344,7 +344,6 @@ section:first-of-type,
 .dashboard__container,
 .row:first-child {
   margin-top: 0 !important;
-  padding-top: 0 !important;
 }
 
 /* Specific page type fixes */
