@@ -80,8 +80,8 @@
 }
 
 .level-icon img {
-    width:100px;   /* Increase as needed, e.g., 80px or 100px */
-    height: 100px;  /* Maintain aspect ratio or adjust as needed */
+    width:300;   /* Increase as needed, e.g., 80px or 100px */
+    height: 150px;  /* Maintain aspect ratio or adjust as needed */
     object-fit: contain;
     display: block;
     margin: 0 auto 10px auto;
