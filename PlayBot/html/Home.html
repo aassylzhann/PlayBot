@@ -29,7 +29,7 @@
                         <div class="menumenu__container clearfix">
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                                 <div class="logo">
-                                    <a href="Home.html"><img src="../images/logo.png" alt="PlayBot logo"
+                                    <a href="Home.html"><img src="../../images/logo.png" alt="PlayBot logo"
                                             class="header-logo"></a>
                                 </div>
                             </div>
@@ -95,161 +95,413 @@
     </header>
     <!-- End Header Area -->
 
-    <!-- Start Hero Banner Area -->
-    <div class="hero__banner">
-        <div class="slider-container">
+        <!-- Start Hero Banner Area -->
+        <div class="hero__banner" >
+            <div class="slider-container" >
+                    <div class="slider" >
+                        <div class="slider-item" style="background: url('../images/homepage.jpg') no-repeat center center fixed; background-size: 100%; background-position: center -30px; filter: grayscale(50%);">
+                        </div>
+                        <div class="slider-item" >
+                            <h1>MaCo</h1>
+                            <h1>A Creative Learning Solution for AI - Native Children</h1>
+                            <h1>为 AI 原生代儿童打造的创意学习解决方案</h1>
+                        </div>
+                        <div class="slider-item">
+                            <h1>PlayBot</h1>
+                            <h2>Shaping the Future of Early Childhood Education through Creative Learning</h2>
+                            <h1>通過創造性學習塑造幼稚教育的未來</h1>
+                        </div>
+                    </div>
+            </div>
+            <button class="control-btn prev-btn" onclick="scrollSlide(-1)">&#10094;</button>
+            <button class="control-btn next-btn" onclick="scrollSlide(1)">&#10095;</button>
+        </div>
+    <!-- End Hero Banner Area -->
+
+    <!-- Start Part 1 Area -->
+    <section class="vision-section">
             <div class="language-content">
                 <!-- English Content -->
                 <div class="lang-content" data-lang="en">
-                    <div class="slider">
-                        <div class="slider-item">
-                            <h1>Robot Programming Through Play:
-                                Effects on Kindergarten Children’s
-                                Engagement and Computational Thinking</h1>
-                            <h3>Dr YANG Weipeng</h3>
+                   <div class="mission-container">
+                        <div class="mission-content">
+                            <div class="mission-image">
+                                <img src="../images/Mission.png">
+                            </div>
+                            <div class="mission-text">
+                                <h1 class="mission-title">Mission</h1>
+                                <p class="mission-description">
+                                    Balance a creative learning ecosystem driven by technology and traditional tools, 
+                                    cultivate future citizens with <strong>computational thinking, creativity, 
+                                    and perseverance</strong>, and enable every child to express, create, 
+                                    and collaborate confidently in the AI era.
+                                </p>
+                            </div>
                         </div>
-                        <div class="slider-item">
-                            <p>Teacher Training Features</p>
-                            <li>Comprehensive Training Materials & Practical Operation Opportunities</li>
-                            <li>Continuous Support System & Integration of Innovative Technology</li>
+                    </div>
+                    <div class="mission-content">
+                            <div class="mission-image">
+                                <img src="../images/vision.png">
+                            </div>
+                            <div class="mission-text">
+                                <h1 class="mission-title">Vision</h1>
+                                <p class="mission-description">
+                                    Become <strong>a global leader in AI + education innovation platforms</strong>, reshape learning environments, and make technology a catalyst for children's无限 potential, not a replacement for human intelligence. 
+                                </p>
+                            </div>
+                    </div>
+                </div>
+                <!-- Chinese Content -->
+                <div class="lang-content" data-lang="zh" style="display: none;">
+                    <div class="mission-container">
+                        <div class="mission-content">
+                            <div class="mission-image">
+                                <img src="../images/Mission.png">
+                            </div>
+                            <div class="mission-text">
+                                <h1 class="mission-title">使命</h1>
+                                <p class="mission-description">
+                                    平衡科技與傳統工具驅動的創意學習生態，培養具備 <strong>計算思維、創造力與堅毅品質</strong>, 的未來公民，讓每個兒童都能在AI時代自信地表達、創造與合作。
+                                </p>
+                            </div>
                         </div>
-                        <div class="slider-item">
-                            <p>Curriculum Enrichment Features</p>
-                            <li>Interdisciplinary Integration & Interactive and Interesting Teaching</li>
-                            <li>Social and Emotional Development & Logical Problem - Solving</li>
-                            <li>Encouragement of Creativity and Exploration & Personalized Learning Experience</li>
+                    </div>
+                    <div class="mission-content">
+                            <div class="mission-image">
+                                <img src="../images/vision.png">
+                            </div>
+                            <div class="mission-text">
+                                <h1 class="mission-title">願景</h1>
+                                <p class="mission-description">
+                                    成為全球領先的<strong>AI +教育創新平臺</strong>，重構學習場景，使科技成為激發兒童無限潜能的催化劑，而非替代人類智慧的工具。
+                                </p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- End Part 1 Area -->
+
+    <!-- Start Part 2 Area -->
+    <section class="scale_area">
+        <div class="scale-container">
+            <div class="language-content">
+                <!-- English Content -->
+                <div class="lang-content" data-lang="en">
+                    <div class="feature-header">
+                        <h1>Learning Objectives: SCALE</h1>
+                        <h5>Based on the core literacy of the AI era, we define five educational objectives (SCALE):</h5>
+                    </div>
+                    <div class="scale-container">
+                        <!-- 科学素养 -->
+                        <div class="scale-card">
+                        <div class="scale-header">
+                            <img src="../images/S.png" alt="Scientific Literacy" width="60" height="60">
+                            <h2>Scientific Literacy</h2>
+                        </div>
+                        <p>Use AI to support scientific inquiry, guide children to actively explore scientific principles through the "questioning - experimenting - verifying" cycle. This practice helps them construct early scientific thinking frameworks and enhances both scientific cognition and practical skills.</p>
+                        </div>
+                        
+                        <!-- 计算思维 -->
+                        <div class="scale-card">
+                        <div class="scale-header">
+                            <img src="../images/C.png" alt="Computational Thinking" width="60" height="60">
+                            <h2>Computational Thinking</h2>
+                        </div>
+                        <p>Utilize robot programming tools to teach children how to decompose problems, design algorithms, and debug/optimize solutions, fostering the development of logical thinking frameworks.</p>
+                        </div>
+                        
+                        <!-- AI素养 -->
+                        <div class="scale-card">
+                        <div class="scale-header">
+                            <img src="../images/A.png" alt="AI Literacy" width="60" height="60">
+                            <h2>AI Literacy Integration</h2>
+                        </div>
+                        <p>Embed AI-driven interactive dialogues into creative learning pathways, supported by AI-powered analysis of learning data. Through visualized explanations of natural language processing and visual recognition principles, children gain deeper AI understanding and cultivate digital core literacy.</p>
+                        </div>
+                        
+                        <!-- 学习能力 -->
+                        <div class="scale-card">
+                        <div class="scale-header">
+                            <img src="../images/L.png" alt="Learning to Learn" width="60" height="60">
+                            <h2>Learning to Learn / Metacognition</h2>
+                        </div>
+                        <p>Combine AI-generated content (AIGC) with embodied creation (e.g., robot programming, maker activities) through task-driven challenges and reflective cycles. By iterating through "planning - execution - review" processes, learners master cross-disciplinary innovation methods while developing self-regulated learning abilities, transcending traditional educational boundaries.</p>
+                        </div>
+                        
+                        <!-- 工程思维 -->
+                        <div class="scale-card">
+                        <div class="scale-header">
+                            <img src="../images/E.png" alt="Engineering Thinking" width="60" height="60">
+                            <h2>Engineering & Design Thinking</h2>
+                        </div>
+                        <p>Prioritize empathy by designing simulated social scenarios (e.g., interactive smart pets). This guides children to establish foundational Engineering Design Process (EDP) frameworks while solving real-world problems, strengthening their understanding of human society and achieving dual cultivation of engineering innovation and humanistic values.</p>
                         </div>
                     </div>
                 </div>
                 <!-- Chinese Content -->
                 <div class="lang-content" data-lang="zh" style="display: none;">
-                    <div class="slider">
-                        <div class="slider-item">
-                            <h1>通过游戏进行机器人编程：</h1>
-                            <h1>对幼儿园儿童的影响
-                                参与和计算思维</h1>
-                            <h3>杨伟鹏博士</h3>
+                    <div class="feature-header">
+                        <h1>教育目标：SCAL</h1>
+                        <h5>基于 AI 时代核心素养，定义五大教育目标（SCALE）</h5>
+                    </div>
+                    <div class="scale-container">
+                        <!-- 科学素养 -->
+                        <div class="scale-card">
+                        <div class="scale-header">
+                            <img src="../images/S.png" alt="Scientific Literacy" width="60" height="60">
+                            <h2>科學素養</h2>
+                        </div>
+                        <p>借助AI支持科學探究，引導兒童主動探究科學原理，在“提問-實驗-驗證”的實踐中，逐步構建早期的科學思維框架，提升科學認知與實踐能力。 </p>
+                        </div>
+                        
+                        <!-- 计算思维 -->
+                        <div class="scale-card">
+                        <div class="scale-header">
+                            <img src="../images/C.png" alt="Computational Thinking" width="60" height="60">
+                            <h2>計算思維</h2>
+                        </div>
+                        <p>借助機器人程式設計工具，引導兒童學習分解問題、設計算灋、調試優化，建立邏輯思維框架。</p>
+                        </div>
+                        
+                        <!-- AI素养 -->
+                        <div class="scale-card">
+                        <div class="scale-header">
+                            <img src="../images/A.png" alt="AI Literacy" width="60" height="60">
+                            <h2>AI素養融合</h2>
+                        </div>
+                        <p>通過AI智慧解析兒童學習數據，在創意學習路徑中嵌入AI對話互動，通過自然語言處理和視覺識別原理的視覺化，幫助兒童更深入地認識AI，培養數位時代覈心素養。</p>
+                        </div>
+                        
+                        <!-- 学习能力 -->
+                        <div class="scale-card">
+                        <div class="scale-header">
+                            <img src="../images/L.png" alt="Learning to Learn" width="60" height="60">
+                            <h2>學會學習與元認知</h2>
+                        </div>
+                        <p>融合AI生成科技（AIGC）與具身創作（如機器人程式設計、創客活動），通過任務驅動與反思閉環，引導兒童在科技實踐中建立元認知策略。 學習者通過“規劃-執行-複盤”的反覆運算流程，既能掌握跨學科創新方法，更能在「科技賦能」中逐步形成自我調節學習能力，突破傳統學習邊界</p>
+                        </div>
+                        
+                        <!-- 工程思维 -->
+                        <div class="scale-card">
+                        <div class="scale-header">
+                            <img src="../images/E.png" alt="Engineering Thinking" width="60" height="60">
+                            <h2>工程與設計思維</h2>
+                        </div>
+                        <p>將同理心（empathy）作為首要環節，通過創設智慧寵物互動等類比社交場景，引導兒童在解决問題的過程中，幫助兒童建立工程設計的基礎思維框架EDP，强化了對人類社會的理解與尊重，實現工程創新與人文關懷的雙重培養</p>
                         </div>
                     </div>
                 </div>
-                <button class="control-btn prev-btn" onclick="scrollSlide(-1)">&#10094;</button>
-                <button class="control-btn next-btn" onclick="scrollSlide(1)">&#10095;</button>
             </div>
         </div>
-    </div>
-    </div>
-    <!-- End Hero Banner Area -->
+    </section>
+    <!-- End Part 2 Area -->
+    
+    <!-- Start Part 3 Area -->
+     <section class="principles_area ptb--100">
+        <div class="container">
+            <div class="language-content">
+                <!-- English Content -->
+                <div class="lang-content" data-lang="en">
+                    <h2 class="principles-title">Teaching Learning Principals</h2>
+                    <div class="principles-content">
+                        <div class="principles-text">
+                            <img src="../images/principles.JPG" alt="Children Learning" class="text-side-image">
+                            <p class="intro-text">· Child Agency-Driven "Learning by Doing" Model</p>
+                            <p class="detail-text">Guided by project-based learning (PBL), children apply knowledge to solve real-world problems. This approach emphasizes children’s agency in the learning process, encouraging hands-on exploration. Through PBL, they identify, analyze, and resolve challenges in practical contexts, achieving true knowledge internalization and application.</p>
+                            <p class="intro-text">· AI Is Understandable and Learnable</p>
+                            <p class="detail-text">AI tools (e.g., smart drawing tools, voice assistants) provide heuristic guidance while preserving children’s autonomy in decision-making. Children learn foundational AI principles through accessible methods and develop skills to collaborate with AI effectively.</p>
+                        </div>
+                    </div>
+                    <div class="principles-content">
+                        <div class="principles-text">
+                            <p class="intro-text">· Boundaryless Learning Through Interdisciplinary Integration</p>
+                            <p class="detail-text">Break down disciplinary silos with integrated AI + programming + maker courses, nurturing children’s creativity, real-world problem-solving skills, and perseverance.</p>
+                            <p class="intro-text">· Social-Emotional Learning</p>
+                            <p class="detail-text">Learning is inherently social. Through collaborative projects (child-AI or peer teamwork), children deepen cognition via interaction. Communication, role division, and social engagement foster self-awareness, teamwork, knowledge internalization, emotional regulation, and meaning-making.</p>
+                        </div>
+                            <div class="principles-image">
+                                <img src="../images/homepage.jpg" alt="Children Learning" class="right-image">
+                            </div>
+                    </div>
+                </div>
+                <!-- Chinese Content -->
+                <div class="lang-content" data-lang="zh" style="display: none;">
+                    <h2 class="principles-title">創意學習原則</h2>
+                    <div class="principles-content">
+                        <div class="principles-text">
+                            <img src="../images/principles.JPG" alt="Children Learning" class="text-side-image">
+                            <p class="intro-text">· 以兒童主體能動性（child agency）驅動的“做中學”模式</p>
+                            <p class="detail-text">通過項目制學習（PBL）引導兒童在解决真實問題中應用知識。 強調兒童在學習過程中的主體地位，鼓勵他們通過動手實踐探索知識，同時借助項目制學習，讓兒童在實際操作中發現問題、分析問題並解决問題，真正實現知識的內化與運用。  </p>
+                            <p class="intro-text">· AI是可以被理解和學習的</p>
+                            <p class="detail-text">AI工具（如智慧畫筆、語音助手）僅提供啟發式建議，保留兒童自主決策空間。 兒童可以通過有效的管道理解AI的基本原理，學會與AI協同工作。</p>
+                        </div>
+                    </div>
+                    <div class="principles-content">
+                        <div class="principles-text">
+                            <p class="intro-text">· 跨學科融合的“無邊界學習”</p>
+                            <p class="detail-text">打破學科壁壘，設計AI +程式設計+創客課程，培養兒童的創造力、真實問題解决能力和堅持性。</p>
+                            <p class="intro-text">· 社會情感學習</p>
+                            <p class="detail-text">學習的“社會性”本質強調個體在互動與合作中深化認知。 通過兒童-AI或同伴合作完成項目任務，在溝通與分工中培養自我意識與團隊合作能力，在社會互動中實現知識內化、情緒調控與意義生成。</p>
+                        </div>
+                            <div class="principles-image">
+                                <img src="../images/homepage.jpg" alt="Children Learning" class="right-image">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+    <!-- End Part 3 Area -->
 
-    <!-- Start Introduction Area -->
+    <!-- Start Part 4 Area -->
+    <section class="tools-section">
+        <div class="container">
+            <div class="language-content">
+                <!-- English Content -->
+                <div class="lang-content" data-lang="en">
+                    <div class="feature-header">
+                        <h1>Learning Tools</h1>
+                    </div>
+                    <div class="tools-container">
+                        <div class="tools-item">
+                                <h1>AI Tutoring System</h1>
+                            <div class="tools-img-container">
+                                <img src="../images/airobot.jpg" width="365" height="300" class="tools-img">
+                            </div>
+                            <h3 class="tools-title">MaCoBot Intelligent Companion</h3>
+                            <p class="tools-desc">- Voice-Activated Q&A Assistance</p>
+                            <p class="tools-desc">- Provide real-time learning progress updates to parents </p>
+                            <p class="tools-desc">- Simulate multi-sensory social-emotional interactions</p>
+                        </div>
+                        <div class="tools-item">
+                            <h2>Programming Robots</h2>
+                            <div class="tools-img-container">
+                                <img src="../images/maker.png" width="360" height="320" class="tools-img">
+                            </div>
+                            <h3 class="tools-title">Matatalab Programming Platform</h3>
+                            <p class="tools-desc">- No-Code Block Programming</p>
+                            <p class="tools-desc">- Control robots to complete tasks (e.g., maze navigation) </p>
+                        </div>
+                        <div class="tools-item">
+                            <h2>Learning Environment</h2>
+                            <div class="tools-img-container">
+                                <img src="../images/environment.jpg" width="320" height="320" class="tools-img">
+                            </div>
+                            <h3 class="tools-title">MakerSpaces and Material Kits</h3>
+                            <p class="tools-desc">- Maker Space/Zone/Cart</p>
+                            <p class="tools-desc">- Child collaborative tasks (e.g., “Design a Future City”) </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chinese Content -->
+                <div class="lang-content" data-lang="zh" style="display: none;">
+                    <div class="feature-header">
+                        <h1>學習工具</h1>
+                    </div>
+                    <div class="tools-container">
+                        <div class="tools-item">
+                            <h1>AI導師系統</h1>
+                            <div class="tools-img-container">
+                                <img src="../images/airobot.jpg" width="365" height="300" class="tools-img">
+                            </div>
+                            <h3 class="tools-title">MaCoBot智慧夥伴-語音互動解答疑問</h3>
+                            <p class="tools-desc">-語音互動解答疑問</p>
+                            <p class="tools-desc">-實时向家長迴響學習進度</p>
+                            <p class="tools-desc">-類比多感官社交情感互動</p>
+                        </div>
+                        <div class="tools-item">
+                            <h2>程式設計機器人</h2>
+                            <div class="tools-img-container">
+                                <img src="../images/maker.png" width="360" height="320" class="tools-img">
+                            </div>
+                            <h3 class="tools-title">Matatalab程式設計平臺</h3>
+                            <p class="tools-desc">-零基礎積木程式設計</p>
+                            <p class="tools-desc">-控制機器人完成任務（如迷宮探索）</p>
+                        </div>
+                        <div class="tools-item">
+                            <h2>學習場景</h2>
+                            <div class="tools-img-container">
+                                <img src="../images/environment.jpg" width="320" height="320" class="tools-img">
+                            </div>
+                            <h3 class="tools-title">創客空間與資料包</h3>
+                            <p class="tools-desc">-創客空間或創客區或創客推車</p>
+                            <p class="tools-desc">-兒童合作任務（如“設計未來都市”）</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Part 4 Area -->
+
+    <!-- Start Part 5 Area -->
     <section class="htc__introduction__area ptb--100">
         <div class="container">
             <div class="language-content">
                 <!-- English Content -->
                 <div class="lang-content" data-lang="en">
-                    <div class="intro-header">
-                        <h1>Introduction</h1>
-                        <p class="intro-description">This curriculum was born out of a vision to empower young learners,
-                            providing them with the rich, hands-on learning experiences that are essential to navigating
-                            the ever-evolving trends and requirements of the 21st century.</p>
+                    <div class="feature-header">
+                        <h1>Educator Requirements</h1>
                     </div>
-                    <div class="intro-content">
-                        <div class="intro-left">
-                            <p class="intro-description">In creating the PlayBot curriculum, our goal was to prepare our
-                                children for the future by fostering creativity, nurturing computational thinking, and
-                                building vital problem-solving and social skills through engaging, playful activities.
-                            </p>
-                            <p class="intro-description">Our commitment to safety and durability is also a cornerstone
-                                of the PlayBot curriculum. The coding robot embedded in the PlayBot curriculum has been
-                                carefully engineered to be safe, sturdy, and fall resistant.</p>
+                    <div class="features-container">
+                        <div class="feature-box">
+                            <div class="image-center-only">
+                                <img src="../images/innovation.png" width="100" height="100">
+                            </div>
+                            <h3>Creative Instructional Design Skills</h3>
+                            <p>Use open-ended AI challenges in projects (e.g., “How can AI reduce food waste?”) to guide children’s self-directed exploration.  </p>
+                        </div> 
+                        <div class="feature-box">
+                            <div class="image-center-only">
+                                <img src="../images/Kknowledge.png" width="100" height="100">
+                            </div>
+                            <h3>Interdisciplinary Project Teaching Skills</h3>
+                            <p>Integrate cross-disciplinary knowledge into teaching activities, enabling children to connect concepts across domains through vivid and engaging methods, helping them build effective learning capabilities. </p>
                         </div>
-                        <div class="intro-right">
-                            <p class="intro-description">Key features include:</p>
-                            <ul class="intro-skills">
-                                <li><strong>Engagement:</strong>Utilizes consistent color-coded indicators that mirror
-                                    the command buttons</li>
-                                <li><strong>Ease of Use:</strong> Designed for intuitive play—plan the route, press the
-                                    command buttons to code the robot</li>
-                                <li><strong>Screen-free Design:</strong> Suitable for preschoolers with age-appropriate
-                                    command buttons</li>
-                                <li><strong>Interactive Learning:</strong> Introduces basic coding concepts through
-                                    contextualized play activities</li>
-                            </ul>
+                         <div class="feature-box">
+                            <div class="image-center-only">
+                                <img src="../images/emotion.png" width="100" height="100">
+                            </div>
+                            <h3>Ethical Guidance & Emotional Support</h3>
+                            <p>Incorporate ethical discussions into the use of technological tools (such as "What if AI generates wrong answers?") to guide children to think dialectically about the role of technology and their relationship with it. Pay attention to children's emotional changes during learning to prevent technology dependence or frustration, and cultivate collaboration and communication skills, strengthening the awareness that "technology is a tool, and humans have more creativity.".</p>
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Chinese Content -->
                 <div class="lang-content" data-lang="zh" style="display: none;">
-                    <div class="intro-header">
-                        <h1>序言</h1>
-                        <p class="intro-description">
-                            本人深感榮幸為《PlayBot課程》撰寫此序言。這套突破性的教育課程以嶄新理念將遊戲與無屏幕編程及機械人技術巧妙融合，源於一個願景——透過豐富的實體操作學習體驗，賦能新生代應對21世紀瞬息萬變的趨勢與挑戰。
-                        </p>
+                    <div class="feature-header">
+                        <h1>教育者要求</h1>
                     </div>
-                    <div class="intro-content">
-                        <div class="intro-left">
-                            <p class="intro-description">研發PlayBot課程的初衷，在於以寓教於樂的活動培育兒童創造力、運算思維、解難能力及社交技巧，為孩子裝備未來所需的關鍵技能。
-                            </p>
-                            <p class="intro-description">安全性與耐用性亦是PlayBot課程的重要基石。課程專用編程機械人經精心設計，具備防摔抗震特性。</p>
+                    <div class="features-container">
+                        <div class="feature-box">
+                            <div class="image-center-only">
+                                <img src="../images/innovation.png" width="100" height="100">
+                            </div>
+                            <h3>創意教學設計能力</h3>
+                            <p>在項目中預留AI未解决的開放性問題（如“如何用AI减少食物浪費”），引導兒童自主探索。 </p>
+                        </div> 
+                        <div class="feature-box">
+                            <div class="image-center-only">
+                                <img src="../images/Kknowledge.png" width="100" height="100">
+                            </div>
+                            <h3>跨學科項目教學能力</h3>
+                            <p>注重將跨學科知識融入教學活動，讓兒童能够以生動有趣的管道，將不同領域的知識串聯起來，幫助其建立起有效的學習能力。</p>
                         </div>
-                        <div class="intro-right">
-                            <p class="intro-description">主要特色包括：</p>
-                            <ul class="intro-skills">
-                                <li><strong>增強參與度：</strong>採用與指令鍵同色系的流程指示燈，簡化程序追蹤與除錯</li>
-                                <li><strong>簡易操作：</strong>直觀三步曲——規劃路線、輸入指令、啟動執行</li>
-                                <li><strong>無屏幕設計：</strong>配備符合學前兒童操作能力的指令按鍵</li>
-                                <li><strong>互動學習：</strong> 透過情境化遊戲活動導入基礎編程概念</li>
-                            </ul>
+                         <div class="feature-box">
+                            <div class="image-center-only">
+                                <img src="../images/emotion.png" width="100" height="100">
+                            </div>
+                            <h3>倫理引導與情感支持</h3>
+                            <p>在科技工具使用中滲透倫理討論（如“如果AI生成錯誤的答案，怎麼辦？ ”），引導兒童辯證思考科技的作用與自身的關係。 關注兒童在學習中的情緒變化，避免科技依賴或挫敗感，培養合作性及溝通能力，强化“科技是工具，人有更多創意”的認知。</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- End Introduction Area -->
-
-    <!-- Start Product Showcase Area -->
-    <section class="product__showcase">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="section__title--2 text-center">
-                        <h2 class="title__line" data-lang-en="PlayBot Robot" data-lang-zh="PlayBot 機械人">PlayBot Robot
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="product__image">
-                        <img src="../images/Image (1).jpg" alt="PlayBot robot" class="product-image">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="product__features">
-                        <h3 data-lang-en="Key Features" data-lang-zh="主要特點">Key Features</h3>
-                        <ul class="lang-content" data-lang="en">
-                            <li>Screen-free coding experience</li>
-                            <li>Color-coded command buttons</li>
-                            <li>Durable design for classroom use</li>
-                            <li>Voice feedback technology</li>
-                            <li>Interactive maps and accessories</li>
-                            <li>Cross-disciplinary learning potential</li>
-                        </ul>
-                        <ul class="lang-content" data-lang="zh" style="display: none;">
-                            <li>無屏幕編程體驗</li>
-                            <li>顏色編碼的命令按鈕</li>
-                            <li>適合課堂使用的耐用設計</li>
-                            <li>語音回饋技術</li>
-                            <li>互動地圖和配件</li>
-                            <li>跨學科學習潛能</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Product Showcase Area -->
+    <!-- End Part 5 Area -->
 
     <!-- Start Footer Area -->
     <footer class="footer__area">
@@ -259,7 +511,7 @@
                 <div class="footer-brand">
                     <div class="footer-logo">
                         <a href="Home.html">
-                            <img src="../images/MACO.png" class="footer-logo-img">
+                            <img src="../../images/MACO.png" class="footer-logo-img">
                         </a>
                     </div>
                     <p class="footer-about">
@@ -355,7 +607,7 @@
         });
     </script>
     <!-- Preload common resources -->
-    <link rel="preload" as="image" href="../images/MACO.png">
+    <link rel="preload" as="image" href="../../images/MACO.png">
     <link rel="preload" as="style" href="../css/header.css">
     <link rel="preload" as="style" href="../css/footer.css">
 </body>
