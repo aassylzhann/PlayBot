@@ -310,3 +310,79 @@ body {
 .auth-buttons.hidden {
     display: none !important;
 }
+
+/* Hero Banner Section */
+.about-hero {
+    background: linear-gradient(90deg, #f7eaa0 60%, #eab44f 100%);
+    color: #2c3e50;
+    padding: 60px 0 40px 0;
+    text-align: center;
+    position: relative;
+}
+.about-hero .about-hero-img {
+    max-width: 180px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.about-hero .about-hero-title {
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+.about-hero .about-hero-tagline {
+    font-size: 1.4em;
+    color: #7f5a00;
+    margin-bottom: 0;
+}
+
+/* Section Card Styles */
+.section-card {
+    background: #fffbe6;
+    border-radius: 18px;
+    box-shadow: 0 2px 16px rgba(234,180,79,0.10);
+    padding: 40px 32px 32px 32px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+}
+.section-card:hover {
+    box-shadow: 0 8px 32px rgba(234,180,79,0.18);
+}
+.section-card .section-icon {
+    font-size: 2.2em;
+    color: #eab44f;
+    margin-bottom: 18px;
+    display: block;
+}
+.section-card h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    color: #2c3e50;
+    font-size: 2em;
+    font-weight: 600;
+}
+.section-card ul {
+    margin-top: 12px;
+}
+
+/* Visual Divider */
+.section-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #eab44f 0%, #f7eaa0 100%);
+    border-radius: 2px;
+    margin: 32px auto 32px auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .about-hero .about-hero-title {
+        font-size: 2em;
+    }
+    .section-card {
+        padding: 24px 10px 24px 10px;
+    }
+}
