@@ -313,26 +313,26 @@ body {
 
 /* Hero Banner Section */
 .about-hero {
-    background: linear-gradient(90deg, #f7eaa0 60%, #eab44f 100%);
+    background: #f7eaa0;
     color: #2c3e50;
-    padding: 60px 0 40px 0;
+    padding: 28px 0 18px 0;
     text-align: center;
     position: relative;
 }
 .about-hero .about-hero-img {
-    max-width: 180px;
-    margin-bottom: 20px;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    max-width: 120px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
 .about-hero .about-hero-title {
-    font-size: 2.8em;
+    font-size: 2em;
     font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
 }
 .about-hero .about-hero-tagline {
-    font-size: 1.4em;
+    font-size: 1.1em;
     color: #7f5a00;
     margin-bottom: 0;
 }
