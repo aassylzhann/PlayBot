@@ -176,25 +176,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  const header = document.querySelector('.header');
-  const prevBtn = document.querySelector('.prev-btn');
-  const nextBtn = document.querySelector('.next-btn');
-  const headerHeight = header.offsetHeight;
-  
-  checkHeaderVisibility();
-  
-  window.addEventListener('scroll', checkHeaderVisibility);
-  
-  function checkHeaderVisibility() {
-    const scrollPosition = window.scrollY || window.pageYOffset;
-    
-    if (scrollPosition > headerHeight * 0.2) {
-      prevBtn.classList.add('hidden');
-      nextBtn.classList.add('hidden');
-    } else {
-      prevBtn.classList.remove('hidden');
-      nextBtn.classList.remove('hidden');
-    }
-  }
-});
