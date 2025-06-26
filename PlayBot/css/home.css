@@ -53,8 +53,6 @@
   cursor: pointer;
   z-index: 1000;
   display: block; 
-  opacity: 1; 
-  transition: opacity 0.3s ease;
 }
 
 .prev-btn {
