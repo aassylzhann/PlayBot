@@ -53,6 +53,13 @@
   cursor: pointer;
   z-index: 1000;
   display: block; 
+  opacity: 1; 
+  transition: opacity 0.3s ease;
+}
+
+.control-btn.hidden {
+  opacity: 0;
+  pointer-events: none; /* 隐藏时禁止交互 */
 }
 
 .prev-btn {
@@ -61,6 +68,10 @@
 
 .next-btn {
   right: 10px;
+}
+
+.header {
+  position: relative;s
 }
 
 /* Mission & Vision Section */
