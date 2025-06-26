@@ -100,13 +100,12 @@ let currentIndex = 0;
 function scrollSlide(direction) {
     const slides = document.querySelector('.slider');
     const totalSlides = 3;
-    // const slideWidth = 100 / totalSlides;
+    const slideWidth = 100 / totalSlides;
 
     currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
 
     // Calculate the new transform value
-   // slides.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    slides.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
 }
 
 /**
